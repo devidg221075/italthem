@@ -128,3 +128,14 @@ Il testo resta com'è sul sito; propongo la correzione tra parentesi.
 - Cache: CSS e JS hanno nel link `?v=<hash del file>` (calcolato dalla build) e restano in cache 1 anno `immutable`; font 1 anno; immagini e favicon 1 settimana (i nomi non hanno l'hash); HTML `no-cache`. Non sono impostati HSTS né Content-Security-Policy (da valutare dopo il passaggio in produzione, soprattutto per la mappa su clic).
 - Sicurezza contact form: gli indirizzi IPv4 mappati in IPv6 (`::ffff:a.b.c.d`) usano ora lo stesso limite di frequenza dell'IPv4 corrispondente (prima finivano nel raggruppamento `/64` di `::`, condiviso da tutti i visitatori IPv4 mappati).
 - `/404.html`: pagina bilingue con `noindex`, usata anche per i 410; non è nella sitemap.
+
+## Immagini, tipografia e prestazioni (Task 9)
+
+- **Rigenerare le immagini ottimizzate:** `npm install` (sharp è solo devDependency) poi `npm run images` (`scripts/optimize-images.mjs`). Legge `assets/img/src/*.jpg` (originali, restano nel repo e NON vanno in `dist/`) e scrive in `assets/img/opt/` WebP a 480/960/1600 px (mai ingrandite; una sorgente più stretta di 480 px ha una sola variante alla sua larghezza), qualità 80, nome `<base>-<w>.<hash8>.webp` (hash del contenuto) più `manifest.json`. Gli output sono committati: `node build.mjs` funziona offline senza strumenti di immagine. Dopo aver aggiunto/cambiato un originale (`node scripts/fetch-images.mjs`) rilanciare `npm run images` e committare `assets/img/opt/`.
+- AVIF non generato: il bianco di studio con `mix-blend-mode: multiply` richiede bianco pulito e WebP è universale; l'HTML è già pronto per `<picture>` se servisse.
+- Ogni `<img>` ha `srcset`/`sizes`, `width`/`height` intrinseci, `decoding="async"` e `loading="lazy"`; l'unica eccezione per pagina è l'immagine LCP (`fetchpriority="high"`: prima slide dell'hero, prima immagine della galleria prodotto, prima card del catalogo, primo blocco di Chi siamo). Home e schede prodotto hanno anche `<link rel="preload" as="image" imagesrcset…>` per l'immagine LCP.
+- Cache: i file ottimizzati con hash sono `immutable` per un anno (`.htaccess`); favicon, icone PNG e logo SVG restano a 7 giorni.
+- `<head>`: preload del solo `inter-latin-var.woff2`, `<meta name="color-scheme" content="light">`, classe `js` impostata da uno script inline prima del primo rendering (senza, i controlli del carosello comparivano a JS caricato e spostavano la pagina: CLS 0,07-0,10; ora 0), font di riserva "Inter Fallback" con metriche allineate.
+- Tipografia: solo Inter (vedi sopra); `tests/css.test.mjs` fallisce se compaiono `monospace`/JetBrains.
+- Misure: `node scripts/perf-report.mjs [--desktop] [--lighthouse]` (non fa parte di `npm test`).
+- Nota: `dist/assets/docs` contiene due PDF da 21 e 33 MB (it-af, it-sm), invariati; non sono immagini ma pesano quasi tutto `dist/`.
