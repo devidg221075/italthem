@@ -32,18 +32,18 @@ function nav(lang, slug, cls) {
   }).join('');
 }
 
-function langSwitch(lang, slug) {
+function langSwitch(lang, slug, switchUrls) {
   const item = (l) => (l === lang
     ? `<span aria-current="true">${l.toUpperCase()}</span>`
-    : `<a href="${pageUrl(slug, l)}" hreflang="${l}" lang="${l}">${l.toUpperCase()}</a>`);
+    : `<a href="${switchUrls?.[l] ?? pageUrl(slug, l)}" hreflang="${l}" lang="${l}">${l.toUpperCase()}</a>`);
   return `<span class="lang" aria-label="${esc(UI[lang].lang)}">${item('en')} · ${item('it')}</span>`;
 }
 
-function header(lang, slug, site) {
+function header(lang, slug, site, switchUrls, navKey) {
   const ui = UI[lang];
   const phones = site.phones.map((p) => `<a href="${tel(p)}">${esc(p)}</a>`).join(' · ');
-  return `<header class="hdr"><div class="w"><a href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${LOGO}</a><nav aria-label="Main">${nav(lang, slug)}</nav><div class="rt">${langSwitch(lang, slug)}<a class="cta" href="${pageUrl('contact', lang)}">${esc(ui.cta)}</a><button class="bur" type="button" aria-label="${esc(ui.menu)}" aria-expanded="false" aria-controls="drawer"><i></i></button></div></div></header>
-<div class="drw" id="drawer" aria-hidden="true"><div class="top"><span class="brand">ItalTherm</span><button class="x" type="button" aria-label="${esc(ui.close)}">×</button></div>${nav(lang, slug, 'l')}<div class="info"><b>${esc(site.name)}</b><br>${esc(site.address)}<br>${phones}<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a><br>${langSwitch(lang, slug)}</div></div>`;
+  return `<header class="hdr"><div class="w"><a href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${LOGO}</a><nav aria-label="Main">${nav(lang, navKey ?? slug)}</nav><div class="rt">${langSwitch(lang, slug, switchUrls)}<a class="cta" href="${pageUrl('contact', lang)}">${esc(ui.cta)}</a><button class="bur" type="button" aria-label="${esc(ui.menu)}" aria-expanded="false" aria-controls="drawer"><i></i></button></div></div></header>
+<div class="drw" id="drawer"><div class="top"><span class="brand">ItalTherm</span><button class="x" type="button" aria-label="${esc(ui.close)}">×</button></div>${nav(lang, navKey ?? slug, 'l')}<div class="info"><b>${esc(site.name)}</b><br>${esc(site.address)}<br>${phones}<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a><br>${langSwitch(lang, slug, switchUrls)}</div></div>`;
 }
 
 function footer(lang, slug, site) {
@@ -58,7 +58,8 @@ function footer(lang, slug, site) {
  * Reusable shell. `body` is trusted, pre-rendered HTML (must contain the page's single <h1>).
  * `alternates` is reserved for hreflang (Task 8): [{lang, href}].
  */
-export function layout({ lang, slug, title, description, body, site, alternates = [], head }) {
+/** `switchUrls` ({en, it}) overrides the language-switch targets and `navKey` the highlighted nav item, for pages whose url is not derived from `slug` (services, products). */
+export function layout({ lang, slug, title, description, body, site, alternates = [], head, switchUrls, navKey }) {
   const seo = head ?? seoHead({ title, description, lang, slug, alternates });
   return `<!doctype html>
 <html lang="${esc(lang)}">
@@ -66,7 +67,7 @@ export function layout({ lang, slug, title, description, body, site, alternates 
 ${HEAD.replace('{{seo}}', seo)}
 </head>
 <body>
-${header(lang, slug, site)}
+${header(lang, slug, site, switchUrls, navKey)}
 <main id="main">
 ${body}
 </main>
@@ -77,7 +78,7 @@ ${footer(lang, slug, site)}
 `;
 }
 
-function renderBlock(b) {
+export function renderBlock(b) {
   if (b.type === 'p') return `<p>${esc(b.text)}</p>`;
   if (b.type === 'h') return `<h3>${esc(b.text)}</h3>`;
   if (b.type === 'list') return `<ul>${(b.items || []).map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;

@@ -32,3 +32,17 @@ export function pageUrl(slug, lang) {
 export function otherLang(lang) {
   return lang === 'en' ? 'it' : 'en';
 }
+
+const SECTION = { products: { en: 'products', it: 'prodotti' }, services: { en: 'services', it: 'servizi' } };
+
+/** productUrl({slug:'it-cc'}, 'it') -> '/it/prodotti/it-cc/'. Page built by Task 6. */
+export function productUrl(product, lang) {
+  if (!LANGS.includes(lang)) throw new Error(`unknown language "${lang}"`);
+  return `/${lang}/${SECTION.products[lang]}/${product.slug}/`;
+}
+
+/** serviceUrl({slug:'x'}, 'it') -> '/it/servizi/x/'. */
+export function serviceUrl(service, lang) {
+  if (!LANGS.includes(lang)) throw new Error(`unknown language "${lang}"`);
+  return `/${lang}/${SECTION.services[lang]}/${service.slug}/`;
+}

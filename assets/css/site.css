@@ -70,7 +70,7 @@ img{max-width:100%}
 .js .stage .m:not(:first-child){display:grid}
 .js .stage .m{opacity:0;transform:translateX(60px) scale(.96);filter:blur(10px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1),filter .8s ease;pointer-events:none}
 .js .stage .m.on{opacity:1;transform:translate(var(--px,0),var(--py,0));filter:none;pointer-events:auto}
-.stage img{width:100%;height:100%;object-fit:contain;display:block}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
 .stage::after{content:"";position:absolute;left:14%;right:14%;bottom:9%;height:6%;background:radial-gradient(closest-side,rgba(17,35,55,.2),transparent);filter:blur(8px);z-index:-1}
 .cap{margin-top:26px;display:grid}
 .cap .c{grid-area:1/1}
@@ -99,7 +99,7 @@ img{max-width:100%}
 
 /* sections */
 .tg{border-bottom:1px solid var(--line)}
-.tg .w{display:grid;grid-template-columns:repeat(3,1fr)}
+.tg .w{display:grid;grid-template-columns:repeat(var(--n,3),1fr)}
 .tg .w>div{padding:34px 28px 34px 0;font-weight:700;font-size:clamp(19px,2.1vw,26px);line-height:1.2;letter-spacing:-.03em}
 .tg .w>div+div{padding-left:28px;border-left:1px solid var(--line)}
 .tg .w>div::before,.why .gridw div::before{content:"";display:block;width:28px;height:3px;background:var(--accent);margin-bottom:16px;border-radius:2px}
