@@ -180,6 +180,12 @@ test('IPv6 clients share one rate-limit bucket per /64', () => {
   assert.deepEqual(o.results.map((x) => x.status), [200, 200, 200, 429, 200]);
 });
 
+test('IPv4-mapped IPv6 addresses (::ffff:a.b.c.d) share the bucket of the plain IPv4 address', () => {
+  const addr = (a) => ({ REMOTE_ADDR: a });
+  const o = run(['203.0.113.7', '::ffff:203.0.113.7', '203.0.113.7', '::ffff:cb00:7107', '::ffff:203.0.113.8'].map((a) => ({ post: valid(), server: addr(a) })));
+  assert.deepEqual(o.results.map((x) => x.status), [200, 200, 200, 429, 200]);
+});
+
 test('rate records older than one hour are pruned (injected clock); failed sends leave no record', () => {
   const t = 1800000000;
   const o = run([{ post: valid(), now: t }, { post: valid(), now: t + 3601, server: { REMOTE_ADDR: '198.51.100.1' } }], { listRecords: true });

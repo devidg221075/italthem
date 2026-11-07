@@ -79,12 +79,15 @@ function contact_ip(array $server): string
     return filter_var($ip, FILTER_VALIDATE_IP) ? $ip : 'unknown';
 }
 
-/** Rate-limit key: the address itself for IPv4, the /64 prefix for IPv6 (one subscriber owns a whole /64). */
+/** Rate-limit key: the address itself for IPv4 (also when it arrives IPv4-mapped, ::ffff:a.b.c.d), the /64 prefix for IPv6 (one subscriber owns a whole /64). */
 function contact_rate_ip(string $ip): string
 {
     $bin = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) ? @inet_pton($ip) : false;
     if ($bin === false) {
         return $ip;
+    }
+    if (substr($bin, 0, 12) === str_repeat("\0", 10) . "\xff\xff") {
+        return inet_ntop(substr($bin, 12, 4));
     }
     return inet_ntop(substr($bin, 0, 8) . str_repeat("\0", 8)) . '/64';
 }
