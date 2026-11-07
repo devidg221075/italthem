@@ -328,3 +328,14 @@ Anomalie trovate dalla misura e corrette:
 - **Font dei titoli:** aggiunta la preload di `manrope-latin-var.woff2` (24 KB) accanto a quella di Inter; test aggiornato.
 
 Residuo: l'LCP mobile di catalogo e scheda IT.CC (3,7–3,8 s) è nella simulazione "4G lenta + CPU 4×"; in locale l'LCP misurato è ~100 ms. Sulla scheda IT.CC pesa la foto della galleria (la più pesante, 129 KB nel formato 960 px): migliorerà con le foto ad alta risoluzione ricompresse.
+
+## Confronto affiancato finale (sito vs mockup approvati, desktop e mobile)
+
+Differenze residue, tutte note e non risolvibili senza materiali nuovi:
+- **Foto:** i mockup usano rendering fotografici (forno con colata, stabilimento, laboratorio) che non esistono nel sito; il sito usa le foto reali dei prodotti, più piccole e su fondo chiaro (hero, banner di catalogo/azienda/contatti, galleria scheda).
+- **Hero home:** manca il pulsante "Guarda il video" (pagina Video non ancora disponibile); la foto del prodotto occupa meno spazio del rendering del mockup.
+- **Banner di sezione (catalogo, azienda, contatti):** nel mockup hanno un'immagine a destra; nel sito hanno fondo chiaro con la diagonale decorativa, finché non arrivano foto adatte.
+- **Scheda IT.CC:** mockup con 4 miniature (video incluso) e tab Video/Accessori; il sito ha le sole immagini e i tab esistenti (Descrizione, Modelli e dati tecnici, Documentazione). Sottotitolo: testo originale del sito, non quello del mockup.
+- **Azienda:** le tre card (Fusione, Colata continua, Trattamenti termici) hanno foto diverse da quelle del mockup; testi della striscia dei 4 motivi dal contenuto originale.
+- **Contatti:** il modulo ha nome/cognome separati e conferma email (contratto PHP invariato); la mappa è un segnaposto con caricamento al clic.
+- **Mobile:** home, catalogo e scheda seguono l'impaginazione dei telefoni approvati; differisce l'elenco categorie in home (4 voci in riga singola nel sito) e la barra di sezioni in fondo alla scheda.
