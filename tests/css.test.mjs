@@ -76,7 +76,8 @@ test('fonts are self-hosted WOFF2 with font-display swap', () => {
   const css = read(CSS_PATH);
   assert.ok(!/fonts\.googleapis|gstatic/.test(css));
   const urls = [...css.matchAll(/url\((\/assets\/fonts\/[^)]+)\)/g)].map((m) => m[1]);
-  assert.ok(urls.length >= 4);
+  assert.equal(urls.length, 2, "Inter latin + latin-ext only");
+  assert.ok(urls.every((u) => /inter-/.test(u)), "only Inter files");
   for (const u of urls) assert.ok(existsSync(new URL(`..${u}`, import.meta.url)), u);
   assert.ok(css.includes('font-display:swap'));
 });
