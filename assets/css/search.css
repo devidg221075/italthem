@@ -1,0 +1,23 @@
+/* Search overlay. Loaded together with search.js on the first click on the header search button. */
+.sr{position:fixed;inset:0;z-index:120;display:flex;justify-content:center;align-items:flex-start;padding:clamp(12px,8vh,96px) 16px 16px}
+.sr[hidden]{display:none}
+.sr-b{position:absolute;inset:0;background:rgba(30,58,102,.45);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.sr-w{position:relative;width:min(680px,100%);max-height:calc(100vh - 32px);display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r2);box-shadow:0 30px 70px -30px rgba(30,58,102,.6);overflow:hidden}
+.sr-f{display:flex;align-items:center;gap:12px;padding:6px 8px 6px 18px;border-bottom:1px solid var(--line);color:var(--blue)}
+.sr-f svg{flex:none}
+.sr-f input{flex:1;min-width:0;height:56px;border:0;outline:0;background:none;font:400 18px var(--sans);color:var(--ink)}
+.sr-f input::placeholder{color:var(--mute)}
+.sr-f input::-webkit-search-cancel-button{display:none}
+.sr-x{flex:none;width:44px;height:44px;display:grid;place-items:center;border-radius:var(--r);color:var(--navy)}
+.sr-x:hover{background:var(--pearl)}
+.sr ul{list-style:none;margin:0;padding:8px;overflow:auto}
+.sr ul:empty{display:none}
+.sr li a{display:flex;align-items:baseline;gap:14px;padding:12px 14px;border-radius:var(--r);color:var(--ink)}
+.sr li a b{flex:none;min-width:5.5em;font:700 18px var(--head);color:var(--blue)}
+.sr li a span{flex:1;font-size:16px;line-height:1.35}
+.sr li a small{flex:none;font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.sr li a:hover,.sr li a[aria-selected=true]{background:var(--pearl)}
+.sr li a[aria-selected=true]{outline:2px solid var(--blue);outline-offset:-2px}
+.sr-s{margin:0;padding:18px 20px;font-size:15px;color:var(--body)}
+.sr-s:empty{display:none}
+@media (max-width:600px){.sr li a{flex-wrap:wrap;gap:4px 12px}.sr li a small{margin-left:auto}}

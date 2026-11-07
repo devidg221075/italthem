@@ -34,3 +34,34 @@ export const PRIVACY = {
     ],
   },
 };
+
+// Cookie policy (DRAFT, to be validated by the owner / a privacy consultant; see docs/CHANGES.md). Describes exactly what the site does today:
+// one first-party technical cookie (it_notice, Max-Age 15552000 s = 180 days, set only when the notice bar is closed) and nothing else.
+export const COOKIES = {
+  en: {
+    title: 'Cookie policy',
+    lead: 'What cookies this website uses, why, and how you can control them.',
+    updated: (y) => `Last updated: ${y}`,
+    crumb: 'Home',
+    sections: [
+      { h: 'What cookies are', p: ['Cookies are small text files that a website stores in your browser. Technical cookies are needed for the site to work or to remember a choice you made; profiling and tracking cookies follow your behaviour across sites.'] },
+      { h: 'Cookies used by this site', p: ['This site uses one first-party technical cookie and no other cookies:'], ul: ['it_notice: remembers that you closed the notice bar at the bottom of the page. It contains only the value 1, is not shared with anyone and expires after about six months (180 days). It is set only when you press OK.'] },
+      { h: 'What we do not use', p: ['We do not use analytics, tracking, profiling or advertising cookies, and we do not load third-party scripts, fonts or embedded content when you open a page. Because only a technical cookie is used, no consent is required for it.'] },
+      { h: 'Maps and links to other sites', p: ['Where a map is shown, it is loaded only after you click on it. Loading it contacts the map provider, which may set its own cookies under its own policy; this does not happen unless you click. Links to other websites are governed by those sites’ policies.'] },
+      { h: 'How to control or delete cookies', p: ['You can delete the it_notice cookie at any time from your browser settings, or set the browser to block cookies; the site keeps working, and the notice bar will simply appear again. See also our [[privacy]] and write to [[mail]] for any question.'] },
+    ],
+  },
+  it: {
+    title: 'Cookie policy',
+    lead: 'Quali cookie usa questo sito, perché, e come puoi controllarli.',
+    updated: (y) => `Ultimo aggiornamento: ${y}`,
+    crumb: 'Home',
+    sections: [
+      { h: 'Che cosa sono i cookie', p: ['I cookie sono piccoli file di testo che un sito memorizza nel tuo browser. I cookie tecnici servono al funzionamento del sito o a ricordare una scelta che hai fatto; i cookie di profilazione e di tracciamento seguono il tuo comportamento tra siti diversi.'] },
+      { h: 'Cookie usati da questo sito', p: ['Questo sito usa un solo cookie tecnico di prima parte e nessun altro cookie:'], ul: ['it_notice: ricorda che hai chiuso l’avviso in fondo alla pagina. Contiene solo il valore 1, non è condiviso con nessuno e scade dopo circa sei mesi (180 giorni). Viene impostato solo quando premi OK.'] },
+      { h: 'Che cosa non usiamo', p: ['Non usiamo cookie di analisi, di tracciamento, di profilazione o pubblicitari e, all’apertura di una pagina, non carichiamo script, font o contenuti incorporati di terze parti. Poiché è usato solo un cookie tecnico, non è richiesto il consenso.'] },
+      { h: 'Mappe e link ad altri siti', p: ['Dove è presente una mappa, viene caricata solo dopo un tuo clic. Il caricamento contatta il fornitore della mappa, che può impostare propri cookie secondo la propria informativa; ciò non avviene se non clicchi. I link ad altri siti sono regolati dalle informative di quei siti.'] },
+      { h: 'Come controllare o eliminare i cookie', p: ['Puoi eliminare il cookie it_notice in qualsiasi momento dalle impostazioni del browser, oppure impostare il browser per bloccare i cookie: il sito continua a funzionare e l’avviso in basso ricomparirà. Vedi anche la nostra [[privacy]] e scrivi a [[mail]] per qualsiasi domanda.'] },
+    ],
+  },
+};

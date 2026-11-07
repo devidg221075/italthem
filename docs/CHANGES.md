@@ -156,10 +156,10 @@ Riferimento: tavola master e mockup approvati (Light Premium / Minimal Titanium)
 | Mega menu | 3 famiglie (fusione, colata continua, trattamenti termici) | Aggiunta "Produzione grani" (IT.GMS), coerente con home, catalogo e footer | Deciso |
 | Foto del hero | Rendering illustrativo con colata | Foto reali dei macchinari (IT.GT, IT.CC, IT.AF, IT.GMS); IT.GT per prima perché è la più leggera (36 KB contro 129 KB di IT.CC) | Da confermare |
 | Puntini del carosello | 3 | 4, uno per macchina | Da confermare |
-| Ricerca nell'header | Icona lente | Non inserita: il sito non ha una funzione di ricerca | Da decidere |
-| Pulsante "Guarda il video" | Presente | Non inserito: la pagina Video non esiste ancora | In attesa dei materiali |
+| Ricerca nell'header | Icona lente | Inserita: pannello di ricerca nel browser su prodotti, servizi e pagine (codice, nome, testo; frecce, Invio, Esc). Indice JSON per lingua, caricato solo al primo clic; nessun servizio esterno | Fatto (richiesto) |
+| Pulsante "Guarda il video" | Presente | Non inserito: la pagina Video non esiste ancora; lo aggiungo insieme alla pagina | In attesa dei materiali |
 | Voci di menu Video e Assistenza | Presenti | Non inserite: pagine senza contenuti originali | In attesa dei materiali |
-| Cookie Policy nel footer | Link presente | Solo "Privacy": esiste una sola pagina informativa | Da decidere |
+| Cookie Policy nel footer | Link presente | Nuova pagina `/it/cookie-policy/` e `/en/cookie-policy/`, con link nel footer. **BOZZA scritta da me**: descrive solo il cookie tecnico `it_notice` (180 giorni, solo alla pressione di OK) e che non ci sono cookie di analisi o pubblicità; va validata da te o dal tuo consulente | Fatto, da validare |
 | Etichetta "Azienda" | Menu "Azienda" | Menu "Azienda" (IT) e "Company" (EN); il titolo SEO della pagina resta "Chi siamo" / "About us" | Deciso |
 | Kicker del hero | "INDUSTRIAL FURNACES FOR PRECIOUS METALS" anche in italiano | Mantenuto in italiano con `lang="en"`; in inglese "Italian technology" | Da confermare |
 | Testi del hero | Testi del mockup | Titolo e sottotitolo come nel mockup (sintesi del testo originale); EN tradotti dal testo inglese originale | Da confermare |
@@ -180,3 +180,8 @@ Riferimento: tavola master e mockup approvati (Light Premium / Minimal Titanium)
 - Le foto del mega menu sono `loading="lazy"` e nascoste: non pesano sul primo caricamento.
 - `site.css` + `site.js` restano sotto 40 KB (limite del test).
 - Le pagine non ancora rifatte (catalogo, scheda prodotto, Chi siamo, Contatti, privacy) usano il nuovo header e footer e i nuovi colori; il layout interno sarà rifatto una pagina per volta.
+
+### Ricerca e Cookie Policy (aggiunte dopo la prima tranche)
+- Ricerca: `src/lib/search-index.mjs` genera `dist/assets/search-<lingua>.json` (11 prodotti con codice, titolo, sigle modello e testo; 4 servizi; 5 pagine). `assets/js/search.js` e `assets/css/search.css` si caricano al primo clic sul pulsante (non contano nei 40 KB di `site.css` + `site.js`). L'overlay è costruito solo con l'API DOM (nessun `innerHTML`).
+- Cookie Policy: testo in `src/lib/privacy.mjs` (`COOKIES`), pagina in sitemap e linkata dal footer; l'informativa privacy e la cookie policy dicono la stessa cosa sul cookie `it_notice`.
+- Tre test nuovi per lingua in `tests/search.test.mjs`.

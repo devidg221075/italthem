@@ -50,6 +50,10 @@ img{max-width:100%}
 .lang{display:inline-flex;align-items:center;gap:12px;font:600 15px var(--sans);letter-spacing:.04em;white-space:nowrap;color:var(--navy)}
 .lang i{width:1.5px;height:20px;background:var(--blue)}
 .lang a{color:var(--navy)}.lang a:hover{color:var(--blue)}
+.sb{display:none;width:44px;height:44px;border-radius:var(--r);place-items:center;color:var(--ink);transition:color .2s,background .2s}
+.js .sb{display:grid}
+.sb:hover{color:var(--blue);background:var(--pearl)}
+.sb .ic{width:26px;height:26px}
 .bur{display:none;width:44px;height:44px;border-radius:var(--r);place-items:center;color:var(--navy)}
 .bur .ic{width:28px;height:28px}
 
@@ -285,6 +289,7 @@ textarea.inp{min-height:150px;resize:vertical}
 .ci .ic{width:22px;height:22px;color:var(--blue);margin-top:1px}
 a.ci:hover{color:var(--blue)}
 .bt{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:20px 4px 0;font-size:14px;color:var(--body)}
+.bt .lg{display:flex;gap:20px;flex-wrap:wrap}
 .bt a:not(.up){color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 .up{display:none}
 

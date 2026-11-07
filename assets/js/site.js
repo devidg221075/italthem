@@ -86,6 +86,22 @@
       if (fq.addEventListener) fq.addEventListener('change', syncFooter);
     }
 
+    /* search: the overlay (search.js + search.css + index JSON) is fetched on the first click only */
+    var sb = $('.sb'), searchLoaded = false;
+    if (sb) {
+      sb.addEventListener('click', function () {
+        var fire = function () { document.dispatchEvent(new CustomEvent('it:search', { detail: sb })); };
+        if (searchLoaded) { fire(); return; }
+        searchLoaded = true;
+        var css = document.createElement('link');
+        css.rel = 'stylesheet'; css.href = sb.getAttribute('data-css');
+        document.head.appendChild(css);
+        var js = document.createElement('script');
+        js.src = sb.getAttribute('data-js'); js.onload = fire;
+        document.head.appendChild(js);
+      });
+    }
+
     /* hero: machine photos fade, dots select, 6 s autoplay unless reduced motion, hover or focus */
     var hero = $('.hero');
     if (hero) {

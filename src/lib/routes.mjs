@@ -7,6 +7,7 @@ const SLUGS = {
   products: { en: 'products', it: 'prodotti' },
   contact: { en: 'contact', it: 'contatti' },
   privacy: { en: 'privacy', it: 'privacy' },
+  cookies: { en: 'cookie-policy', it: 'cookie-policy' },
 };
 const ALIASES = { 'about-us': 'about', 'chi-siamo': 'about', prodotti: 'products', contatti: 'contact', contattaci: 'contact' };
 

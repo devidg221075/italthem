@@ -1,5 +1,5 @@
 import { displayTitle } from './html.mjs';
-import { PRIVACY } from './privacy.mjs';
+import { PRIVACY, COOKIES } from './privacy.mjs';
 import { LANGS, pageUrl, serviceUrl, productUrl } from './routes.mjs';
 
 const fileFor = (url) => `${url.replace(/^\//, '')}index.html`;
@@ -18,9 +18,9 @@ export function buildPages(contents) {
     }
   };
   const find = (l, slug) => contents[l].pages.find((p) => p.slug === slug);
-  for (const key of ['home', 'about', 'products', 'contact', 'privacy']) {
+  for (const key of ['home', 'about', 'products', 'contact', 'privacy', 'cookies']) {
     const e = {};
-    for (const l of LANGS) e[l] = { url: pageUrl(key, l), title: key === 'privacy' ? PRIVACY[l].title : (find(l, key).seo?.title ?? find(l, key).title) };
+    for (const l of LANGS) e[l] = { url: pageUrl(key, l), title: key === 'privacy' ? PRIVACY[l].title : key === 'cookies' ? COOKIES[l].title : (find(l, key).seo?.title ?? find(l, key).title) };
     add(key, key, e);
   }
   for (const s of contents.en.services) {

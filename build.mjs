@@ -8,6 +8,7 @@ import { renderSitePage, renderNotFound } from './src/lib/views.mjs';
 import { buildSitemaps, robotsTxt, SITE_URL, THEME_COLOR } from './src/lib/seo.mjs';
 import { buildRedirects, buildHtaccess } from './src/lib/redirects.mjs';
 import { esc } from './src/lib/html.mjs';
+import { buildSearchIndex } from './src/lib/search-index.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
@@ -56,6 +57,7 @@ export async function build() {
   // assets/img/src (the 3 MB originals) stays in the repo only; dist ships the optimized assets/img/opt.
   const SRC_IMG = path.join(ROOT, 'assets/img/src');
   await cp(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true, filter: (f) => f !== SRC_IMG });
+  for (const l of ['en', 'it']) await writeFile(path.join(DIST, `assets/search-${l}.json`), JSON.stringify(buildSearchIndex(contents[l], l)));
   for (const f of ['contact.php', 'contact-lib.php']) await copyFile(path.join(ROOT, 'server', f), path.join(DIST, f));
   return pages;
 }

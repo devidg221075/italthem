@@ -45,7 +45,7 @@ test('expected files exist for both languages', () => {
 });
 
 test('buildPages lists every page with url, file and alternates', () => {
-  assert.equal(pages.length, 40);
+  assert.equal(pages.length, 42, "40 + cookie policy x2");
   for (const p of pages) {
     for (const k of ['lang', 'slug', 'url', 'type', 'title', 'file', 'alternates']) assert.ok(p[k] !== undefined, `${p.url} ${k}`);
     assert.ok(existsSync(path.join(DIST, p.file)), p.file);

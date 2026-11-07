@@ -8,7 +8,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { docUrl } from './docs.mjs';
-import { PRIVACY } from './privacy.mjs';
+import { PRIVACY, COOKIES } from './privacy.mjs';
 import { makeDescription, usableMeta } from './seo.mjs';
 import { HERO_SLIDES, MENU_PRODUCTS, SERVICE_PHOTOS, ABOUT_PHOTOS, CATALOGUE_ORDER } from './featured.mjs';
 
@@ -200,10 +200,12 @@ function contactBody(content, lang) {
 <section><div class="w ctw">${formHtml}<div class="side">${side}</div></div></section>`;
 }
 
-function privacyBody(lang, site) {
+/** Privacy notice and cookie policy share one layout. `[[privacy]]` links to the privacy notice. */
+function privacyBody(lang, site, doc = PRIVACY) {
   const t = T[lang];
-  const P = PRIVACY[lang];
+  const P = doc[lang];
   const sub = (s) => esc(s)
+    .replace('[[privacy]]', `<a href="${pageUrl('privacy', lang)}">${esc(PRIVACY[lang].title.toLowerCase())}</a>`)
     .replace('[[mail]]', `<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>`)
     .replace('[[garante]]', '<a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>');
   const sections = P.sections.map((s) => `<h2>${esc(s.h)}</h2>${s.p.map((x) => `<p>${sub(x)}</p>`).join('')}${s.ul ? `<ul>${s.ul.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${(s.after ?? []).map((x) => `<p>${sub(x)}</p>`).join('')}`).join('');
@@ -248,6 +250,8 @@ function seoFor(page, content) {
     }
     case 'contact':
       return { title: page.title, description: makeDescription([...meta, ...paragraphs(src.lead)]), seo: { ...base, crumbs: [home, { name: page.title, url: page.url }] } };
+    case 'cookies':
+      return { title: page.title, description: makeDescription([COOKIES[lang].lead, COOKIES[lang].sections[1].p[0]]), seo: { ...base, crumbs: [home, { name: page.title, url: page.url }] } };
     case 'privacy':
       return { title: page.title, description: makeDescription([PRIVACY[lang].lead, PRIVACY[lang].sections[0].p[0].replace(/\[\[\w+\]\]/g, '')]), seo: { ...base, crumbs: [home, { name: page.title, url: page.url }] } };
     case 'service': {
@@ -297,6 +301,8 @@ export function renderSitePage(page, contents) {
       return layout({ ...withSeo, slug: 'contact', cta: false, body: contactBody(content, lang) });
     case 'privacy':
       return layout({ ...withSeo, slug: 'privacy', head: undefined, body: privacyBody(lang, content.site) });
+    case 'cookies':
+      return layout({ ...withSeo, slug: 'cookies', head: undefined, body: privacyBody(lang, content.site, COOKIES) });
     case 'service': {
       const s = content.services.find((x) => x.slug === page.key);
       return layout({ ...withSeo, slug: `services/${s.slug}`, navKey: 'products', head: undefined, body: serviceBody(s, content, lang) });
