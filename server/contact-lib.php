@@ -18,6 +18,7 @@ const CONTACT_PRODUCTS = [
 const CONTACT_MESSAGES = [
     'en' => [
         'method' => 'This form can only be submitted with POST.',
+        'company' => 'Please enter your company name.',
         'first_name' => 'Please enter your first name.',
         'last_name' => 'Please enter your last name.',
         'email' => 'Please enter a valid email address.',
@@ -30,6 +31,7 @@ const CONTACT_MESSAGES = [
     ],
     'it' => [
         'method' => 'Questo modulo può essere inviato solo con POST.',
+        'company' => 'Inserisci il nome dell’azienda.',
         'first_name' => 'Inserisci il tuo nome.',
         'last_name' => 'Inserisci il tuo cognome.',
         'email' => 'Inserisci un indirizzo email valido.',
@@ -77,6 +79,23 @@ function contact_ip(array $server): string
     return filter_var($ip, FILTER_VALIDATE_IP) ? $ip : 'unknown';
 }
 
+/** Rate-limit key: the address itself for IPv4, the /64 prefix for IPv6 (one subscriber owns a whole /64). */
+function contact_rate_ip(string $ip): string
+{
+    $bin = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) ? @inet_pton($ip) : false;
+    if ($bin === false) {
+        return $ip;
+    }
+    return inet_ntop(substr($bin, 0, 8) . str_repeat("\0", 8)) . '/64';
+}
+
+/** Default rate-limit directory: per site (hash of the install path), overridable with ITALTHERM_RATE_DIR. */
+function contact_rate_dir(): string
+{
+    $env = getenv('ITALTHERM_RATE_DIR');
+    return is_string($env) && $env !== '' ? $env : sys_get_temp_dir() . '/italtherm-contact-' . substr(md5(__DIR__), 0, 12);
+}
+
 /**
  * Handles one contact request. $mailer(string $to, string $subject, string $body, array $headers): bool.
  * @return array{status:int,ok:bool,error:?string,field:?string,lang:string}
@@ -103,6 +122,12 @@ function handle_contact(array $post, array $server, callable $mailer, string $ra
         $v = trim(contact_strip_controls($raw, !$single));
         return ($v === '' || mb_strlen($v) > $max) ? null : $v;
     };
+
+    $company = $clean('company', 120, true);
+    $companyRaw = trim((string) contact_str($post, 'company'));
+    if ($company === null && ($lang === 'it' || $companyRaw !== '')) {
+        return contact_result(422, $lang, 'company', 'company'); // required on the Italian form; too long / invalid anywhere
+    }
 
     $first = $clean('first_name', 80, true);
     if ($first === null) return contact_result(422, $lang, 'first_name', 'first_name');
@@ -141,6 +166,7 @@ function handle_contact(array $post, array $server, callable $mailer, string $ra
     $ip = contact_ip($server);
     $body = "New request from the ital-therm.it contact form\n\n"
         . "Name: $first $last\n"
+        . 'Company: ' . ($company ?? '-') . "\n"
         . "Email: $email\n"
         . 'Product: ' . ($product ?? '-') . "\n"
         . "Language: $lang\n"
@@ -148,12 +174,13 @@ function handle_contact(array $post, array $server, callable $mailer, string $ra
         . "IP: $ip\n"
         . 'User agent: ' . ($ua === '' ? '-' : $ua) . "\n\n"
         . "Message:\n$message\n";
+    $body = quoted_printable_encode(str_replace("\n", "\r\n", $body));
     $headers = [
         'From: ' . CONTACT_FROM,
         'Reply-To: ' . $email,
         'MIME-Version: 1.0',
         'Content-Type: text/plain; charset=UTF-8',
-        'Content-Transfer-Encoding: 8bit',
+        'Content-Transfer-Encoding: quoted-printable',
         'X-Mailer: ital-therm.it contact form',
     ];
 
@@ -161,13 +188,14 @@ function handle_contact(array $post, array $server, callable $mailer, string $ra
     if (!is_dir($rateDir) && !@mkdir($rateDir, 0700, true) && !is_dir($rateDir)) {
         return contact_result(500, $lang, 'server');
     }
-    contact_prune($rateDir);
+    contact_prune($rateDir, $now);
     $saltFile = $rateDir . '/.salt';
     if (!is_file($saltFile)) {
         @file_put_contents($saltFile, bin2hex(random_bytes(16)), LOCK_EX);
     }
     $salt = (string) @file_get_contents($saltFile);
-    $fh = @fopen($rateDir . '/' . hash_hmac('sha256', $ip, $salt) . '.rl', 'c+');
+    $rateFile = $rateDir . '/' . hash_hmac('sha256', contact_rate_ip($ip), $salt) . '.rl';
+    $fh = @fopen($rateFile, 'c+');
     if ($fh === false || !flock($fh, LOCK_EX)) {
         return contact_result(500, $lang, 'server');
     }
@@ -189,17 +217,21 @@ function handle_contact(array $post, array $server, callable $mailer, string $ra
         ftruncate($fh, 0);
         rewind($fh);
         fwrite($fh, json_encode($stamps));
+        fflush($fh);
+        touch($rateFile, $now); // mtime follows the injected clock so pruning is consistent
+    } elseif ($stamps === []) {
+        @unlink($rateFile); // nothing accepted: leave no record behind
     }
     flock($fh, LOCK_UN);
     fclose($fh);
     return $sent ? contact_result(200, $lang) : contact_result(500, $lang, 'server');
 }
 
-/** Deletes rate-limit files that have not been touched for two hours. */
-function contact_prune(string $rateDir): void
+/** Deletes rate-limit records whose last accepted submission is older than the window (they hold only expired timestamps). */
+function contact_prune(string $rateDir, int $now): void
 {
     foreach (glob($rateDir . '/*.rl') ?: [] as $f) {
-        if (@filemtime($f) < time() - 2 * CONTACT_RATE_WINDOW) {
+        if (@filemtime($f) < $now - CONTACT_RATE_WINDOW) {
             @unlink($f);
         }
     }

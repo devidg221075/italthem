@@ -161,8 +161,8 @@ ${specTable(p, t)}</div></section>
 
 // Anchors into the original `form` label array of the contact page (per language); the build fails if one is missing.
 const FORM_LABELS = {
-  en: { first: 'First name', last: 'Last name', email: 'Your email', confirm: 'Confirm Email', req: 'Your request', gdpr: 'PRIVACY (GDPR)', link: 'privacy', enter: 'Enter Email' },
-  it: { first: 'Nome', last: 'Cognome', email: 'La tua Email', confirm: 'Conferma email', req: 'Descrivi la tua richiesta', gdpr: 'PRIVACY (GDPR)', link: 'privacy', enter: 'Inserisci email' },
+  en: { group: 'First name and last name', first: 'First name', last: 'Last name', email: 'Your email', confirm: 'Confirm Email', req: 'Your request', gdpr: 'PRIVACY (GDPR)', link: 'privacy', enter: 'Enter Email' },
+  it: { company: 'Azienda', group: 'Nome e cognome del contatto', first: 'Nome', last: 'Cognome', email: 'La tua Email', confirm: 'Conferma email', req: 'Descrivi la tua richiesta', gdpr: 'PRIVACY (GDPR)', link: 'privacy', enter: 'Inserisci email' },
 };
 
 function contactBody(content, lang) {
@@ -181,10 +181,11 @@ function contactBody(content, lang) {
   const lead = form[at(L.link) - 1];
   const products = Object.fromEntries(content.products.map((p) => [p.slug, p.code]));
   const req = `<i>${esc(required)}</i>`;
-  const fld = (id, name, label, { type = 'text', ac, mark = true, ph } = {}) => `<div class="fld"><label for="${id}">${esc(label)}${mark ? req : ''}</label><input class="inp" id="${id}" name="${name}" type="${type}"${ac ? ` autocomplete="${ac}"` : ''}${ph ? ` placeholder="${esc(ph)}"` : ''}${mark ? ' required' : ''}${name === 'first_name' || name === 'last_name' || name === 'email' ? ' maxlength="' + (name === 'email' ? 254 : 80) + '"' : ''}></div>`;
+  const fld = (id, name, label, { type = 'text', ac, mark = true, ph, max } = {}) => `<div class="fld"><label for="${id}">${esc(label)}${mark ? req : ''}</label><input class="inp" id="${id}" name="${name}" type="${type}"${ac ? ` autocomplete="${ac}"` : ''}${ph ? ` placeholder="${esc(ph)}"` : ''}${mark ? ' required' : ''}${max ? ` maxlength="${max}"` : ''}></div>`;
   const formHtml = `<form class="fl" action="/contact.php" method="post" data-ok="${esc(t.sentOk)}" data-err="${esc(t.sentErr)}" data-sending="${esc(t.sending)}" data-about="${esc(t.about)}" data-products='${esc(JSON.stringify(products)).replace(/&quot;/g, '"')}'>`
-    + `<div class="row2">${fld('f-first', 'first_name', form[at(L.first)], { ac: 'given-name' })}${fld('f-last', 'last_name', form[at(L.last)], { ac: 'family-name' })}</div>`
-    + `<div class="row2">${fld('f-email', 'email', form[at(L.email)], { type: 'email', ac: 'email', ph: form[at(L.enter)] })}${fld('f-confirm', 'email_confirm', form[at(L.confirm)], { type: 'email', ac: 'email', ph: form[at(L.confirm)] })}</div>`
+    + (L.company && form.includes(L.company) ? `${fld('f-company', 'company', L.company, { ac: 'organization', max: 120 })}` : '')
+    + `<fieldset class="nm"><legend>${esc(form[at(L.group)])}${req}</legend><div class="row2">${fld('f-first', 'first_name', form[at(L.first)], { ac: 'given-name', max: 80 })}${fld('f-last', 'last_name', form[at(L.last)], { ac: 'family-name', max: 80 })}</div></fieldset>`
+    + `<div class="row2">${fld('f-email', 'email', form[at(L.email)], { type: 'email', ac: 'email', ph: form[at(L.enter)], max: 254 })}${fld('f-confirm', 'email_confirm', form[at(L.confirm)], { type: 'email', ac: 'email', ph: form[at(L.confirm)], max: 254 })}</div>`
     + `<div class="fld"><label for="f-msg">${esc(form[at(L.req)])}${req}</label><textarea class="inp" id="f-msg" name="message" rows="6" minlength="10" maxlength="5000" required></textarea></div>`
     + `<div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>`
     + `<input type="hidden" name="lang" value="${esc(lang)}"><input type="hidden" name="product" value="">`

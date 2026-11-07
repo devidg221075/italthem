@@ -6,7 +6,7 @@ require __DIR__ . '/contact-lib.php';
 header('Cache-Control: no-store');
 header('X-Content-Type-Options: nosniff');
 
-$res = handle_contact($_POST, $_SERVER, 'contact_send_mail', sys_get_temp_dir() . '/italtherm-contact', time());
+$res = handle_contact($_POST, $_SERVER, 'contact_send_mail', contact_rate_dir(), time());
 
 if ($res['status'] === 405) {
     header('Allow: POST');

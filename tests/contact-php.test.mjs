@@ -10,10 +10,12 @@ function run(calls, extra = {}) {
   return JSON.parse(r.stdout);
 }
 const valid = () => ({
+  company: 'ACME S.r.l.',
   first_name: 'Mario', last_name: 'Rossi', email: 'mario@example.com', email_confirm: 'Mario@Example.com',
   message: 'Vorrei un preventivo per un forno.', consent: '1', website: '', lang: 'en', product: '',
 });
-const one = (post, server) => { const o = run([{ post, server }]); return { r: o.results[0], mails: o.mails }; };
+const qp = (b) => Buffer.from(b.replace(/=\r?\n/g, '').replace(/=([0-9A-F]{2})/g, (_, h) => String.fromCharCode(parseInt(h, 16))), 'latin1').toString('utf8');
+const one = (post, server) => { const o = run([{ post, server }]); return { r: o.results[0], mails: o.mails.map((m) => ({ ...m, raw: m.body, body: qp(m.body) })) }; };
 
 test('php -l on both PHP files', () => {
   for (const f of ['server/contact-lib.php', 'server/contact.php']) {
@@ -146,4 +148,49 @@ test('control characters are stripped from the message body', () => {
   const { mails } = one({ ...valid(), message: 'Hello\u0000 there\u0007, request.\r\nSecond line' });
   assert.ok(!/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/.test(mails[0].body));
   assert.match(mails[0].body, /Second line/);
+});
+
+test('company: required on the Italian form only, appears in the body', () => {
+  let { r, mails } = one({ ...valid(), lang: 'it', company: '  ' });
+  assert.deepEqual([r.status, r.ok, r.field, mails.length], [422, false, 'company', 0]);
+  assert.match(r.error, /azienda/i);
+  ({ r, mails } = one({ ...valid(), lang: 'it', company: 'x'.repeat(121) }));
+  assert.equal(r.field, 'company');
+  ({ r, mails } = one({ ...valid(), company: '' }));
+  assert.equal(r.ok, true);
+  assert.match(mails[0].body, /Company: -/);
+  ({ r, mails } = one({ ...valid(), lang: 'it' }));
+  assert.equal(r.ok, true);
+  assert.match(mails[0].body, /Company: ACME S\.r\.l\./);
+  ({ r } = one({ ...valid(), company: 'Evil\r\nBcc: x@y.z' }));
+  assert.equal(r.field, 'company');
+});
+
+test('body is quoted-printable: a 3000-char single line stays under 998 octets per line', () => {
+  const { mails } = one({ ...valid(), message: 'a'.repeat(3000) + ' è' });
+  assert.match(mails[0].headers.join('\n'), /Content-Transfer-Encoding: quoted-printable/);
+  for (const line of mails[0].raw.split(/\r?\n/)) assert.ok(line.length <= 998, `line of ${line.length}`);
+  assert.ok(mails[0].raw.includes('=C3=A8'));
+  assert.ok(mails[0].body.endsWith('aaa è\n'.replace('\n', '\r\n')));
+});
+
+test('IPv6 clients share one rate-limit bucket per /64', () => {
+  const ip = (n) => ({ REMOTE_ADDR: `2001:db8:1:2::${n}` });
+  const o = run([1, 2, 3, 4].map((n) => ({ post: valid(), server: ip(n) })).concat([{ post: valid(), server: { REMOTE_ADDR: '2001:db8:1:3::1' } }]));
+  assert.deepEqual(o.results.map((x) => x.status), [200, 200, 200, 429, 200]);
+});
+
+test('rate records older than one hour are pruned (injected clock); failed sends leave no record', () => {
+  const t = 1800000000;
+  const o = run([{ post: valid(), now: t }, { post: valid(), now: t + 3601, server: { REMOTE_ADDR: '198.51.100.1' } }], { listRecords: true });
+  assert.equal(o.records.length, 1, 'first IP record pruned by the second call');
+  const f = run([{ post: valid(), now: t }], { mailerOk: false, listRecords: true });
+  assert.equal(f.records.length, 0);
+});
+
+test('default rate dir is per site and overridable', () => {
+  const r = spawnSync('php', ['-r', "require 'server/contact-lib.php'; echo contact_rate_dir();"], { cwd: ROOT, encoding: 'utf8' });
+  assert.match(r.stdout, /italtherm-contact-[0-9a-f]{12}$/);
+  const e = spawnSync('php', ['-r', "require 'server/contact-lib.php'; echo contact_rate_dir();"], { cwd: ROOT, encoding: 'utf8', env: { ...process.env, ITALTHERM_RATE_DIR: '/x/y' } });
+  assert.equal(e.stdout, '/x/y');
 });

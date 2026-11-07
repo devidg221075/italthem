@@ -18,6 +18,7 @@ foreach ($case['calls'] as $c) {
     $server += ['REQUEST_METHOD' => 'POST', 'REMOTE_ADDR' => '203.0.113.7', 'HTTP_USER_AGENT' => 'TestAgent/1.0'];
     $results[] = handle_contact($c['post'] ?? [], $server, $mailer, $dir, (int) ($c['now'] ?? 1800000000));
 }
+$records = glob($dir . '/*.rl') ?: [];
 foreach (glob($dir . '/{*,.[!.]*}', GLOB_BRACE) ?: [] as $f) @unlink($f);
 @rmdir($dir);
-echo json_encode(['results' => $results, 'mails' => $mails], JSON_UNESCAPED_UNICODE);
+echo json_encode(['results' => $results, 'mails' => $mails, 'records' => array_map('basename', $records)], JSON_UNESCAPED_UNICODE);

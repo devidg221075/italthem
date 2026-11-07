@@ -49,6 +49,15 @@ for (const lang of ['en', 'it']) {
     assert.match(form, /<button[^>]*type="submit"[^>]*>(Send request|Invia richiesta)<\/button>/);
     assert.match(form, /aria-live="polite"/);
     assert.match(form, /data-products='\{[^']*"it-cc":"IT\.CC"/);
+    assert.match(form, /<fieldset class="nm"><legend>(First name and last name|Nome e cognome del contatto)/);
+    assert.match(form, /name="email_confirm"[^>]*maxlength="254"/);
+    const comp = form.match(/<input\b[^>]*name="company"[^>]*>/)?.[0];
+    if (lang === 'it') {
+      assert.ok(comp, 'IT has a company field');
+      assert.match(comp, /required/); assert.match(comp, /maxlength="120"/); assert.match(comp, /autocomplete="organization"/);
+      assert.match(form, /<label for="f-company">Azienda/);
+      assert.ok(form.indexOf('name="company"') < form.indexOf('name="first_name"'));
+    } else assert.ok(!comp, 'EN has no company field');
     for (const a of ['data-ok', 'data-err', 'data-sending', 'data-about']) assert.ok(form.includes(a), a);
   });
 

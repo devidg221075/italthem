@@ -212,6 +212,7 @@ textarea.inp{min-height:150px;resize:vertical}
 .map small{display:block;font-weight:500;color:var(--mute);margin-top:4px}
 
 /* contact form extras, notice banner, privacy */
+.nm{border:0;padding:0;margin:0;min-width:0}.nm legend{padding:0;margin-bottom:6px;font-weight:600;font-size:13.5px}.nm legend i{font-style:normal;color:var(--mute);font-weight:500;margin-left:6px}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .about{font-size:14px;font-weight:600;color:var(--accent)}
 .fl .btn{justify-content:center;border:0;cursor:pointer;font:inherit;font-weight:600}.fl .btn[disabled]{opacity:.6;cursor:wait}
