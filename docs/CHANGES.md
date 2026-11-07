@@ -43,10 +43,63 @@ Stato: **bozza**. Elenco aggiornato durante l'estrazione dei contenuti; la scans
 
 ## Pagine demo del tema da eliminare (410 o redirect)
 
-`blog-grid`, `faqs`, `projects-gird`, `pricing`, `cart`, `cart-2`, `checkout`, `checkout-2`, `my-account`, `testimonials`, `team-grid`, `services-gird`, `home`, `content-from-mizox`, `italtherm-continuous-casting-machine` (da verificare).
+`blog-grid`, `faqs`, `projects-gird`, `pricing`, `cart`, `cart-2`, `checkout`, `checkout-2`, `my-account`, `testimonials`, `team-grid`, `services-gird`, `home`, `content-from-mizox`, `italtherm-continuous-casting-machine` (verificata: bozza duplicata di "Chi siamo" con contatori del tema, nessun contenuto proprio; va reindirizzata a Chi siamo).
 
 ## Scelte di presentazione (non modificano i testi)
 
 - I nomi prodotto, scritti in maiuscolo sul sito, sono mostrati in Title Case.
 - I codici modello (IT.CC, IT.AF…) sono evidenziati come etichetta.
 - Le foto sono quelle del sito (©FOTO SCHINCO): hai confermato di averne la licenza.
+
+## Correzioni aggiuntive applicate nell'estrazione (Task 2)
+
+Tutte registrate in `content/corrections.json` (file, campo, originale, corretto). Il testo originale resta in `content/original/text/`.
+
+| Dove | Originale | Corretto |
+|---|---|---|
+| Tutte le tabelle prodotto (EN e IT) | Separatori di dimensioni `*`, `'`, `•` e unità attaccata ("900*700'1750MM", "850'1800*1500MM(L*W'H)") | "900×700×1750 MM", "850×1800×1500 MM(L×W×H)" |
+| IT.KB, IT.GT | Caratteri illeggibili (OCR) negli intervalli: "12˙20 MINS", "7˙10", "10˝20 MIN", "K˝TYPE" | "12-20 MINS", "7-10", "10-20 MIN", "K-TYPE" |
+| IT.GT, tabella | "30KW ˙ADJUSTABLEˆ" | "30KW (ADJUSTABLE)" |
+| Tabelle con cella vuota o segnaposto | cella vuota (IT.AF zona di riscaldamento, IT.KB08 potenza), "MOLD CAPACITY" (IT.KB04, IT.KB08) | "—" (restano nelle domande aperte) |
+| Prodotti, servizi, Chi siamo | trattino non divisibile (U+2011) in "inert‑gas", "mesh‑belt", "high‑quality"… | trattino normale (estensione della correzione già decisa per Home e Chi siamo) |
+| Servizio Gear-Driven (Home EN/IT e pagina servizio) | "Gear-Driven Metal Melting Tilting Melting Furnace" | "Gear-Driven Tilting Metal Melting Furnace" |
+| Servizio Gear-Driven | Paragrafo segnaposto "Lorem Ipsum is simply free text…" | Rimosso dal corpo (resta nello snapshot) |
+| Home EN e IT | Sezione segnaposto del tema ("About our company… We made things easier for your business…", "Lorem ipsum", Businesses Growth…), telefono 0575 810487, "Loc. Le Vertighe" | Non importati (decisioni già prese) |
+| Home IT | Testi inglesi rimasti dal tema nel carosello ("High-technology systems", "About Us", "Precision Meets Affordability", "Services", "Exceptional value", "Products") | Non importati nella versione italiana |
+| Prodotti, tag e SKU | "ANEALING" e "ANNEAUNG" anche nel campo SKU/Tag di IT.CWA e IT.AF | "ANNEALING" |
+
+## Anomalie trovate nell'estrazione e NON corrette (da confermare)
+
+Il testo resta com'è sul sito; propongo la correzione tra parentesi.
+
+| Dove | Anomalia | Proposta |
+|---|---|---|
+| IT.AF, tabella | Intestazione "ITAF600" (manca il punto) | "IT.AF600" |
+| IT.CWA, tabella | Intestazione "IT-CWA2" | "IT.CWA2" |
+| IT.BF, tabella | Dimensioni "1000(L)×6o(w)×3o(H) MM", "3970(L)×sso(w)×1448(H) MM": lettere al posto di cifre (OCR) | Valori reali, verificare sul PDF |
+| IT.BF, tabella | "GAS PROTETTIVO / PROTECTIVE GAS" contiene "880 ° C/80 MIN" (è un ciclo termico, non un gas) | Gas corretto |
+| IT.BF, IT.MT, tabella | "M M" al posto di "MM" ("…(H)M M", "1050 M M") | "MM" |
+| IT.GMB, tabella | "(VARIABILE /ADJUSTABLE" senza parentesi chiusa, "ARGENTO/ SILVER:15 K" troncato | Completare |
+| IT.FM, tabella | "FORNITO/ EQUIPPE" | "EQUIPPED" |
+| IT.MT, IT.SM, IT.FM, tabella | "MAX TEMPERATUR" | "MAX TEMPERATURE" |
+| IT.MT, titolo tabella | "MANUAL TILT/NG METAL MELT/NG FURNACE" (la I letta come /) | "MANUAL TILTING METAL MELTING FURNACE" |
+| IT.CWA, descrizione | "ItalTherm ItalTherm Continuous Wire Annealing Furnace A high-precision…": nome ripetuto, punto mancante dopo "Furnace", a capo spurio prima di "oxide-free" | Rimuovere un "ItalTherm", aggiungere punto, unire la riga |
+| IT.CC, descrizione | La scheda ha due versioni del titolo: "ItalTherm Continuous Casting Machine:" (breve) e "ItalTherm CONTINUOUS CASTING METAL MELTING FURNACE :" (scheda). Importate entrambe, la seconda è una riga a sé | Tenere una sola riga |
+| IT.AF, descrizione | Voce di elenco spezzata male: "Rapid Cooling and Protective AtmosphereRobust / Design and Smart Safety Features" (anche in italiano: "atmosfera protettivaRobusto") | "…Protective Atmosphere" e "Robust Design and Smart Safety Features" (come nella pagina del servizio) |
+| IT.SM, IT.FM, descrizione | Punti mancanti ("homogeneous alloys", "chemical reagents Sealed operation"), "thin flaks" | Punteggiatura, "flakes" |
+| Servizio Gear-Driven | "small to medium-scale" nel servizio, "small to large-scale" nell'estratto della Home; asterischi di markdown rimasti ("*Key Features & Advantages:", "*aluminum-housed gear reduction motor*") | Scegliere la frase, togliere gli asterischi |
+| Servizi in italiano | Le 4 pagine `/it/services/…` sono identiche a quelle inglesi (non tradotte) | Tradurre (serve il tuo testo italiano) oppure lasciare l'inglese |
+| Home (EN/IT) | Gli estratti dei 4 servizi sono troncati a metà frase ("designed for continuous", "engineered for the continuous annealing of precious‑metal wires,") | Nel nuovo sito uso la prima frase del servizio |
+| Modulo contatti | La versione italiana ha il campo "Azienda" e "CAPTCHA", quella inglese no; il link alla privacy è `#` | Allineo l'inglese all'italiano |
+| Titolo pagina Home | Il sito non ha un titolo visibile (il tag `<title>` è "Home Italtherm") | Uso "Home" nel menu, tagline come H1 |
+| Meta description IT di Chi siamo e Prodotti | Testo generato automaticamente, unione di titoli senza spazi | Riscrivo le meta description (Task SEO) |
+| Titoli IT dei prodotti | Non contengono la sigla modello (es. "FORNO STATICO FUSIONE METALLI"): la sigla è nelle intestazioni della tabella | La sigla è mostrata come etichetta |
+| IT.GMS / IT.GMB | Associazione fatta dalle sigle in tabella: "GRANULI" = IT.GMS, "GRANIGLIA" = IT.GMB | Confermare |
+| Nomi dei PDF | "…MODET IT.MT.pdf", "…Mod-IT.BK_.pdf", "…ANEALING…pdf": gli URL non si cambiano (file esistenti), restano i refusi nel nome file | Rinominare i PDF se vuoi |
+
+## Estrazione dei contenuti: come rigenerare
+
+- `node scripts/crawl.mjs <url[=file.html]> …` scarica le pagine con `curl` (6 tentativi, il proxy resetta connessioni a caso) in `content/original/html/`; le pagine non scaricabili finiscono in `content/MISSING.txt` e lo script si ferma chiedendo l'esportazione WordPress (Strumenti > Esporta). Esporta anche `crawl(urls)`.
+- `python3 -I scripts/extract-content.py` rigenera da quell'HTML: `content/{en,it}/{site.json,pages.json,products/*.json,services/*.json}`, gli snapshot di testo originale `content/original/text/<lingua>-<tipo>-<nome>.txt` e `content/corrections.json`. Il testo è copiato dall'HTML; le uniche modifiche sono le regole nello script (tutte elencate qui sopra).
+- `content/original/sitemap-urls.txt`: URL dei sitemap live (`page`, `product`, `services`). `tests/crawl.test.mjs` verifica che ognuno abbia una voce (campo `old_path`) o sia una pagina demo elencata sopra.
+- Formato: `short` = descrizione completa, una riga per paragrafo o voce di elenco (separatore `\n`); `specs.columns` = sigle dei modelli, `specs.rows[].values` allineati alle colonne; `table_title` = titolo della tabella; `pages[].sections[]` = `{kicker?, heading, blocks:[{type:'p'|'list'|'h', …}]}` con `lead` tolto dal primo paragrafo; `services[].blocks` ripete `body` con la struttura (titoli e liste); `old_path` = vecchio URL (per i redirect 301).
