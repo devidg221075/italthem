@@ -15,6 +15,9 @@ Stato: **bozza**. Elenco aggiornato durante l'estrazione dei contenuti; la scans
 | IT.CC, tabella | "TEM PO DI FUSIONE", "MELTING TIM E", "TEM PERATURA" | "TEMPO", "TIME", "TEMPERATURA" |
 | IT.CC, tabella | "KG240KG" | "240KG" |
 | IT.CC e IT.CWA, dimensioni | "900*700'1750MM", "1000'800'1850MM", "2100'850'1830MM" | "900×700×1750 MM", ecc. |
+| IT.CC20, tabella | Potenza "305KW" | "35KW" (verificato sul PDF delle specifiche) |
+| IT.KB08, tabella | Durata ciclo "1000°c" | "ABOUT 7-10 MINS" (verificato sul PDF) |
+| Chi siamo (EN) | Frase duplicata sotto "Why Choose ITALTHERM" | "These technologies ensure thermal uniformity, repeatability and consistent results in processing." (traduzione del testo italiano, deciso da te) |
 | Contatti (EN) | "to require information or estimate of costs" | "to request information or an estimate of costs" |
 | Home e Chi siamo | "high‑technology" con trattino non divisibile (U+2011) | trattino normale |
 | Pagina Chi siamo | slug di circa 140 caratteri | `/en/about-us/`, con redirect 301 |
@@ -23,9 +26,11 @@ Stato: **bozza**. Elenco aggiornato durante l'estrazione dei contenuti; la scans
 
 | Dove | Problema | Domanda |
 |---|---|---|
-| IT.CC20, tabella | Potenza "305KW" | Intendevi 35KW o 30KW? |
-| IT.KB04/IT.KB08, tabella | IT.KB08: potenza vuota; "DURATA DEL CICLO" mostra "1000°c"; "CAPACITÀ DELLO STAMPO" mostra "MOLD CAPACITY" (segnaposto) | Valori corretti per IT.KB08 e capacità stampo per IT.KB04/KB08 |
-| Chi siamo (EN) | Sotto "Why Choose ITALTHERM" compare la frase "Flexible systems for oxidation‑free production of strips, tubes, and wires.", copiata dalla sezione colata continua. La versione italiana ha una frase diversa | Tolgo la frase, o uso la traduzione dell'italiano ("These technologies ensure thermal uniformity, repeatability and consistent results in processing")? |
+| IT.KB04, tabella | Potenza 35KW sul sito, 45KW nel PDF | Quale è corretto? |
+| IT.KB08, tabella | Potenza e alimentazione sono segnaposto ("POWER", "POWER SOURCE") nel PDF; sul sito la potenza è vuota | Valori corretti |
+| IT.KB04 e IT.KB08, tabella | "CAPACITÀ DELLO STAMPO" mostra "MOLD CAPACITY" (segnaposto) sia sul sito sia nel PDF | Capacità corretta (IT.KB02 è "2 PCS 1 KG BAR") |
+| IT.CC05, tabella | Velocità di colata "0-20 CM/M" sul sito, "10-20CM/M" nel PDF | Quale è corretto? |
+| IT.KB | Il PDF si chiama "Mod IT.BK", il sito "IT.KB" | Quale sigla è quella ufficiale? |
 | Chi siamo EN/IT | La versione italiana è molto più ricca di quella inglese | Allineo l'inglese all'italiano? |
 | Home | Testo segnaposto "Lorem ipsum" e "The wise man therefore…" | Sostituito con un estratto di "Chi siamo" (deciso) |
 | Telefoni | Fisso 0575 810487 nella sezione contatti | Scartato (deciso) |
@@ -44,4 +49,4 @@ Stato: **bozza**. Elenco aggiornato durante l'estrazione dei contenuti; la scans
 
 - I nomi prodotto, scritti in maiuscolo sul sito, sono mostrati in Title Case.
 - I codici modello (IT.CC, IT.AF…) sono evidenziati come etichetta.
-- Le foto sono quelle del sito (©FOTO SCHINCO): verificare i diritti d'uso per la nuova versione.
+- Le foto sono quelle del sito (©FOTO SCHINCO): hai confermato di averne la licenza.
