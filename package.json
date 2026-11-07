@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
-    "test": "node --test --test-concurrency=1 \"tests/**/*.test.mjs\""
+    "test": "node --test --test-concurrency=1 \"tests/**/*.test.mjs\"",
+    "images": "node scripts/optimize-images.mjs"
   },
   "devDependencies": {
     "sharp": "^0.35.5"
