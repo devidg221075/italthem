@@ -118,7 +118,8 @@ test('exactly one image per page is not lazy, and it is the fetchpriority=high L
     const all = imgs(html);
     if (!all.length) continue;
     // The mega menu photos in the header are always lazy; a page whose <main> has photos has exactly one LCP image.
-    const inMain = imgs(html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? '');
+    // the decorative banner photo (.bv, desktop only) is always lazy and is never the LCP image
+    const inMain = imgs((html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? '').replace(/<div class="bv"[\s\S]*?<\/div>/g, ''));
     const eager = all.filter((t) => attr(t, 'loading') !== 'lazy');
     assert.equal(eager.length, inMain.length ? 1 : 0, `${rel}: ${eager.length} non-lazy images`);
     assert.equal(all.filter((t) => has(t, 'fetchpriority')).length, eager.length, `${rel}: one fetchpriority per LCP image`);

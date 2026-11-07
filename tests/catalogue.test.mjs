@@ -70,11 +70,13 @@ test('home hero kicker is in Italian on the Italian page and in English on the E
   assert.match(read('en/index.html'), /<span lang="en">Italian technology<\/span>/);
 });
 
-test('IT.CC has the four mockup benefits in both languages; products without supplied texts show no list', () => {
+test('IT.CC has the four mockup benefits in both languages; every other product shows its four drafted benefits (content/benefits.json)', () => {
   const it = read('it/prodotti/it-cc/index.html');
   const en = read('en/products/it-cc/index.html');
   assert.equal(count(it.match(/<ul class="ben">[\s\S]*?<\/ul>/)[0], /<li>/g), 4);
   for (const t of ['Elevata produttività', 'Qualità costante del prodotto', 'Affidabilità e lunga durata', 'Personalizzazione su richiesta']) assert.ok(it.includes(t), t);
   assert.equal(count(en.match(/<ul class="ben">[\s\S]*?<\/ul>/)[0], /<li>/g), 4);
-  for (const slug of ['it-af', 'it-gt', 'it-kb']) assert.ok(!read(`it/prodotti/${slug}/index.html`).includes('class="ben"'), slug);
+  for (const slug of ['it-af', 'it-bf', 'it-cwa', 'it-fm', 'it-gmb', 'it-gms', 'it-gt', 'it-kb', 'it-mt', 'it-sm']) {
+    for (const h of [`it/prodotti/${slug}/index.html`, `en/products/${slug}/index.html`]) assert.equal(count(read(h).match(/<ul class="ben">[\s\S]*?<\/ul>/)[0], /<li>/g), 4, h);
+  }
 });

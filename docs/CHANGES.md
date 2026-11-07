@@ -339,3 +339,8 @@ Differenze residue, tutte note e non risolvibili senza materiali nuovi:
 - **Azienda:** le tre card (Fusione, Colata continua, Trattamenti termici) hanno foto diverse da quelle del mockup; testi della striscia dei 4 motivi dal contenuto originale.
 - **Contatti:** il modulo ha nome/cognome separati e conferma email (contratto PHP invariato); la mappa è un segnaposto con caricamento al clic.
 - **Mobile:** home, catalogo e scheda seguono l'impaginazione dei telefoni approvati; differisce l'elenco categorie in home (4 voci in riga singola nel sito) e la barra di sezioni in fondo alla scheda.
+
+## Banner con foto e vantaggi per tutti i prodotti
+
+- **Banner di catalogo e Contatti:** foto decorativa a destra con sfumatura (solo desktop ≥1001 px, `aria-hidden`, lazy, mai LCP), come nei mockup. Foto reali dei prodotti: IT.CC (dettaglio) per il catalogo, IT.MT (operatore al forno) per Contatti. Da sostituire con foto ad alta risoluzione quando arrivano. Il banner Azienda aveva già la sua foto.
+- **Vantaggi nella scheda prodotto:** `content/benefits.json` ora ha le liste (4 punti, IT/EN) per tutti gli 11 prodotti. Solo IT.CC viene dal mockup; **le altre 10 sono BOZZE mie**, ciascun punto riformula qualcosa che la descrizione del prodotto già dice (nessun numero nuovo). **Da validare**: per nasconderne una basta togliere la voce dal file.

@@ -47,3 +47,7 @@ html:not(.js) .so{display:none}
 
 /* no layout shift on phones: the markup is open (no-JS, wide screens) but the body stays hidden until catalogue.js has closed the panel */
 @media(max-width:1000px){.cf:not([data-t])>:not(summary){display:none}}
+
+/* section-banner photo: right side, fades into the banner; desktop only */
+.bv{display:none}
+@media(min-width:1001px){.cat-h .bv,.ct-h .bv{display:block;position:absolute;z-index:-1;top:0;right:0;bottom:0;width:40%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 55%);mask-image:linear-gradient(90deg,transparent 0,#000 55%)}.bv img{width:100%;height:100%;object-fit:cover;display:block}}

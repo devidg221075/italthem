@@ -1,7 +1,157 @@
 {
-  "_note": "Hand-written (not produced by scripts/extract-content.py): short benefit points shown under the product introduction. Source: the approved IT.CC mockup. Other products have none until the owner supplies the texts; no list is shown for them.",
+  "_note": "Hand-written (not produced by scripts/extract-content.py): short benefit points shown under the product introduction. it-cc: from the approved IT.CC mockup. All other entries are DRAFTS written by the assistant, each point restating something stated in that product's own description (no new figures); to be validated by the owner. Remove an entry to hide its list.",
   "it-cc": {
-    "it": ["Elevata produttività", "Qualità costante del prodotto", "Affidabilità e lunga durata", "Personalizzazione su richiesta"],
-    "en": ["High productivity", "Consistent product quality", "Reliability and long service life", "Customization on request"]
+    "it": [
+      "Elevata produttività",
+      "Qualità costante del prodotto",
+      "Affidabilità e lunga durata",
+      "Personalizzazione su richiesta"
+    ],
+    "en": [
+      "High productivity",
+      "Consistent product quality",
+      "Reliability and long service life",
+      "Customization on request"
+    ]
+  },
+  "it-af": {
+    "it": [
+      "Riscaldamento uniforme e controllato",
+      "Raffreddamento rapido in atmosfera protettiva",
+      "Funzioni di sicurezza integrate",
+      "Scarico pneumatico per un flusso di lavoro semplificato"
+    ],
+    "en": [
+      "Uniform, controlled heating",
+      "Rapid cooling in a protective atmosphere",
+      "Built-in safety features",
+      "Pneumatic discharge for a streamlined workflow"
+    ]
+  },
+  "it-bf": {
+    "it": [
+      "Produzione continua e ininterrotta",
+      "Atmosfera inerte contro l'ossidazione",
+      "Controllo PID programmabile",
+      "Zone di riscaldamento indipendenti"
+    ],
+    "en": [
+      "Continuous, uninterrupted production",
+      "Inert atmosphere against oxidation",
+      "Programmable PID control",
+      "Independent heating zones"
+    ]
+  },
+  "it-cwa": {
+    "it": [
+      "Riscaldamento uniforme del filo",
+      "Raffreddamento rapido ad acqua",
+      "Tensione del filo servo-regolata",
+      "Risultati brillanti e senza ossidi"
+    ],
+    "en": [
+      "Uniform wire heating",
+      "Rapid water cooling",
+      "Servo-regulated wire tension",
+      "Bright, oxide-free results"
+    ]
+  },
+  "it-fm": {
+    "it": [
+      "Scaglie secche e sottili",
+      "Dissoluzione rapida e completa nei reagenti",
+      "Funzionamento sigillato in gas inerte",
+      "Maggiore efficienza di raffinazione"
+    ],
+    "en": [
+      "Dry, thin flakes",
+      "Fast and complete dissolution in reagents",
+      "Sealed operation under inert gas",
+      "Higher refining efficiency"
+    ]
+  },
+  "it-gmb": {
+    "it": [
+      "Fusione a induzione a media frequenza",
+      "Processo di granulazione completamente automatico",
+      "Protezione con gas inerte",
+      "Riscaldamento rapido e uniforme"
+    ],
+    "en": [
+      "Medium-frequency induction melting",
+      "Fully automatic granulation process",
+      "Inert gas protection",
+      "Fast, uniform heating"
+    ]
+  },
+  "it-gms": {
+    "it": [
+      "Fusione a induzione a media frequenza",
+      "Controllo preciso della temperatura",
+      "Protezione con gas inerte",
+      "Adatto a leghe sensibili all'ossidazione"
+    ],
+    "en": [
+      "Medium-frequency induction melting",
+      "Precise temperature control",
+      "Inert gas protection",
+      "Suited to oxidation-sensitive alloys"
+    ]
+  },
+  "it-gt": {
+    "it": [
+      "Riscaldamento rapido e uniforme",
+      "Alta efficienza energetica",
+      "Inclinazione controllata e precisa",
+      "Versamento con traiettoria curva precisa"
+    ],
+    "en": [
+      "Fast, uniform heating",
+      "High energy efficiency",
+      "Controlled, precise tilting",
+      "Precise curved pouring path"
+    ]
+  },
+  "it-kb": {
+    "it": [
+      "Superfici brillanti e perfettamente piatte",
+      "Raffreddamento intelligente dello stampo",
+      "Temperatura distribuita in modo uniforme",
+      "Prestazioni costanti nella produzione intensiva"
+    ],
+    "en": [
+      "Bright, perfectly flat surfaces",
+      "Intelligent mould cooling",
+      "Evenly distributed temperature",
+      "Consistent performance in high-volume production"
+    ]
+  },
+  "it-mt": {
+    "it": [
+      "Fusione efficiente e leghe omogenee",
+      "Versamento semplice e pratico",
+      "Inclinazione e alimentazione in un'unica unità",
+      "Ingombro e rischi ridotti al minimo"
+    ],
+    "en": [
+      "Efficient melting and homogeneous alloys",
+      "Easy, convenient pouring",
+      "Tilting and feeding in a single unit",
+      "Minimal footprint and risk"
+    ]
+  },
+  "it-sm": {
+    "it": [
+      "Fusione efficiente e leghe omogenee",
+      "Termocoppia ad immersione tipo K",
+      "Gas di protezione sopra il crogiolo",
+      "Pinza di estrazione in dotazione"
+    ],
+    "en": [
+      "Efficient melting and homogeneous alloys",
+      "Type K immersion thermocouple",
+      "Protective gas nozzles above the crucible",
+      "Extraction tongs included"
+    ]
   }
 }

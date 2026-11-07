@@ -31,6 +31,10 @@ const photo = (product, i) => {
   return u;
 };
 const img = (url, alt, opts) => imgTag(url, { alt, ...opts });
+const BANNER_CAT = { code: 'IT.CC', image: 1 };
+const BANNER_CONTACT = { code: 'IT.MT', image: 2 };
+/** Decorative photo on the right of a section banner (desktop only, hidden on narrower screens). */
+const bannerPhoto = (products, b) => { const p = byCode(products, b.code); return `<div class="bv" aria-hidden="true">${imgTag(photo(p, b.image), { alt: '', sizes: SIZES.banner })}</div>`; };
 const altOf = (p) => `${p.code} ${displayTitle(p.title)}`;
 const clip = (s, n = 160) => (s.length <= n ? s : `${s.slice(0, n - 1).replace(/\s+\S*$/, '')}…`);
 
@@ -87,7 +91,7 @@ function catalogueBody(content, lang) {
     + `<fieldset><legend>${esc(c.process)}</legend>${FAMILIES.map((g) => check('g', g, t.filters[g], groupCount(g))).join('')}</fieldset>`
     + `<button class="btn b2 ap" type="button">${esc(c.apply)}</button><button class="rs" type="button" hidden>${esc(c.reset)}</button></div></details>`;
   const cards = list.map((p, i) => `<div class="cc" data-g="${esc(familyOf(p))}" data-r="${i}" data-code="${esc(p.code)}">${card(p, lang, SIZES.card, i === 0)}</div>`).join('');
-  return `<section class="cat-h"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>${esc(c.kicker)}</span></p><h1>${esc(c.title)}</h1><p class="sub">${esc(c.sub)}</p></div></section>
+  return `<section class="cat-h"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>${esc(c.kicker)}</span></p><h1>${esc(c.title)}</h1><p class="sub">${esc(c.sub)}</p></div>${bannerPhoto(content.products, BANNER_CAT)}</section>
 <section class="cat-b"><div class="w cl">${filters}<div class="cr"><h2 class="vh">${esc(t.catalogue)}</h2><div class="cbar"><p class="cnt" role="status" aria-live="polite" data-one="${esc(c.found(1).replace('1', '{n}'))}" data-many="${esc(c.found(2).replace('2', '{n}'))}">${esc(c.found(list.length))}</p><label class="so"><span>${esc(c.sort)}</span><select aria-label="${esc(c.sort)}"><option value="r">${esc(c.sortRel)}</option><option value="c">${esc(c.sortCode)}</option></select></label></div><div class="gr3 cg" id="pgrid" aria-label="${esc(c.list)}">${cards}</div><p class="cno" hidden>${esc(c.none)}</p></div></div></section>`;
 }
 
@@ -261,7 +265,7 @@ function contactBody(content, lang) {
     return `<div class="card"><div class="cl">${icon(icons[i % icons.length])}<h2>${esc(cd.h)}</h2></div>${cd.ps.map((x) => `<p>${linkify(x)}</p>`).join('')}${extra}</div>`;
   }).join('');
   const map = `<div class="map" data-embed="${esc(mapEmbed(site, lang))}" data-title="${esc(`${c.mapTitle}: ${site.address}`)}"><div class="mp">${icon('pin')}<address>${esc(site.name)}<br>${esc(site.address)}</address><div class="row"><button class="btn b1 mlb" type="button" hidden>${esc(c.mapLoad)}</button><a class="btn b2" href="${esc(mapLink(site))}" target="_blank" rel="noopener">${esc(c.map)}</a></div><p class="mn">${esc(c.mapNote)}</p></div></div>`;
-  return `<section class="ct-h"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>${esc(page.title)}</span></p><h1>${esc(c.title)}</h1><p class="sub">${esc(c.sub)}</p></div></section>
+  return `<section class="ct-h"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>${esc(page.title)}</span></p><h1>${esc(c.title)}</h1><p class="sub">${esc(c.sub)}</p></div>${bannerPhoto(content.products, BANNER_CONTACT)}</section>
 <section class="ct-b"><div class="w"><div class="cw"><div class="side">${side}${map}</div><div class="fcard"><h2>${esc(c.formTitle)}</h2>${page.lead ? `<p class="fl-lead">${esc(page.lead).replace(/\n/g, '<br>')}</p>` : ''}${formHtml}</div></div><p class="ct-t">${c.tags.map((x) => esc(x)).join('<i aria-hidden="true"></i>')}</p></div></section>`;
 }
 

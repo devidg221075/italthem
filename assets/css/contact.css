@@ -56,3 +56,7 @@ textarea.inp{min-height:150px;resize:vertical}
 .ct-t i{width:7px;height:7px;border-radius:50%;background:var(--blue)}
 @media (max-width:1000px){.cw{grid-template-columns:minmax(0,1fr)}.fcard{order:-1}}
 @media (max-width:600px){.row2{grid-template-columns:minmax(0,1fr)}.fcard .btn{justify-self:stretch}.card .row .btn,.map .btn{width:100%}}
+
+/* section-banner photo: right side, fades into the banner; desktop only */
+.bv{display:none}
+@media(min-width:1001px){.cat-h .bv,.ct-h .bv{display:block;position:absolute;z-index:-1;top:0;right:0;bottom:0;width:40%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 55%);mask-image:linear-gradient(90deg,transparent 0,#000 55%)}.bv img{width:100%;height:100%;object-fit:cover;display:block}}

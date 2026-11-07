@@ -15,6 +15,7 @@ export const SIZES = {
   card: '(min-width:1001px) 380px, (min-width:601px) 50vw, 100vw',
   service: '(min-width:1001px) 290px, (min-width:601px) 50vw, 100vw',
   about: '(min-width:1001px) 600px, 100vw',
+  banner: '(min-width:1001px) 46vw, 1px',
   gallery: '(min-width:1001px) 50vw, 100vw',
   thumb: '96px',
   menu: '(min-width:1001px) 200px, 0px',
