@@ -132,8 +132,8 @@ function aboutBody(content, lang) {
 function serviceBody(service, content, lang) {
   const t = T[lang];
   const products = pageUrl('products', lang);
-  return `<section class="phd"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / <a href="${products}">${esc(content.pages.find((p) => p.slug === 'products').title)}</a> / ${esc(service.title)}</div><h1>${esc(service.title)}</h1></div></section>
-<section class="sec"><div class="w">${service.blocks.map(renderBlock).join('')}<p><a class="btn b1" style="color:#fff;text-decoration:none" href="${pageUrl('contact', lang)}">${esc(t.contactUs)}</a></p></div></section>`;
+  return `<section class="pgh"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> <span aria-hidden="true">›</span> <a href="${products}">${esc(content.pages.find((p) => p.slug === 'products').title)}</a> <span aria-hidden="true">›</span> <b>${esc(service.title)}</b></div><p class="kick"><i aria-hidden="true"></i><span>${esc(t.services)}</span></p><h1>${esc(service.title)}</h1></div></section>
+<section class="prose"><div class="w">${service.blocks.map(renderBlock).join('')}<p><a class="btn b1" href="${pageUrl('contact', lang)}">${esc(t.contactUs)}${icon('arrow', 'ic ar')}</a></p></div></section>`;
 }
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -188,7 +188,8 @@ export function productBody(p, content, lang) {
   const hasPdf = Boolean(p.pdf && hasFile(docUrl(p.slug).slice(1)));
   const pdfBtn = hasPdf ? `<a class="btn b2" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pd.pdf)}</a>` : '';
   const spec = specTable(p, t);
-  const meta = p.meta ? `<p class="meta">${br(p.meta)}</p>` : '';
+  const metaText = String(p.meta ?? '').split(/\r?\n/).filter((l) => !/^Category\s*:\s*Ital-?therm\s*$/i.test(l.trim())).join('\n');
+  const meta = metaText ? `<p class="meta">${br(metaText)}</p>` : '';
   const panels = [
     { id: 'desc', label: pd.tabs[0], html: description(p.short) },
     spec && { id: 'spec', label: pd.tabs[1], html: spec },
@@ -279,8 +280,9 @@ function privacyBody(lang, site, doc = PRIVACY) {
     .replace('[[mail]]', `<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>`)
     .replace('[[garante]]', '<a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>');
   const sections = P.sections.map((s) => `<h2>${esc(s.h)}</h2>${s.p.map((x) => `<p>${sub(x)}</p>`).join('')}${s.ul ? `<ul>${s.ul.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${(s.after ?? []).map((x) => `<p>${sub(x)}</p>`).join('')}`).join('');
-  return `<section class="ph0 pg"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / ${esc(P.title)}</div><h1>${esc(P.title)}</h1><p class="lead">${esc(P.lead)}</p></div></section>
-<section class="sec prv"><div class="w">${sections}<p class="upd">${esc(P.updated(new Date().getFullYear()))}</p></div></section>`;
+  const kicker = doc === COOKIES ? t.cookies : 'Privacy';
+  return `<section class="pgh"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> <span aria-hidden="true">›</span> <b>${esc(P.title)}</b></div><p class="kick"><i aria-hidden="true"></i><span>${esc(kicker)}</span></p><h1>${esc(P.title)}</h1><p class="sub">${esc(P.lead)}</p></div></section>
+<section class="prose prv"><div class="w">${sections}<p class="upd">${esc(P.updated(new Date().getFullYear()))}</p></div></section>`;
 }
 
 const HOME_TITLE = { en: 'ITALTHERM – Industrial Furnaces for Precious Metals', it: 'ITALTHERM – Forni industriali per metalli preziosi' };
@@ -395,8 +397,8 @@ const NOT_FOUND = {
 export function renderNotFound(contents) {
   const en = NOT_FOUND.en;
   const it = NOT_FOUND.it;
-  const links = (l, n) => `<p><a class="btn b1" style="color:#fff;text-decoration:none" href="${pageUrl('home', l)}">${esc(n.home)}</a> <a class="btn b2" href="${pageUrl('products', l)}">${esc(n.products)}</a> <a class="btn b2" href="${pageUrl('contact', l)}">${esc(n.contact)}</a></p>`;
-  const body = `<section class="phd"><div class="w"><h1>${esc(en.h)}</h1><p class="lead">${esc(en.p)}</p>${links('en', en)}</div></section>
-<section class="sec" lang="it"><div class="w"><h2>${esc(it.h)}</h2><p>${esc(it.p)}</p>${links('it', it)}</div></section>`;
+  const links = (l, n) => `<p class="acts"><a class="btn b1" href="${pageUrl('home', l)}">${esc(n.home)}</a> <a class="btn b2" href="${pageUrl('products', l)}">${esc(n.products)}</a> <a class="btn b2" href="${pageUrl('contact', l)}">${esc(n.contact)}</a></p>`;
+  const body = `<section class="pgh"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>404</span></p><h1>${esc(en.h)}</h1><p class="sub">${esc(en.p)}</p><div class="prose-links">${links('en', en)}</div></div></section>
+<section class="prose" lang="it"><div class="w"><h2>${esc(it.h)}</h2><p>${esc(it.p)}</p>${links('it', it)}</div></section>`;
   return layout({ lang: 'en', slug: '404', title: `${en.h} / ${it.h}`, description: `${en.p} ${it.p}`, body, site: contents.en.site, products: contents.en.products, switchUrls: { en: '/en/', it: '/it/' }, seo: { type: 'notfound' } });
 }

@@ -138,8 +138,8 @@ export function renderBlock(b) {
 
 /** Generic page body: title as the single h1, lead, sections. */
 export function pageBody(page) {
-  const sections = (page.sections || []).map((s) => `<section class="sec"><div class="w">${s.kicker ? `<small>${esc(s.kicker)}</small>` : ''}${s.heading ? `<h2>${esc(s.heading)}</h2>` : ''}${(s.blocks || []).map(renderBlock).join('')}</div></section>`).join('\n');
-  return `<section class="phd"><div class="w"><h1>${esc(page.title)}</h1>${page.lead ? `<p class="lead">${esc(page.lead)}</p>` : ''}</div></section>\n${sections}`;
+  const sections = (page.sections || []).map((s) => `<section class="prose"><div class="w">${s.kicker ? `<small>${esc(s.kicker)}</small>` : ''}${s.heading ? `<h2>${esc(s.heading)}</h2>` : ''}${(s.blocks || []).map(renderBlock).join('')}</div></section>`).join('\n');
+  return `<section class="pgh"><div class="w"><h1>${esc(page.title)}</h1>${page.lead ? `<p class="sub">${esc(page.lead)}</p>` : ''}</div></section>\n${sections}`;
 }
 
 export function renderPage(page, lang, site) {

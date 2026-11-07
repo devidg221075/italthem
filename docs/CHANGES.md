@@ -259,3 +259,9 @@ CSS in `assets/css/contact.css` e JS in `assets/js/contact.js` (solo questa pagi
 | Chiama / WhatsApp | — (dal piano) | "Chiamaci" (numero fisso) e "Scrivici su WhatsApp" (numero mobile +39 366 871 9427); il secondo numero è collegato | **Verifica che il mobile usi WhatsApp** |
 | Riga finale | "Soluzioni per fusione • Colata continua • Trattamenti termici" | Inserita (testo del mockup) | Fatto |
 | Striscia CTA sopra il footer | — | Non presente in questa pagina (c'è già il modulo) | Fatto |
+
+## Privacy, cookie policy, servizi e 404 nel nuovo stile
+
+Banner come le altre pagine (briciole, kicker, titolo, testo) e testo in colonna leggibile (`.pgh` e `.prose` in `site.css`). Contenuti invariati. I kicker sono "Privacy", "Cookie policy", "Servizi" e "404" (testi di interfaccia). Le quattro pagine servizio in italiano sono ancora in inglese (anomalia già elencata sopra: serve il testo italiano).
+
+Nella scheda prodotto non compare più la riga "Category: Ital-therm" (veniva dal vecchio WordPress); restano SKU e Tag, come richiesto.

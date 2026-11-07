@@ -1,6 +1,7 @@
 // Interface strings for page chrome that is not part of the extracted content (buttons, labels, filter chips).
 export const T = {
   en: {
+    services: 'Services',
     ct: { title: 'Let’s talk about your project', sub: 'Our team is available for technical information, tailored solutions and quote requests.', formTitle: 'Request information or a quote', company: 'Company', product: 'Product of interest', productPh: 'Select a product', call: 'Call us', whatsapp: 'Chat on WhatsApp', map: 'Open the map', tags: ['Melting solutions', 'Continuous casting', 'Heat treatment'] },
     ab: { kicker: 'Company', title: 'Italian technology for precious metals', sub: 'We design and build systems for melting, casting and heat treatment of precious metals.', who: 'About us' },
     pd: { tabs: ['Description', 'Models and technical data', 'Documentation'], tabList: 'Product information', pdf: 'Download PDF datasheet', docTitle: 'Technical specifications', docText: 'PDF datasheet with the technical data of the models.' },
@@ -60,6 +61,7 @@ export const T = {
     status: 'Form status',
   },
   it: {
+    services: 'Servizi',
     ct: { title: 'Parliamo del tuo progetto', sub: 'Il nostro team è a disposizione per informazioni tecniche, soluzioni personalizzate e richieste di preventivo.', formTitle: 'Richiedi informazioni o un preventivo', company: 'Azienda', product: 'Prodotto di interesse', productPh: 'Seleziona un prodotto', call: 'Chiamaci', whatsapp: 'Scrivici su WhatsApp', map: 'Apri la mappa', tags: ['Soluzioni per fusione', 'Colata continua', 'Trattamenti termici'] },
     ab: { kicker: 'Azienda', title: 'Tecnologia italiana per i metalli preziosi', sub: 'Progettiamo e realizziamo impianti per la fusione, la colata e il trattamento termico dei metalli preziosi.', who: 'Chi siamo' },
     pd: { tabs: ['Descrizione', 'Modelli e dati tecnici', 'Documentazione'], tabList: 'Informazioni sul prodotto', pdf: 'Scarica scheda PDF', docTitle: 'Specifiche tecniche', docText: 'Scheda PDF con i dati tecnici dei modelli.' },

@@ -39,6 +39,16 @@ for (const lang of ['en', 'it']) {
   });
 }
 
+test('the WordPress "Category: Ital-therm" line is not shown; SKU and Tag stay', () => {
+  for (const lang of ['en', 'it']) {
+    for (const p of contents[lang].products) {
+      const html = read(productUrl(p, lang));
+      assert.ok(!/Category:\s*Ital-?therm/i.test(html), `${p.slug}: category line`);
+      assert.ok(html.includes('SKU:'), `${p.slug}: SKU stays`);
+    }
+  }
+});
+
 test('product.js has no globals or HTML parsing, handles arrow keys, Home, End and #p- links', () => {
   const js = readFileSync(path.join(ROOT, 'assets/js/product.js'), 'utf8');
   assert.ok(!/innerHTML|localStorage|\beval\s*\(/.test(js));
