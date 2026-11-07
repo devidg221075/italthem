@@ -1,0 +1,27 @@
+## TITLE
+CONTINUOUS WIRE ANEALING
+## SHORT DESCRIPTION
+ItalTherm ltalTherm Continuous Wire Annealing Furnace A high-precision system tor continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere tor bright,
+oxide-free results.
+## DESCRIPTION TAB
+ItalTherm ltalTherm Continuous Wire Annealing Furnace A high-precision system tor continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere tor bright,
+oxide-free results.
+## TABLE CAPTION
+CONTROLLED ATMOSPHERE WIRE ANNEAUNG FURNACE
+## TABLE
+ | IT-CWA2
+VOLTAGGIO/ VOLTAGE | MONOFASE / SINGLE PHASE 220V, 50/60HZ
+POTENZA / POWER | 6.5KW
+CORRENTE DI RISCALDAMENTO / HEATING CURRENT | 18A
+CONSUMO DI GAS / GAS CONSUMPTION | NITROGENO / NITROGEN 2-3UM
+TEMPERATURA MAX. / MAXIMUM TEMPERATURE | 1000°c
+DIAMETRO DEL FILO/ WIRE DIAMETER | 0.03-2MM
+DIMENSIONI E PESO / DIMENSION AND WEIGHT | 2100'850'1830MM 350 KG
+## META
+SKU: CONTINUOUS WIRE ANEALING
+Category: Ital-therm
+Tag: CONTINUOUS WIRE ANEALING
+## PDF
+/wp-content/uploads/2026/05/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.CWA_.pdf
+## DOWNLOAD LABEL
+DOWNLOAD TECHNICAL SPECIFICATIONS

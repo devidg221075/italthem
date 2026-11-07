@@ -1,0 +1,30 @@
+## TITLE
+FORNO DI FUSIONE METALLI A RIBALTAMENTO MANUALE
+## SHORT DESCRIPTION
+Il forno di fusione per metalli ItalTherm a ribaltamento manuale è una soluzione compatta ed efficiente per la fusione di metalli preziosi come oro, argento, con capacità che vanno da 1 kg a 15 kg.
+Dotato di un’avanzata tecnologia di riscaldamento a induzione elettromagnetica, il forno può raggiungere la temperatura di fusione entro 3-5 minuti, consentendo una fusione efficiente e leghe omogenee.
+Il suo design completamente integrato, che combina il meccanismo di inclinazione e l’alimentazione in un’unica unità, garantisce operazioni di versamento facili e convenienti e riduce al minimo i rischi e i requisiti di spazio.
+## DESCRIPTION TAB
+Il forno di fusione per metalli ItalTherm a ribaltamento manuale è una soluzione compatta ed efficiente per la fusione di metalli preziosi come oro, argento, con capacità che vanno da 1 kg a 15 kg.
+Dotato di un’avanzata tecnologia di riscaldamento a induzione elettromagnetica, il forno può raggiungere la temperatura di fusione entro 3-5 minuti, consentendo una fusione efficiente e leghe omogenee.
+Il suo design completamente integrato, che combina il meccanismo di inclinazione e l’alimentazione in un’unica unità, garantisce operazioni di versamento facili e convenienti e riduce al minimo i rischi e i requisiti di spazio.
+## TABLE CAPTION
+FORNO DI FUSIONE METALLI A RIBALTAMENTO MANUALE
+## TABLE
+ | IT.MT6 | IT.MT10 | IT.MT15
+VOLTAGGIO/ VOLTAGE | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ
+POTENZA / POWER | 20KW / (VARIABILE /ADJUSTABLE) | 30KW / (VARIABILE /ADJUSTABLE) | 35KW / (VARIABILE /ADJUSTABLE)
+PESO/ WEIGHT | 75KG | 130KG | 150KG
+CAPACITÀ MASSIMA/ MAX CAPACITY | ORO / GOLD : 6KG ARGENTO/ SILVER: 3KG | ORO/ GOLD : 10KG ARGENTO/ SILVER: 5KG | ORO/ GOLD : 15KG ARGENTO/ SILVER: 8KG
+TEMPO DI FUSIONE/ MELTING TIME | 3-6 MIN | 6-12 MIN | 6-12 MIN
+DIMENSIONI/ DIMENSION (LWH) | 620'500'980 MM | 730'630'980 MM | 800*700'1050 M M
+TEMPERATURA MASSIMA/ MAX TEMPERATUR | 1600 ° C | 1600 ° C | 1600 ° C
+CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE | FORNITO/ EQUIPPED | FORNITO/ EQUIPPED | FORNITO/ EQUIPPED
+## META
+SKU: MANUAL TILTING METAL MELTING FURNACE MODEL IT.MT
+Category: Ital-therm
+Tag: MANUAL TILTING(IT.MT)
+## PDF
+//ital-therm.it/wp-content/uploads/2026/05/MANUAL TILTING METAL MELTING FURNACE MODET IT.MT.pdf
+## DOWNLOAD LABEL
+SCARICA SPECIFICHE TECNICHE

@@ -1,0 +1,27 @@
+## TITLE
+FORNO A NASTRO AD ATMOSFERA CONTROLLATA
+## SHORT DESCRIPTION
+Forno per trattamento termico a nastro a rete ItalTherm.
+Un forno a processo continuo per la saldatura, la brasatura, la sinterizzazione e la ricottura di componenti metallici. Il sistema a nastri a rete garantisce una produzione ininterrotta, mentre un’atmosfera di gas inerte e una barriera contro la combustione dell’ossigeno prevengono l’ossidazione. Il forno è dotato di controllo della temperatura PID programmabile, zone di riscaldamento indipendenti e una sezione di raffreddamento controllata per risultati costanti e di alta qualità in un’ampia gamma di applicazioni.
+## DESCRIPTION TAB
+Forno per trattamento termico a nastro a rete ItalTherm.
+Un forno a processo continuo per la saldatura, la brasatura, la sinterizzazione e la ricottura di componenti metallici. Il sistema a nastri a rete garantisce una produzione ininterrotta, mentre un’atmosfera di gas inerte e una barriera contro la combustione dell’ossigeno prevengono l’ossidazione. Il forno è dotato di controllo della temperatura PID programmabile, zone di riscaldamento indipendenti e una sezione di raffreddamento controllata per risultati costanti e di alta qualità in un’ampia gamma di applicazioni.
+## TABLE CAPTION
+FORNO A NASTRO AD ATMOSFERA CONTROLLATA
+## TABLE
+ | IT.BF1 | IT.BF2
+VOLTAGGIO/ VOLTAGE | 380V, 50/60 HZ / TRIFASE/ THREE PHASE | 380V, 50/60 HZ / TRIFASE/ THREE PHASE
+POTENZA / POWER | 16KW | 25KW
+TEMPERATURA MAX./ MAXIMUM TEMPERATURE | 1000°c | 1000°c
+CAMERA DI RISCALDAMENTO/ HEATING CHAMBER | 1000(L)•6o(w)•3o(H)MM | 2X 1000(L)•6o(w)•3o(H)MM
+GAS PROTETTIVO / PROTECTIVE GAS | 880 ° C/80 MIN | 880 ° C/80 MIN
+DIMENSIONI / DIMENSION | 3970(L)•sso(w)•1448(H)MM | 3970(L)•sso(w)•1448(H)M M
+PESO/ WEIGHT | 480 KG | 480 KG
+## META
+SKU: CONTROLLED ATMOSPHERE BELT FURNACE MODEL IT.BF
+Category: Ital-therm
+Tag: CONTROLLED ATMOSPHERE BELT FURNACE MODEL IT.BF
+## PDF
+/wp-content/uploads/2026/05/CONTROLLED-ATMOSPHERE-BELT-FURNACE-MODEL-IT.BF_.pdf
+## DOWNLOAD LABEL
+SCARICA SPECIFICHE TECNICHE

@@ -1,0 +1,30 @@
+## TITLE
+SISTEMA AUTOMATICO PER LA PRODUZIONE DI LINGOTTI
+## SHORT DESCRIPTION
+ITALTHERM Sistemi di colata automatici sottovuoto (barre di lingotti), progettati per risultati eccezionali e notevole facilità d’uso.
+Dotato di bobine di induzione di forma personalizzata con tecnologia di raffreddamento integrata, il nostro processo proprietario garantisce una distribuzione uniforme della temperatura. Il sistema di raffreddamento intelligente regola attivamente la temperatura dello stampo durante tutto il ciclo, producendo superfici costantemente brillanti e perfettamente piatte che soddisfano i più elevati standard di mercato.
+Progettate per prestazioni industriali continue, le nostre macchine mantengono prestazioni costanti anche con programmi di produzione impegnativi. La struttura robusta e la gestione termica raffinata garantiscono risultati affidabili per ambienti di produzione ad alto volume.
+## DESCRIPTION TAB
+ITALTHERM Sistemi di colata automatici sottovuoto (barre di lingotti), progettati per risultati eccezionali e notevole facilità d’uso.
+Dotato di bobine di induzione di forma personalizzata con tecnologia di raffreddamento integrata, il nostro processo proprietario garantisce una distribuzione uniforme della temperatura. Il sistema di raffreddamento intelligente regola attivamente la temperatura dello stampo durante tutto il ciclo, producendo superfici costantemente brillanti e perfettamente piatte che soddisfano i più elevati standard di mercato.
+Progettate per prestazioni industriali continue, le nostre macchine mantengono prestazioni costanti anche con programmi di produzione impegnativi. La struttura robusta e la gestione termica raffinata garantiscono risultati affidabili per ambienti di produzione ad alto volume.
+## TABLE CAPTION
+SISTEMA AUTOMATICO PER LA PRODUZIONE DI LINGOTTI
+## TABLE
+ | IT.KB02 | IT.KB04 | IT.KB08
+VOLTAGGIO/ VOLTAGE | 380V±10%, 50/60HZ | 380V±10%, 50/60HZ | 380V±10%, 50/60HZ
+POTENZA / POWER | 35KW | 35KW | 
+SISTEMA DI CONTROLLO / CONTROL SYSTEM | PLC | PLC | PLC
+METALLI / APPLICABLE METAL | ORO E ARGENTO / GOLD AND SILVER | ORO E ARGENTO / GOLD AND SILVER | ORO E ARGENTO / GOLD AND SILVER
+DURATA DEL CICLO / CYCLE TIME | 12˙20 MINS | ABOUT 7˙10 MINS | 1000°c
+CAPACITÀ DELLO STAMPO / MOLD CAPACITY | 2 PCS 1 KG BAR | MOLD CAPACITY | MOLD CAPACITY
+DIMENSIONI / DIMENSIONS | 1100*880*1100MM | 1520*900*1080MM | 1720*900*1080MM
+PESO / WEIGHT | ABOUT 300 KG | ABOUT 550 KG | ABOUT 580 KG
+## META
+SKU: AUTOMATIC BULLION BARS PRODUCTION SYSTEM Mod IT.KB
+Category: Ital-therm
+Tag: AUTOMATIC BULLION BARS PRODUCTION SYSTEM Mod IT.KB
+## PDF
+/wp-content/uploads/2026/05/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT.BK_.pdf
+## DOWNLOAD LABEL
+SCARICA LE SPECIFICHE TECNICHE

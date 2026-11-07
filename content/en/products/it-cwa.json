@@ -1,14 +1,65 @@
 {
   "slug": "it-cwa",
   "code": "IT.CWA",
-  "title": "CONTINUOUS WIRE ANEALING",
-  "short": "ItalTherm ltalTherm Continuous Wire Annealing Furnace A high-precision system tor continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere tor bright,\n\noxide-free results.",
+  "title": "CONTINUOUS WIRE ANNEALING",
+  "short": "ItalTherm ItalTherm Continuous Wire Annealing Furnace A high-precision system for continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere for bright,\noxide-free results.",
   "specs": {
-    "columns": [],
-    "rows": []
+    "columns": [
+      "IT-CWA2"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "MONOFASE / SINGLE PHASE 220V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "6.5KW"
+        ]
+      },
+      {
+        "label": "CORRENTE DI RISCALDAMENTO / HEATING CURRENT",
+        "values": [
+          "18A"
+        ]
+      },
+      {
+        "label": "CONSUMO DI GAS / GAS CONSUMPTION",
+        "values": [
+          "NITROGENO / NITROGEN 2-3UM"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MAX. / MAXIMUM TEMPERATURE",
+        "values": [
+          "1000°c"
+        ]
+      },
+      {
+        "label": "DIAMETRO DEL FILO/ WIRE DIAMETER",
+        "values": [
+          "0.03-2MM"
+        ]
+      },
+      {
+        "label": "DIMENSIONI E PESO / DIMENSION AND WEIGHT",
+        "values": [
+          "2100×850×1830 MM 350 KG"
+        ]
+      }
+    ]
   },
-  "images": [],
-  "pdf": "/wp-content/uploads/2026/05/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.CWA_.pdf",
-  "meta": "SKU: CONTINUOUS WIRE ANEALING\nCategory: Ital-therm\nTag: CONTINUOUS WIRE ANEALING",
-  "group": "heat"
+  "table_title": "CONTROLLED ATMOSPHERE WIRE ANNEALING FURNACE",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/05/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/05/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT_1.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.CWA_.pdf",
+  "meta": "SKU: CONTINUOUS WIRE ANNEALING\nCategory: Ital-therm\nTag: CONTINUOUS WIRE ANNEALING",
+  "group": "heat",
+  "old_path": "/product/continuous-wire-anealing/",
+  "download_label": "DOWNLOAD TECHNICAL SPECIFICATIONS"
 }

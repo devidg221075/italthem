@@ -1,0 +1,24 @@
+## TITLE
+FORNO DI RICOTTURA FILO IN ATMOSFERA CONTROLLATA
+## SHORT DESCRIPTION
+ItalTherm, il Forno continuo per ricottura filo ItalTherm Un sistema ad alta precisione per la ricottura continua di fili di metalli preziosi, che offre riscaldamento uniforme, immersione controllata, raffreddamento rapido dell’acqua, tensione servo-regolata e un’atmosfera protettiva ricca di idrogeno per colori brillanti, risultati senza ossidi.
+## DESCRIPTION TAB
+ItalTherm, il Forno continuo per ricottura filo ItalTherm Un sistema ad alta precisione per la ricottura continua di fili di metalli preziosi, che offre riscaldamento uniforme, immersione controllata, raffreddamento rapido dell’acqua, tensione servo-regolata e un’atmosfera protettiva ricca di idrogeno per colori brillanti, risultati senza ossidi.
+## TABLE CAPTION
+FORNO DI RICOTTURA FILO IN ATMOSFERA CONTROLLATA
+## TABLE
+ | IT-CWA2
+VOLTAGGIO/ VOLTAGE | MONOFASE / SINGLE PHASE 220V, 50/60HZ
+POTENZA / POWER | 6.5KW
+CORRENTE DI RISCALDAMENTO / HEATING CURRENT | 18A
+CONSUMO DI GAS / GAS CONSUMPTION | NITROGENO / NITROGEN 2-3UM
+TEMPERATURA MAX. / MAXIMUM TEMPERATURE | 1000°c
+DIAMETRO DEL FILO/ WIRE DIAMETER | 0.03-2MM
+DIMENSIONI E PESO / DIMENSION AND WEIGHT | 2100'850'1830MM 350 KG
+## META
+SKU: CONTINUOUS WIRE ANEALING
+Category: Ital-therm
+## PDF
+/wp-content/uploads/2026/05/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.CWA_.pdf
+## DOWNLOAD LABEL
+SCARICA LE SPECIFICHE TECNICHE

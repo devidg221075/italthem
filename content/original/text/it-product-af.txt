@@ -1,0 +1,33 @@
+## TITLE
+FORNO DI RICOTTURA IN ATMOSFERA CONTROLLATA
+## SHORT DESCRIPTION
+I forni di ricottura ItalTherm sono progettati per la ricottura di oro, argento, platino e altri metalli preziosi con un perfetto equilibrio tra controllo della temperatura, purezza atmosferica ed efficienza operativa:
+Tecnologia di riscaldamento avanzata per risultati uniformi
+Raffreddamento rapido e atmosfera protettivaRobusto
+Design e funzionalità di sicurezza intelligenti
+Flusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività
+## DESCRIPTION TAB
+I forni di ricottura ItalTherm sono progettati per la ricottura di oro, argento, platino e altri metalli preziosi con un perfetto equilibrio tra controllo della temperatura, purezza atmosferica ed efficienza operativa:
+Tecnologia di riscaldamento avanzata per risultati uniformi
+Raffreddamento rapido e atmosfera protettivaRobusto
+Design e funzionalità di sicurezza intelligenti
+Flusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività
+## TABLE CAPTION
+FORNO DI RICOTTURA IN ATMOSFERA CONTROLLATA
+## TABLE
+ | IT.AF400 | ITAF600
+VOLTAGGIO/ VOLTAGE | THREE PHASE 380V, 50/60HZ | THREE PHASE 380V, 50/60HZ
+POTENZA / POWER | 16KW | 25KW
+ZONA DI RISCALDAMENTO/ HEATING ZONE |  | 
+GAS PROTETTIVO/ PROTECTIVE GAS | NH3 OR NITROGEN-HYDROGEN MIXTURE | NH3 OR NITROGEN-HYDROGEN MIXTURE
+TEMPERATURA MAX./ MAXIMUM TEMPERATURE | 1000°c | 1000°c
+DIMENSIONI/ OVERALL SIZE | 850'1800*1500MM(L*W'H) | 850*2100'1500MM(L'W*H)
+PESO / WEIGHT | 350KG | 450KG
+## META
+SKU: CONTROLLED ATMOSPHERE ANEALING FURNACE MODEL IT.AF
+Category: Ital-therm
+Tag: ANNEALING FURNACES
+## PDF
+/wp-content/uploads/2026/06/CONTROLLED-ATMOSPHERE-ANEALING-FURNACE-MODEL-IT.AF_.pdf
+## DOWNLOAD LABEL
+SCARICA SPECIFICHE TECNICHE

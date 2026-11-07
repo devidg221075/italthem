@@ -1,0 +1,88 @@
+{
+  "slug": "it-fm",
+  "code": "IT.FM",
+  "title": "SISTEMA DI PRODUZIONE VACUUM DI SCAGLIE",
+  "short": "La macchina per la produzione di scaglie di metalli ITALTHERM è appositamente progettata per produrre scaglie secche e sottili di oro e argento, migliorando notevolmente l’efficienza di raffinazione.\nDopo la fusione, il materiale viene formato direttamente in scaglie sottili di dimensioni ≤ 0,1 mm, queste scaglie sottili si dissolvono rapidamente e completamente nei reagenti chimici Il funzionamento sigillato e la protezione dal gas inerte isolano l’ossigeno durante tutto il processo, prevenendo l’ossidazione ad alta temperatura.",
+  "specs": {
+    "columns": [
+      "IT.FM30",
+      "IT.FM50",
+      "IT.FM100"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "20KW\n(VARIABILE /ADJUSTABLE)",
+          "30KW\n(VARIABILE /ADJUSTABLE)",
+          "35KW\n(VARIABILE /ADJUSTABLE)"
+        ]
+      },
+      {
+        "label": "PESO/ WEIGHT",
+        "values": [
+          "330KG",
+          "350KG",
+          "380KG"
+        ]
+      },
+      {
+        "label": "CAPACITÀ MASSIMA/ MAX CAPACITY",
+        "values": [
+          "ORO / GOLD : 30KG ARGENTO/ SILVER: 15KG",
+          "ORO / GOLD : 50KG ARGENTO/ SILVER: 25KG",
+          "ORO/ GOLD : 100KG ARGENTO/ SILVER: 50KG"
+        ]
+      },
+      {
+        "label": "TEMPO DI FUSIONE/ MELTING TIME",
+        "values": [
+          "10-30 MIN",
+          "20-40 MIN",
+          "20-40 MIN"
+        ]
+      },
+      {
+        "label": "DIMENSIONI / DIMENSIONS",
+        "values": [
+          "2100×2360×2600 MM",
+          "2100×2360×2600 MM",
+          "2100×2360×2600 MM"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MASSIMA/ MAX TEMPERATUR",
+        "values": [
+          "1500°C",
+          "1500°C",
+          "1500°C"
+        ]
+      },
+      {
+        "label": "CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE",
+        "values": [
+          "FORNITO/ EQUIPPE",
+          "FORNITO/ EQUIPPE",
+          "FORNITO/ EQUIPPE"
+        ]
+      }
+    ]
+  },
+  "table_title": "SISTEMA DI PRODUZIONE VACUUM DI SCAGLIE",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/VACUUM-FLAKE-PRODUCTION-SYSTEM-2-2.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/VACUUM%20FLAKE%20PRODUCTION%20SYSTEM%20IT.FM.pdf",
+  "meta": "SKU: VACUUM FLAKE PRODUCTION SYSTEM IT.FM\nCategory: Ital-therm\nTag: VACUUM FLAKE PRODUCTION SYSTEM IT.FM",
+  "group": "prod",
+  "old_path": "/it/product/sistema-di-produzione-vacuum-di-scaglie/",
+  "download_label": "SCARICA SPECIFICHE TECNICHE"
+}

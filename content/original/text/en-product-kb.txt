@@ -1,0 +1,30 @@
+## TITLE
+AUTOMATIC BULLION BARS PRODUCTION SYSTEM Mod IT.KB
+## SHORT DESCRIPTION
+ITALTHERM Automatic Vacuum (Bullion Bars) Casting Systems, engineered for both exceptional results and remarkable ease of use.
+Featuring custom-shaped induction coils with integrated cooling technology, our proprietary process ensures uniform temperature distribution. The intelligent cooling system actively regulates mold temperature throughout the cycle, producing consistently brilliant, flawlessly flat surfaces that meet the highest market standards.
+Engineered for Continuous Industrial Performance, our machines maintain consistent performance under demanding production schedules. The robust construction and refined thermal management ensure reliable output for high-volume manufacturing environments.
+## DESCRIPTION TAB
+ITALTHERM Automatic Vacuum (Bullion Bars) Casting Systems, engineered for both exceptional results and remarkable ease of use.
+Featuring custom-shaped induction coils with integrated cooling technology, our proprietary process ensures uniform temperature distribution. The intelligent cooling system actively regulates mold temperature throughout the cycle, producing consistently brilliant, flawlessly flat surfaces that meet the highest market standards.
+Engineered for Continuous Industrial Performance, our machines maintain consistent performance under demanding production schedules. The robust construction and refined thermal management ensure reliable output for high-volume manufacturing environments.
+## TABLE CAPTION
+AUTOMATIC BULLION BARS PRODUCTION SYSTEM
+## TABLE
+ | IT.KB02 | IT.KB04 | IT.KB08
+VOLTAGGIO/ VOLTAGE | 380V±10%, 50/60HZ | 380V±10%, 50/60HZ | 380V±10%, 50/60HZ
+POTENZA / POWER | 35KW | 35KW | 
+SISTEMA DI CONTROLLO / CONTROL SYSTEM | PLC | PLC | PLC
+METALLI / APPLICABLE METAL | ORO E ARGENTO / GOLD AND SILVER | ORO E ARGENTO / GOLD AND SILVER | ORO E ARGENTO / GOLD AND SILVER
+DURATA DEL CICLO / CYCLE TIME | 12˙20 MINS | ABOUT 7˙10 MINS | 1000°c
+CAPACITÀ DELLO STAMPO / MOLD CAPACITY | 2 PCS 1 KG BAR | MOLD CAPACITY | MOLD CAPACITY
+DIMENSIONI / DIMENSIONS | 1100*880*1100MM | 1520*900*1080MM | 1720*900*1080MM
+PESO / WEIGHT | ABOUT 300 KG | ABOUT 550 KG | ABOUT 580 KG
+## META
+SKU: AUTOMATIC BULLION BARS PRODUCTION SYSTEM Mod IT.KB
+Category: Ital-therm
+Tag: AUTOMATIC BULLION BARS PRODUCTION SYSTEM Mod IT.KB
+## PDF
+/wp-content/uploads/2026/05/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT.BK_.pdf
+## DOWNLOAD LABEL
+DOWNLOAD TECHNICAL SPECIFICATIONS

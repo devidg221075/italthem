@@ -1,0 +1,113 @@
+{
+  "slug": "italtherm-continuous-wire-annealing-furnace",
+  "title": "ItalTherm Continuous Wire Annealing Furnace",
+  "body": "A high-precision system engineered for the continuous annealing of precious-metal wires, delivering exceptional temperature stability, metallurgical consistency, and bright-surface results.\nKey Features\nPrecision Heating Process\nThe furnace uses an advanced resistance-heating system to ensure highly uniform temperature distribution along the entire heating chamber.\nAdjustable annealing range: 300°C to 800°C\nTouchscreen HMI for programming custom temperature profiles based on wire alloy, diameter, and production speed.\nControlled Soaking Stage\nOnce the target temperature is reached, the furnace maintains a stable soaking period to guarantee full recrystallization.\nEliminates drawing-induced internal stresses\nEnhances ductility, grain uniformity, and overall wire consistency\nRapid Water-Cooling System\nAn integrated quench tank provides immediate water cooling after annealing.\nRefines grain structure\nImproves mechanical properties\nEnsures stable, repeatable metallurgical results\nServo-Controlled Wire Tension System\nHigh-precision servo motors automatically regulate wire tension throughout the process.\nPrevents tangling and deformation\nEnsures smooth handling during annealing and coiling\nEssential for ultra-fine wires where tension stability is critical\nHydrogen-Rich Protective Atmosphere\nThe furnace operates with controlled protection gases, including hydrogen-rich atmospheres.\nMinimizes surface oxidation\nProduces bright, clean, oxide-free wire\nIdeal for gold, silver, platinum, and specialty alloys\nItalTherm annealing furnaces, engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency\nAdvanced Heating Technology for Uniform Results\nRapid Cooling and Protective Atmosphere\nRobust Design and Smart Safety Features\nStreamlined Workflow with pneumatic discharge system for Maximum Productivity",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "A high-precision system engineered for the continuous annealing of precious-metal wires, delivering exceptional temperature stability, metallurgical consistency, and bright-surface results."
+    },
+    {
+      "type": "h",
+      "level": 3,
+      "text": "Key Features"
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Precision Heating Process"
+    },
+    {
+      "type": "p",
+      "text": "The furnace uses an advanced resistance-heating system to ensure highly uniform temperature distribution along the entire heating chamber."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Adjustable annealing range: 300°C to 800°C",
+        "Touchscreen HMI for programming custom temperature profiles based on wire alloy, diameter, and production speed."
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Controlled Soaking Stage"
+    },
+    {
+      "type": "p",
+      "text": "Once the target temperature is reached, the furnace maintains a stable soaking period to guarantee full recrystallization."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Eliminates drawing-induced internal stresses",
+        "Enhances ductility, grain uniformity, and overall wire consistency"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Rapid Water-Cooling System"
+    },
+    {
+      "type": "p",
+      "text": "An integrated quench tank provides immediate water cooling after annealing."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Refines grain structure",
+        "Improves mechanical properties",
+        "Ensures stable, repeatable metallurgical results"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Servo-Controlled Wire Tension System"
+    },
+    {
+      "type": "p",
+      "text": "High-precision servo motors automatically regulate wire tension throughout the process."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Prevents tangling and deformation",
+        "Ensures smooth handling during annealing and coiling",
+        "Essential for ultra-fine wires where tension stability is critical"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Hydrogen-Rich Protective Atmosphere"
+    },
+    {
+      "type": "p",
+      "text": "The furnace operates with controlled protection gases, including hydrogen-rich atmospheres."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Minimizes surface oxidation",
+        "Produces bright, clean, oxide-free wire",
+        "Ideal for gold, silver, platinum, and specialty alloys"
+      ]
+    },
+    {
+      "type": "p",
+      "text": "ItalTherm annealing furnaces, engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Advanced Heating Technology for Uniform Results",
+        "Rapid Cooling and Protective Atmosphere",
+        "Robust Design and Smart Safety Features",
+        "Streamlined Workflow with pneumatic discharge system for Maximum Productivity"
+      ]
+    }
+  ],
+  "old_path": "/it/services/italtherm-continuous-wire-annealing-furnace/"
+}

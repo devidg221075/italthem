@@ -1,0 +1,30 @@
+## TITLE
+SISTEMA DI PRODUZIONE DI GRANIGLIA
+## SHORT DESCRIPTION
+SISTEMA AUTOMATICO DI FUSIONE DEI GRANI ItalTherm dotato di avanzata tecnologia di fusione ad induzione a media frequenza. Progettato per leghe e metalli sensibili all’ossidazione. Garantisce un riscaldamento rapido e uniforme con un controllo preciso della temperatura necessario per mantenere l’integrità e la fluidità del metallo.
+L’intero processo di granulazione e il raffreddamento, scarico e drenaggio dei grani sono completamente automatici per garantire efficienza e sicurezza operativa.
+Il processo di granulazione è protetto da gas inerte per ridurre al minimo l’ossidazione dei metalli.
+## DESCRIPTION TAB
+SISTEMA AUTOMATICO DI FUSIONE DEI GRANI ItalTherm dotato di avanzata tecnologia di fusione ad induzione a media frequenza. Progettato per leghe e metalli sensibili all’ossidazione. Garantisce un riscaldamento rapido e uniforme con un controllo preciso della temperatura necessario per mantenere l’integrità e la fluidità del metallo.
+L’intero processo di granulazione e il raffreddamento, scarico e drenaggio dei grani sono completamente automatici per garantire efficienza e sicurezza operativa.
+Il processo di granulazione è protetto da gas inerte per ridurre al minimo l’ossidazione dei metalli.
+## TABLE CAPTION
+SISTEMA DI PRODUZIONE DI GRANIGLIA
+## TABLE
+ | IT.GMB30 | IT.GMB50 | IT.GMB100
+VOLTAGGIO/ VOLTAGE | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ
+POTENZA / POWER | 30KW / (VARIABILE /ADJUSTABLE | 45KW / (VARIABILE /ADJUSTABLE | 75KW / (VARIABILE /ADJUSTABLE
+CAPACITÀ MASSIMA/ MAX CAPACITY | ORO / GOLD : 30 KG / ARGENTO/ SILVER:15 K | ORO / GOLD: 50 KG / ARGENTO/ SILVER: 25 KG | ORO/ GOLD: 100 KG/ ARGENTO/ SILVER: 50 KG
+TEMPO DI FUSIONE / MELTING TIME | 10-30 MIN | 20-40 MIN | 20-40 MIN
+DIMENSIONI / DIMENSION (LWH) | 2100*2360'2600MM | 2100*2360'2600MM | 2100*2360'2600MM
+TEMPERATURA MASSIMA/ MAX TEMPERATURE | 1500°C | 1500°C | 1500°C
+CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE | FORNITO | FORNITO | FORNITO
+PESO/ WEIGHT | 330KG | 350KG | 380KG
+## META
+SKU: GRAINS PRODUCTION SYSTEM MODEL IT.GMB
+Category: Ital-therm
+Tag: GRAINS PRODUCTION SYSTEM MODEL IT.GMB
+## PDF
+/wp-content/uploads/2026/05/GRAINS PRODUCTION SYSTEM MODEL IT.GMB.pdf
+## DOWNLOAD LABEL
+SCARICA SPECIFICHE TECNICHE

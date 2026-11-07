@@ -1,0 +1,90 @@
+{
+  "slug": "it-mt",
+  "code": "IT.MT",
+  "title": "FORNO DI FUSIONE METALLI A RIBALTAMENTO MANUALE",
+  "short": "Il forno di fusione per metalli ItalTherm a ribaltamento manuale è una soluzione compatta ed efficiente per la fusione di metalli preziosi come oro, argento, con capacità che vanno da 1 kg a 15 kg.\nDotato di un’avanzata tecnologia di riscaldamento a induzione elettromagnetica, il forno può raggiungere la temperatura di fusione entro 3-5 minuti, consentendo una fusione efficiente e leghe omogenee.\nIl suo design completamente integrato, che combina il meccanismo di inclinazione e l’alimentazione in un’unica unità, garantisce operazioni di versamento facili e convenienti e riduce al minimo i rischi e i requisiti di spazio.",
+  "specs": {
+    "columns": [
+      "IT.MT6",
+      "IT.MT10",
+      "IT.MT15"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "20KW\n(VARIABILE /ADJUSTABLE)",
+          "30KW\n(VARIABILE /ADJUSTABLE)",
+          "35KW\n(VARIABILE /ADJUSTABLE)"
+        ]
+      },
+      {
+        "label": "PESO/ WEIGHT",
+        "values": [
+          "75KG",
+          "130KG",
+          "150KG"
+        ]
+      },
+      {
+        "label": "CAPACITÀ MASSIMA/ MAX CAPACITY",
+        "values": [
+          "ORO / GOLD : 6KG ARGENTO/ SILVER: 3KG",
+          "ORO/ GOLD : 10KG ARGENTO/ SILVER: 5KG",
+          "ORO/ GOLD : 15KG ARGENTO/ SILVER: 8KG"
+        ]
+      },
+      {
+        "label": "TEMPO DI FUSIONE/ MELTING TIME",
+        "values": [
+          "3-6 MIN",
+          "6-12 MIN",
+          "6-12 MIN"
+        ]
+      },
+      {
+        "label": "DIMENSIONI/ DIMENSION (LWH)",
+        "values": [
+          "620×500×980 MM",
+          "730×630×980 MM",
+          "800×700×1050 M M"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MASSIMA/ MAX TEMPERATUR",
+        "values": [
+          "1600 ° C",
+          "1600 ° C",
+          "1600 ° C"
+        ]
+      },
+      {
+        "label": "CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE",
+        "values": [
+          "FORNITO/ EQUIPPED",
+          "FORNITO/ EQUIPPED",
+          "FORNITO/ EQUIPPED"
+        ]
+      }
+    ]
+  },
+  "table_title": "FORNO DI FUSIONE METALLI A RIBALTAMENTO MANUALE",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/TILTING-IT-MT-6-copia-1.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/TILTING-IT-MT-6-copia-4.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/TILTING-IT-MT-6-copia-2.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/MANUAL%20TILTING%20METAL%20MELTING%20FURNACE%20MODET%20IT.MT.pdf",
+  "meta": "SKU: MANUAL TILTING METAL MELTING FURNACE MODEL IT.MT\nCategory: Ital-therm\nTag: MANUAL TILTING(IT.MT)",
+  "group": "melt",
+  "old_path": "/it/product/forno-di-fusione-metalli-a-ribaltamento-manuale/",
+  "download_label": "SCARICA SPECIFICHE TECNICHE"
+}

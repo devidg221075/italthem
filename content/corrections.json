@@ -1,0 +1,1034 @@
+[
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[1].values[2]",
+    "from": "",
+    "to": "—"
+  },
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[4].values[0]",
+    "from": "12˙20 MINS",
+    "to": "12-20 MINS"
+  },
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[4].values[1]",
+    "from": "ABOUT 7˙10 MINS",
+    "to": "ABOUT 7-10 MINS"
+  },
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[4].values[2]",
+    "from": "1000°c",
+    "to": "ABOUT 7-10 MINS"
+  },
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "MOLD CAPACITY",
+    "to": "—"
+  },
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[5].values[2]",
+    "from": "MOLD CAPACITY",
+    "to": "—"
+  },
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[6].values[0]",
+    "from": "1100*880*1100MM",
+    "to": "1100×880×1100 MM"
+  },
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[6].values[1]",
+    "from": "1520*900*1080MM",
+    "to": "1520×900×1080 MM"
+  },
+  {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[6].values[2]",
+    "from": "1720*900*1080MM",
+    "to": "1720×900×1080 MM"
+  },
+  {
+    "file": "content/en/products/it-cc.json",
+    "field": "short",
+    "from": "A compact, versatile system for continuous casting of wires, strips, and tubes in precious metal alloys, featuring inert‑gas closed‑chamber melting, rapid shape change, and full metal discharge every batch.",
+    "to": "A compact, versatile system for continuous casting of wires, strips, and tubes in precious metal alloys, featuring inert-gas closed-chamber melting, rapid shape change, and full metal discharge every batch."
+  },
+  {
+    "file": "content/en/products/it-cc.json",
+    "field": "specs.rows[1].values[2]",
+    "from": "305KW",
+    "to": "35KW"
+  },
+  {
+    "file": "content/en/products/it-cc.json",
+    "field": "specs.rows[2].label",
+    "from": "TEM PO DI FUSIONE/ MELTING TIM E",
+    "to": "TEMPO DI FUSIONE/ MELTING TIME"
+  },
+  {
+    "file": "content/en/products/it-cc.json",
+    "field": "specs.rows[6].label",
+    "from": "TEM PERATURA/ TEMPERATURE",
+    "to": "TEMPERATURA/ TEMPERATURE"
+  },
+  {
+    "file": "content/en/products/it-cc.json",
+    "field": "specs.rows[7].values[0]",
+    "from": "900*700'1750MM",
+    "to": "900×700×1750 MM"
+  },
+  {
+    "file": "content/en/products/it-cc.json",
+    "field": "specs.rows[7].values[1]",
+    "from": "1000'800*1850MM",
+    "to": "1000×800×1850 MM"
+  },
+  {
+    "file": "content/en/products/it-cc.json",
+    "field": "specs.rows[7].values[2]",
+    "from": "1000'800'1850MM",
+    "to": "1000×800×1850 MM"
+  },
+  {
+    "file": "content/en/products/it-cc.json",
+    "field": "specs.rows[8].values[1]",
+    "from": "KG240KG",
+    "to": "240KG"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "title",
+    "from": "CONTROLLED ATMOSPHERE ANEALING FURNACE MODEL IT.AF",
+    "to": "CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "short",
+    "from": "ItalTherm anealing furnaces, are engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency:",
+    "to": "ItalTherm annealing furnaces, are engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency:"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "specs.rows[2].values[0]",
+    "from": "",
+    "to": "—"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "specs.rows[2].values[1]",
+    "from": "",
+    "to": "—"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "850'1800*1500MM(L*W'H)",
+    "to": "850×1800×1500 MM(L×W×H)"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "850*2100'1500MM(L'W*H)",
+    "to": "850×2100×1500 MM(L×W×H)"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "meta",
+    "from": "SKU: CONTROLLED ATMOSPHERE ANEALING FURNACE MODEL IT.AF\nCategory: Ital-therm\nTag: ANNEALING FURNACES",
+    "to": "SKU: CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF\nCategory: Ital-therm\nTag: ANNEALING FURNACES"
+  },
+  {
+    "file": "content/en/products/it-bf.json",
+    "field": "short",
+    "from": "A continuous‑process furnace for welding, brazing, sintering, and annealing metal components. The mesh‑belt system ensures uninterrupted production, while an inert‑gas atmosphere and oxygen‑burning barrier prevent oxidation. The furnace features programmable PID temperature control, independent heating zones, and a controlled cooling section for consistent, high‑quality results across a wide range of applications.",
+    "to": "A continuous-process furnace for welding, brazing, sintering, and annealing metal components. The mesh-belt system ensures uninterrupted production, while an inert-gas atmosphere and oxygen-burning barrier prevent oxidation. The furnace features programmable PID temperature control, independent heating zones, and a controlled cooling section for consistent, high-quality results across a wide range of applications."
+  },
+  {
+    "file": "content/en/products/it-bf.json",
+    "field": "specs.rows[3].values[0]",
+    "from": "1000(L)•6o(w)•3o(H)MM",
+    "to": "1000(L)×6o(w)×3o(H) MM"
+  },
+  {
+    "file": "content/en/products/it-bf.json",
+    "field": "specs.rows[3].values[1]",
+    "from": "2X 1000(L)•6o(w)•3o(H)MM",
+    "to": "2X 1000(L)×6o(w)×3o(H) MM"
+  },
+  {
+    "file": "content/en/products/it-bf.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "3970(L)•sso(w)•1448(H)MM",
+    "to": "3970(L)×sso(w)×1448(H) MM"
+  },
+  {
+    "file": "content/en/products/it-bf.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "3970(L)•sso(w)•1448(H)M M",
+    "to": "3970(L)×sso(w)×1448(H)M M"
+  },
+  {
+    "file": "content/en/products/it-cwa.json",
+    "field": "title",
+    "from": "CONTINUOUS WIRE ANEALING",
+    "to": "CONTINUOUS WIRE ANNEALING"
+  },
+  {
+    "file": "content/en/products/it-cwa.json",
+    "field": "short",
+    "from": "ItalTherm ltalTherm Continuous Wire Annealing Furnace A high-precision system tor continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere tor bright,",
+    "to": "ItalTherm ItalTherm Continuous Wire Annealing Furnace A high-precision system for continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere for bright,"
+  },
+  {
+    "file": "content/en/products/it-cwa.json",
+    "field": "specs.rows[6].values[0]",
+    "from": "2100'850'1830MM 350 KG",
+    "to": "2100×850×1830 MM 350 KG"
+  },
+  {
+    "file": "content/en/products/it-cwa.json",
+    "field": "table_title",
+    "from": "CONTROLLED ATMOSPHERE WIRE ANNEAUNG FURNACE",
+    "to": "CONTROLLED ATMOSPHERE WIRE ANNEALING FURNACE"
+  },
+  {
+    "file": "content/en/products/it-cwa.json",
+    "field": "meta",
+    "from": "SKU: CONTINUOUS WIRE ANEALING\nCategory: Ital-therm\nTag: CONTINUOUS WIRE ANEALING",
+    "to": "SKU: CONTINUOUS WIRE ANNEALING\nCategory: Ital-therm\nTag: CONTINUOUS WIRE ANNEALING"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[1].values[0]",
+    "from": "30KW ˙ADJUSTABLEˆ",
+    "to": "30KW (ADJUSTABLE)"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[1].values[1]",
+    "from": "30KW ˙ADJUSTABLEˆ",
+    "to": "30KW (ADJUSTABLE)"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[1].values[2]",
+    "from": "30KW ˙ADJUSTABLEˆ",
+    "to": "30KW (ADJUSTABLE)"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[3].values[0]",
+    "from": "10˝20 MIN",
+    "to": "10-20 MIN"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[3].values[1]",
+    "from": "10˝30 MIN",
+    "to": "10-30 MIN"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[3].values[2]",
+    "from": "10˝30 MIN",
+    "to": "10-30 MIN"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[4].values[0]",
+    "from": "1210*750*1340MM",
+    "to": "1210×750×1340 MM"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[4].values[1]",
+    "from": "1210*750*1340MM",
+    "to": "1210×750×1340 MM"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[4].values[2]",
+    "from": "1210*750*1340MM",
+    "to": "1210×750×1340 MM"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[6].label",
+    "from": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K˝TYPE",
+    "to": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K-TYPE"
+  },
+  {
+    "file": "content/en/products/it-gms.json",
+    "field": "specs.rows[4].values[0]",
+    "from": "1100*1000'1100MM",
+    "to": "1100×1000×1100 MM"
+  },
+  {
+    "file": "content/en/products/it-gms.json",
+    "field": "specs.rows[4].values[1]",
+    "from": "1100*1000'1100MM",
+    "to": "1100×1000×1100 MM"
+  },
+  {
+    "file": "content/en/products/it-gms.json",
+    "field": "specs.rows[4].values[2]",
+    "from": "1100*1000'1100MM",
+    "to": "1100×1000×1100 MM"
+  },
+  {
+    "file": "content/en/products/it-gmb.json",
+    "field": "specs.rows[4].values[0]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/en/products/it-gmb.json",
+    "field": "specs.rows[4].values[1]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/en/products/it-gmb.json",
+    "field": "specs.rows[4].values[2]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/en/products/it-mt.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "620'500'980 MM",
+    "to": "620×500×980 MM"
+  },
+  {
+    "file": "content/en/products/it-mt.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "730'630'980 MM",
+    "to": "730×630×980 MM"
+  },
+  {
+    "file": "content/en/products/it-mt.json",
+    "field": "specs.rows[5].values[2]",
+    "from": "800*700'1050 M M",
+    "to": "800×700×1050 M M"
+  },
+  {
+    "file": "content/en/products/it-sm.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "620'500'980 MM",
+    "to": "620×500×980 MM"
+  },
+  {
+    "file": "content/en/products/it-sm.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "730'630'980 MM",
+    "to": "730×630×980 MM"
+  },
+  {
+    "file": "content/en/products/it-sm.json",
+    "field": "specs.rows[5].values[2]",
+    "from": "800*700'1050 MM",
+    "to": "800×700×1050 MM"
+  },
+  {
+    "file": "content/en/products/it-fm.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/en/products/it-fm.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/en/products/it-fm.json",
+    "field": "specs.rows[5].values[2]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/en/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "The ItalTherm mesh belt heat treatment furnace is designed for continuous welding, brazing, sintering, and annealing of metal components, including jewelry and precision parts. The mesh‑belt transport system enables uninterrupted processing, while the entire cycle takes place under inert‑gas protection to prevent oxidation.",
+    "to": "The ItalTherm mesh belt heat treatment furnace is designed for continuous welding, brazing, sintering, and annealing of metal components, including jewelry and precision parts. The mesh-belt transport system enables uninterrupted processing, while the entire cycle takes place under inert-gas protection to prevent oxidation."
+  },
+  {
+    "file": "content/en/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "An oxygen‑burning barrier at the furnace entrance eliminates residual oxygen, ensuring a clean, controlled atmosphere. After heating, workpieces move directly into the cooling zone for stable, repeatable results.",
+    "to": "An oxygen-burning barrier at the furnace entrance eliminates residual oxygen, ensuring a clean, controlled atmosphere. After heating, workpieces move directly into the cooling zone for stable, repeatable results."
+  },
+  {
+    "file": "content/en/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "High‑temperature‑resistant metal belt (stainless steel or nickel alloys)",
+    "to": "High-temperature-resistant metal belt (stainless steel or nickel alloys)"
+  },
+  {
+    "file": "content/en/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "PLC or industrial computer for temperature, belt speed, and gas‑flow management",
+    "to": "PLC or industrial computer for temperature, belt speed, and gas-flow management"
+  },
+  {
+    "file": "content/en/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "Continuous 24/7 production for high‑volume output",
+    "to": "Continuous 24/7 production for high-volume output"
+  },
+  {
+    "file": "content/en/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "Energy‑efficient closed design with compliant exhaust treatment",
+    "to": "Energy-efficient closed design with compliant exhaust treatment"
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "A high‑precision system engineered for the continuous annealing of precious‑metal wires, delivering exceptional temperature stability, metallurgical consistency, and bright‑surface results.",
+    "to": "A high-precision system engineered for the continuous annealing of precious-metal wires, delivering exceptional temperature stability, metallurgical consistency, and bright-surface results."
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "The furnace uses an advanced resistance‑heating system to ensure highly uniform temperature distribution along the entire heating chamber.",
+    "to": "The furnace uses an advanced resistance-heating system to ensure highly uniform temperature distribution along the entire heating chamber."
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Eliminates drawing‑induced internal stresses",
+    "to": "Eliminates drawing-induced internal stresses"
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Servo‑Controlled Wire Tension System",
+    "to": "Servo-Controlled Wire Tension System"
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "High‑precision servo motors automatically regulate wire tension throughout the process.",
+    "to": "High-precision servo motors automatically regulate wire tension throughout the process."
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Essential for ultra‑fine wires where tension stability is critical",
+    "to": "Essential for ultra-fine wires where tension stability is critical"
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Hydrogen‑Rich Protective Atmosphere",
+    "to": "Hydrogen-Rich Protective Atmosphere"
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "The furnace operates with controlled protection gases, including hydrogen‑rich atmospheres.",
+    "to": "The furnace operates with controlled protection gases, including hydrogen-rich atmospheres."
+  },
+  {
+    "file": "content/en/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Produces bright, clean, oxide‑free wire",
+    "to": "Produces bright, clean, oxide-free wire"
+  },
+  {
+    "file": "content/en/services/italtherm-annealing-furnaces.json",
+    "field": "body",
+    "from": "Controlled inert‑gas environment minimizes oxidation while enabling fast, clean cooling cycles.",
+    "to": "Controlled inert-gas environment minimizes oxidation while enabling fast, clean cooling cycles."
+  },
+  {
+    "file": "content/en/services/italtherm-annealing-furnaces.json",
+    "field": "body",
+    "from": "Industrial‑grade build quality combined with intelligent protections for reliable, continuous operation.",
+    "to": "Industrial-grade build quality combined with intelligent protections for reliable, continuous operation."
+  },
+  {
+    "file": "content/en/services/gear-driven-tilting-metal-melting-furnace.json",
+    "field": "body",
+    "from": "Precision Meets Affordability: 10-50kg Gear-Driven Metal Melting Tilting Melting Furnace.",
+    "to": "Precision Meets Affordability: 10-50kg Gear-Driven Tilting Metal Melting Furnace."
+  },
+  {
+    "file": "content/en/services/gear-driven-tilting-metal-melting-furnace.json",
+    "field": "body",
+    "from": "Lorem Ipsum is simply free text not dummy available typesetting industry been the industry standard Lorem ipsum is simply free text",
+    "to": ""
+  },
+  {
+    "file": "content/en/pages.json#home",
+    "field": "sections[0].blocks[0].text",
+    "from": "High‑technology systems",
+    "to": "High-technology systems"
+  },
+  {
+    "file": "content/en/pages.json#home",
+    "field": "sections[1].blocks[0].text",
+    "from": "CONTINUOUS WIRE ANEALING",
+    "to": "CONTINUOUS WIRE ANNEALING"
+  },
+  {
+    "file": "content/en/pages.json#home",
+    "field": "sections[1].blocks[2].text",
+    "from": "CONTROLLED ATMOSPHERE ANEALING FURNACE MODEL IT.AF",
+    "to": "CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF"
+  },
+  {
+    "file": "content/en/pages.json#home",
+    "field": "sections[2].blocks[0].text",
+    "from": "Precision Meets Affordability: 10-50kg Gear-Driven Metal Melting Tilting Melting Furnace.",
+    "to": "Precision Meets Affordability: 10-50kg Gear-Driven Tilting Metal Melting Furnace."
+  },
+  {
+    "file": "content/en/pages.json#home",
+    "field": "sections[2].blocks[5].text",
+    "from": "A high‑precision system engineered for the continuous annealing of precious‑metal wires,",
+    "to": "A high-precision system engineered for the continuous annealing of precious-metal wires,"
+  },
+  {
+    "file": "content/en/pages.json#home",
+    "field": "sections[2].blocks[9].text",
+    "from": "Precision Meets Affordability: 10-50kg Gear-Driven Metal Melting Tilting Melting Furnace\nUnlock exceptional",
+    "to": "Precision Meets Affordability: 10-50kg Gear-Driven Tilting Metal Melting Furnace\nUnlock exceptional"
+  },
+  {
+    "file": "content/en/pages.json#home",
+    "field": "meta_description",
+    "from": "ITALTHERM is an Italian company specializing in high‑technology systems for melting, casting, and heat treatment of precious metals.",
+    "to": "ITALTHERM is an Italian company specializing in high-technology systems for melting, casting, and heat treatment of precious metals."
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "sections[1].blocks[0].text",
+    "from": "Medium‑frequency induction furnaces engineered for gold, silver, platinum, and palladium.",
+    "to": "Medium-frequency induction furnaces engineered for gold, silver, platinum, and palladium."
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "sections[1].blocks[1].items[0]",
+    "from": "Contact‑free, contamination‑free melting",
+    "to": "Contact-free, contamination-free melting"
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "sections[1].blocks[1].items[2]",
+    "from": "Tilt‑pour and vacuum options",
+    "to": "Tilt-pour and vacuum options"
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "sections[2].blocks[0].text",
+    "from": "Flexible systems for oxidation‑free production of strips, tubes, and wires.",
+    "to": "Flexible systems for oxidation-free production of strips, tubes, and wires."
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "sections[3].blocks[0].text",
+    "from": "Controlled‑atmosphere thermal systems for:",
+    "to": "Controlled-atmosphere thermal systems for:"
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "sections[4].blocks[0].text",
+    "from": "Flexible systems for oxidation‑free production of strips, tubes, and wires.",
+    "to": "These technologies ensure thermal uniformity, repeatability and consistent results in processing."
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "sections[4].blocks[1].items[1]",
+    "from": "High‑purity, high‑efficiency performance",
+    "to": "High-purity, high-efficiency performance"
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "lead",
+    "from": "ITALTHERM is an Italian company specializing in high‑technology systems for melting, casting, and heat treatment of precious metals.",
+    "to": "ITALTHERM is an Italian company specializing in high-technology systems for melting, casting, and heat treatment of precious metals."
+  },
+  {
+    "file": "content/en/pages.json#about",
+    "field": "meta_description",
+    "from": "ITALTHERM is an Italian company specializing in high‑technology systems for melting, casting, and heat treatment of precious metals. Founded by a team of experienced engineers and high skilled technicians, we provide reliable, precise, and customizable equipment for refineries, jewelry manufacturers, and bullion producers.",
+    "to": "ITALTHERM is an Italian company specializing in high-technology systems for melting, casting, and heat treatment of precious metals. Founded by a team of experienced engineers and high skilled technicians, we provide reliable, precise, and customizable equipment for refineries, jewelry manufacturers, and bullion producers."
+  },
+  {
+    "file": "content/en/pages.json#products",
+    "field": "meta_description",
+    "from": "high‑technology systems for melting, casting, and heat treatment of precious metals.",
+    "to": "high-technology systems for melting, casting, and heat treatment of precious metals."
+  },
+  {
+    "file": "content/en/pages.json#contact",
+    "field": "lead",
+    "from": "Please fill out the form below to require information or estimate of costs. We will answer back as soon as possible.\nPlease fill out all required fields.",
+    "to": "Please fill out the form below to request information or an estimate of costs. We will answer back as soon as possible.\nPlease fill out all required fields."
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[1].values[2]",
+    "from": "",
+    "to": "—"
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[4].values[0]",
+    "from": "12˙20 MINS",
+    "to": "12-20 MINS"
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[4].values[1]",
+    "from": "ABOUT 7˙10 MINS",
+    "to": "ABOUT 7-10 MINS"
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[4].values[2]",
+    "from": "1000°c",
+    "to": "ABOUT 7-10 MINS"
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "MOLD CAPACITY",
+    "to": "—"
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[5].values[2]",
+    "from": "MOLD CAPACITY",
+    "to": "—"
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[6].values[0]",
+    "from": "1100*880*1100MM",
+    "to": "1100×880×1100 MM"
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[6].values[1]",
+    "from": "1520*900*1080MM",
+    "to": "1520×900×1080 MM"
+  },
+  {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[6].values[2]",
+    "from": "1720*900*1080MM",
+    "to": "1720×900×1080 MM"
+  },
+  {
+    "file": "content/it/products/it-cc.json",
+    "field": "specs.rows[1].values[2]",
+    "from": "305KW",
+    "to": "35KW"
+  },
+  {
+    "file": "content/it/products/it-cc.json",
+    "field": "specs.rows[2].label",
+    "from": "TEM PO DI FUSIONE/ MELTING TIM E",
+    "to": "TEMPO DI FUSIONE/ MELTING TIME"
+  },
+  {
+    "file": "content/it/products/it-cc.json",
+    "field": "specs.rows[6].label",
+    "from": "TEM PERATURA/ TEMPERATURE",
+    "to": "TEMPERATURA/ TEMPERATURE"
+  },
+  {
+    "file": "content/it/products/it-cc.json",
+    "field": "specs.rows[7].values[0]",
+    "from": "900*700'1750MM",
+    "to": "900×700×1750 MM"
+  },
+  {
+    "file": "content/it/products/it-cc.json",
+    "field": "specs.rows[7].values[1]",
+    "from": "1000'800*1850MM",
+    "to": "1000×800×1850 MM"
+  },
+  {
+    "file": "content/it/products/it-cc.json",
+    "field": "specs.rows[7].values[2]",
+    "from": "1000'800'1850MM",
+    "to": "1000×800×1850 MM"
+  },
+  {
+    "file": "content/it/products/it-cc.json",
+    "field": "specs.rows[8].values[1]",
+    "from": "KG240KG",
+    "to": "240KG"
+  },
+  {
+    "file": "content/it/products/it-af.json",
+    "field": "specs.rows[2].values[0]",
+    "from": "",
+    "to": "—"
+  },
+  {
+    "file": "content/it/products/it-af.json",
+    "field": "specs.rows[2].values[1]",
+    "from": "",
+    "to": "—"
+  },
+  {
+    "file": "content/it/products/it-af.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "850'1800*1500MM(L*W'H)",
+    "to": "850×1800×1500 MM(L×W×H)"
+  },
+  {
+    "file": "content/it/products/it-af.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "850*2100'1500MM(L'W*H)",
+    "to": "850×2100×1500 MM(L×W×H)"
+  },
+  {
+    "file": "content/it/products/it-af.json",
+    "field": "meta",
+    "from": "SKU: CONTROLLED ATMOSPHERE ANEALING FURNACE MODEL IT.AF\nCategory: Ital-therm\nTag: ANNEALING FURNACES",
+    "to": "SKU: CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF\nCategory: Ital-therm\nTag: ANNEALING FURNACES"
+  },
+  {
+    "file": "content/it/products/it-bf.json",
+    "field": "specs.rows[3].values[0]",
+    "from": "1000(L)•6o(w)•3o(H)MM",
+    "to": "1000(L)×6o(w)×3o(H) MM"
+  },
+  {
+    "file": "content/it/products/it-bf.json",
+    "field": "specs.rows[3].values[1]",
+    "from": "2X 1000(L)•6o(w)•3o(H)MM",
+    "to": "2X 1000(L)×6o(w)×3o(H) MM"
+  },
+  {
+    "file": "content/it/products/it-bf.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "3970(L)•sso(w)•1448(H)MM",
+    "to": "3970(L)×sso(w)×1448(H) MM"
+  },
+  {
+    "file": "content/it/products/it-bf.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "3970(L)•sso(w)•1448(H)M M",
+    "to": "3970(L)×sso(w)×1448(H)M M"
+  },
+  {
+    "file": "content/it/products/it-cwa.json",
+    "field": "specs.rows[6].values[0]",
+    "from": "2100'850'1830MM 350 KG",
+    "to": "2100×850×1830 MM 350 KG"
+  },
+  {
+    "file": "content/it/products/it-cwa.json",
+    "field": "meta",
+    "from": "SKU: CONTINUOUS WIRE ANEALING\nCategory: Ital-therm",
+    "to": "SKU: CONTINUOUS WIRE ANNEALING\nCategory: Ital-therm"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[1].values[0]",
+    "from": "30KW ˙ADJUSTABLEˆ",
+    "to": "30KW (ADJUSTABLE)"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[1].values[1]",
+    "from": "30KW ˙ADJUSTABLEˆ",
+    "to": "30KW (ADJUSTABLE)"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[1].values[2]",
+    "from": "30KW ˙ADJUSTABLEˆ",
+    "to": "30KW (ADJUSTABLE)"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[3].values[0]",
+    "from": "10˝20 MIN",
+    "to": "10-20 MIN"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[3].values[1]",
+    "from": "10˝30 MIN",
+    "to": "10-30 MIN"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[3].values[2]",
+    "from": "10˝30 MIN",
+    "to": "10-30 MIN"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[4].values[0]",
+    "from": "1210*750*1340MM",
+    "to": "1210×750×1340 MM"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[4].values[1]",
+    "from": "1210*750*1340MM",
+    "to": "1210×750×1340 MM"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[4].values[2]",
+    "from": "1210*750*1340MM",
+    "to": "1210×750×1340 MM"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[6].label",
+    "from": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K˝TYPE",
+    "to": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K-TYPE"
+  },
+  {
+    "file": "content/it/products/it-gms.json",
+    "field": "specs.rows[4].values[0]",
+    "from": "1100*1000'1100MM",
+    "to": "1100×1000×1100 MM"
+  },
+  {
+    "file": "content/it/products/it-gms.json",
+    "field": "specs.rows[4].values[1]",
+    "from": "1100*1000'1100MM",
+    "to": "1100×1000×1100 MM"
+  },
+  {
+    "file": "content/it/products/it-gms.json",
+    "field": "specs.rows[4].values[2]",
+    "from": "1100*1000'1100MM",
+    "to": "1100×1000×1100 MM"
+  },
+  {
+    "file": "content/it/products/it-gmb.json",
+    "field": "specs.rows[4].values[0]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/it/products/it-gmb.json",
+    "field": "specs.rows[4].values[1]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/it/products/it-gmb.json",
+    "field": "specs.rows[4].values[2]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/it/products/it-mt.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "620'500'980 MM",
+    "to": "620×500×980 MM"
+  },
+  {
+    "file": "content/it/products/it-mt.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "730'630'980 MM",
+    "to": "730×630×980 MM"
+  },
+  {
+    "file": "content/it/products/it-mt.json",
+    "field": "specs.rows[5].values[2]",
+    "from": "800*700'1050 M M",
+    "to": "800×700×1050 M M"
+  },
+  {
+    "file": "content/it/products/it-sm.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "620'500'980 MM",
+    "to": "620×500×980 MM"
+  },
+  {
+    "file": "content/it/products/it-sm.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "730'630'980 MM",
+    "to": "730×630×980 MM"
+  },
+  {
+    "file": "content/it/products/it-sm.json",
+    "field": "specs.rows[5].values[2]",
+    "from": "800*700'1050 MM",
+    "to": "800×700×1050 MM"
+  },
+  {
+    "file": "content/it/products/it-fm.json",
+    "field": "specs.rows[5].values[0]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/it/products/it-fm.json",
+    "field": "specs.rows[5].values[1]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/it/products/it-fm.json",
+    "field": "specs.rows[5].values[2]",
+    "from": "2100*2360'2600MM",
+    "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/it/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "The ItalTherm mesh belt heat treatment furnace is designed for continuous welding, brazing, sintering, and annealing of metal components, including jewelry and precision parts. The mesh‑belt transport system enables uninterrupted processing, while the entire cycle takes place under inert‑gas protection to prevent oxidation.",
+    "to": "The ItalTherm mesh belt heat treatment furnace is designed for continuous welding, brazing, sintering, and annealing of metal components, including jewelry and precision parts. The mesh-belt transport system enables uninterrupted processing, while the entire cycle takes place under inert-gas protection to prevent oxidation."
+  },
+  {
+    "file": "content/it/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "An oxygen‑burning barrier at the furnace entrance eliminates residual oxygen, ensuring a clean, controlled atmosphere. After heating, workpieces move directly into the cooling zone for stable, repeatable results.",
+    "to": "An oxygen-burning barrier at the furnace entrance eliminates residual oxygen, ensuring a clean, controlled atmosphere. After heating, workpieces move directly into the cooling zone for stable, repeatable results."
+  },
+  {
+    "file": "content/it/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "High‑temperature‑resistant metal belt (stainless steel or nickel alloys)",
+    "to": "High-temperature-resistant metal belt (stainless steel or nickel alloys)"
+  },
+  {
+    "file": "content/it/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "PLC or industrial computer for temperature, belt speed, and gas‑flow management",
+    "to": "PLC or industrial computer for temperature, belt speed, and gas-flow management"
+  },
+  {
+    "file": "content/it/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "Continuous 24/7 production for high‑volume output",
+    "to": "Continuous 24/7 production for high-volume output"
+  },
+  {
+    "file": "content/it/services/italtherm-mesh-belt-heat-treatment-furnace.json",
+    "field": "body",
+    "from": "Energy‑efficient closed design with compliant exhaust treatment",
+    "to": "Energy-efficient closed design with compliant exhaust treatment"
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "A high‑precision system engineered for the continuous annealing of precious‑metal wires, delivering exceptional temperature stability, metallurgical consistency, and bright‑surface results.",
+    "to": "A high-precision system engineered for the continuous annealing of precious-metal wires, delivering exceptional temperature stability, metallurgical consistency, and bright-surface results."
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "The furnace uses an advanced resistance‑heating system to ensure highly uniform temperature distribution along the entire heating chamber.",
+    "to": "The furnace uses an advanced resistance-heating system to ensure highly uniform temperature distribution along the entire heating chamber."
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Eliminates drawing‑induced internal stresses",
+    "to": "Eliminates drawing-induced internal stresses"
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Servo‑Controlled Wire Tension System",
+    "to": "Servo-Controlled Wire Tension System"
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "High‑precision servo motors automatically regulate wire tension throughout the process.",
+    "to": "High-precision servo motors automatically regulate wire tension throughout the process."
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Essential for ultra‑fine wires where tension stability is critical",
+    "to": "Essential for ultra-fine wires where tension stability is critical"
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Hydrogen‑Rich Protective Atmosphere",
+    "to": "Hydrogen-Rich Protective Atmosphere"
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "The furnace operates with controlled protection gases, including hydrogen‑rich atmospheres.",
+    "to": "The furnace operates with controlled protection gases, including hydrogen-rich atmospheres."
+  },
+  {
+    "file": "content/it/services/italtherm-continuous-wire-annealing-furnace.json",
+    "field": "body",
+    "from": "Produces bright, clean, oxide‑free wire",
+    "to": "Produces bright, clean, oxide-free wire"
+  },
+  {
+    "file": "content/it/services/italtherm-annealing-furnaces.json",
+    "field": "body",
+    "from": "Controlled inert‑gas environment minimizes oxidation while enabling fast, clean cooling cycles.",
+    "to": "Controlled inert-gas environment minimizes oxidation while enabling fast, clean cooling cycles."
+  },
+  {
+    "file": "content/it/services/italtherm-annealing-furnaces.json",
+    "field": "body",
+    "from": "Industrial‑grade build quality combined with intelligent protections for reliable, continuous operation.",
+    "to": "Industrial-grade build quality combined with intelligent protections for reliable, continuous operation."
+  },
+  {
+    "file": "content/it/services/gear-driven-tilting-metal-melting-furnace.json",
+    "field": "body",
+    "from": "Precision Meets Affordability: 10-50kg Gear-Driven Metal Melting Tilting Melting Furnace.",
+    "to": "Precision Meets Affordability: 10-50kg Gear-Driven Tilting Metal Melting Furnace."
+  },
+  {
+    "file": "content/it/services/gear-driven-tilting-metal-melting-furnace.json",
+    "field": "body",
+    "from": "Lorem Ipsum is simply free text not dummy available typesetting industry been the industry standard Lorem ipsum is simply free text",
+    "to": ""
+  },
+  {
+    "file": "content/it/pages.json#home",
+    "field": "sections[2].blocks[0].text",
+    "from": "Precision Meets Affordability: 10-50kg Gear-Driven Metal Melting Tilting Melting Furnace.",
+    "to": "Precision Meets Affordability: 10-50kg Gear-Driven Tilting Metal Melting Furnace."
+  },
+  {
+    "file": "content/it/pages.json#home",
+    "field": "sections[2].blocks[5].text",
+    "from": "A high‑precision system engineered for the continuous annealing of precious‑metal wires,",
+    "to": "A high-precision system engineered for the continuous annealing of precious-metal wires,"
+  },
+  {
+    "file": "content/it/pages.json#home",
+    "field": "sections[2].blocks[9].text",
+    "from": "Precision Meets Affordability: 10-50kg Gear-Driven Metal Melting Tilting Melting Furnace\nUnlock exceptional",
+    "to": "Precision Meets Affordability: 10-50kg Gear-Driven Tilting Metal Melting Furnace\nUnlock exceptional"
+  },
+  {
+    "file": "content/it/pages.json#about",
+    "field": "sections[1].blocks[1].items[1]",
+    "from": "Controllo termico ultra‑preciso (±1°C) per leghe ad alto valore.",
+    "to": "Controllo termico ultra-preciso (±1°C) per leghe ad alto valore."
+  },
+  {
+    "file": "content/it/pages.json#about",
+    "field": "sections[1].blocks[1].items[3]",
+    "from": "Opzioni tilt‑pour e vuoto per colate prive di ossidazione, ideali per leghe da gioielleria e lingotti da investimento.",
+    "to": "Opzioni tilt-pour e vuoto per colate prive di ossidazione, ideali per leghe da gioielleria e lingotti da investimento."
+  }
+]
