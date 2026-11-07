@@ -53,7 +53,8 @@ for (const lang of ['en', 'it']) {
       const cta = lang === 'en' ? `/en/contact/?product=${prod.slug}` : `/it/contatti/?product=${prod.slug}`;
       assert.ok(html.includes(`href="${cta}"`), `${prod.slug} CTA`);
       assert.ok(html.includes(lang === 'en' ? 'Request a quote' : 'Richiedi un preventivo'));
-      assert.ok(html.includes(`<span class="badge">${prod.code}</span>`));
+      assert.ok(html.includes(`<span class="pcode">${prod.code}</span>`), 'code is part of the h1');
+      assert.match(html, /<link rel="stylesheet" href="\/assets\/css\/product\.css\?v=[0-9a-f]{8}">/);
       assert.equal(count(html, /class="pc"/g), 3, 'three related products');
     }
   });
@@ -85,12 +86,13 @@ for (const lang of ['en', 'it']) {
   });
 }
 
-test('synthetic product with empty specs renders no table and no Description heading', async () => {
+test('synthetic product with empty specs renders no table and no models tab', async () => {
   const { productBody } = await import('../src/lib/views.mjs');
   const base = contents.en.products[0];
   const html = productBody({ ...base, specs: { columns: [], rows: [] } }, contents.en, 'en');
   assert.equal(count(html, /<table/g), 0);
-  assert.ok(!html.includes('Description'));
+  assert.ok(!html.includes('Models and technical data'), 'no empty tab');
+  assert.ok(html.includes('role="tab"') && html.includes('>Description<'), 'description tab remains');
   const withSpecs = productBody(base, contents.en, 'en');
   assert.equal(count(withSpecs, /<table/g), 1);
 });
@@ -110,7 +112,7 @@ test('cells and meta keep line breaks as <br>; description keeps paragraphs', ()
   const html = read(productUrl(kb, 'en'));
   const paras = kb.short.split('\n').filter(Boolean);
   assert.equal(count(html.match(/<div class="desc">[\s\S]*?<\/div>/)[0], /<p>/g) + (paras[0].endsWith(':') ? 1 : 0), paras.length);
-  assert.ok(html.match(/<div class="meta">[\s\S]*?<br>[\s\S]*?<\/div>/));
+  assert.ok(html.match(/<p class="meta">[\s\S]*?<br>[\s\S]*?<\/p>/));
   const cc = contents.en.products.find((p) => p.code === 'IT.CC');
   const ccHtml = read(productUrl(cc, 'en'));
   assert.ok(ccHtml.includes('<b>ItalTherm Continuous Casting Machine:</b>'), 'lead line ending with ":" is bold');
@@ -133,13 +135,15 @@ test('PDF link points to a local file that exists and opens safely in a new tab'
   for (const lang of ['en', 'it']) {
     for (const prod of contents[lang].products) {
       const html = read(productUrl(prod, lang));
-      const m = html.match(/<a class="pdf" href="([^"]+)"([^>]*)>/);
-      assert.ok(m, `${prod.slug} pdf link`);
-      assert.equal(m[1], `/assets/docs/${prod.slug}.pdf`);
-      assert.ok(existsSync(path.join(ROOT, m[1].slice(1))), m[1]);
-      assert.match(m[2], /target="_blank"/);
-      assert.match(m[2], /rel="noopener"/);
-      assert.ok(html.includes(prod.download_label));
+      const links = [...html.matchAll(/<a class="btn b[12]" href="([^"]+\.pdf)"([^>]*)>/g)];
+      assert.equal(links.length, 2, `${prod.slug}: datasheet button beside the gallery and in the Documentation tab`);
+      for (const m of links) {
+        assert.equal(m[1], `/assets/docs/${prod.slug}.pdf`);
+        assert.ok(existsSync(path.join(ROOT, m[1].slice(1))), m[1]);
+        assert.match(m[2], /target="_blank"/);
+        assert.match(m[2], /rel="noopener"/);
+      }
+      assert.ok(html.includes(lang === 'en' ? 'Download PDF datasheet' : 'Scarica scheda PDF'));
     }
   }
 });

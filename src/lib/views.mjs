@@ -140,7 +140,7 @@ function specCell(v, t) {
 function specTable(p, t) {
   const { columns = [], rows = [] } = p.specs ?? {};
   if (!rows.length) return '';
-  return `<div class="ey" style="margin-top:20px">${esc(t.description)}</div><div class="spec"><div class="spec-w"><table${p.table_title ? ` aria-label="${esc(p.table_title)}"` : ''}><thead><tr><td></td>${columns.map((c) => `<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr><th scope="row">${br(r.label)}</th>${r.values.map((v) => specCell(v, t)).join('')}</tr>`).join('')}</tbody></table></div></div>`;
+  return `<div class="spec"><div class="spec-w"><table${p.table_title ? ` aria-label="${esc(p.table_title)}"` : ''}><thead><tr><td></td>${columns.map((c) => `<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr><th scope="row">${br(r.label)}</th>${r.values.map((v) => specCell(v, t)).join('')}</tr>`).join('')}</tbody></table></div></div>`;
 }
 
 function gallery(p) {
@@ -162,17 +162,35 @@ function related(p, products) {
   return [...others.filter((x) => x.group === p.group), ...others.filter((x) => x.group !== p.group)].slice(0, 3);
 }
 
+/** Intro shown beside the gallery: the first real paragraph. A short first line ending in ":" ("ItalTherm Macchina per colata continua:") is a heading, so the next line is used. */
+function intro(short) {
+  const paras = String(short ?? '').split(/\r?\n/).map((x) => x.trim()).filter(Boolean);
+  if (!paras.length) return '';
+  const first = paras[0].endsWith(':') && paras[0].length < 80 && paras.length > 1 ? paras[1] : paras[0];
+  return first.replace(/:$/, '.');
+}
+
 export function productBody(p, content, lang) {
   const t = T[lang];
+  const pd = t.pd;
   const productsPage = content.pages.find((x) => x.slug === 'products');
   const g = gallery(p);
   const gal = `<div class="gal">${g.imgs.length ? `<div class="big">${g.big}</div>` : ''}${g.imgs.length > 1 ? `<div class="th" aria-label="${esc(t.gallery)}">${g.imgs.map((u, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'} aria-label="${esc(t.imageN(i + 1))}">${img(u, '', { sizes: SIZES.thumb })}</button>`).join('')}</div>` : ''}</div>`;
   const contact = `${pageUrl('contact', lang)}?product=${encodeURIComponent(p.slug)}`;
-  const pdf = p.pdf && hasFile(docUrl(p.slug).slice(1))
-    ? `<a class="pdf" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${esc(p.download_label)} ↓</a>` : '';
-  return `<section class="ph0 pg" style="padding-bottom:10px"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / <a href="${pageUrl('products', lang)}">${esc(productsPage?.title ?? t.products)}</a> / ${esc(p.code)}</div></div></section>
-<section><div class="w"><div class="pd">${gal}<div><span class="badge">${esc(p.code)}</span><h1>${esc(displayTitle(p.title))}</h1>${description(p.short)}<div class="act"><a class="btn b1" href="${esc(contact)}">${esc(t.quote)} →</a><a class="btn b2" href="${pageUrl('contact', lang)}">${esc(t.contactUs)}</a></div>${pdf}${p.meta ? `<div class="meta">${br(p.meta)}</div>` : ''}</div></div>
-${specTable(p, t)}</div></section>
+  const hasPdf = Boolean(p.pdf && hasFile(docUrl(p.slug).slice(1)));
+  const pdfBtn = hasPdf ? `<a class="btn b2" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pd.pdf)}</a>` : '';
+  const spec = specTable(p, t);
+  const meta = p.meta ? `<p class="meta">${br(p.meta)}</p>` : '';
+  const panels = [
+    { id: 'desc', label: pd.tabs[0], html: description(p.short) },
+    spec && { id: 'spec', label: pd.tabs[1], html: spec },
+    (hasPdf || meta) && { id: 'docs', label: pd.tabs[2], html: `${hasPdf ? `<div class="dc"><div>${icon('doc')}<b>${esc(pd.docTitle)}</b><span>${esc(pd.docText)}</span></div><a class="btn b1" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pd.pdf)}</a></div>` : ''}${meta}` },
+  ].filter((x) => x && x.html);
+  const first = panels.find((x) => x.id === 'spec') ?? panels[0];
+  const tabs = `<div class="ptab" data-first="${first.id}"><div class="tl" role="tablist" aria-label="${esc(pd.tabList)}">${panels.map((x) => `<button type="button" role="tab" id="t-${x.id}" aria-controls="p-${x.id}" aria-selected="${x === first}" tabindex="${x === first ? 0 : -1}">${esc(x.label)}</button>`).join('')}</div>${panels.map((x) => `<div class="tp" role="tabpanel" id="p-${x.id}" aria-labelledby="t-${x.id}"${x === first ? '' : ' data-off'}><h2 class="tph">${esc(x.label)}</h2>${x.html}</div>`).join('')}</div>`;
+  return `<section class="pdh"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> <span aria-hidden="true">›</span> <a href="${pageUrl('products', lang)}">${esc(productsPage?.title ?? t.products)}</a> <span aria-hidden="true">›</span> <b>${esc(p.code)}</b></div></div></section>
+<section class="pdm"><div class="w pdg">${gal}<div class="pi"><p class="kick"><i aria-hidden="true"></i><span>${esc(t.filters[p.group] ?? t.products)}</span></p><h1><span class="pcode">${esc(p.code)}</span><span class="ptitle">${esc(displayTitle(p.title))}</span></h1><p class="intro">${esc(intro(p.short))}</p><div class="act"><a class="btn b1" href="${esc(contact)}">${esc(t.quote)}${icon('arrow', 'ic ar')}</a>${pdfBtn}</div></div></div></section>
+<section class="pdt"><div class="w">${tabs}</div></section>
 <section class="sc"><div class="w"><div class="hd"><h2>${esc(t.otherFurnaces)}</h2><a class="btn b2" href="${pageUrl('products', lang)}">${esc(t.allProducts)}</a></div><div class="gr3">${related(p, content.products).map((x) => card(x, lang)).join('')}</div></div></section>`;
 }
 
@@ -331,7 +349,7 @@ export function renderSitePage(page, contents) {
     }
     case 'product': {
       const p = content.products.find((x) => x.slug === page.key);
-      return layout({ ...withSeo, slug: `products/${p.slug}`, navKey: 'products', head: undefined, body: productBody(p, content, lang) });
+      return layout({ ...withSeo, slug: `products/${p.slug}`, navKey: 'products', head: undefined, styles: ['/assets/css/product.css'], scripts: ['/assets/js/product.js'], body: productBody(p, content, lang) });
     }
     default:
       throw new Error(`no renderer for page type "${page.type}"`);

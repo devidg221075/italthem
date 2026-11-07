@@ -202,3 +202,24 @@ Fatto: banner con titolo, barra laterale dei filtri, conteggio, ordinamento, gri
 | Applica filtri | Pulsante | I filtri si applicano subito; il pulsante chiude il pannello su telefono e porta ai risultati | Fatto |
 | Senza JavaScript | — | Tutte le 11 card visibili, senza filtri | Fatto |
 | `?g=melt|heat|prod` | — | Preseleziona una famiglia (per i link dal menu) | Fatto |
+
+## Scheda prodotto (modello IT.CC, valida per tutti gli 11 prodotti)
+
+Fatto: breadcrumb, galleria con miniature, kicker con la famiglia, codice grande + titolo nell'unico `h1`, introduzione, pulsanti "Richiedi un preventivo" e "Scarica scheda PDF", tab (Descrizione, Modelli e dati tecnici, Documentazione) con tabella dei modelli, poi "Altri forni". CSS e JS della scheda sono in `assets/css/product.css` e `assets/js/product.js`, caricati solo nelle schede; le regole vecchie sono state tolte da `site.css` e `site.js`.
+
+| Dove | Mockup | Cosa ho fatto | Stato |
+|---|---|---|---|
+| Elenco "Elevata produttività / Qualità costante / Affidabilità e lunga durata / Personalizzazione su richiesta" | Presente | Non inserito: testo non presente nel sito originale, uguale per tutti i prodotti | Da confermare |
+| Tab "Video" e "Accessori" | Presenti | Non inserite: nessun contenuto | In attesa dei materiali |
+| Tab "Documentazione" | Presente | Contiene il PDF delle specifiche e la riga SKU / Category / Tag dell'originale (nota: "Category: Ital-therm" viene dal vecchio WordPress) | Da confermare |
+| Introduzione accanto alla galleria | Frase di presentazione | Primo paragrafo reale della descrizione (se la prima riga è un titolo breve che finisce con ":", si usa il paragrafo dopo). La descrizione completa è nella tab Descrizione | Fatto |
+| Tab aperta | "Modelli e dati tecnici" | Aperta all'avvio; se il prodotto non ha tabella, si apre "Descrizione". Senza JavaScript sono visibili tutti i pannelli | Fatto |
+| Breadcrumb | Home › Prodotti › Colata continua › IT.CC | Home › Prodotti › IT.CC, uguale ai dati strutturati (BreadcrumbList) | Deciso |
+| Kicker | "Colata continua" | La famiglia reale (Forni di fusione, Trattamento termico, Sistemi di produzione) | Deciso |
+| Pulsante PDF | "Scarica scheda PDF" | Testo del mockup (EN: "Download PDF datasheet") invece di "SCARICA SPECIFICHE TECNICHE" dell'originale; il file è lo stesso | Da confermare |
+| Pulsante "Contattaci" | Non c'è | Tolto (c'è solo "Richiedi un preventivo" con il prodotto già indicato nel modulo) | Fatto |
+| Immagine principale | Rendering con video e oro | Foto reali del sito; le miniature sono quelle disponibili (1–5 per prodotto) | Fatto |
+| Tabella | Intestazione con i modelli | Intestazione con i modelli, colonne centrate, celle con "—" accessibili come prima | Fatto |
+| Tab nella versione mobile approvata | Modelli, Dati tecnici, Vantaggi, Accessori | Le stesse tre tab (scorrono in orizzontale su telefono); "Vantaggi" e "Accessori" non hanno contenuto | Da confermare |
+
+I dati da confermare nelle tabelle (potenza IT.KB04, velocità di colata IT.CC05, sigle con il punto mancante, ecc.) restano nella sezione "Da confermare con te" sopra: non li ho toccati.

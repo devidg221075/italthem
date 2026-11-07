@@ -174,15 +174,6 @@
         nb.hidden = true;
       });
     }
-
-    /* product gallery */
-    var gb = $$('.gal .th button'), gi = $$('.gal .big img');
-    gb.forEach(function (b, k) {
-      b.addEventListener('click', function () {
-        gb.forEach(function (x, j) { x.classList.toggle('on', j === k); });
-        gi.forEach(function (x, j) { x.classList.toggle('on', j === k); });
-      });
-    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
