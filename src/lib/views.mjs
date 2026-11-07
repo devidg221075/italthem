@@ -1,6 +1,6 @@
 // Page bodies for home, about, catalogue and service pages. Text comes from content/<lang>; only chrome strings are in strings.mjs.
 import { esc, displayTitle, layout, renderBlock } from './render.mjs';
-import { pageUrl, productUrl, serviceUrl } from './routes.mjs';
+import { pageUrl, productUrl, serviceUrl, NAV_LABELS } from './routes.mjs';
 import { imageUrl } from './images.mjs';
 import { T } from './strings.mjs';
 import { existsSync } from 'node:fs';
@@ -8,6 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { docUrl } from './docs.mjs';
 import { PRIVACY } from './privacy.mjs';
+import { makeDescription, usableMeta } from './seo.mjs';
 import { HERO_SLIDES, SERVICE_PHOTOS, ABOUT_PHOTOS, CATALOGUE_ORDER } from './featured.mjs';
 
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
@@ -216,36 +217,106 @@ function privacyBody(lang, site) {
 <section class="sec prv"><div class="w">${sections}<p class="upd">${esc(P.updated(new Date().getFullYear()))}</p></div></section>`;
 }
 
-/** Renders a built page. `page` comes from buildPages(); `contents` is {en, it}. Task 6 adds the 'product' type. */
+const HOME_TITLE = { en: 'ITALTHERM – Industrial Furnaces for Precious Metals', it: 'ITALTHERM – Forni industriali per metalli preziosi' };
+
+const paragraphs = (text) => String(text ?? '').split(/\r?\n/).map((x) => x.trim()).filter(Boolean);
+
+/** First photo of a product that exists in assets/img/src, as a site path. */
+const mainPhoto = (p) => {
+  const u = (p.images ?? []).find(localImage);
+  return u ? imageUrl(u) : undefined;
+};
+
+/** Per-page SEO inputs: `{title, description, seo:{url,type,image,images,crumbs,product}}`. Descriptions are excerpts of existing content. */
+function seoFor(page, content) {
+  const { lang } = page;
+  const t = T[lang];
+  const { products, pages } = content;
+  const src = pages.find((p) => p.slug === page.key);
+  const meta = usableMeta(src?.meta_description) ? [src.meta_description] : [];
+  const homePhoto = imageUrl(photo(byCode(products, HERO_SLIDES[0].code), HERO_SLIDES[0].image));
+  const home = { name: t.home, url: pageUrl('home', lang) };
+  const productsPage = pages.find((p) => p.slug === 'products');
+  const productsCrumb = { name: productsPage?.title ?? t.products, url: pageUrl('products', lang) };
+  const base = { url: page.url, type: page.type, image: homePhoto };
+  switch (page.type) {
+    case 'home':
+      return { title: HOME_TITLE[lang], description: makeDescription([src.lead, ...meta]), seo: base };
+    case 'about': {
+      const ph = ABOUT_PHOTOS[0];
+      return { title: NAV_LABELS[lang].about, description: makeDescription([...meta, src.lead]), seo: { ...base, image: imageUrl(photo(byCode(products, ph.code), ph.image)), crumbs: [home, { name: page.title, url: page.url }] } };
+    }
+    case 'products': {
+      const names = orderedProducts(products).map((p) => { const n = displayTitle(p.title); return n.includes(p.code) ? n : `${n} ${p.code}`; });
+      return { title: page.title, description: makeDescription([...meta, src.lead, `${page.title}: ${names.join(', ')}`]), seo: { ...base, image: mainPhoto(orderedProducts(products)[0]) ?? homePhoto, crumbs: [home, { name: page.title, url: page.url }] } };
+    }
+    case 'contact':
+      return { title: page.title, description: makeDescription([...meta, ...paragraphs(src.lead)]), seo: { ...base, crumbs: [home, { name: page.title, url: page.url }] } };
+    case 'privacy':
+      return { title: page.title, description: makeDescription([PRIVACY[lang].lead, PRIVACY[lang].sections[0].p[0].replace(/\[\[\w+\]\]/g, '')]), seo: { ...base, crumbs: [home, { name: page.title, url: page.url }] } };
+    case 'service': {
+      const s = content.services.find((x) => x.slug === page.key);
+      const ph = SERVICE_PHOTOS[s.slug];
+      const image = ph ? imageUrl(photo(byCode(products, ph.code), ph.image)) : homePhoto;
+      return { title: s.title, description: makeDescription(s.blocks.filter((b) => b.type === 'p').map((b) => b.text)), seo: { ...base, image, crumbs: [home, productsCrumb, { name: s.title, url: page.url }] } };
+    }
+    case 'product': {
+      const p = products.find((x) => x.slug === page.key);
+      const images = (p.images ?? []).filter(localImage).map(imageUrl);
+      // Products that open with the same paragraph (the two grain systems) describe themselves from their next paragraph, so descriptions stay unique.
+      const paras = paragraphs(p.short);
+      const shared = products.some((o) => o !== p && paragraphs(o.short)[0] === paras[0]);
+      return { title: page.title, description: makeDescription(shared && paras.length > 1 ? [...paras.slice(1), paras[0]] : paras), seo: { ...base, image: images[0] ?? homePhoto, images, product: p, crumbs: [home, productsCrumb, { name: page.title, url: page.url }] } };
+    }
+    default:
+      throw new Error(`no SEO rules for page type "${page.type}"`);
+  }
+}
+
+/** Renders a built page. `page` comes from buildPages(); `contents` is {en, it}. */
 export function renderSitePage(page, contents) {
   const content = contents[page.lang];
   const { lang } = page;
   const switchUrls = Object.fromEntries(page.alternates.map((a) => [a.lang, a.url]));
   const common = { lang, site: content.site, switchUrls, alternates: page.alternates };
   const src = content.pages.find((p) => p.slug === page.key);
-  const desc = src?.seo?.description ?? src?.meta_description;
+  const { title, description, seo } = seoFor(page, content);
+  const withSeo = { ...common, title, description, seo, head: src?.seo?.head };
   switch (page.type) {
     case 'home':
-      return layout({ ...common, slug: 'home', title: page.title, description: desc, body: homeBody(content, lang), head: src.seo?.head });
+      return layout({ ...withSeo, slug: 'home', body: homeBody(content, lang) });
     case 'about':
-      return layout({ ...common, slug: 'about', title: page.title, description: desc, body: aboutBody(content, lang), head: src.seo?.head });
+      return layout({ ...withSeo, slug: 'about', body: aboutBody(content, lang) });
     case 'products':
-      return layout({ ...common, slug: 'products', title: page.title, description: desc, body: catalogueBody(content, lang), head: src.seo?.head });
+      return layout({ ...withSeo, slug: 'products', body: catalogueBody(content, lang) });
     case 'contact':
-      return layout({ ...common, slug: 'contact', title: page.title, description: desc, body: contactBody(content, lang), head: src.seo?.head });
+      return layout({ ...withSeo, slug: 'contact', body: contactBody(content, lang) });
     case 'privacy':
-      return layout({ ...common, slug: 'privacy', title: page.title, description: PRIVACY[lang].lead, body: privacyBody(lang, content.site) });
+      return layout({ ...withSeo, slug: 'privacy', head: undefined, body: privacyBody(lang, content.site) });
     case 'service': {
       const s = content.services.find((x) => x.slug === page.key);
-      const firstP = s.blocks.find((b) => b.type === 'p');
-      return layout({ ...common, slug: `services/${s.slug}`, navKey: 'products', title: s.title, description: firstP ? clip(firstP.text) : undefined, body: serviceBody(s, content, lang) });
+      return layout({ ...withSeo, slug: `services/${s.slug}`, navKey: 'products', head: undefined, body: serviceBody(s, content, lang) });
     }
     case 'product': {
       const p = content.products.find((x) => x.slug === page.key);
-      const first = String(p.short ?? '').split(/\r?\n/).find(Boolean);
-      return layout({ ...common, slug: `products/${p.slug}`, navKey: 'products', title: page.title, description: first ? clip(first) : undefined, body: productBody(p, content, lang) });
+      return layout({ ...withSeo, slug: `products/${p.slug}`, navKey: 'products', head: undefined, body: productBody(p, content, lang) });
     }
     default:
       throw new Error(`no renderer for page type "${page.type}"`);
   }
+}
+
+const NOT_FOUND = {
+  en: { h: 'Page not found', p: 'The page you are looking for does not exist or has been removed.', home: 'Home', products: 'Products', contact: 'Contact us' },
+  it: { h: 'Pagina non trovata', p: 'La pagina che cerchi non esiste o è stata rimossa.', home: 'Home', products: 'Prodotti', contact: 'Contattaci' },
+};
+
+/** The bilingual /404.html (also served for 410 Gone). noindex, not part of the sitemap. */
+export function renderNotFound(contents) {
+  const en = NOT_FOUND.en;
+  const it = NOT_FOUND.it;
+  const links = (l, n) => `<p><a class="btn b1" style="color:#fff;text-decoration:none" href="${pageUrl('home', l)}">${esc(n.home)}</a> <a class="btn b2" href="${pageUrl('products', l)}">${esc(n.products)}</a> <a class="btn b2" href="${pageUrl('contact', l)}">${esc(n.contact)}</a></p>`;
+  const body = `<section class="phd"><div class="w"><h1>${esc(en.h)}</h1><p class="lead">${esc(en.p)}</p>${links('en', en)}</div></section>
+<section class="sec" lang="it"><div class="w"><h2>${esc(it.h)}</h2><p>${esc(it.p)}</p>${links('it', it)}</div></section>`;
+  return layout({ lang: 'en', slug: '404', title: `${en.h} / ${it.h}`, description: `${en.p} ${it.p}`, body, site: contents.en.site, switchUrls: { en: '/en/', it: '/it/' }, seo: { type: 'notfound' } });
 }

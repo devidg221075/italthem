@@ -3,8 +3,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, displayTitle } from './html.mjs';
 import { pageUrl, NAV_KEYS, NAV_LABELS, canonicalKey } from './routes.mjs';
+import { seoHead } from './seo.mjs';
 
-export { esc, displayTitle, pageUrl };
+export { esc, displayTitle, pageUrl, seoHead };
 
 const TPL = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../templates');
 const partial = (name) => readFileSync(path.join(TPL, name), 'utf8').trim();
@@ -12,15 +13,9 @@ const LOGO = partial('logo.html');
 const HEAD = partial('head.html');
 
 const UI = {
-  en: { cta: 'Request a contact', menu: 'Open menu', close: 'Close menu', pages: 'Pages', contact: 'Contact', privacy: 'Privacy', tagline: 'ITALTHERM is an Italian company specializing in high-technology systems.', home: 'Italtherm home', lang: 'Language', notice: 'Notice', noticeText: 'This site does not use tracking or advertising cookies.', noticeLink: 'Read the privacy notice.' },
-  it: { cta: 'Richiedi un contatto', menu: 'Apri menu', close: 'Chiudi menu', pages: 'Pagine', contact: 'Contatti', privacy: 'Privacy', tagline: 'ITALTHERM è un’azienda italiana specializzata in sistemi ad alta tecnologia.', home: 'Italtherm home', lang: 'Lingua', notice: 'Avviso', noticeText: 'Questo sito non usa cookie di tracciamento o pubblicitari.', noticeLink: 'Leggi l’informativa sulla privacy.' },
+  en: { main: 'Main', cta: 'Request a contact', menu: 'Open menu', close: 'Close menu', pages: 'Pages', contact: 'Contact', privacy: 'Privacy', tagline: 'ITALTHERM is an Italian company specializing in high-technology systems.', home: 'Italtherm home', lang: 'Language', notice: 'Notice', noticeText: 'This site does not use tracking or advertising cookies.', noticeLink: 'Read the privacy notice.' },
+  it: { main: 'Principale', cta: 'Richiedi un contatto', menu: 'Apri menu', close: 'Chiudi menu', pages: 'Pagine', contact: 'Contatti', privacy: 'Privacy', tagline: 'ITALTHERM è un’azienda italiana specializzata in sistemi ad alta tecnologia.', home: 'Italtherm home', lang: 'Lingua', notice: 'Avviso', noticeText: 'Questo sito non usa cookie di tracciamento o pubblicitari.', noticeLink: 'Leggi l’informativa sulla privacy.' },
 };
-
-/** Extension point for Task 8 (full SEO). Default: minimal title + description. */
-export function seoHead({ title, description }) {
-  const t = title ? `${title} | ITALTHERM` : 'ITALTHERM';
-  return `<title>${esc(t)}</title>` + (description ? `\n<meta name="description" content="${esc(description)}">` : '');
-}
 
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
 
@@ -42,7 +37,7 @@ function langSwitch(lang, slug, switchUrls) {
 function header(lang, slug, site, switchUrls, navKey) {
   const ui = UI[lang];
   const phones = site.phones.map((p) => `<a href="${tel(p)}">${esc(p)}</a>`).join(' · ');
-  return `<header class="hdr"><div class="w"><a href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${LOGO}</a><nav aria-label="Main">${nav(lang, navKey ?? slug)}</nav><div class="rt">${langSwitch(lang, slug, switchUrls)}<a class="cta" href="${pageUrl('contact', lang)}">${esc(ui.cta)}</a><button class="bur" type="button" aria-label="${esc(ui.menu)}" aria-expanded="false" aria-controls="drawer"><i></i></button></div></div></header>
+  return `<header class="hdr"><div class="w"><a href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${LOGO}</a><nav aria-label="${esc(ui.main)}">${nav(lang, navKey ?? slug)}</nav><div class="rt">${langSwitch(lang, slug, switchUrls)}<a class="cta" href="${pageUrl('contact', lang)}">${esc(ui.cta)}</a><button class="bur" type="button" aria-label="${esc(ui.menu)}" aria-expanded="false" aria-controls="drawer"><i></i></button></div></div></header>
 <div class="drw" id="drawer"><div class="top"><span class="brand">ItalTherm</span><button class="x" type="button" aria-label="${esc(ui.close)}">×</button></div>${nav(lang, navKey ?? slug, 'l')}<div class="info"><b>${esc(site.name)}</b><br>${esc(site.address)}<br>${phones}<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a><br>${langSwitch(lang, slug, switchUrls)}</div></div>`;
 }
 
@@ -62,15 +57,15 @@ function notice(lang) {
 
 /**
  * Reusable shell. `body` is trusted, pre-rendered HTML (must contain the page's single <h1>).
- * `alternates` is reserved for hreflang (Task 8): [{lang, href}].
+ * `alternates` ([{lang, url}]) and `seo` ({url, type, image, images, crumbs, product}) feed the SEO head; `head` overrides it entirely.
  */
 /** `switchUrls` ({en, it}) overrides the language-switch targets and `navKey` the highlighted nav item, for pages whose url is not derived from `slug` (services, products). */
-export function layout({ lang, slug, title, description, body, site, alternates = [], head, switchUrls, navKey }) {
-  const seo = head ?? seoHead({ title, description, lang, slug, alternates });
+export function layout({ lang, slug, title, description, body, site, alternates = [], head, switchUrls, navKey, seo: seoExtra = {} }) {
+  const seo = head ?? seoHead({ title, description, alternates, ...seoExtra }, lang, { site });
   return `<!doctype html>
 <html lang="${esc(lang)}">
 <head>
-${HEAD.replace('{{seo}}', seo)}
+${HEAD.replace('{{seo}}', () => seo)}
 </head>
 <body>
 ${header(lang, slug, site, switchUrls, navKey)}

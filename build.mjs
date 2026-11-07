@@ -4,13 +4,15 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadContent } from './src/lib/content.mjs';
 import { buildPages } from './src/lib/site-pages.mjs';
-import { renderSitePage } from './src/lib/views.mjs';
+import { renderSitePage, renderNotFound } from './src/lib/views.mjs';
+import { buildSitemaps, robotsTxt, SITE_URL, THEME_COLOR } from './src/lib/seo.mjs';
+import { buildRedirects, buildHtaccess } from './src/lib/redirects.mjs';
 import { esc } from './src/lib/html.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
 
-/** Language chooser at / (real server redirects come in Task 8). */
+/** Language chooser at /. Canonical and x-default point at /en/ (the chooser meta-refreshes there). */
 export function rootPage() {
   return `<!doctype html>
 <html lang="en">
@@ -19,7 +21,14 @@ export function rootPage() {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ITALTHERM</title>
 <meta http-equiv="refresh" content="0; url=/en/">
-<link rel="canonical" href="/en/">
+<meta name="theme-color" content="${THEME_COLOR}">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="canonical" href="${SITE_URL}/en/">
+<link rel="alternate" hreflang="en" href="${SITE_URL}/en/">
+<link rel="alternate" hreflang="it" href="${SITE_URL}/it/">
+<link rel="alternate" hreflang="x-default" href="${SITE_URL}/en/">
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:16px/1.6 system-ui,sans-serif;color:#112337;text-align:center}a{color:#204ce5;font-weight:600;margin:0 8px}</style>
 </head>
 <body>
@@ -40,6 +49,10 @@ export async function build() {
     await writeFile(file, renderSitePage(page, contents));
   }
   await writeFile(path.join(DIST, 'index.html'), rootPage());
+  await writeFile(path.join(DIST, '404.html'), renderNotFound(contents));
+  for (const [name, xml] of Object.entries(buildSitemaps(pages))) await writeFile(path.join(DIST, name), xml);
+  await writeFile(path.join(DIST, 'robots.txt'), robotsTxt());
+  await writeFile(path.join(DIST, '.htaccess'), buildHtaccess(buildRedirects(contents)));
   await cp(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true });
   for (const f of ['contact.php', 'contact-lib.php']) await copyFile(path.join(ROOT, 'server', f), path.join(DIST, f));
   return pages;
