@@ -48,13 +48,14 @@ for (const [lang, file] of [['en', 'en/products/index.html'], ['it', 'it/prodott
     assert.ok(existsSync(path.join(DIST, 'assets/css/catalogue.css')) && existsSync(path.join(DIST, 'assets/js/catalogue.js')));
   });
 
-  test(`${lang}: the mega menu and the drawer link each family to the filtered catalogue`, () => {
+  const ALL = ['it-cc', 'it-gt', 'it-af', 'it-gms', 'it-mt', 'it-sm', 'it-bf', 'it-cwa', 'it-gmb', 'it-fm', 'it-kb'];
+  test(`${lang}: the mega menu and the drawer link each family to the filtered catalogue and list all 11 products`, () => {
     const html = read(`${lang}/index.html`);
     const base = lang === 'en' ? '/en/products/' : '/it/prodotti/';
     const mega = html.match(/<div class="ml">([\s\S]*?)<\/div><div class="mr">/)[1];
     assert.deepEqual([...mega.matchAll(/href="([^"]+)"/g)].map((m) => m[1]), [base, `${base}?g=melt`, `${base}?g=cc`, `${base}?g=heat`, `${base}?g=prod`]);
     const drawer = html.match(/class="dp ps"[\s\S]*?<\/div><\/div>/)[0];
-    assert.deepEqual([...drawer.matchAll(/href="([^"]+)"/g)].map((m) => m[1]), [`${base}?g=melt`, `${base}?g=cc`, `${base}?g=heat`, `${base}?g=prod`, base]);
+    assert.deepEqual([...drawer.matchAll(/href="([^"]+)"/g)].map((m) => m[1]), [`${base}?g=melt`, `${base}?g=cc`, `${base}?g=heat`, `${base}?g=prod`, ...ALL.map((c) => `${base}${c}/`), base]);
   });
 }
 

@@ -15,7 +15,7 @@ before(() => { execFileSync('node', ['build.mjs'], { cwd: ROOT, stdio: 'pipe' })
 const PAGES = { en: { home: 'en/index.html', products: 'en/products/index.html', contact: 'en/contact/index.html', product: 'en/products/it-cc/index.html' }, it: { home: 'it/index.html', products: 'it/prodotti/index.html', contact: 'it/contatti/index.html', product: 'it/prodotti/it-cc/index.html' } };
 
 for (const lang of ['en', 'it']) {
-  test(`${lang}: header has the official logo, 4 nav items and the mega menu with the 4 featured machines`, () => {
+  test(`${lang}: header has the official logo, 4 nav items and the mega menu with all 11 products`, () => {
     const html = read(PAGES[lang].home);
     const header = html.match(/<header class="hdr">[\s\S]*?<\/header>/)[0];
     assert.ok(header.includes('src="/assets/img/italtherm.svg"'));
@@ -23,8 +23,8 @@ for (const lang of ['en', 'it']) {
     assert.equal(count(nav, /data-n="/g), 4);
     assert.ok(nav.includes(lang === 'it' ? '>Azienda<' : '>Company<'));
     const mega = nav.match(/<div class="mega" id="mega">[\s\S]*?<\/div><\/div><\/div>/)[0];
-    assert.deepEqual([...mega.matchAll(/<b>(IT\.[A-Z]+)<\/b>/g)].map((m) => m[1]), ['IT.CC', 'IT.GT', 'IT.AF', 'IT.GMS']);
-    assert.equal(count(mega, /class="mc"/g), 4);
+    assert.deepEqual([...mega.matchAll(/<b>(IT\.[A-Z]+)<\/b>/g)].map((m) => m[1]), ['IT.CC', 'IT.GT', 'IT.AF', 'IT.GMS', 'IT.MT', 'IT.SM', 'IT.BF', 'IT.CWA', 'IT.GMB', 'IT.FM', 'IT.KB']);
+    assert.equal(count(mega, /class="mc"/g), 11);
     const left = mega.match(/<div class="ml">([\s\S]*?)<\/div><div class="mr">/)[1];
     assert.equal(count(left, /<a /g), 5, 'all products + 4 families');
     assert.match(nav, /aria-haspopup="true" aria-expanded="false" aria-controls="mega"/);

@@ -8,7 +8,7 @@ import { assetUrl } from './assets.mjs';
 import { icon } from './icons.mjs';
 import { imgTag, SIZES } from './images.mjs';
 import { T } from './strings.mjs';
-import { MENU_PRODUCTS, MENU_LIST, HERO_SLIDES } from './featured.mjs';
+import { MENU_PRODUCTS, MENU_LIST, HERO_SLIDES, CATALOGUE_ORDER } from './featured.mjs';
 
 export { esc, displayTitle, pageUrl, seoHead };
 
@@ -53,9 +53,9 @@ function catIcon(cat) {
 function megaMenu(lang, products, t) {
   const rep = (code) => byCode(products, code);
   const list = MENU_LIST.map(({ cat, g }) => `<a href="${pageUrl('products', lang)}?g=${g}">${esc(t.menuCats[cat])}${icon('chevron', 'ic ch')}</a>`).join('');
-  const cards = MENU_PRODUCTS.map((code) => {
+  const cards = CATALOGUE_ORDER.filter((code) => products.some((x) => x.code === code)).map((code) => {
     const p = rep(code);
-    return `<a class="mc" href="${productUrl(p, lang)}"><div class="ph">${imgTag(p.images[0], { alt: '', sizes: SIZES.menu })}</div><b>${esc(p.code)}</b><span>${esc(shortTitle(p))}</span>${icon('arrow', 'ic ar')}</a>`;
+    return `<a class="mc" href="${productUrl(p, lang)}"><div class="ph">${imgTag(p.images[0], { alt: '', sizes: SIZES.menu })}</div><div class="tx"><b>${esc(p.code)}</b><span>${esc(shortTitle(p))}</span></div></a>`;
   }).join('');
   return `<div class="mega" id="mega"><div class="mi"><div class="ml"><a class="all" href="${pageUrl('products', lang)}">${esc(t.allProductsMenu)}${icon('arrow', 'ic ar')}</a>${list}</div><div class="mr">${cards}</div></div></div>`;
 }
@@ -73,8 +73,9 @@ function header(lang, slug, site, switchUrls, navKey, products) {
   const key = navKey ?? slug;
   const phones = site.phones.map((p) => `<a href="${tel(p)}">${esc(p)}</a>`).join(' · ');
   const subList = (products.length ? MENU_LIST : []).map(({ cat, g }) => `<a class="l" href="${pageUrl('products', lang)}?g=${g}">${catIcon(cat)}<span>${esc(t.menuCats[cat])}</span>${icon('chevron', 'ic ch')}</a>`).join('');
+  const prodList = (products.length ? CATALOGUE_ORDER.filter((code) => products.some((x) => x.code === code)) : []).map((code) => { const p = byCode(products, code); return `<a class="l pl" href="${productUrl(p, lang)}"><b>${esc(p.code)}</b><span>${esc(shortTitle(p))}</span>${icon('chevron', 'ic ch')}</a>`; }).join('');
   return `<header class="hdr"><div class="w"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo()}</a><nav aria-label="${esc(ui.main)}">${nav(lang, key, { products, mega: true })}</nav><div class="rt"><button class="sb" type="button" aria-label="${esc(t.search)}" aria-haspopup="dialog" data-js="${assetUrl('/assets/js/search.js')}" data-css="${assetUrl('/assets/css/search.css')}" data-index="/assets/search-${lang}.json" data-ph="${esc(t.searchPlaceholder)}" data-none="${esc(t.searchNone)}" data-close="${esc(t.searchClose)}" data-types="${esc(JSON.stringify(t.searchTypes))}">${icon('search')}</button>${langSwitch(lang, slug, switchUrls)}<button class="bur" type="button" aria-label="${esc(ui.menu)}" aria-expanded="false" aria-controls="drawer">${icon('menu')}</button></div></div></header>
-<div class="drw" id="drawer"><div class="dp pm"><div class="top"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo()}</a><button class="x" type="button" aria-label="${esc(ui.close)}">${icon('close')}</button></div>${nav(lang, key, { cls: 'l', drawer: true })}<div class="info"><div class="lg">${icon('globe')}${langSwitch(lang, slug, switchUrls)}</div><b>${esc(site.name)}</b><br>${esc(site.address)}<br>${phones}<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></div></div><div class="dp ps" aria-hidden="true"><div class="top"><button class="bk" type="button">${icon('back')}<span>${esc(t.productsMenu)}</span></button><button class="x" type="button" aria-label="${esc(ui.close)}">${icon('close')}</button></div>${subList}<a class="l all" href="${pageUrl('products', lang)}"><span>${esc(t.allProductsMenu)}</span>${icon('arrow', 'ic ar')}</a></div></div>`;
+<div class="drw" id="drawer"><div class="dp pm"><div class="top"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo()}</a><button class="x" type="button" aria-label="${esc(ui.close)}">${icon('close')}</button></div>${nav(lang, key, { cls: 'l', drawer: true })}<div class="info"><div class="lg">${icon('globe')}${langSwitch(lang, slug, switchUrls)}</div><b>${esc(site.name)}</b><br>${esc(site.address)}<br>${phones}<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></div></div><div class="dp ps" aria-hidden="true"><div class="top"><button class="bk" type="button">${icon('back')}<span>${esc(t.productsMenu)}</span></button><button class="x" type="button" aria-label="${esc(ui.close)}">${icon('close')}</button></div>${subList}${prodList ? `<p class="gh">${esc(t.allMachines)}</p>${prodList}` : ''}<a class="l all" href="${pageUrl('products', lang)}"><span>${esc(t.allProductsMenu)}</span>${icon('arrow', 'ic ar')}</a></div></div>`;
 }
 
 /** Call-to-action strip above the footer (approved component "Hai un progetto da realizzare?"). */
@@ -88,7 +89,7 @@ function footer(lang, slug, site, products, cta) {
   const t = T[lang];
   const year = new Date().getFullYear();
   const pages = NAV_KEYS.map((k) => `<a href="${pageUrl(k, lang)}">${icon('chevron', 'ic ch')}${esc(MENU_LABELS[lang][k])}</a>`).join('');
-  const prods = (products.length ? MENU_PRODUCTS : []).map((code) => { const p = byCode(products, code); const cat = HERO_SLIDES.find((s) => s.code === code).cat; return `<a href="${productUrl(p, lang)}">${icon('chevron', 'ic ch')}${esc(t.cats[cat])} ${esc(code)}</a>`; }).join('');
+  const prods = (products.length ? CATALOGUE_ORDER.filter((code) => products.some((x) => x.code === code)) : []).map((code) => { const p = byCode(products, code); return `<a href="${productUrl(p, lang)}">${icon('chevron', 'ic ch')}<span><b>${esc(code)}</b> ${esc(shortTitle(p))}</span></a>`; }).join('');
   const phones = site.phones.map((p) => `<a class="ci" href="${tel(p)}">${icon('phone')}<span>${esc(p)}</span></a>`).join('');
   return `${cta ? ctaStrip(lang) : ''}<footer class="ft"><div class="w"><div class="fc"><div class="fb"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo('lgo', true)}</a><p>${esc(t.footTagline)}</p><i class="bar" aria-hidden="true"></i></div><details class="fd" open><summary>${esc(t.footNav)}${icon('down', 'ic dn')}</summary><div class="fl">${pages}</div></details><details class="fd" open><summary>${esc(t.footProducts)}${icon('down', 'ic dn')}</summary><div class="fl">${prods}</div></details><details class="fd" open><summary>${esc(t.footContacts)}${icon('down', 'ic dn')}</summary><div class="fl"><b>${esc(site.name)}</b><address class="ci">${icon('pin')}<span>${esc(site.address)}</span></address><a class="ci" href="mailto:${esc(site.email)}">${icon('mail')}<span>${esc(site.email)}</span></a>${phones}</div></details></div><div class="bt"><span>© <span data-year>${year}</span> ${esc(site.name)} · P.IVA ${esc(site.vat)} · REA ${esc(site.rea)}</span><span class="lg"><a href="${pageUrl('privacy', lang)}">${esc(ui.privacy)}</a><a href="${pageUrl('cookies', lang)}">${esc(t.cookies)}</a></span><a class="up" href="#main" aria-label="${esc(t.toTop)}">${icon('up')}</a></div></div></footer>`;
 }

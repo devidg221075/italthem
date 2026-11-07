@@ -352,3 +352,11 @@ Differenze residue, tutte note e non risolvibili senza materiali nuovi:
 ## Anteprima con segnaposto (opzionale, spenta di default)
 
 Per vedere il layout con le foto definitive ancora mancanti: `PLACEHOLDERS=1 node build.mjs` sostituisce le foto di hero (4 slide) e dei banner di catalogo/Contatti con blocchi grafici neutri "Foto in arrivo". Il sito normale e i test non cambiano (nessun effetto senza la variabile). Da rimuovere/ignorare quando arrivano le foto vere (da riprendere lunedì/martedì).
+
+## Menu: tutti i prodotti
+
+Controllati header, mega menu, menu mobile e footer (IT/EN): le voci principali (Home, Azienda, Prodotti, Contatti), la voce attiva, i link alle famiglie del catalogo filtrato e le lingue sono corretti. Mancava però l'elenco completo dei prodotti: i menu ne mostravano solo 4 (uno per famiglia).
+- **Mega menu desktop:** a sinistra restano "Tutti i prodotti" e le 4 famiglie (link al catalogo filtrato); a destra ora ci sono tutti gli 11 prodotti, in ordine di catalogo, come schede compatte (miniatura 64 px, codice, nome). Le schede grandi con 4 prodotti del mockup diventano compatte per farne stare 11 senza un menu altissimo: **deviazione dal mockup, da confermare**.
+- **Menu mobile (pannello Prodotti):** sotto le 4 famiglie c'è la sezione "Tutti i macchinari" con i 11 prodotti (codice + nome).
+- **Footer:** colonna Prodotti con tutti gli 11 prodotti (prima 4 etichette di famiglia).
+- Prestazioni invariate (home: mobile 99, desktop 100). Test aggiornati (mega menu e cassetto: 11 prodotti nell'ordine di catalogo).
