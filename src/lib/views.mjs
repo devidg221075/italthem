@@ -3,6 +3,10 @@ import { esc, displayTitle, layout, renderPage, renderBlock } from './render.mjs
 import { pageUrl, productUrl, serviceUrl } from './routes.mjs';
 import { imageUrl } from './images.mjs';
 import { T } from './strings.mjs';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { docUrl } from './docs.mjs';
 import { HERO_SLIDES, SERVICE_PHOTOS, ABOUT_PHOTOS, CATALOGUE_ORDER } from './featured.mjs';
 
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
@@ -106,6 +110,54 @@ function serviceBody(service, content, lang) {
 <section class="sec"><div class="w">${service.blocks.map(renderBlock).join('')}<p><a class="btn b1" style="color:#fff;text-decoration:none" href="${pageUrl('contact', lang)}">${esc(t.contactUs)}</a></p></div></section>`;
 }
 
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const hasFile = (rel) => existsSync(path.join(ROOT, rel));
+const localImage = (u) => hasFile(imageUrl(u).slice(1).split('/').map(decodeURIComponent).join('/'));
+const br = (s) => esc(s).replace(/\r?\n/g, '<br>');
+
+function specCell(v, t) {
+  return v === '—' ? `<td><span role="img" aria-label="${esc(t.notAvailable)}">—</span></td>` : `<td>${br(v)}</td>`;
+}
+
+function specTable(p, t) {
+  const { columns = [], rows = [] } = p.specs ?? {};
+  if (!rows.length) return '';
+  return `<div class="ey" style="margin-top:20px">${esc(t.description)}</div><div class="spec"><div class="spec-w"><table${p.table_title ? ` aria-label="${esc(p.table_title)}"` : ''}><thead><tr><td></td>${columns.map((c) => `<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr><th scope="row">${br(r.label)}</th>${r.values.map((v) => specCell(v, t)).join('')}</tr>`).join('')}</tbody></table></div></div>`;
+}
+
+function gallery(p) {
+  const imgs = (p.images ?? []).filter(localImage);
+  const alt = (i) => (i ? `${altOf(p)} (${i + 1})` : altOf(p));
+  const big = imgs.map((u, i) => `<img${i ? '' : ' class="on"'} src="${esc(imageUrl(u))}" alt="${esc(alt(i))}"${i ? ' loading="lazy"' : ' fetchpriority="high"'}>`).join('');
+  return { big, imgs };
+}
+
+function description(short) {
+  const paras = String(short ?? '').split(/\r?\n/).map((x) => x.trim()).filter(Boolean);
+  if (!paras.length) return '';
+  const lead = paras[0].endsWith(':') ? `<b>${esc(paras.shift())}</b>` : '';
+  return `<div class="desc">${lead}${paras.map((x) => `<p>${esc(x)}</p>`).join('')}</div>`;
+}
+
+function related(p, products) {
+  const others = orderedProducts(products).filter((x) => x.slug !== p.slug);
+  return [...others.filter((x) => x.group === p.group), ...others.filter((x) => x.group !== p.group)].slice(0, 3);
+}
+
+export function productBody(p, content, lang) {
+  const t = T[lang];
+  const productsPage = content.pages.find((x) => x.slug === 'products');
+  const g = gallery(p);
+  const gal = `<div class="gal">${g.imgs.length ? `<div class="big">${g.big}</div>` : ''}${g.imgs.length > 1 ? `<div class="th" aria-label="${esc(t.gallery)}">${g.imgs.map((u, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'} aria-label="${esc(t.imageN(i + 1))}"><img src="${esc(imageUrl(u))}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}</div>`;
+  const contact = `${pageUrl('contact', lang)}?product=${encodeURIComponent(p.slug)}`;
+  const pdf = p.pdf && hasFile(docUrl(p.slug).slice(1))
+    ? `<a class="pdf" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${esc(p.download_label)} ↓</a>` : '';
+  return `<section class="ph0 pg" style="padding-bottom:10px"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / <a href="${pageUrl('products', lang)}">${esc(productsPage?.title ?? t.products)}</a> / ${esc(p.code)}</div></div></section>
+<section><div class="w"><div class="pd">${gal}<div><span class="badge">${esc(p.code)}</span><h1>${esc(displayTitle(p.title))}</h1>${description(p.short)}<div class="act"><a class="btn b1" href="${esc(contact)}">${esc(t.quote)} →</a><a class="btn b2" href="${pageUrl('contact', lang)}">${esc(t.contactUs)}</a></div>${pdf}${p.meta ? `<div class="meta">${br(p.meta)}</div>` : ''}</div></div>
+${specTable(p, t)}</div></section>
+<section class="sc"><div class="w"><div class="hd"><h2>${esc(t.otherFurnaces)}</h2><a class="btn b2" href="${pageUrl('products', lang)}">${esc(t.allProducts)}</a></div><div class="gr3">${related(p, content.products).map((x) => card(x, lang)).join('')}</div></div></section>`;
+}
+
 /** Renders a built page. `page` comes from buildPages(); `contents` is {en, it}. Task 6 adds the 'product' type. */
 export function renderSitePage(page, contents) {
   const content = contents[page.lang];
@@ -127,6 +179,11 @@ export function renderSitePage(page, contents) {
       const s = content.services.find((x) => x.slug === page.key);
       const firstP = s.blocks.find((b) => b.type === 'p');
       return layout({ ...common, slug: `services/${s.slug}`, navKey: 'products', title: s.title, description: firstP ? clip(firstP.text) : undefined, body: serviceBody(s, content, lang) });
+    }
+    case 'product': {
+      const p = content.products.find((x) => x.slug === page.key);
+      const first = String(p.short ?? '').split(/\r?\n/).find(Boolean);
+      return layout({ ...common, slug: `products/${p.slug}`, navKey: 'products', title: page.title, description: first ? clip(first) : undefined, body: productBody(p, content, lang) });
     }
     default:
       throw new Error(`no renderer for page type "${page.type}"`);
