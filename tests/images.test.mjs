@@ -180,7 +180,8 @@ test('Inter latin is preloaded (and declared with font-display swap), CSS in hea
   for (const { rel, html } of SITE) {
     const head = html.match(/<head>([\s\S]*?)<\/head>/)[1];
     assert.match(head, /<link rel="preload" as="font" type="font\/woff2" crossorigin href="\/assets\/fonts\/inter-latin-var\.woff2">/, rel);
-    assert.ok(!head.includes('inter-latin-ext'), `${rel}: only the Latin file is preloaded`);
+    assert.match(head, /<link rel="preload" as="font" type="font\/woff2" crossorigin href="\/assets\/fonts\/manrope-latin-var\.woff2">/, rel);
+    assert.ok(!head.includes('inter-latin-ext') && !head.includes('manrope-latin-ext'), `${rel}: only the Latin files are preloaded`);
     assert.match(head, /<meta name="color-scheme" content="light">/, rel);
     assert.ok(head.includes('<script>document.documentElement.classList.add("js")</script>'), `${rel}: js class is set before first paint (no layout shift when the carousel controls appear)`);
     assert.match(head, /<link rel="stylesheet" href="\/assets\/css\/site\.css\?v=[0-9a-f]{8}">/, rel);

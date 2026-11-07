@@ -39,6 +39,7 @@
       if (cf && window.matchMedia) {
         var cq = matchMedia('(max-width:1000px)');
         var syncCf = function () { if (cq.matches) cf.removeAttribute('open'); else cf.setAttribute('open', ''); };
+        cf.setAttribute('data-t', '');
         syncCf();
         if (cq.addEventListener) cq.addEventListener('change', syncCf);
       }

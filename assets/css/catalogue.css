@@ -44,3 +44,6 @@ html:not(.js) .so{display:none}
  .cg .pc::after{bottom:50%;transform:translateY(50%)}
  .cbar{margin-bottom:14px}
 }
+
+/* no layout shift on phones: the markup is open (no-JS, wide screens) but the body stays hidden until catalogue.js has closed the panel */
+@media(max-width:1000px){.cf:not([data-t])>:not(summary){display:none}}

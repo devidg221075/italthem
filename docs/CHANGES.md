@@ -316,3 +316,15 @@ Confronto punto per punto con la master (sezioni Tipografia, Griglie, Pulsanti e
 - **Card prodotto**: la master mostra una variante orizzontale (immagine a sinistra); i mockup del catalogo usano la card verticale. Seguo i mockup.
 - **Footer del kit**: riporta l'indirizzo "Loc. Le Vignole, 59 – Sonico (BS)" letto dalla master; non è un dato verificato e non è usato.
 - **Componenti del kit non usati perché non ci sono le pagine**: upload (Assistenza), paginazione (11 prodotti stanno in una pagina), badge "Novità" (nessun prodotto nuovo), indicatori desktop/tablet/mobile (solo documentazione).
+
+
+## Lighthouse 12 (10 pagine, mobile + desktop, throttling simulato) — misura finale
+
+Punteggi dopo le correzioni: Accessibilità 100, Best practices 100, SEO 100 su tutte le pagine; CLS 0 ovunque; Prestazioni desktop 100, mobile 89–100 (home 97–99, Azienda 98, Contatti/Privacy 100, catalogo 90, scheda IT.CC 89 in IT / 99 in EN).
+
+Anomalie trovate dalla misura e corrette:
+- **Catalogo, mobile: CLS 0,17.** Il pannello filtri era aperto nel markup e veniva chiuso da JS su telefono, spostando tutta la griglia. Ora il corpo resta nascosto via CSS (`.cf:not([data-t])`) finché `catalogue.js` non ha chiuso il pannello. CLS 0.
+- **Catalogo: ordine dei titoli (h1 → h3).** Aggiunto un h2 visivamente nascosto prima dell'elenco; accessibilità 100.
+- **Font dei titoli:** aggiunta la preload di `manrope-latin-var.woff2` (24 KB) accanto a quella di Inter; test aggiornato.
+
+Residuo: l'LCP mobile di catalogo e scheda IT.CC (3,7–3,8 s) è nella simulazione "4G lenta + CPU 4×"; in locale l'LCP misurato è ~100 ms. Sulla scheda IT.CC pesa la foto della galleria (la più pesante, 129 KB nel formato 960 px): migliorerà con le foto ad alta risoluzione ricompresse.
