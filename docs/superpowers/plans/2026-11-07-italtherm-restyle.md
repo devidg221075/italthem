@@ -12,10 +12,13 @@
 
 ## Global Constraints
 
-- Languages: `/en/` and `/it/`, with `hreflang` and `x-default` pointing to `/en/`.
+- Languages: `/en/` and `/it/`, with `hreflang` and `x-default` pointing to `/en/`. Italian text is taken from the live `/it/` pages, never machine-translated.
 - Company data: ITALTHERM S.r.l., P.IVA 02487940518, REA Arezzo 220552, info@ital-therm.it.
 - Phones: +39 0575 802485 and +39 366 871 9427 only. Address: Viale S. Maria delle Vertighe, 50/B, 52048 Monte San Savino (AR).
-- Palette: graphite background, copper/orange accents; local fonts only, `font-display: swap`; WCAG AA contrast.
+- Visual reference: `docs/design/prototype.tpl.html` (hero J, approved). White page, Inter (local, WOFF2 subset, `font-display: swap`) plus JetBrains Mono for model codes; navy #112337, blue #204ce5 / #527eff, logo blue #2f4f9e, grey #6c6d71; WCAG AA contrast. The logo is the original SVG (`logo_vert.svg` from the live site).
+- Header: sticky, constant height (76px desktop, 68px mobile) at every scroll position, no extra padding on scroll; mobile drawer menu. Never reuse the section padding class name for state classes.
+- Photos: the originals from the live site (user confirmed licence), blended on the page with `mix-blend-mode: multiply`; no automatic cut-outs.
+- Content already extracted: `content/original/products.json` (11 products, verbatim) and `docs/CHANGES.md` (corrections and open questions). Unknown values are rendered as a dash, never invented.
 - No jQuery, no plugins, no external requests at page load (maps load on click only).
 - Original text never rewritten; only the corrections in the spec's table plus those logged in `docs/CHANGES.md`.
 - Copyright year updates automatically: build-time year in the HTML plus `<span data-year>` refreshed by a 3-line script.
@@ -68,8 +71,8 @@ docs/CHANGES.md
 **Files:** Create `scripts/crawl.mjs`, `content/en/*.json`, `content/it/*.json`, `docs/CHANGES.md`.
 
 **Interfaces:**
-- Consumes: `loadContent` (Task 1).
-- Produces: one JSON file per page, product (11) and service (4) per language, plus `content/original/` raw text snapshots used by Task 11.
+- Consumes: `loadContent` (Task 1), `content/original/products.json` and `content/original/extract.py` (already in the repo).
+- Produces: one JSON file per page, product (11) and service (4) per language, plus `content/original/` raw text snapshots used by Task 11. Pages not yet extracted: services (4), home, about, contact, shop, and all `/it/` pages (HTML is fetched with `curl` and retries: the proxy resets some connections, WebFetch paraphrases and must not be used).
 
 - [ ] **Step 1:** Write a test that every URL in the live sitemap list (`page`, `product`, `services`) has a content file or is explicitly listed in `docs/CHANGES.md` as removed demo page.
 - [ ] **Step 2:** Run it. Expected: FAIL.
@@ -97,7 +100,7 @@ docs/CHANGES.md
 
 **Interfaces:** Produces CSS custom properties `--bg`, `--fg`, `--accent`, `--accent-2`; `site.js` exports no globals and does three things: mobile menu toggle, copyright year (`document.querySelectorAll('[data-year]')`), consent banner.
 
-- [ ] **Step 1:** Test (`tests/css.test.mjs`): contrast of `--fg` on `--bg` and white on `--accent` computed in the test is >= 4.5; total size of `site.css` + `site.js` < 40 KB.
+- [ ] **Step 1:** Test (`tests/css.test.mjs`): contrast of navy #112337 on white and white on blue #204ce5 computed in the test is >= 4.5; total size of `site.css` + `site.js` < 40 KB; header height equals the same value with and without the scrolled class (guards the mobile bug found in the prototype).
 - [ ] **Step 2:** Run. Expected: FAIL.
 - [ ] **Step 3:** Write the CSS (mobile-first grid, focus styles, `prefers-reduced-motion`) and the JS; subset and self-host fonts as WOFF2.
 - [ ] **Step 4:** Run. Expected: PASS.

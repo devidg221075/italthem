@@ -30,7 +30,7 @@ img{max-width:100%}
 
 /* header */
 .hdr{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--tbh,46px));z-index:70;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
-.hdr.sc{border-color:var(--line);box-shadow:0 10px 30px -22px rgba(17,35,55,.45)}
+.hdr.is-scrolled{border-color:var(--line);box-shadow:0 10px 30px -22px rgba(17,35,55,.45)}
 .hdr .w{display:flex;align-items:center;justify-content:space-between;gap:20px;height:var(--hh)}
 .hdr nav{display:flex;gap:30px;font-size:14px;font-weight:500}
 .hdr nav a{color:#2b3f57;position:relative;padding:6px 0}
@@ -293,7 +293,7 @@ document.querySelector('.bur').addEventListener('click',function(){var d=documen
 document.querySelector('.drw .x').addEventListener('click',closeD);
 document.querySelectorAll('.drw a').forEach(function(a){a.addEventListener('click',closeD)});
 addEventListener('hashchange',route);route();
-var hdr=document.querySelector('.hdr');addEventListener('scroll',function(){hdr.classList.toggle('sc',scrollY>10)},{passive:true});
+var hdr=document.querySelector('.hdr');addEventListener('scroll',function(){hdr.classList.toggle('is-scrolled',scrollY>10)},{passive:true});
 var tb=document.querySelector('.tb');function sz(){document.documentElement.style.setProperty('--tbh',tb.offsetHeight+'px')}sz();addEventListener('resize',sz);
 
 /* catalogue filter */
