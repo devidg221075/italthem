@@ -1,7 +1,7 @@
 // Page bodies for home, about, catalogue and service pages. Text comes from content/<lang>; only chrome strings are in strings.mjs.
 import { esc, displayTitle, layout, renderBlock } from './render.mjs';
 import { pageUrl, productUrl, serviceUrl, NAV_LABELS } from './routes.mjs';
-import { imageUrl } from './images.mjs';
+import { imageUrl, imgTag, hasImage, preloadLink, SIZES } from './images.mjs';
 import { T } from './strings.mjs';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
@@ -23,7 +23,7 @@ const photo = (product, i) => {
   if (!u) throw new Error(`product ${product.code} has no image #${i}`);
   return u;
 };
-const img = (url, alt, { lazy = true, extra = '' } = {}) => `<img src="${esc(imageUrl(url))}" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ''}${extra}>`;
+const img = (url, alt, opts) => imgTag(url, { alt, ...opts });
 const altOf = (p) => `${p.code} ${displayTitle(p.title)}`;
 const clip = (s, n = 160) => (s.length <= n ? s : `${s.slice(0, n - 1).replace(/\s+\S*$/, '')}…`);
 
@@ -32,8 +32,8 @@ export function orderedProducts(products) {
   return [...products].sort((a, b) => rank(a) - rank(b));
 }
 
-function card(p, lang) {
-  return `<a class="pc" href="${productUrl(p, lang)}"><div class="ph">${img(photo(p, 0), altOf(p))}</div><small>${esc(p.code)}</small><h3>${esc(displayTitle(p.title))}</h3></a>`;
+function card(p, lang, sizes = SIZES.card, priority = false) {
+  return `<a class="pc" href="${productUrl(p, lang)}"><div class="ph">${img(photo(p, 0), altOf(p), { sizes, priority })}</div><small>${esc(p.code)}</small><h3>${esc(displayTitle(p.title))}</h3></a>`;
 }
 
 /** First sentence of the home lead without the "Italtherm:" prefix, with the closing "precious metals" emphasised. */
@@ -56,16 +56,16 @@ function homeBody(content, lang) {
   const hero = `<section class="hero" aria-roledescription="carousel" aria-label="${esc(t.machines)}"><div class="bg"></div><div class="ghost" aria-hidden="true">${esc(slides[0].p.code)}</div><div class="w body"><div><h1>${heroHeading(home.lead)}</h1><p class="sub">${esc(about.lead)}</p><div class="hb"><a class="btn b1" href="${pageUrl('products', lang)}">${esc(t.discover)}</a><a class="btn b2" href="${pageUrl('contact', lang)}">${esc(t.contactUs)}</a></div>`
     + `<div class="cap">${slides.map((s, i) => `<div class="c${i ? '' : ' on'}"><b>${esc(s.p.code)}</b><span>${esc(displayTitle(s.p.title))}</span></div>`).join('')}</div>`
     + `<div class="ctrl"><button class="pv" type="button" aria-label="${esc(t.prev)}">←</button><button class="nx" type="button" aria-label="${esc(t.next)}">→</button><span class="count"><i class="cur">01</i> / ${String(slides.length).padStart(2, '0')}</span></div></div>`
-    + `<div class="stage">${slides.map((s, i) => `<div class="m${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${img(photo(s.p, s.image), altOf(s.p), { lazy: i > 0, extra: i === 0 ? ' fetchpriority="high"' : '' })}</div>`).join('')}</div></div>`
-    + `<div class="sel"><div class="w">${slides.map((s, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'}>${img(photo(s.p, s.image), '')}<span><b>${esc(s.p.code)}</b><span>${esc(displayTitle(s.p.title))}</span></span></button>`).join('')}</div></div></section>`;
+    + `<div class="stage">${slides.map((s, i) => `<div class="m${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${img(photo(s.p, s.image), altOf(s.p), { sizes: SIZES.hero, priority: i === 0 })}</div>`).join('')}</div></div>`
+    + `<div class="sel"><div class="w">${slides.map((s, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'}>${img(photo(s.p, s.image), '', { sizes: SIZES.thumb })}<span><b>${esc(s.p.code)}</b><span>${esc(displayTitle(s.p.title))}</span></span></button>`).join('')}</div></div></section>`;
 
   const tg = `<section class="tg"><div class="w" style="--n:${taglines.length}">${taglines.map((x) => `<div>${esc(x)}</div>`).join('')}</div></section>`;
 
-  const rail = `<section class="sc"><div class="w"><div class="hd"><div><div class="ey">${esc(t.catalogue)}</div><h2>${esc(section(home, 1).heading)}</h2></div><a class="btn b2" href="${pageUrl('products', lang)}">${esc(t.allSystems(products.length))}</a></div><div class="rail">${orderedProducts(products).map((p) => card(p, lang)).join('')}</div></div></section>`;
+  const rail = `<section class="sc"><div class="w"><div class="hd"><div><div class="ey">${esc(t.catalogue)}</div><h2>${esc(section(home, 1).heading)}</h2></div><a class="btn b2" href="${pageUrl('products', lang)}">${esc(t.allSystems(products.length))}</a></div><div class="rail">${orderedProducts(products).map((p) => card(p, lang, SIZES.rail)).join('')}</div></div></section>`;
 
   const svc = `<section class="sc flush"><div class="w"><div class="hd"><div><div class="ey">${esc(t.whatWeDo)}</div><h2>${esc(section(home, 2).heading)}</h2></div></div><div class="svt">${services.map((s) => {
     const ph = SERVICE_PHOTOS[s.slug];
-    return `<a href="${serviceUrl(s, lang)}"><div class="im">${ph ? img(photo(byCode(products, ph.code), ph.image), '') : ''}</div><h3>${esc(s.title)}</h3></a>`;
+    return `<a href="${serviceUrl(s, lang)}"><div class="im">${ph ? img(photo(byCode(products, ph.code), ph.image), '', { sizes: SIZES.service }) : ''}</div><h3>${esc(s.title)}</h3></a>`;
   }).join('')}</div></div></section>`;
 
   const abt = `<section class="sc flush"><div class="w"><div class="hd"><div><div class="ey">${esc(aboutIntro.kicker)}</div><h2>${esc(aboutIntro.heading)}</h2></div><a class="btn b2" href="${pageUrl('about', lang)}">${esc(t.readMore)}</a></div>${(aboutIntro.blocks || []).filter((b) => b.type === 'p').map((b) => `<p class="lead" style="max-width:62ch;font-size:18px;color:var(--body)">${esc(b.text)}</p>`).join('')}</div></section>`;
@@ -82,7 +82,7 @@ function catalogueBody(content, lang) {
   const page = pages.find((p) => p.slug === 'products');
   const chips = ['all', 'melt', 'heat', 'prod'].map((k, i) => `<button type="button" data-filter="${k}"${i ? ' aria-pressed="false"' : ' class="on" aria-pressed="true"'}>${esc(t.filters[k])}</button>`).join('');
   return `<section class="ph0 pg"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / ${esc(page.title)}</div><h1>${esc(page.title)}</h1>${page.lead ? `<p class="lead">${esc(page.lead)}</p>` : ''}<div class="chips" role="group" aria-label="${esc(t.filterLabel)}">${chips}</div></div></section>
-<section class="sc" style="padding-top:30px"><div class="w"><div class="gr3" id="pgrid">${orderedProducts(products).map((p) => `<div data-g="${esc(p.group)}">${card(p, lang)}</div>`).join('')}</div></div></section>`;
+<section class="sc" style="padding-top:30px"><div class="w"><div class="gr3" id="pgrid">${orderedProducts(products).map((p, i) => `<div data-g="${esc(p.group)}">${card(p, lang, SIZES.card, i === 0)}</div>`).join('')}</div></div></section>`;
 }
 
 function aboutBody(content, lang) {
@@ -97,7 +97,7 @@ function aboutBody(content, lang) {
     const ph = ABOUT_PHOTOS[i];
     const prod = byCode(products, ph.code);
     const body = (s.blocks || []).map(renderBlock).join('');
-    return `<div class="ab"><div class="tx">${s.kicker ? `<div class="ey">${esc(s.kicker)}</div>` : ''}<h2>${esc(s.heading)}</h2>${body}</div><div class="im${ph.contain ? ' c' : ''}">${img(photo(prod, ph.image), altOf(prod))}</div></div>`;
+    return `<div class="ab"><div class="tx">${s.kicker ? `<div class="ey">${esc(s.kicker)}</div>` : ''}<h2>${esc(s.heading)}</h2>${body}</div><div class="im${ph.contain ? ' c' : ''}">${img(photo(prod, ph.image), altOf(prod), { sizes: SIZES.about, priority: i === 0 })}</div></div>`;
   }).join('');
   const whyP = (why.blocks || []).find((b) => b.type === 'p');
   const whyL = (why.blocks || []).find((b) => b.type === 'list');
@@ -114,7 +114,7 @@ function serviceBody(service, content, lang) {
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const hasFile = (rel) => existsSync(path.join(ROOT, rel));
-const localImage = (u) => hasFile(imageUrl(u).slice(1).split('/').map(decodeURIComponent).join('/'));
+const localImage = (u) => hasImage(u);
 const br = (s) => esc(s).replace(/\r?\n/g, '<br>');
 
 function specCell(v, t) {
@@ -130,7 +130,7 @@ function specTable(p, t) {
 function gallery(p) {
   const imgs = (p.images ?? []).filter(localImage);
   const alt = (i) => (i ? `${altOf(p)} (${i + 1})` : altOf(p));
-  const big = imgs.map((u, i) => `<img${i ? '' : ' class="on"'} src="${esc(imageUrl(u))}" alt="${esc(alt(i))}"${i ? ' loading="lazy"' : ' fetchpriority="high"'}>`).join('');
+  const big = imgs.map((u, i) => img(u, alt(i), { sizes: SIZES.gallery, priority: i === 0, cls: i ? undefined : 'on' })).join('');
   return { big, imgs };
 }
 
@@ -150,7 +150,7 @@ export function productBody(p, content, lang) {
   const t = T[lang];
   const productsPage = content.pages.find((x) => x.slug === 'products');
   const g = gallery(p);
-  const gal = `<div class="gal">${g.imgs.length ? `<div class="big">${g.big}</div>` : ''}${g.imgs.length > 1 ? `<div class="th" aria-label="${esc(t.gallery)}">${g.imgs.map((u, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'} aria-label="${esc(t.imageN(i + 1))}"><img src="${esc(imageUrl(u))}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}</div>`;
+  const gal = `<div class="gal">${g.imgs.length ? `<div class="big">${g.big}</div>` : ''}${g.imgs.length > 1 ? `<div class="th" aria-label="${esc(t.gallery)}">${g.imgs.map((u, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'} aria-label="${esc(t.imageN(i + 1))}">${img(u, '', { sizes: SIZES.thumb })}</button>`).join('')}</div>` : ''}</div>`;
   const contact = `${pageUrl('contact', lang)}?product=${encodeURIComponent(p.slug)}`;
   const pdf = p.pdf && hasFile(docUrl(p.slug).slice(1))
     ? `<a class="pdf" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${esc(p.download_label)} ↓</a>` : '';
@@ -221,7 +221,7 @@ const HOME_TITLE = { en: 'ITALTHERM – Industrial Furnaces for Precious Metals'
 
 const paragraphs = (text) => String(text ?? '').split(/\r?\n/).map((x) => x.trim()).filter(Boolean);
 
-/** First photo of a product that exists in assets/img/src, as a site path. */
+/** First photo of a product that has optimized variants, as a site path. */
 const mainPhoto = (p) => {
   const u = (p.images ?? []).find(localImage);
   return u ? imageUrl(u) : undefined;
@@ -284,7 +284,14 @@ export function renderSitePage(page, contents) {
   const common = { lang, site: content.site, switchUrls, alternates: page.alternates };
   const src = content.pages.find((p) => p.slug === page.key);
   const { title, description, seo } = seoFor(page, content);
-  const withSeo = { ...common, title, description, seo, head: src?.seo?.head };
+  // The LCP image (first hero slide / first gallery image) is preloaded with the same srcset/sizes as its <img>.
+  let preload;
+  if (page.type === 'home') preload = preloadLink(photo(byCode(content.products, HERO_SLIDES[0].code), HERO_SLIDES[0].image), { sizes: SIZES.hero });
+  if (page.type === 'product') {
+    const first = (content.products.find((x) => x.slug === page.key).images ?? []).find(localImage);
+    if (first) preload = preloadLink(first, { sizes: SIZES.gallery });
+  }
+  const withSeo = { ...common, title, description, seo, preload, head: src?.seo?.head };
   switch (page.type) {
     case 'home':
       return layout({ ...withSeo, slug: 'home', body: homeBody(content, lang) });

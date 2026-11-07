@@ -61,7 +61,8 @@ RewriteRule ^ https://ital-therm.it%{REQUEST_URI} [R=301,L]
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 
   # CSS/JS are linked with ?v=<content hash> by the build, so a year is safe. Fonts keep their name: one year, not immutable.
-  # Images and favicons keep their name too: one week.
+  # Optimized photos carry a content hash in their name (<base>-<w>.<hash8>.webp): immutable. Favicons, PNG icons and the SVG logo
+  # keep their name: one week. Apache applies the LAST matching FilesMatch, so the hashed rule comes after the generic image rule.
   <FilesMatch "\.(css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
@@ -70,6 +71,9 @@ RewriteRule ^ https://ital-therm.it%{REQUEST_URI} [R=301,L]
   </FilesMatch>
   <FilesMatch "\.(jpe?g|png|webp|avif|gif|svg|ico)$">
     Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "-[0-9]+\.[0-9a-f]{8}\.(webp|avif)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "\.pdf$">
     Header set Cache-Control "public, max-age=86400"
@@ -85,8 +89,8 @@ RewriteRule ^ https://ital-therm.it%{REQUEST_URI} [R=301,L]
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 week"
   ExpiresByType image/png "access plus 1 week"
-  ExpiresByType image/webp "access plus 1 week"
-  ExpiresByType image/avif "access plus 1 week"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
   ExpiresByType image/gif "access plus 1 week"
   ExpiresByType image/svg+xml "access plus 1 week"
   ExpiresByType text/css "access plus 1 year"

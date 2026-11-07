@@ -61,12 +61,12 @@ function notice(lang) {
  * `alternates` ([{lang, url}]) and `seo` ({url, type, image, images, crumbs, product}) feed the SEO head; `head` overrides it entirely.
  */
 /** `switchUrls` ({en, it}) overrides the language-switch targets and `navKey` the highlighted nav item, for pages whose url is not derived from `slug` (services, products). */
-export function layout({ lang, slug, title, description, body, site, alternates = [], head, switchUrls, navKey, seo: seoExtra = {} }) {
+export function layout({ lang, slug, title, description, body, site, alternates = [], head, preload = '', switchUrls, navKey, seo: seoExtra = {} }) {
   const seo = head ?? seoHead({ title, description, alternates, ...seoExtra }, lang, { site });
   return `<!doctype html>
 <html lang="${esc(lang)}">
 <head>
-${HEAD.replace('{{seo}}', () => seo).replace('{{css}}', () => assetUrl('/assets/css/site.css'))}
+${HEAD.replace('{{seo}}', () => seo).replace('{{preload}}', () => preload).replace('{{css}}', () => assetUrl('/assets/css/site.css'))}
 </head>
 <body>
 ${header(lang, slug, site, switchUrls, navKey)}

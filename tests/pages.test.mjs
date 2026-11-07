@@ -59,8 +59,9 @@ test('route helpers', () => {
   assert.equal(productUrl({ slug: 'it-cc' }, 'en'), '/en/products/it-cc/');
   assert.equal(productUrl({ slug: 'it-cc' }, 'it'), '/it/prodotti/it-cc/');
   assert.equal(serviceUrl({ slug: 'x' }, 'it'), '/it/servizi/x/');
-  assert.equal(imageUrl('https://ital-therm.it/wp-content/uploads/2026/04/Foo-1.jpg'), '/assets/img/src/Foo-1.jpg');
-  assert.equal(imageUrl('Foo-1.jpg'), '/assets/img/src/Foo-1.jpg');
+  const opt = /^\/assets\/img\/opt\/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-960\.[0-9a-f]{8}\.webp$/;
+  assert.match(imageUrl('https://ital-therm.it/wp-content/uploads/2026/04/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.jpg'), opt);
+  assert.equal(imageUrl('CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.jpg'), imageUrl('https://x.test/a/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.jpg'));
 });
 
 for (const lang of ['en', 'it']) {
@@ -91,7 +92,7 @@ test('en home: taglines, about excerpt and contact band come from content', () =
 test('hero uses the machine overview photos', () => {
   const html = read('en/index.html');
   const stage = html.match(/<div class="stage">[\s\S]*?<\/div><\/div>/)[0];
-  assert.ok(stage.includes('Contr.-atmosphere-annealing-furnace_AF400.jpg'));
+  assert.match(stage, /furnace_AF400-(480|960)\.[0-9a-f]{8}\.webp/);
   assert.ok(!stage.includes('AF400-3-1'));
 });
 

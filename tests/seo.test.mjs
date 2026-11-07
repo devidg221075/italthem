@@ -134,7 +134,7 @@ test('Open Graph and Twitter tags with an absolute image that exists', () => {
 });
 
 test('home og:image is the first hero photo', () => {
-  assert.match(attr(read('en/index.html'), /<meta property="og:image" content="([^"]*)"/), /\/assets\/img\/src\/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT\.jpg$/);
+  assert.match(attr(read('en/index.html'), /<meta property="og:image" content="([^"]*)"/), /\/assets\/img\/opt\/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-960\.[0-9a-f]{8}\.webp$/);
 });
 
 test('JSON-LD: one Organization+LocalBusiness node and a WebSite on both homes, referenced by @id', () => {
@@ -368,14 +368,17 @@ test('.htaccess hardening: contact-lib denied, canonical host, headers, caching,
   assert.match(htaccess, /RewriteRule \^ https:\/\/ital-therm\.it%\{REQUEST_URI\} \[R=301,L\]/);
   for (const h of ['X-Content-Type-Options "nosniff"', 'Referrer-Policy "strict-origin-when-cross-origin"', 'X-Frame-Options "SAMEORIGIN"', 'Permissions-Policy "camera=(), microphone=(), geolocation=()"']) assert.ok(htaccess.includes(h), h);
   const blocks = [...htaccess.matchAll(/<FilesMatch "([^"]+)">\s*Header set Cache-Control "([^"]+)"/g)].map((m) => ({ re: new RegExp(m[1]), value: m[2] }));
-  const cache = (file) => blocks.find((x) => x.re.test(file))?.value;
+  const cache = (file) => blocks.findLast((x) => x.re.test(file))?.value; // Apache: the last matching FilesMatch wins
   assert.equal(cache('site.css'), 'public, max-age=31536000, immutable');
   assert.equal(cache('site.js'), 'public, max-age=31536000, immutable');
   assert.equal(cache('inter.woff2'), 'public, max-age=31536000');
-  for (const f of ['a.jpg', 'a.jpeg', 'a.png', 'a.webp', 'a.avif', 'favicon.svg']) assert.equal(cache(f), 'public, max-age=604800', f);
+  // Only content-hashed optimized images (<base>-<w>.<hash8>.webp|avif) are immutable; unhashed images stay at one week.
+  for (const f of ['a.jpg', 'a.jpeg', 'a.png', 'a.webp', 'a.avif', 'favicon.svg', 'logo_vert.svg', 'icon-192.png', 'a-960.webp', 'a-960.1234567.webp', 'a-960.1234567g.webp']) assert.equal(cache(f), 'public, max-age=604800', f);
+  for (const f of ['Foo-bar.2-960.0123abcd.webp', 'x-480.deadbeef.avif', 'Cont.-casting-1600.7291bb4d.webp']) assert.equal(cache(f), 'public, max-age=31536000, immutable', f);
   assert.equal(cache('index.html'), 'no-cache');
-  assert.ok(!/immutable/.test(`${cache('inter.woff2')}${cache('a.jpg')}${cache('favicon.svg')}`), 'fonts and images are not immutable');
+  assert.ok(!/immutable/.test(`${cache('inter.woff2')}${cache('a.jpg')}${cache('favicon.svg')}`), 'fonts and unhashed images are not immutable');
   assert.match(htaccess, /ExpiresByType image\/jpeg "access plus 1 week"/);
+  assert.match(htaccess, /ExpiresByType image\/webp "access plus 1 year"/);
   assert.match(htaccess, /ExpiresByType text\/css "access plus 1 year"/);
   assert.match(htaccess, /Cache-Control "no-cache"/);
   assert.match(htaccess, /AddDefaultCharset utf-8/);

@@ -53,7 +53,9 @@ export async function build() {
   for (const [name, xml] of Object.entries(buildSitemaps(pages))) await writeFile(path.join(DIST, name), xml);
   await writeFile(path.join(DIST, 'robots.txt'), robotsTxt());
   await writeFile(path.join(DIST, '.htaccess'), buildHtaccess(buildRedirects(contents)));
-  await cp(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true });
+  // assets/img/src (the 3 MB originals) stays in the repo only; dist ships the optimized assets/img/opt.
+  const SRC_IMG = path.join(ROOT, 'assets/img/src');
+  await cp(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true, filter: (f) => f !== SRC_IMG });
   for (const f of ['contact.php', 'contact-lib.php']) await copyFile(path.join(ROOT, 'server', f), path.join(DIST, f));
   return pages;
 }
