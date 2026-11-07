@@ -34,4 +34,5 @@ export const ABOUT_PHOTOS = [
 ];
 
 // Catalogue / rail order (codes); anything not listed goes last.
-export const CATALOGUE_ORDER = ['IT.KB', 'IT.CC', 'IT.AF', 'IT.BF', 'IT.CWA', 'IT.GT', 'IT.GMS', 'IT.GMB', 'IT.MT', 'IT.SM', 'IT.FM'];
+// The four featured machines first, in the order of the approved catalogue mockup (IT.CC, IT.GT, IT.AF, IT.GMS), then the rest.
+export const CATALOGUE_ORDER = ['IT.CC', 'IT.GT', 'IT.AF', 'IT.GMS', 'IT.MT', 'IT.SM', 'IT.BF', 'IT.CWA', 'IT.GMB', 'IT.FM', 'IT.KB'];

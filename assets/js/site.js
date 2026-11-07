@@ -126,19 +126,6 @@
       if (n) go(0);
     }
 
-    /* catalogue filter chips */
-    var chips = $$('[data-filter]');
-    if (chips.length) {
-      var items = $$('[data-g]');
-      chips.forEach(function (b) {
-        b.addEventListener('click', function () {
-          var f = b.getAttribute('data-filter');
-          chips.forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-          items.forEach(function (d) { d.hidden = !(f === 'all' || d.getAttribute('data-g') === f); });
-        });
-      });
-    }
-
     /* contact form: fetch enhancement, ?product prefill, ?sent / ?error messages */
     var form = $('form.fl[action="/contact.php"]');
     if (form) {

@@ -70,13 +70,35 @@ function homeBody(content, lang) {
   return [hero, tg, rail, svc, abt, band].join('\n');
 }
 
+/** Gold capacities (kg) of each model, read from the spec table ("ORO / GOLD : 30KG", "5.0 KG AU"); [] when the table has none. */
+export function goldCapacities(p) {
+  const row = (p.specs?.rows ?? []).find((r) => /CAPAC/i.test(r.label) && !/STAMPO|MOLD/i.test(r.label));
+  if (!row) return [];
+  return row.values.map((v) => {
+    const m = String(v).match(/(?:ORO\s*\/\s*GOLD\s*:?\s*)([\d.]+)\s*KG/i) || String(v).match(/([\d.]+)\s*KG\s*AU/i);
+    return m ? Number(m[1]) : null;
+  }).filter((n) => n !== null);
+}
+const CAP_RANGES = [(n) => n <= 10, (n) => n > 10 && n <= 50, (n) => n > 50];
+export const capRanges = (p) => CAP_RANGES.map((f, i) => (goldCapacities(p).some(f) ? i : -1)).filter((i) => i >= 0);
+
+const check = (name, value, label, n) => `<label class="ck"><input type="checkbox" name="${name}" value="${esc(value)}"><i aria-hidden="true"></i><span>${esc(label)}</span><em>${n}</em></label>`;
+
 function catalogueBody(content, lang) {
-  const { pages, products } = content;
+  const { products } = content;
   const t = T[lang];
-  const page = pages.find((p) => p.slug === 'products');
-  const chips = ['all', 'melt', 'heat', 'prod'].map((k, i) => `<button type="button" data-filter="${k}"${i ? ' aria-pressed="false"' : ' class="on" aria-pressed="true"'}>${esc(t.filters[k])}</button>`).join('');
-  return `<section class="ph0 pg"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / ${esc(page.title)}</div><h1>${esc(page.title)}</h1>${page.lead ? `<p class="lead">${esc(page.lead)}</p>` : ''}<div class="chips" role="group" aria-label="${esc(t.filterLabel)}">${chips}</div></div></section>
-<section class="sc" style="padding-top:30px"><div class="w"><div class="gr3" id="pgrid">${orderedProducts(products).map((p, i) => `<div data-g="${esc(p.group)}">${card(p, lang, SIZES.card, i === 0)}</div>`).join('')}</div></div></section>`;
+  const c = t.cat;
+  const list = orderedProducts(products);
+  const groups = ['melt', 'heat', 'prod'];
+  const groupCount = (g) => products.filter((p) => p.group === g).length;
+  const rangeCount = (i) => products.filter((p) => capRanges(p).includes(i)).length;
+  const filters = `<details class="cf" open><summary>${esc(c.filter)}${icon('down', 'ic dn')}</summary><div class="cb">`
+    + `<fieldset><legend>${esc(c.process)}</legend>${groups.map((g) => check('g', g, t.filters[g], groupCount(g))).join('')}</fieldset>`
+    + `<fieldset><legend>${esc(c.capacity)}</legend>${c.ranges.map((r, i) => check('cap', String(i), r, rangeCount(i))).join('')}<p class="cn">${esc(c.capNote)}</p></fieldset>`
+    + `<button class="btn b2 ap" type="button">${esc(c.apply)}</button><button class="rs" type="button" hidden>${esc(c.reset)}</button></div></details>`;
+  const cards = list.map((p, i) => `<div class="cc" data-g="${esc(p.group)}" data-cap="${capRanges(p).join(' ')}" data-r="${i}" data-code="${esc(p.code)}">${card(p, lang, SIZES.card, i === 0)}</div>`).join('');
+  return `<section class="cat-h"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>${esc(c.kicker)}</span></p><h1>${esc(c.title)}</h1><p class="sub">${esc(c.sub)}</p></div></section>
+<section class="cat-b"><div class="w cl">${filters}<div class="cr"><div class="cbar"><p class="cnt" role="status" aria-live="polite" data-one="${esc(c.found(1).replace('1', '{n}'))}" data-many="${esc(c.found(2).replace('2', '{n}'))}">${esc(c.found(list.length))}</p><label class="so"><span>${esc(c.sort)}</span><select aria-label="${esc(c.sort)}"><option value="r">${esc(c.sortRel)}</option><option value="c">${esc(c.sortCode)}</option></select></label></div><div class="gr3 cg" id="pgrid" aria-label="${esc(c.list)}">${cards}</div><p class="cno" hidden>${esc(c.none)}</p></div></div></section>`;
 }
 
 function aboutBody(content, lang) {
@@ -296,7 +318,7 @@ export function renderSitePage(page, contents) {
     case 'about':
       return layout({ ...withSeo, slug: 'about', body: aboutBody(content, lang) });
     case 'products':
-      return layout({ ...withSeo, slug: 'products', body: catalogueBody(content, lang) });
+      return layout({ ...withSeo, slug: 'products', styles: ['/assets/css/catalogue.css'], scripts: ['/assets/js/catalogue.js'], body: catalogueBody(content, lang) });
     case 'contact':
       return layout({ ...withSeo, slug: 'contact', cta: false, body: contactBody(content, lang) });
     case 'privacy':

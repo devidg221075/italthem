@@ -99,17 +99,6 @@ test('hero uses the machine overview photos', () => {
   assert.match(stage, /GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-(480|960)/, 'IT.GT is the first slide (lightest photo = LCP)');
 });
 
-for (const lang of ['en', 'it']) {
-  test(`${lang} catalogue: 11 cards with groups and filter chips`, () => {
-    const html = read(`${lang}/${lang === 'en' ? 'products' : 'prodotti'}/index.html`);
-    const groups = [...html.matchAll(/<div data-g="(\w+)"><a class="pc" href="([^"]+)"/g)];
-    assert.equal(groups.length, 11);
-    assert.deepEqual([...new Set(groups.map((g) => g[1]))].sort(), ['heat', 'melt', 'prod']);
-    for (const g of groups) assert.ok(g[2].startsWith(`/${lang}/${lang === 'en' ? 'products' : 'prodotti'}/it-`));
-    assert.deepEqual([...html.matchAll(/data-filter="(\w+)"/g)].map((m) => m[1]), ['all', 'melt', 'heat', 'prod']);
-  });
-}
-
 test('about page has 3 solution blocks and the why-choose grid', () => {
   for (const [lang, file] of [['en', 'en/about-us'], ['it', 'it/chi-siamo']]) {
     const html = read(`${file}/index.html`);

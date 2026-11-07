@@ -1,6 +1,7 @@
 // Interface strings for page chrome that is not part of the extracted content (buttons, labels, filter chips).
 export const T = {
   en: {
+    cat: { kicker: 'Products', title: 'Our range of machines', sub: 'Technologies for melting, casting and heat treatment of precious metals.', filter: 'Filter products', process: 'Process', capacity: 'Gold capacity', ranges: ['Up to 10 kg', '10 – 50 kg', 'Over 50 kg'], capNote: 'Capacity is listed for 7 of the 11 systems; the others appear only when no capacity is selected.', apply: 'Apply filters', reset: 'Reset filters', found: (n) => (n === 1 ? '1 product found' : `${n} products found`), sort: 'Sort by', sortRel: 'Relevance', sortCode: 'Code A–Z', none: 'No product matches these filters.', list: 'Products' },
     heroKicker: 'Italian technology',
     heroKickerLang: 'en',
     heroTitle: 'Industrial furnaces for precious metals',
@@ -56,6 +57,7 @@ export const T = {
     status: 'Form status',
   },
   it: {
+    cat: { kicker: 'Prodotti', title: 'La nostra gamma di macchinari', sub: 'Tecnologie per fusione, colata e trattamento termico dei metalli preziosi.', filter: 'Filtra i prodotti', process: 'Lavorazione', capacity: 'Capacità in oro', ranges: ['Fino a 10 kg', '10 – 50 kg', 'Oltre 50 kg'], capNote: 'La capacità è indicata per 7 sistemi su 11; gli altri compaiono solo se non selezioni una capacità.', apply: 'Applica filtri', reset: 'Azzera filtri', found: (n) => (n === 1 ? '1 prodotto trovato' : `${n} prodotti trovati`), sort: 'Ordina per', sortRel: 'Rilevanza', sortCode: 'Codice A–Z', none: 'Nessun prodotto con questi filtri.', list: 'Prodotti' },
     heroKicker: 'Industrial furnaces for precious metals',
     heroKickerLang: 'en',
     heroTitle: 'Forni industriali per metalli preziosi',

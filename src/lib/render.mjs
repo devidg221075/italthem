@@ -105,16 +105,17 @@ function notice(lang) {
 /**
  * Reusable shell. `body` is trusted, pre-rendered HTML (must contain the page's single <h1>).
  * `alternates` ([{lang, url}]) and `seo` ({url, type, image, images, crumbs, product}) feed the SEO head; `head` overrides it entirely.
+ * `styles` / `scripts` ([asset paths]) add page-specific CSS and deferred JS (catalogue only);
  * `products` feeds the mega menu and footer; `cta: false` omits the CTA strip above the footer (home and contact have their own).
  */
 /** `switchUrls` ({en, it}) overrides the language-switch targets and `navKey` the highlighted nav item, for pages whose url is not derived from `slug` (services, products). */
-export function layout({ lang, slug, title, description, body, site, products = [], cta = true, alternates = [], head, preload = '', switchUrls, navKey, seo: seoExtra = {} }) {
+export function layout({ lang, slug, title, description, body, site, products = [], cta = true, styles = [], scripts = [], alternates = [], head, preload = '', switchUrls, navKey, seo: seoExtra = {} }) {
   const seo = head ?? seoHead({ title, description, alternates, ...seoExtra }, lang, { site });
   return `<!doctype html>
 <html lang="${esc(lang)}">
 <head>
 ${HEAD.replace('{{seo}}', () => seo).replace('{{preload}}', () => preload).replace('{{css}}', () => assetUrl('/assets/css/site.css'))}
-</head>
+${styles.map((u) => `<link rel="stylesheet" href="${assetUrl(u)}">`).join('\n')}${styles.length ? '\n' : ''}</head>
 <body>
 ${header(lang, slug, site, switchUrls, navKey, products)}
 <main id="main">
@@ -123,7 +124,7 @@ ${body}
 ${footer(lang, slug, site, products, cta)}
 ${notice(lang)}
 <script src="${assetUrl('/assets/js/site.js')}" defer></script>
-</body>
+${scripts.map((u) => `<script src="${assetUrl(u)}" defer></script>`).join('\n')}${scripts.length ? '\n' : ''}</body>
 </html>
 `;
 }

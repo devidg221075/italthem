@@ -185,3 +185,20 @@ Riferimento: tavola master e mockup approvati (Light Premium / Minimal Titanium)
 - Ricerca: `src/lib/search-index.mjs` genera `dist/assets/search-<lingua>.json` (11 prodotti con codice, titolo, sigle modello e testo; 4 servizi; 5 pagine). `assets/js/search.js` e `assets/css/search.css` si caricano al primo clic sul pulsante (non contano nei 40 KB di `site.css` + `site.js`). L'overlay è costruito solo con l'API DOM (nessun `innerHTML`).
 - Cookie Policy: testo in `src/lib/privacy.mjs` (`COOKIES`), pagina in sitemap e linkata dal footer; l'informativa privacy e la cookie policy dicono la stessa cosa sul cookie `it_notice`.
 - Tre test nuovi per lingua in `tests/search.test.mjs`.
+
+## Catalogo (pagina Prodotti nel nuovo stile)
+
+Fatto: banner con titolo, barra laterale dei filtri, conteggio, ordinamento, griglia di card; su telefono elenco con miniature e pannello filtri richiudibile. CSS e JS del catalogo sono in `assets/css/catalogue.css` e `assets/js/catalogue.js`, caricati solo in questa pagina.
+
+| Dove | Mockup | Cosa ho fatto | Stato |
+|---|---|---|---|
+| Titolo | "La nostra gamma di macchinari" / "Our range of machines" | H1 e sottotitolo come nel mockup (testo nuovo, non presente nel sito originale); "Prodotti" è il kicker sopra il titolo. Il tag `<title>` e la meta description non cambiano | Da confermare |
+| Filtro "Lavorazione" | Colata continua (2), Fusione (3), Ricottura (2), Produzione grani (3) | Le tre famiglie reali dei prodotti: Forni di fusione (4), Trattamento termico (3), Sistemi di produzione (4). I conteggi sono calcolati dai dati | Deciso |
+| Filtro "Capacità" | Fino a 10 / 10–50 / oltre 50 kg (3, 4, 3) | Fino a 10 kg (4), 10–50 kg (7), oltre 50 kg (2), calcolati sulla capacità **in oro** letta dalla tabella tecnica. Un prodotto compare in ogni fascia in cui cade uno dei suoi modelli | Da confermare |
+| Prodotti senza capacità | — | IT.AF, IT.BF, IT.CWA e IT.KB non hanno una capacità nella tabella (IT.KB ha solo la capacità dello stampo): compaiono solo senza filtro capacità, e la pagina lo dice | Da confermare |
+| Foto del banner | Rendering con colata | Sfondo chiaro con diagonale, senza foto | Da confermare |
+| Ordina per | Rilevanza | Rilevanza (IT.CC, IT.GT, IT.AF, IT.GMS e poi gli altri) e Codice A–Z | Fatto |
+| "Catalogo completo, Scarica il PDF" (mobile) | Card con PDF | Non inserita: non esiste un PDF del catalogo completo (solo le schede tecniche dei singoli prodotti) | In attesa del file |
+| Applica filtri | Pulsante | I filtri si applicano subito; il pulsante chiude il pannello su telefono e porta ai risultati | Fatto |
+| Senza JavaScript | — | Tutte le 11 card visibili, senza filtri | Fatto |
+| `?g=melt|heat|prod` | — | Preseleziona una famiglia (per i link dal menu) | Fatto |
