@@ -15,7 +15,7 @@
 - Languages: `/en/` and `/it/`, with `hreflang` and `x-default` pointing to `/en/`. Italian text is taken from the live `/it/` pages, never machine-translated.
 - Company data: ITALTHERM S.r.l., P.IVA 02487940518, REA Arezzo 220552, info@ital-therm.it.
 - Phones: +39 0575 802485 and +39 366 871 9427 only. Address: Viale S. Maria delle Vertighe, 50/B, 52048 Monte San Savino (AR).
-- Visual reference: `docs/design/prototype.tpl.html` (hero J, approved). White page, Inter (local, WOFF2 subset, `font-display: swap`) plus JetBrains Mono for model codes; navy #112337, blue #204ce5 / #527eff, logo blue #2f4f9e, grey #6c6d71; WCAG AA contrast. The logo is the original SVG (`logo_vert.svg` from the live site).
+- Visual reference: `docs/design/prototype.tpl.html` (hero J, approved). White page, Inter (local, WOFF2 subset, `font-display: swap`) (also for model codes and labels: weight 600/700, uppercase tracking, tabular figures; no monospace font); navy #112337, blue #204ce5 / #527eff, logo blue #2f4f9e, grey #6c6d71; WCAG AA contrast. The logo is the original SVG (`logo_vert.svg` from the live site).
 - Header: sticky, constant height (76px desktop, 68px mobile) at every scroll position, no extra padding on scroll; mobile drawer menu. Never reuse the section padding class name for state classes.
 - Photos: the originals from the live site (user confirmed licence), blended on the page with `mix-blend-mode: multiply`; no automatic cut-outs.
 - Content already extracted: `content/original/products.json` (11 products, verbatim) and `docs/CHANGES.md` (corrections and open questions). Unknown values are rendered as a dash, never invented.

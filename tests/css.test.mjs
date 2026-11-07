@@ -80,3 +80,13 @@ test('fonts are self-hosted WOFF2 with font-display swap', () => {
   for (const u of urls) assert.ok(existsSync(new URL(`..${u}`, import.meta.url)), u);
   assert.ok(css.includes('font-display:swap'));
 });
+
+test('Inter is the only typeface: no monospace or JetBrains in the CSS, templates or fonts', () => {
+  const css = read(CSS_PATH);
+  assert.ok(!/monospace/i.test(css), 'monospace in site.css');
+  assert.ok(!/jetbrains/i.test(css), 'JetBrains in site.css');
+  assert.ok(!/--mono\b/.test(css), '--mono token');
+  assert.ok(!existsSync(new URL('../assets/fonts/jetbrains-mono-latin-var.woff2', import.meta.url)));
+  assert.ok(!existsSync(new URL('../assets/fonts/jetbrains-mono-latin-ext-var.woff2', import.meta.url)));
+  for (const f of ['../templates/head.html', '../templates/logo.html']) assert.ok(!/monospace|jetbrains/i.test(read(new URL(f, import.meta.url))), f);
+});

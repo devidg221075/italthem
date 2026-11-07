@@ -26,7 +26,7 @@ Dati fissi: P.IVA 02487940518, REA Arezzo 220552, email info@ital-therm.it.
 
 - **Stile scelto:** hero "J · Galleria chiara": fondo bianco, griglia tecnica sottile, slider con le 4 macchine in evidenza (IT.CWA, IT.MT, IT.AF, IT.CC). Sostituisce la direzione scura/rame della prima versione.
 - **Palette:** quella del sito e del logo attuali: navy #112337, blu #204ce5 e #527eff, blu logo #2f4f9e, grigio #6c6d71. Il logo è l'SVG originale.
-- **Tipografia:** Inter per tutto il sito, JetBrains Mono per le sigle modello.
+- **Tipografia:** Inter per tutto il sito, anche per sigle modello ed etichette (peso 600/700, maiuscolo con spaziatura, cifre tabulari), senza font monospazio.
 - **Foto:** originali del sito, senza ritagli automatici, fuse sullo sfondo con `mix-blend-mode: multiply`.
 - **Header fisso** con menu a tendina su mobile.
 - **Prototipo di riferimento:** `docs/design/prototype.tpl.html` (generato da `docs/design/build_prototype.py`).

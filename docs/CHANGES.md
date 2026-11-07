@@ -108,7 +108,7 @@ Il testo resta com'è sul sito; propongo la correzione tra parentesi.
 
 ## Design system (Task 4)
 
-- Font: Inter (variabile 400–800) e JetBrains Mono (variabile 400–500) scaricati da Google Fonts (gstatic) e ospitati in `assets/fonts/` come WOFF2, solo sottoinsiemi latin e latin-ext (accenti italiani); `font-display: swap`, nessuna richiesta a terzi.
+- Font: Inter (variabile 400–800, unico carattere del sito: etichette, sigle modello, breadcrumb, badge, contatori e intestazioni di tabella usano Inter con peso 600/700, maiuscolo spaziato e cifre tabulari; JetBrains Mono è stato rimosso su richiesta del titolare, `docs/design/prototype.tpl.html` resta come riferimento storico) scaricato da Google Fonts (gstatic) e ospitati in `assets/fonts/` come WOFF2, solo sottoinsiemi latin e latin-ext (accenti italiani); `font-display: swap`, nessuna richiesta a terzi.
 - Header: altezza costante 76px (68px sotto i 600px); la classe di stato `is-scrolled` cambia solo ombra/bordo (test statico in `tests/css.test.mjs`, misura reale con `scripts/check-layout.mjs`). Il bordo è un box-shadow (non un `border`) così l'altezza è esattamente 76/68px. Il prototipo aveva un conflitto di nome con `.sc` (sezione) che faceva crescere l'header allo scroll: lo stato ora usa un nome dedicato.
 - Senza JavaScript: contenuto visibile, i link del menu appaiono come elenco statico sotto l'header (sotto i 1000px), prima slide dell'hero e prima immagine della galleria visibili, slider/miniature/frecce nascosti (si attivano con la classe `js`).
 - Banner del consenso: la brief originale di Task 4 lo citava in `site.js`; non è stato implementato (nessun cookie/tracker nel sito statico). Da decidere se serve.
