@@ -60,9 +60,22 @@ test('type scale of the master: body Inter 16/1.6, nav Inter Medium 16, buttons 
   assert.match(site, /body\{[^}]*font:16px\/1\.6 var\(--sans\)/);
   assert.match(site, /\.hdr nav\{[^}]*font:500 16px var\(--sans\)/);
   assert.match(site, /\.btn\{[^}]*font:600 16px\/1 var\(--sans\)/);
-  assert.match(site, /\.hero h1\{font-size:clamp\(34px,4\.1vw,56px\);line-height:1\.1/);
-  assert.match(site, /\.sc h2\{font-size:clamp\(28px,3\.4vw,40px\);line-height:1\.2/);
-  assert.match(site, /\.pgh h1\{font-size:clamp\(30px,4\.2vw,56px\);line-height:1\.1/);
-  assert.match(site, /h3\{font-weight:600;font-size:clamp\(22px,2\.2vw,28px\);line-height:1\.3\}/, 'H3 Manrope SemiBold 28/1.3');
+  assert.match(site, /\.hero h1\{font-size:var\(--h1\);line-height:1\.1/);
+  assert.match(site, /\.sc h2\{font-size:var\(--h2\);line-height:1\.2/);
+  assert.match(site, /\.pgh h1\{font-size:var\(--h1\);line-height:1\.1/);
+  assert.match(site, /h3\{font-weight:600;font-size:var\(--h3\);line-height:1\.3\}/, 'H3 Manrope SemiBold 28/1.3');
   for (const [file, src] of Object.entries(css)) assert.ok(!/letter-spacing:-/.test(src), `${file}: negative letter-spacing`);
+});
+
+test('heading scale: tokens are 56/40/28 on desktop and every page-level heading takes its size from them', () => {
+  const site = readFileSync(path.join(ROOT, 'assets/css/site.css'), 'utf8');
+  assert.match(site, /@media\(min-width:1001px\)\{:root\{--h1:56px;--h2:40px;--h3:28px\}\}/);
+  assert.match(site, /h1\{font-size:var\(--h1\);line-height:1\.1\}h2\{font-size:var\(--h2\);line-height:1\.2\}/);
+  for (const f of ['site', 'about', 'catalogue', 'contact', 'product']) {
+    const css = readFileSync(path.join(ROOT, `assets/css/${f}.css`), 'utf8');
+    // no heading rule sets its own clamp()/px size any more; the only exceptions are card labels (.pc h3 product-card name, .card .cl h2 contact side-card label)
+    for (const m of css.matchAll(/(^|\})\s*([^{}]*\bh[123]\b[^{}]*)\{([^}]*)\}/g)) {
+      if (/font-size:\s*\d|font:[^;]*\d+px\/|font-size:clamp/.test(m[3]) && !/\.pc h3|\.card \.cl h2/.test(m[2])) assert.fail(`${f}.css: ${m[2].trim()} sets its own size: ${m[3]}`);
+    }
+  }
 });

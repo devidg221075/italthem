@@ -3,7 +3,7 @@
 .cat-h{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#fff 0,#eef2f8 60%,#e1e8f2 100%);border-bottom:1px solid var(--line);padding-block:clamp(36px,5vw,64px)}
 .cat-h::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 52%,rgba(255,255,255,.7) 52%,rgba(255,255,255,.7) 66%,transparent 66%)}
 .cat-h .kick{margin-bottom:18px}
-.cat-h h1{font-size:clamp(32px,4.2vw,56px);line-height:1.1;max-width:18em;text-wrap:balance}
+.cat-h h1{font-size:var(--h1);line-height:1.1;max-width:18em;text-wrap:balance}
 .cat-h .sub{margin-top:16px;font-size:clamp(17px,1.5vw,20px);color:var(--ink);max-width:40em}
 .cl{display:grid;grid-template-columns:288px minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:start;padding-block:clamp(28px,4vw,48px) clamp(56px,7vw,96px)}
 html:not(.js) .cl{grid-template-columns:minmax(0,1fr)}

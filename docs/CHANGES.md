@@ -360,3 +360,15 @@ Controllati header, mega menu, menu mobile e footer (IT/EN): le voci principali 
 - **Menu mobile (pannello Prodotti):** sotto le 4 famiglie c'è la sezione "Tutti i macchinari" con i 11 prodotti (codice + nome).
 - **Footer:** colonna Prodotti con tutti gli 11 prodotti (prima 4 etichette di famiglia).
 - Prestazioni invariate (home: mobile 99, desktop 100). Test aggiornati (mega menu e cassetto: 11 prodotti nell'ordine di catalogo).
+
+## Tipografia dei titoli riallineata alla tavola master
+
+Misura sui font reali (Playwright, 1440 e 390 px) di tutti i titoli del sito contro la scala della master (H1 56/1,1 Bold, H2 40/1,2 Bold, H3 28/1,3 SemiBold, Manrope). Trovati scostamenti:
+- **H2 a 32 px** nelle pagine di testo (privacy, cookie policy) e nel titolo del modulo contatti; **H2 a 28 px** nella striscia "Hai un progetto da realizzare?".
+- **H3 a 24, 22 e 19 px** in Azienda (blocco "Chi siamo", tre card soluzioni) e nelle pagine di testo/servizi.
+- **Scheda prodotto:** codice a 72 px (H1 è 56) e titolo a 34 px Bold (H3 è 28 SemiBold); titoli dei pannelli dei tab a 28 px Bold.
+- **H1 delle pagine di testo** a 30 px su telefono invece di 32.
+Correzione: tre token (`--h1`, `--h2`, `--h3`) in `site.css`, 56/40/28 da 1001 px, 44/32/24 sui tablet, 32/28/22 sui telefoni; ogni titolo li usa, senza `clamp()` propri. Titoli di card ora H3 28/1,3 SemiBold (CTA, modulo, Azienda, servizi); codice prodotto H1 56, titolo prodotto H3 28.
+- **Eccezioni dichiarate (etichette, non titoli):** nome nelle card prodotto (Inter 16 Regular, con il codice in Manrope Bold 26 sopra, come nel mockup) e il titolo piccolo delle card laterali dei Contatti (Manrope 17 SemiBold).
+- **Da confermare:** nel mockup della scheda prodotto codice e titolo sono più grandi (circa 72/34); ho seguito la regola della tavola (56/28). H2 a 40 px nelle pagine legali è la regola, ma in testi lunghi risulta grande.
+- Test nuovo: i token sono 56/40/28 e nessuna regola di titolo imposta una misura propria (tranne le due etichette).
