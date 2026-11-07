@@ -3,7 +3,7 @@
 .cat-h{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#fff 0,#eef2f8 60%,#e1e8f2 100%);border-bottom:1px solid var(--line);padding-block:clamp(36px,5vw,64px)}
 .cat-h::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 52%,rgba(255,255,255,.7) 52%,rgba(255,255,255,.7) 66%,transparent 66%)}
 .cat-h .kick{margin-bottom:18px}
-.cat-h h1{font-size:clamp(32px,4.2vw,56px);line-height:1.1;letter-spacing:-.015em;max-width:18em;text-wrap:balance}
+.cat-h h1{font-size:clamp(32px,4.2vw,56px);line-height:1.1;max-width:18em;text-wrap:balance}
 .cat-h .sub{margin-top:16px;font-size:clamp(17px,1.5vw,20px);color:var(--ink);max-width:40em}
 .cl{display:grid;grid-template-columns:288px minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:start;padding-block:clamp(28px,4vw,48px) clamp(56px,7vw,96px)}
 html:not(.js) .cl{grid-template-columns:minmax(0,1fr)}
@@ -14,7 +14,7 @@ html:not(.js) .cf{display:none}
 .cf .dn{display:none;width:22px;height:22px;color:var(--blue)}
 .cb{padding:0 22px 22px}
 .cf fieldset{border:0;margin:0 0 22px;padding:0;min-width:0}
-.cf legend{display:block;width:100%;padding:0 0 8px;margin-bottom:6px;font:700 16px var(--sans);color:var(--ink);border-bottom:1px solid var(--rule)}
+.cf legend{display:block;width:100%;padding:0 0 8px;margin-bottom:6px;font:600 17px/1.3 var(--head);color:var(--ink);border-bottom:1px solid var(--rule)}
 .ck{position:relative;display:grid;grid-template-columns:20px 1fr auto;align-items:center;gap:12px;padding:7px 0;cursor:pointer;font-size:16px;color:var(--ink)}
 .ck input{position:absolute;opacity:0;width:20px;height:20px;margin:0;cursor:pointer}
 .ck i{width:20px;height:20px;border:1.5px solid var(--ink);border-radius:4px;background:#fff;transition:background .15s,border-color .15s}
