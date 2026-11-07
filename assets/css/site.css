@@ -242,3 +242,9 @@ textarea.inp{min-height:150px;resize:vertical}
  .sel .w{grid-template-columns:1fr 1fr}
  .btn{padding:15px 22px}
 }
+
+/* product page fixes */
+.pd>*{min-width:0}
+.gal .th{flex-wrap:wrap}
+.pd .desc p+p{margin-top:10px}.pd .desc b+p{margin-top:0}
+.spec thead td{background:var(--navy);padding:16px 20px}
