@@ -44,27 +44,42 @@ for (const lang of ['en', 'it']) {
     assert.match(hp, /autocomplete="off"/);
     assert.match(form, /<div[^>]*class="hp"[^>]*aria-hidden="true"/);
     assert.ok(form.includes(`<input type="hidden" name="lang" value="${lang}">`));
-    assert.match(form, /<input type="hidden" name="product" value="">/);
+    const sel = form.match(/<select class="inp" id="f-product" name="product">[\s\S]*?<\/select>/)?.[0];
+    assert.ok(sel, 'visible product select (the handler validates the slug)');
+    assert.match(sel, /<option value="">/);
+    assert.equal(count(sel, /<option value="it-/g), 11);
+    assert.ok(sel.includes('<option value="it-cc">IT.CC – '));
+    assert.match(form, /<label for="f-product">/);
     assert.ok(form.includes(`href="/${lang}/privacy/"`));
-    assert.match(form, /<button[^>]*type="submit"[^>]*>(Send request|Invia richiesta)<\/button>/);
+    assert.match(form, /<button[^>]*type="submit"[^>]*>(Send request|Invia richiesta)<svg/);
     assert.match(form, /aria-live="polite"/);
     assert.match(form, /data-products='\{[^']*"it-cc":"IT\.CC"/);
     assert.match(form, /<fieldset class="nm"><legend>(First name and last name|Nome e cognome del contatto)/);
     assert.match(form, /name="email_confirm"[^>]*maxlength="254"/);
     const comp = form.match(/<input\b[^>]*name="company"[^>]*>/)?.[0];
+    assert.ok(comp, 'both languages have a company field (the handler accepts it on both)');
+    assert.match(comp, /maxlength="120"/); assert.match(comp, /autocomplete="organization"/);
     if (lang === 'it') {
-      assert.ok(comp, 'IT has a company field');
-      assert.match(comp, /required/); assert.match(comp, /maxlength="120"/); assert.match(comp, /autocomplete="organization"/);
+      assert.match(comp, /required/, 'required on the Italian form, as on the original');
       assert.match(form, /<label for="f-company">Azienda/);
-      assert.ok(form.indexOf('name="company"') < form.indexOf('name="first_name"'));
-    } else assert.ok(!comp, 'EN has no company field');
+    } else {
+      assert.ok(!/required/.test(comp), 'optional on the English form');
+      assert.match(form, /<label for="f-company">Company</);
+    }
+    assert.ok(form.indexOf('name="company"') < form.indexOf('name="message"'));
     for (const a of ['data-ok', 'data-err', 'data-sending', 'data-about']) assert.ok(form.includes(a), a);
   });
 
-  test(`[${lang}] contact page keeps the original side blocks and no map yet`, () => {
+  test(`[${lang}] contact page keeps the original side blocks, links the phones and has a map link that loads nothing from third parties`, () => {
     const html = read(PAGES[lang][0]);
     assert.ok(html.includes('02487940518') && html.includes('info@ital-therm.it') && html.includes('+39 0575 802485'));
-    assert.ok(!/class="map"|wa\.me|api\.whatsapp/.test(html), 'map / WhatsApp belong to Task 10');
+    for (const p of ['+390575802485', '+393668719427']) assert.ok(html.includes(`href="tel:${p}"`), p);
+    assert.ok(html.includes('href="mailto:info@ital-therm.it"'));
+    assert.ok(html.includes('href="https://wa.me/393668719427"'));
+    const map = html.match(/<div class="map">[\s\S]*?<\/div>/)[0];
+    assert.match(map, /href="https:\/\/www\.openstreetmap\.org\/search\?query=[^"]+Monte%20San%20Savino[^"]*" target="_blank" rel="noopener"/);
+    assert.ok(!/<iframe|google\.com\/maps|maps\.googleapis/.test(html), 'no embedded map, nothing loaded from third parties');
+    assert.ok(!/810487|Le Vertighe, 50|Sonico/.test(html));
   });
 
   test(`[${lang}] privacy page has the company data and one h1`, () => {
@@ -95,11 +110,20 @@ test('contact.php and its lib are copied to dist', () => {
   assert.ok(existsSync(path.join(DIST, 'contact-lib.php')));
 });
 
-test('site.js wires the form, product prefill and the it_notice cookie', () => {
+test('site.js sets the it_notice cookie; contact.js (contact page only) wires the form and the product prefill', () => {
   const js = readFileSync(path.join(ROOT, 'assets/js/site.js'), 'utf8');
   assert.match(js, /it_notice=1/);
   assert.match(js, /Max-Age=15552000/);
   assert.match(js, /SameSite=Lax/);
-  assert.match(js, /contact\.php|form\.action/);
   assert.ok(!/localStorage|sessionStorage/.test(js));
+  const form = readFileSync(path.join(ROOT, 'assets/js/contact.js'), 'utf8');
+  assert.match(form, /contact\.php/);
+  assert.match(form, /form\.elements\.product\.value = pr/);
+  assert.ok(!/localStorage|sessionStorage|innerHTML/.test(form));
+  for (const f of ['en/contact/index.html', 'it/contatti/index.html']) {
+    const html = readFileSync(path.join(DIST, f), 'utf8');
+    assert.match(html, /<script src="\/assets\/js\/contact\.js\?v=[0-9a-f]{8}" defer><\/script>/);
+    assert.match(html, /<link rel="stylesheet" href="\/assets\/css\/contact\.css\?v=[0-9a-f]{8}">/);
+  }
+  assert.ok(!readFileSync(path.join(DIST, 'en/index.html'), 'utf8').includes('contact.js'), 'other pages do not load it');
 });

@@ -99,17 +99,6 @@ test('hero uses the machine overview photos', () => {
   assert.match(stage, /GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-(480|960)/, 'IT.GT is the first slide (lightest photo = LCP)');
 });
 
-test('about page has 3 solution blocks and the why-choose grid', () => {
-  for (const [lang, file] of [['en', 'en/about-us'], ['it', 'it/chi-siamo']]) {
-    const html = read(`${file}/index.html`);
-    assert.equal(count(html, /<div class="ab">/g), 3);
-    assert.equal(count(html, /<div class="gridw">/g), 1);
-    const grid = html.match(/<div class="gridw">([\s\S]*?)<\/div><\/div><\/section>/)[1];
-    assert.equal(count(grid, /<div>/g), 4);
-    assert.equal(count(html.match(/<main[\s\S]*?<\/main>/)[0], /<img /g), 3, lang);
-  }
-});
-
 test('service pages render the body blocks verbatim', () => {
   const s = contents.en.services.find((x) => x.slug === 'italtherm-annealing-furnaces');
   const html = read('en/services/italtherm-annealing-furnaces/index.html');

@@ -22,6 +22,10 @@ const P = {
   search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/>',
   download: '<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>',
   doc: '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M9.5 12h5M9.5 16h5"/>',
+  factory: '<path d="M3 21V10l5 3V10l5 3V6l5 2.5V21z"/><path d="M3 21h18M8 17h2M13 17h2"/>',
+  layers: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5M3 17l9 5 9-5"/>',
+  gear: '<circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>',
+  handshake: '<path d="M2.5 10.5l4-4 4.5 1.5 3-1.5 3.5 2 4-.5v6l-3 .5"/><path d="M2.5 10.5v5l5.5 4 2.5-1 1.5.5 3-2.5-3.5-3-3 .5M6.5 15l3 2"/>',
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
 };
 

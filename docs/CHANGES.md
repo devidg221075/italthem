@@ -223,3 +223,39 @@ Fatto: breadcrumb, galleria con miniature, kicker con la famiglia, codice grande
 | Tab nella versione mobile approvata | Modelli, Dati tecnici, Vantaggi, Accessori | Le stesse tre tab (scorrono in orizzontale su telefono); "Vantaggi" e "Accessori" non hanno contenuto | Da confermare |
 
 I dati da confermare nelle tabelle (potenza IT.KB04, velocità di colata IT.CC05, sigle con il punto mancante, ecc.) restano nella sezione "Da confermare con te" sopra: non li ho toccati.
+
+## Tipografia (fedeltà alla master)
+
+Manrope Bold/SemiBold per titoli e gerarchie, Inter Regular/Medium per testi, interfaccia e navigazione, Inter SemiBold per i pulsanti e le etichette maiuscole (kicker). Tolti Manrope 800 e Inter 700, tolta la spaziatura negativa dei titoli. Gli `@font-face` coprono solo i pesi usati (Manrope 600–700, Inter 400–600). `tests/typography.test.mjs` controlla pesi, famiglie e scala principale (corpo 16/1.6, navigazione 16 Medium, pulsanti 16 SemiBold, H1 fino a 56, H2 fino a 40).
+
+## Azienda (Chi siamo nel nuovo stile)
+
+CSS in `assets/css/about.css` (solo questa pagina). Struttura del mockup variante B: hero, striscia di 4 punti con icone, "Chi siamo" con foto, tre schede delle soluzioni.
+
+| Dove | Mockup | Cosa ho fatto | Stato |
+|---|---|---|---|
+| Titolo e sottotitolo | "Tecnologia italiana per i metalli preziosi" / "Progettiamo e realizziamo impianti…" | Testi del mockup (nuovi); in inglese "Italian technology for precious metals" e frase equivalente | Confermato dall'utente |
+| Striscia delle 4 icone | Progettazione e produzione interna / Soluzioni su misura / Tecnologia e affidabilità / Supporto tecnico dedicato | I 4 punti reali di "Perché scegliere ITALTHERM" (testi originali, più lunghi), con icone | Deciso |
+| Blocco "Chi siamo" | Testo + pulsante "La nostra storia" | Titolo del mockup, testi reali (frase di apertura e paragrafo); **pulsante non inserito**: non esiste una pagina "storia" | Da confermare |
+| Tre schede | Fusione / Colata continua / Trattamenti termici, ciascuna con una riga | Le tre soluzioni reali con tutti i loro elenchi; il titolo di ogni scheda è quello originale | Deciso |
+| Foto | Edificio, colata, monete | Foto reali dei macchinari (vassoio di rame IT.AF, IT.MT in uso, IT.CC, IT.AF); la foto dell'edificio non c'è | In attesa delle foto |
+| Frase "Queste tecnologie assicurano…" | — | Resta come frase di chiusura sotto le schede (è testo originale) | Fatto |
+| "Sostenibilità e responsabilità" (bozza mobile) | Bozza | Non usato: non c'è nel sito | Scartato |
+
+`tests/about.test.mjs` verifica che ogni paragrafo, voce di elenco e titolo originale sia ancora nella pagina, in italiano e in inglese.
+
+## Contatti (nuovo stile)
+
+CSS in `assets/css/contact.css` e JS in `assets/js/contact.js` (solo questa pagina). Il gestore `contact.php`, i controlli antispam e il consenso GDPR non sono cambiati.
+
+| Dove | Mockup | Cosa ho fatto | Stato |
+|---|---|---|---|
+| Titolo e sottotitolo | "Parliamo del tuo progetto" | Testi del mockup (nuovi); il titolo reale "Contatti" è il kicker; il testo reale "Compila questo modulo…" è sotto il titolo del modulo | Confermato dall'utente |
+| Campo "Prodotto di interesse" | Menu a tendina | Menu con gli 11 prodotti (prima era un campo nascosto); si precompila dal link "Richiedi un preventivo" | Fatto |
+| Campo "Azienda" | Presente, facoltativo | Presente anche in inglese, facoltativo; in italiano resta **obbligatorio**, come sul modulo originale | Da confermare |
+| Campo "Telefono" | Presente | **Non inserito**: il gestore non lo raccoglie e servirebbero una modifica a `contact.php` e all'informativa privacy | Da decidere |
+| Campo "Nome e cognome" | Un solo campo | Due campi (Nome, Cognome) e conferma e-mail, come prima (il gestore li richiede) | Deciso |
+| Mappa | Mappa illustrata con segnaposto | Riquadro con il segnaposto e il pulsante "Apri la mappa" verso una ricerca su OpenStreetMap con l'indirizzo: non carica nulla da terzi (nessun iframe) e non servono coordinate | Da confermare |
+| Chiama / WhatsApp | — (dal piano) | "Chiamaci" (numero fisso) e "Scrivici su WhatsApp" (numero mobile +39 366 871 9427); il secondo numero è collegato | **Verifica che il mobile usi WhatsApp** |
+| Riga finale | "Soluzioni per fusione • Colata continua • Trattamenti termici" | Inserita (testo del mockup) | Fatto |
+| Striscia CTA sopra il footer | — | Non presente in questa pagina (c'è già il modulo) | Fatto |

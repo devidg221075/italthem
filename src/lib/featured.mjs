@@ -26,6 +26,10 @@ export const SERVICE_PHOTOS = {
   'gear-driven-tilting-metal-melting-furnace': { code: 'IT.GT', image: 0 },
 };
 
+// About page hero and "Chi siamo" photos (landscape, checked visually): IT.AF copper tray, IT.MT operator at the furnace.
+export const ABOUT_HERO = { code: 'IT.AF', image: 2 };
+export const ABOUT_TEAM = { code: 'IT.MT', image: 1 };
+
 // About page: solution block (by position in the three "Our solutions" sections) -> photo.
 export const ABOUT_PHOTOS = [
   { code: 'IT.MT', image: 0, contain: true },

@@ -1,0 +1,54 @@
+/* Contact page only (approved mockup): banner, company card with map link, form card. The form still posts to /contact.php. */
+.ct-h{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#fff 0,#eef2f8 60%,#e1e8f2 100%);border-bottom:1px solid var(--line);padding-block:clamp(36px,5vw,64px)}
+.ct-h::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 52%,rgba(255,255,255,.7) 52%,rgba(255,255,255,.7) 66%,transparent 66%)}
+.ct-h .kick{margin-bottom:18px}
+.ct-h h1{font-size:clamp(32px,4.2vw,56px);line-height:1.1;max-width:18em;text-wrap:balance}
+.ct-h .sub{margin-top:16px;font-size:clamp(17px,1.5vw,20px);line-height:1.55;max-width:40em}
+.cw{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,3vw,40px);align-items:start;padding-block:clamp(28px,4vw,48px)}
+.side{display:grid;gap:16px;align-content:start}
+.card{background:linear-gradient(160deg,var(--pearl),#eaeff6);border:1px solid var(--line);border-radius:var(--r2);padding:22px 24px 24px}
+.card .cl{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.card .cl .ic{width:26px;height:26px;color:var(--blue)}
+.card .cl h2{font:600 17px/1.3 var(--head);color:var(--ink)}
+.card p,.card address{font-size:16px;line-height:1.6;color:var(--ink)}
+.card p+p{margin-top:6px}
+.card a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.card .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.card .row .btn{min-height:44px;padding:0 18px;font-size:15px;text-decoration:none}
+.card .row .btn.b1{color:#fff}
+.map{position:relative;display:grid;gap:10px;align-content:center;justify-items:center;text-align:center;min-height:220px;padding:22px;border:1px solid var(--line);border-radius:var(--r2);background:repeating-linear-gradient(135deg,#e3e9f2 0 16px,#ebf0f7 16px 32px);color:var(--ink)}
+.map .ic{width:44px;height:44px;color:var(--blue)}
+.map address{font-size:15px;line-height:1.5}
+.map .btn{min-height:44px;padding:0 20px;font-size:15px;text-decoration:none}
+.fcard{background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:clamp(20px,3vw,36px);box-shadow:0 24px 50px -36px rgba(30,58,102,.45)}
+.fcard h2{font-size:clamp(24px,2.6vw,32px);line-height:1.2;padding-left:14px;border-left:4px solid var(--blue);margin-bottom:12px}
+.fl-lead{font-size:16px;line-height:1.6;color:var(--body);margin-bottom:22px}
+.fcard form{display:grid;gap:16px;align-content:start}
+.fld label{display:block;font:500 15px/1.4 var(--sans);margin-bottom:6px;color:var(--ink)}
+.fld label i{font-style:normal;color:var(--mute);margin-left:6px;font-weight:400;font-size:13px}
+.inp{width:100%;padding:14px 16px;font:400 16px/1.4 var(--sans);border:1px solid var(--rule);border-radius:var(--r);background:#fff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.inp::placeholder{color:var(--mute)}
+.inp:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(7,84,188,.14)}
+.inp:user-invalid{border-color:#b42318}
+select.inp{appearance:none;-webkit-appearance:none;padding-right:44px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e3445' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 14px center/18px no-repeat;cursor:pointer}
+textarea.inp{min-height:150px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.nm{border:0;padding:0;margin:0;min-width:0}
+.nm legend{padding:0;margin-bottom:6px;font:500 15px/1.4 var(--sans);color:var(--ink)}
+.nm legend i{font-style:normal;color:var(--mute);margin-left:6px;font-weight:400;font-size:13px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.about{font:500 14px/1.5 var(--sans);color:var(--blue)}
+.gdpr{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.6;color:var(--body)}
+.gdpr input{margin-top:3px;width:20px;height:20px;accent-color:var(--blue);flex:none}
+.gdpr a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.fcard .btn{justify-self:start;border:0;cursor:pointer}
+.fcard .btn[disabled]{opacity:.6;cursor:wait}
+.fmsg:empty{display:none}
+.fmsg,.st{padding:14px 16px;border-radius:var(--r);font:500 15px/1.5 var(--sans)}
+.fmsg.ok,.st.ok{background:#e8f6ee;color:#14532d}
+.fmsg.bad,.st.bad{background:#fdecec;color:#7a1a1a}
+.st{display:none}.st:target{display:block}.js .st{display:none!important}
+.ct-t{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;padding-block:8px clamp(24px,3vw,40px);font:600 clamp(16px,1.6vw,20px) var(--head);color:var(--ink)}
+.ct-t i{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+@media (max-width:1000px){.cw{grid-template-columns:minmax(0,1fr)}.fcard{order:-1}}
+@media (max-width:600px){.row2{grid-template-columns:minmax(0,1fr)}.fcard .btn{justify-self:stretch}.card .row .btn{width:100%}}

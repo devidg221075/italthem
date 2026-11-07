@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { docUrl } from './docs.mjs';
 import { PRIVACY, COOKIES } from './privacy.mjs';
 import { makeDescription, usableMeta } from './seo.mjs';
-import { HERO_SLIDES, MENU_PRODUCTS, SERVICE_PHOTOS, ABOUT_PHOTOS, CATALOGUE_ORDER } from './featured.mjs';
+import { HERO_SLIDES, MENU_PRODUCTS, SERVICE_PHOTOS, ABOUT_PHOTOS, ABOUT_HERO, ABOUT_TEAM, CATALOGUE_ORDER } from './featured.mjs';
 
 const catIcon = (cat) => icon({ cc: 'conveyor', melt: 'crucible', heat: 'heat', grains: 'grains' }[cat]);
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
@@ -101,24 +101,32 @@ function catalogueBody(content, lang) {
 <section class="cat-b"><div class="w cl">${filters}<div class="cr"><div class="cbar"><p class="cnt" role="status" aria-live="polite" data-one="${esc(c.found(1).replace('1', '{n}'))}" data-many="${esc(c.found(2).replace('2', '{n}'))}">${esc(c.found(list.length))}</p><label class="so"><span>${esc(c.sort)}</span><select aria-label="${esc(c.sort)}"><option value="r">${esc(c.sortRel)}</option><option value="c">${esc(c.sortCode)}</option></select></label></div><div class="gr3 cg" id="pgrid" aria-label="${esc(c.list)}">${cards}</div><p class="cno" hidden>${esc(c.none)}</p></div></div></section>`;
 }
 
+const WHY_ICONS = ['factory', 'layers', 'gear', 'handshake'];
+const SOLUTION_ICONS = ['crucible', 'conveyor', 'heat'];
+
+/** About page (approved mockup, variant B): hero, strip of four reasons, "Chi siamo", three solution cards. All text comes from content/<lang>. */
 function aboutBody(content, lang) {
   const { pages, products } = content;
   const t = T[lang];
+  const a = t.ab;
   const page = pages.find((p) => p.slug === 'about');
   const intro = section(page, 0);
   const solutions = [1, 2, 3].map((i) => section(page, i));
   const why = section(page, 4);
-  const head = `<section class="ph0 pg"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / ${esc(page.title)}</div><div class="ey">${esc(intro.kicker)}</div><h1>${esc(intro.heading)}</h1><p class="lead">${esc(page.lead)}</p>${(intro.blocks || []).map((b) => `<p class="lead" style="margin-top:12px">${esc(b.text)}</p>`).join('')}</div></section>`;
-  const blocks = solutions.map((s, i) => {
-    const ph = ABOUT_PHOTOS[i];
-    const prod = byCode(products, ph.code);
-    const body = (s.blocks || []).map(renderBlock).join('');
-    return `<div class="ab"><div class="tx">${s.kicker ? `<div class="ey">${esc(s.kicker)}</div>` : ''}<h2>${esc(s.heading)}</h2>${body}</div><div class="im${ph.contain ? ' c' : ''}">${img(photo(prod, ph.image), altOf(prod), { sizes: SIZES.about, priority: i === 0 })}</div></div>`;
-  }).join('');
   const whyP = (why.blocks || []).find((b) => b.type === 'p');
   const whyL = (why.blocks || []).find((b) => b.type === 'list');
-  const whyHtml = `<section class="why sc"><div class="w">${why.kicker ? `<div class="ey">${esc(why.kicker)}</div>` : ''}<h2>${esc(why.heading)}</h2>${whyP ? `<p style="margin-top:14px;font-size:17px;color:#34475c;max-width:60ch">${esc(whyP.text)}</p>` : ''}${whyL ? `<div class="gridw">${whyL.items.map((x) => `<div>${esc(x)}</div>`).join('')}</div>` : ''}</div></section>`;
-  return `${head}\n<div class="w">${blocks}</div>\n${whyHtml}`;
+  const heroP = byCode(products, ABOUT_HERO.code);
+  const teamP = byCode(products, ABOUT_TEAM.code);
+  const hero = `<section class="ab-h"><div class="w abg"><div class="abt"><p class="kick"><i aria-hidden="true"></i><span>${esc(a.kicker)}</span></p><h1>${esc(a.title)}</h1><p class="sub">${esc(a.sub)}</p></div><div class="abv">${img(photo(heroP, ABOUT_HERO.image), altOf(heroP), { sizes: SIZES.about, priority: true })}</div></div></section>`;
+  const strip = `<section class="ab-s" aria-labelledby="why-h"><div class="w"><h2 class="vh" id="why-h">${esc(why.heading)}</h2><ul class="abs">${(whyL?.items ?? []).map((x, i) => `<li>${icon(WHY_ICONS[i % WHY_ICONS.length])}<span>${esc(x)}</span></li>`).join('')}</ul></div></section>`;
+  const who = `<section class="ab-w"><div class="w abw"><div class="abi">${img(photo(teamP, ABOUT_TEAM.image), altOf(teamP), { sizes: SIZES.about })}</div><div class="abx"><h2>${esc(a.who)}</h2><h3>${esc(intro.heading)}</h3><p>${esc(page.lead)}</p>${(intro.blocks || []).map((b) => `<p>${esc(b.text)}</p>`).join('')}</div></div></section>`;
+  const cards = solutions.map((s, i) => {
+    const ph = ABOUT_PHOTOS[i];
+    const prod = byCode(products, ph.code);
+    return `<article class="acd"><div class="im${ph.contain ? ' c' : ''}">${img(photo(prod, ph.image), altOf(prod), { sizes: SIZES.card })}</div><div class="tx"><span class="ci">${icon(SOLUTION_ICONS[i])}</span><h3>${esc(s.heading)}</h3>${(s.blocks || []).map(renderBlock).join('')}</div></article>`;
+  }).join('');
+  const sols = `<section class="ab-c"><div class="w"><h2>${esc(solutions[0].kicker)}</h2><div class="abc">${cards}</div>${whyP ? `<p class="abz">${esc(whyP.text)}</p>` : ''}</div></section>`;
+  return `${hero}\n${strip}\n${who}\n${sols}`;
 }
 
 function serviceBody(service, content, lang) {
@@ -200,8 +208,15 @@ const FORM_LABELS = {
   it: { company: 'Azienda', group: 'Nome e cognome del contatto', first: 'Nome', last: 'Cognome', email: 'La tua Email', confirm: 'Conferma email', req: 'Descrivi la tua richiesta', gdpr: 'PRIVACY (GDPR)', link: 'privacy', enter: 'Inserisci email' },
 };
 
+// Map link: a plain OpenStreetMap search (no embed, nothing is loaded from a third party until the visitor follows it).
+const mapUrl = (site) => `https://www.openstreetmap.org/search?query=${encodeURIComponent(site.address.replace(/\s*Italy$/i, ''))}`;
+const waUrl = (site) => `https://wa.me/${site.phones[1].replace(/\D/g, '')}`;
+
+/** Contact page (approved mockup): banner, company card with map link, form card. The form keeps the /contact.php contract. */
 function contactBody(content, lang) {
   const t = T[lang];
+  const c = t.ct;
+  const { site } = content;
   const page = content.pages.find((p) => p.slug === 'contact');
   const form = page.form ?? [];
   const L = FORM_LABELS[lang];
@@ -217,27 +232,42 @@ function contactBody(content, lang) {
   const products = Object.fromEntries(content.products.map((p) => [p.slug, p.code]));
   const req = `<i>${esc(required)}</i>`;
   const fld = (id, name, label, { type = 'text', ac, mark = true, ph, max } = {}) => `<div class="fld"><label for="${id}">${esc(label)}${mark ? req : ''}</label><input class="inp" id="${id}" name="${name}" type="${type}"${ac ? ` autocomplete="${ac}"` : ''}${ph ? ` placeholder="${esc(ph)}"` : ''}${mark ? ' required' : ''}${max ? ` maxlength="${max}"` : ''}></div>`;
+  // Company: required on the Italian form (as on the original), optional on the English one (the handler accepts it on both).
+  const company = L.company && form.includes(L.company)
+    ? fld('f-company', 'company', L.company, { ac: 'organization', max: 120 })
+    : fld('f-company', 'company', c.company, { ac: 'organization', mark: false, max: 120 });
+  const productSel = `<div class="fld"><label for="f-product">${esc(c.product)}</label><select class="inp" id="f-product" name="product"><option value="">${esc(c.productPh)}</option>${orderedProducts(content.products).map((p) => `<option value="${esc(p.slug)}">${esc(p.code)} – ${esc(displayTitle(p.title))}</option>`).join('')}</select></div>`;
   const formHtml = `<form class="fl" action="/contact.php" method="post" data-ok="${esc(t.sentOk)}" data-err="${esc(t.sentErr)}" data-sending="${esc(t.sending)}" data-about="${esc(t.about)}" data-products='${esc(JSON.stringify(products)).replace(/&quot;/g, '"')}'>`
-    + (L.company && form.includes(L.company) ? `${fld('f-company', 'company', L.company, { ac: 'organization', max: 120 })}` : '')
     + `<fieldset class="nm"><legend>${esc(form[at(L.group)])}${req}</legend><div class="row2">${fld('f-first', 'first_name', form[at(L.first)], { ac: 'given-name', max: 80 })}${fld('f-last', 'last_name', form[at(L.last)], { ac: 'family-name', max: 80 })}</div></fieldset>`
     + `<div class="row2">${fld('f-email', 'email', form[at(L.email)], { type: 'email', ac: 'email', ph: form[at(L.enter)], max: 254 })}${fld('f-confirm', 'email_confirm', form[at(L.confirm)], { type: 'email', ac: 'email', ph: form[at(L.confirm)], max: 254 })}</div>`
+    + `<div class="row2">${company}${productSel}</div>`
     + `<div class="fld"><label for="f-msg">${esc(form[at(L.req)])}${req}</label><textarea class="inp" id="f-msg" name="message" rows="6" minlength="10" maxlength="5000" required></textarea></div>`
     + `<div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>`
-    + `<input type="hidden" name="lang" value="${esc(lang)}"><input type="hidden" name="product" value="">`
+    + `<input type="hidden" name="lang" value="${esc(lang)}">`
     + `<p class="about" hidden></p>`
     + `<label class="gdpr"><input type="checkbox" name="consent" value="1" required><span><b>${esc(form[gi])}</b> ${esc(form[gi + 1])} · ${esc(sentence.replace(/\.?$/, '.'))} ${esc(lead)} <a href="${pageUrl('privacy', lang)}">${esc(form[at(L.link)])}</a>.</span></label>`
-    + `<button class="btn b1" type="submit">${esc(t.send)}</button>`
+    + `<button class="btn b1" type="submit">${esc(t.send)}${icon('arrow', 'ic ar')}</button>`
     + `<div class="fmsg" role="status" aria-live="polite" aria-label="${esc(t.status)}"></div>`
     + `<p class="st ok" id="st-ok">${esc(t.sentOk)}</p><p class="st bad" id="st-err">${esc(t.sentErr)}</p></form>`;
-  // Right column: the original blocks, verbatim; each heading starts a card.
+  // Left column: the original blocks, verbatim; each heading starts a card. Phone and email become links; the second phone is added.
   const cards = [];
   for (const b of page.sections.flatMap((s) => s.blocks ?? [])) {
     if (b.type === 'h') cards.push({ h: b.text, ps: [] });
     else if (b.type === 'p' && cards.length) cards.at(-1).ps.push(b.text);
   }
-  const side = cards.map((c) => `<div class="card"><div class="ey">${esc(c.h)}</div>${c.ps.map((x) => `<p>${br(x)}</p>`).join('')}</div>`).join('');
-  return `<section class="ph0 pg"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / ${esc(page.title)}</div><h1>${esc(page.title)}</h1>${page.lead ? `<p class="lead">${esc(page.lead).replace(/\n/g, '<br>')}</p>` : ''}</div></section>
-<section><div class="w ctw">${formHtml}<div class="side">${side}</div></div></section>`;
+  const linkify = (text) => {
+    let out = br(text);
+    for (const p of site.phones) out = out.replace(esc(p), `<a href="${tel(p)}">${esc(p)}</a>`);
+    return out.replace(esc(site.email), `<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>`);
+  };
+  const icons = ['phone', 'pin', 'mail'];
+  const side = cards.map((cd, i) => {
+    const extra = i === 0 ? `<p><a href="${tel(site.phones[1])}">${esc(site.phones[1])}</a></p><div class="row"><a class="btn b1" href="${tel(site.phones[0])}">${icon('phone')}${esc(c.call)}</a><a class="btn b2" href="${waUrl(site)}" rel="noopener">${esc(c.whatsapp)}</a></div>` : '';
+    return `<div class="card"><div class="cl">${icon(icons[i % icons.length])}<h2>${esc(cd.h)}</h2></div>${cd.ps.map((x) => `<p>${linkify(x)}</p>`).join('')}${extra}</div>`;
+  }).join('');
+  const map = `<div class="map">${icon('pin')}<address>${esc(site.name)}<br>${esc(site.address)}</address><a class="btn b2" href="${mapUrl(site)}" target="_blank" rel="noopener">${esc(c.map)}</a></div>`;
+  return `<section class="ct-h"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>${esc(page.title)}</span></p><h1>${esc(c.title)}</h1><p class="sub">${esc(c.sub)}</p></div></section>
+<section class="ct-b"><div class="w"><div class="cw"><div class="side">${side}${map}</div><div class="fcard"><h2>${esc(c.formTitle)}</h2>${page.lead ? `<p class="fl-lead">${esc(page.lead).replace(/\n/g, '<br>')}</p>` : ''}${formHtml}</div></div><p class="ct-t">${c.tags.map((x) => esc(x)).join('<i aria-hidden="true"></i>')}</p></div></section>`;
 }
 
 /** Privacy notice and cookie policy share one layout. `[[privacy]]` links to the privacy notice. */
@@ -334,11 +364,11 @@ export function renderSitePage(page, contents) {
     case 'home':
       return layout({ ...withSeo, slug: 'home', cta: false, body: homeBody(content, lang) });
     case 'about':
-      return layout({ ...withSeo, slug: 'about', body: aboutBody(content, lang) });
+      return layout({ ...withSeo, slug: 'about', styles: ['/assets/css/about.css'], body: aboutBody(content, lang) });
     case 'products':
       return layout({ ...withSeo, slug: 'products', styles: ['/assets/css/catalogue.css'], scripts: ['/assets/js/catalogue.js'], body: catalogueBody(content, lang) });
     case 'contact':
-      return layout({ ...withSeo, slug: 'contact', cta: false, body: contactBody(content, lang) });
+      return layout({ ...withSeo, slug: 'contact', cta: false, styles: ['/assets/css/contact.css'], scripts: ['/assets/js/contact.js'], body: contactBody(content, lang) });
     case 'privacy':
       return layout({ ...withSeo, slug: 'privacy', head: undefined, body: privacyBody(lang, content.site) });
     case 'cookies':
