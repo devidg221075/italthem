@@ -59,26 +59,24 @@ for (const lang of ['en', 'it']) {
     const comp = form.match(/<input\b[^>]*name="company"[^>]*>/)?.[0];
     assert.ok(comp, 'both languages have a company field (the handler accepts it on both)');
     assert.match(comp, /maxlength="120"/); assert.match(comp, /autocomplete="organization"/);
-    if (lang === 'it') {
-      assert.match(comp, /required/, 'required on the Italian form, as on the original');
-      assert.match(form, /<label for="f-company">Azienda/);
-    } else {
-      assert.ok(!/required/.test(comp), 'optional on the English form');
-      assert.match(form, /<label for="f-company">Company</);
-    }
+    assert.ok(!/required/.test(comp), 'optional on both forms, as in the approved mockup');
+    assert.match(form, lang === 'it' ? /<label for="f-company">Azienda</ : /<label for="f-company">Company</);
     assert.ok(form.indexOf('name="company"') < form.indexOf('name="message"'));
     for (const a of ['data-ok', 'data-err', 'data-sending', 'data-about']) assert.ok(form.includes(a), a);
   });
 
-  test(`[${lang}] contact page keeps the original side blocks, links the phones and has a map link that loads nothing from third parties`, () => {
+  test(`[${lang}] contact page keeps the original side blocks, links the phones and has a click-to-load map`, () => {
     const html = read(PAGES[lang][0]);
     assert.ok(html.includes('02487940518') && html.includes('info@ital-therm.it') && html.includes('+39 0575 802485'));
     for (const p of ['+390575802485', '+393668719427']) assert.ok(html.includes(`href="tel:${p}"`), p);
     assert.ok(html.includes('href="mailto:info@ital-therm.it"'));
     assert.ok(html.includes('href="https://wa.me/393668719427"'));
-    const map = html.match(/<div class="map">[\s\S]*?<\/div>/)[0];
-    assert.match(map, /href="https:\/\/www\.openstreetmap\.org\/search\?query=[^"]+Monte%20San%20Savino[^"]*" target="_blank" rel="noopener"/);
-    assert.ok(!/<iframe|google\.com\/maps|maps\.googleapis/.test(html), 'no embedded map, nothing loaded from third parties');
+    const map = html.match(/<div class="map" data-embed="([^"]+)" data-title="[^"]+">[\s\S]*?<p class="mn">[^<]+<\/p><\/div><\/div>/);
+    assert.ok(map, 'map block with the embed address in a data attribute');
+    assert.match(map[1], /^https:\/\/www\.google\.com\/maps\?q=Viale%20S\.%20Maria%20delle%20Vertighe[^"]*Monte%20San%20Savino[^"]*&amp;hl=(it|en)&amp;z=16&amp;output=embed$/);
+    assert.match(map[0], /<button class="btn b1 mlb" type="button" hidden>/, 'load button is hidden until JS runs');
+    assert.match(map[0], /href="https:\/\/www\.google\.com\/maps\/search\/\?api=1&amp;query=[^"]+" target="_blank" rel="noopener"/, 'plain link works without JS');
+    assert.ok(!/<iframe/.test(html), 'nothing from Google is loaded until the visitor presses the button');
     assert.ok(!/810487|Le Vertighe, 50|Sonico/.test(html));
   });
 

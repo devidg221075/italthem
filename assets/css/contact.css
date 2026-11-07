@@ -16,10 +16,16 @@
 .card .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .card .row .btn{min-height:44px;padding:0 18px;font-size:15px;text-decoration:none}
 .card .row .btn.b1{color:#fff}
-.map{position:relative;display:grid;gap:10px;align-content:center;justify-items:center;text-align:center;min-height:220px;padding:22px;border:1px solid var(--line);border-radius:var(--r2);background:repeating-linear-gradient(135deg,#e3e9f2 0 16px,#ebf0f7 16px 32px);color:var(--ink)}
+.map{position:relative;border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;background:repeating-linear-gradient(135deg,#e3e9f2 0 16px,#ebf0f7 16px 32px);color:var(--ink)}
+.map .mp{display:grid;gap:10px;align-content:center;justify-items:center;text-align:center;min-height:240px;padding:22px}
 .map .ic{width:44px;height:44px;color:var(--blue)}
 .map address{font-size:15px;line-height:1.5}
-.map .btn{min-height:44px;padding:0 20px;font-size:15px;text-decoration:none}
+.map .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.map .btn{min-height:44px;padding:0 20px;font-size:15px;text-decoration:none;color:inherit}
+.map .btn.b1{color:#fff}.map .btn.b2{color:var(--blue)}.map .btn.b2:hover{color:#fff}
+.map .mn{font-size:12.5px;line-height:1.5;color:var(--body);max-width:30em}
+.map iframe{display:block;width:100%;height:340px;border:0}
+.map.on{background:#fff}
 .fcard{background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:clamp(20px,3vw,36px);box-shadow:0 24px 50px -36px rgba(30,58,102,.45)}
 .fcard h2{font-size:clamp(24px,2.6vw,32px);line-height:1.2;padding-left:14px;border-left:4px solid var(--blue);margin-bottom:12px}
 .fl-lead{font-size:16px;line-height:1.6;color:var(--body);margin-bottom:22px}
@@ -51,4 +57,4 @@ textarea.inp{min-height:150px;resize:vertical}
 .ct-t{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;padding-block:8px clamp(24px,3vw,40px);font:600 clamp(16px,1.6vw,20px) var(--head);color:var(--ink)}
 .ct-t i{width:7px;height:7px;border-radius:50%;background:var(--blue)}
 @media (max-width:1000px){.cw{grid-template-columns:minmax(0,1fr)}.fcard{order:-1}}
-@media (max-width:600px){.row2{grid-template-columns:minmax(0,1fr)}.fcard .btn{justify-self:stretch}.card .row .btn{width:100%}}
+@media (max-width:600px){.row2{grid-template-columns:minmax(0,1fr)}.fcard .btn{justify-self:stretch}.card .row .btn,.map .btn{width:100%}}

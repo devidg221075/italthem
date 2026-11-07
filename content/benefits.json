@@ -1,0 +1,7 @@
+{
+  "_note": "Hand-written (not produced by scripts/extract-content.py): short benefit points shown under the product introduction. Source: the approved IT.CC mockup. Other products have none until the owner supplies the texts; no list is shown for them.",
+  "it-cc": {
+    "it": ["Elevata produttività", "Qualità costante del prodotto", "Affidabilità e lunga durata", "Personalizzazione su richiesta"],
+    "en": ["High productivity", "Consistent product quality", "Reliability and long service life", "Customization on request"]
+  }
+}

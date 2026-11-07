@@ -1,26 +1,23 @@
-/* ITALTHERM catalogue page: live filters, sort and count. Loaded by the products page only (deferred). Plain JS, no globals. */
+/* ITALTHERM catalogue page: live family filter, sort and count. Loaded by the products page only (deferred). Plain JS, no globals. */
 (function () {
   'use strict';
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   function init() {
-    /* catalogue: live filters (process, gold capacity), sort, count; ?g=melt|heat|prod preselects a process */
+    /* catalogue: live filter by family, sort, count; ?g=cc|melt|heat|prod preselects a family */
     var cg = $('#pgrid');
     if (cg) {
       var cards = $$('.cc', cg), cnt = $('.cnt'), none = $('.cno'), cf = $('.cf'), rs = $('.rs'), sel = $('.so select'), ap = $('.ap');
       var picked = function (name) { return $$('.cf input[name=' + name + ']').filter(function (b) { return b.checked; }).map(function (b) { return b.value; }); };
       var apply = function () {
-        var gs = picked('g'), cs = picked('cap'), shown = 0;
+        var gs = picked('g'), shown = 0;
         cards.forEach(function (c) {
-          var caps = (c.getAttribute('data-cap') || '').split(' ');
-          var okG = !gs.length || gs.indexOf(c.getAttribute('data-g')) > -1;
-          var okC = !cs.length || cs.some(function (x) { return caps.indexOf(x) > -1; });
-          c.hidden = !(okG && okC);
+          c.hidden = !(!gs.length || gs.indexOf(c.getAttribute('data-g')) > -1);
           if (!c.hidden) shown++;
         });
         cnt.textContent = (shown === 1 ? cnt.getAttribute('data-one') : cnt.getAttribute('data-many')).replace('{n}', String(shown));
         none.hidden = shown > 0;
-        if (rs) rs.hidden = !(gs.length || cs.length);
+        if (rs) rs.hidden = !gs.length;
       };
       var order = function () {
         var byCode = sel && sel.value === 'c';

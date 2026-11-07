@@ -130,8 +130,8 @@ function handle_contact(array $post, array $server, callable $mailer, string $ra
 
     $company = $clean('company', 120, true);
     $companyRaw = trim((string) contact_str($post, 'company'));
-    if ($company === null && ($lang === 'it' || $companyRaw !== '')) {
-        return contact_result(422, $lang, 'company', 'company'); // required on the Italian form; too long / invalid anywhere
+    if ($company === null && $companyRaw !== '') {
+        return contact_result(422, $lang, 'company', 'company'); // optional on both forms; when given: one line, at most 120 characters
     }
 
     $first = $clean('first_name', 80, true);

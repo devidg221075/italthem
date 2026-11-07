@@ -4,15 +4,18 @@ import { icon } from './icons.mjs';
 import { pageUrl, productUrl, serviceUrl, NAV_LABELS } from './routes.mjs';
 import { imageUrl, imgTag, hasImage, preloadLink, SIZES } from './images.mjs';
 import { T } from './strings.mjs';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { docUrl } from './docs.mjs';
 import { PRIVACY, COOKIES } from './privacy.mjs';
 import { makeDescription, usableMeta } from './seo.mjs';
-import { HERO_SLIDES, MENU_PRODUCTS, SERVICE_PHOTOS, ABOUT_PHOTOS, ABOUT_HERO, ABOUT_TEAM, CATALOGUE_ORDER } from './featured.mjs';
+import { HERO_SLIDES, MENU_PRODUCTS, familyOf, FAMILIES, SERVICE_PHOTOS, ABOUT_PHOTOS, ABOUT_HERO, ABOUT_TEAM, CATALOGUE_ORDER } from './featured.mjs';
 
 const catIcon = (cat) => icon({ cc: 'conveyor', melt: 'crucible', heat: 'heat', grains: 'grains' }[cat]);
+// Hand-written benefit points per product (content/benefits.json); products without an entry show no list.
+const BENEFITS = JSON.parse(readFileSync(path.join(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..'), 'content/benefits.json'), 'utf8'));
+const sentence = (s) => { const t = String(s ?? '').trim().toLowerCase(); return t.charAt(0).toUpperCase() + t.slice(1); };
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
 const section = (page, i) => page.sections?.[i] ?? {};
 const byCode = (products, code) => {
@@ -70,18 +73,6 @@ function homeBody(content, lang) {
   return [hero, tg, rail, svc, abt, band].join('\n');
 }
 
-/** Gold capacities (kg) of each model, read from the spec table ("ORO / GOLD : 30KG", "5.0 KG AU"); [] when the table has none. */
-export function goldCapacities(p) {
-  const row = (p.specs?.rows ?? []).find((r) => /CAPAC/i.test(r.label) && !/STAMPO|MOLD/i.test(r.label));
-  if (!row) return [];
-  return row.values.map((v) => {
-    const m = String(v).match(/(?:ORO\s*\/\s*GOLD\s*:?\s*)([\d.]+)\s*KG/i) || String(v).match(/([\d.]+)\s*KG\s*AU/i);
-    return m ? Number(m[1]) : null;
-  }).filter((n) => n !== null);
-}
-const CAP_RANGES = [(n) => n <= 10, (n) => n > 10 && n <= 50, (n) => n > 50];
-export const capRanges = (p) => CAP_RANGES.map((f, i) => (goldCapacities(p).some(f) ? i : -1)).filter((i) => i >= 0);
-
 const check = (name, value, label, n) => `<label class="ck"><input type="checkbox" name="${name}" value="${esc(value)}"><i aria-hidden="true"></i><span>${esc(label)}</span><em>${n}</em></label>`;
 
 function catalogueBody(content, lang) {
@@ -89,14 +80,11 @@ function catalogueBody(content, lang) {
   const t = T[lang];
   const c = t.cat;
   const list = orderedProducts(products);
-  const groups = ['melt', 'heat', 'prod'];
-  const groupCount = (g) => products.filter((p) => p.group === g).length;
-  const rangeCount = (i) => products.filter((p) => capRanges(p).includes(i)).length;
+  const groupCount = (g) => products.filter((p) => familyOf(p) === g).length;
   const filters = `<details class="cf" open><summary>${esc(c.filter)}${icon('down', 'ic dn')}</summary><div class="cb">`
-    + `<fieldset><legend>${esc(c.process)}</legend>${groups.map((g) => check('g', g, t.filters[g], groupCount(g))).join('')}</fieldset>`
-    + `<fieldset><legend>${esc(c.capacity)}</legend>${c.ranges.map((r, i) => check('cap', String(i), r, rangeCount(i))).join('')}<p class="cn">${esc(c.capNote)}</p></fieldset>`
+    + `<fieldset><legend>${esc(c.process)}</legend>${FAMILIES.map((g) => check('g', g, t.filters[g], groupCount(g))).join('')}</fieldset>`
     + `<button class="btn b2 ap" type="button">${esc(c.apply)}</button><button class="rs" type="button" hidden>${esc(c.reset)}</button></div></details>`;
-  const cards = list.map((p, i) => `<div class="cc" data-g="${esc(p.group)}" data-cap="${capRanges(p).join(' ')}" data-r="${i}" data-code="${esc(p.code)}">${card(p, lang, SIZES.card, i === 0)}</div>`).join('');
+  const cards = list.map((p, i) => `<div class="cc" data-g="${esc(familyOf(p))}" data-r="${i}" data-code="${esc(p.code)}">${card(p, lang, SIZES.card, i === 0)}</div>`).join('');
   return `<section class="cat-h"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>${esc(c.kicker)}</span></p><h1>${esc(c.title)}</h1><p class="sub">${esc(c.sub)}</p></div></section>
 <section class="cat-b"><div class="w cl">${filters}<div class="cr"><div class="cbar"><p class="cnt" role="status" aria-live="polite" data-one="${esc(c.found(1).replace('1', '{n}'))}" data-many="${esc(c.found(2).replace('2', '{n}'))}">${esc(c.found(list.length))}</p><label class="so"><span>${esc(c.sort)}</span><select aria-label="${esc(c.sort)}"><option value="r">${esc(c.sortRel)}</option><option value="c">${esc(c.sortCode)}</option></select></label></div><div class="gr3 cg" id="pgrid" aria-label="${esc(c.list)}">${cards}</div><p class="cno" hidden>${esc(c.none)}</p></div></div></section>`;
 }
@@ -186,19 +174,22 @@ export function productBody(p, content, lang) {
   const gal = `<div class="gal">${g.imgs.length ? `<div class="big">${g.big}</div>` : ''}${g.imgs.length > 1 ? `<div class="th" aria-label="${esc(t.gallery)}">${g.imgs.map((u, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'} aria-label="${esc(t.imageN(i + 1))}">${img(u, '', { sizes: SIZES.thumb })}</button>`).join('')}</div>` : ''}</div>`;
   const contact = `${pageUrl('contact', lang)}?product=${encodeURIComponent(p.slug)}`;
   const hasPdf = Boolean(p.pdf && hasFile(docUrl(p.slug).slice(1)));
-  const pdfBtn = hasPdf ? `<a class="btn b2" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pd.pdf)}</a>` : '';
+  const pdfLabel = sentence(p.download_label || pd.docTitle); // original label ("SCARICA SPECIFICHE TECNICHE"), shown in sentence case
+  const pdfBtn = hasPdf ? `<a class="btn b2" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pdfLabel)}</a>` : '';
+  const benefits = BENEFITS[p.slug]?.[lang];
+  const ben = benefits?.length ? `<ul class="ben">${benefits.map((b) => `<li>${icon('check')}<span>${esc(b)}</span></li>`).join('')}</ul>` : '';
   const spec = specTable(p, t);
   const metaText = String(p.meta ?? '').split(/\r?\n/).filter((l) => !/^Category\s*:\s*Ital-?therm\s*$/i.test(l.trim())).join('\n');
   const meta = metaText ? `<p class="meta">${br(metaText)}</p>` : '';
   const panels = [
     { id: 'desc', label: pd.tabs[0], html: description(p.short) },
     spec && { id: 'spec', label: pd.tabs[1], html: spec },
-    (hasPdf || meta) && { id: 'docs', label: pd.tabs[2], html: `${hasPdf ? `<div class="dc"><div>${icon('doc')}<b>${esc(pd.docTitle)}</b><span>${esc(pd.docText)}</span></div><a class="btn b1" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pd.pdf)}</a></div>` : ''}${meta}` },
+    (hasPdf || meta) && { id: 'docs', label: pd.tabs[2], html: `${hasPdf ? `<div class="dc"><div>${icon('doc')}<b>${esc(pd.docTitle)}</b><span>${esc(pd.docText)}</span></div><a class="btn b1" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pdfLabel)}</a></div>` : ''}${meta}` },
   ].filter((x) => x && x.html);
   const first = panels.find((x) => x.id === 'spec') ?? panels[0];
   const tabs = `<div class="ptab" data-first="${first.id}"><div class="tl" role="tablist" aria-label="${esc(pd.tabList)}">${panels.map((x) => `<button type="button" role="tab" id="t-${x.id}" aria-controls="p-${x.id}" aria-selected="${x === first}" tabindex="${x === first ? 0 : -1}">${esc(x.label)}</button>`).join('')}</div>${panels.map((x) => `<div class="tp" role="tabpanel" id="p-${x.id}" aria-labelledby="t-${x.id}"${x === first ? '' : ' data-off'}><h2 class="tph">${esc(x.label)}</h2>${x.html}</div>`).join('')}</div>`;
   return `<section class="pdh"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> <span aria-hidden="true">›</span> <a href="${pageUrl('products', lang)}">${esc(productsPage?.title ?? t.products)}</a> <span aria-hidden="true">›</span> <b>${esc(p.code)}</b></div></div></section>
-<section class="pdm"><div class="w pdg">${gal}<div class="pi"><p class="kick"><i aria-hidden="true"></i><span>${esc(t.filters[p.group] ?? t.products)}</span></p><h1><span class="pcode">${esc(p.code)}</span><span class="ptitle">${esc(displayTitle(p.title))}</span></h1><p class="intro">${esc(intro(p.short))}</p><div class="act"><a class="btn b1" href="${esc(contact)}">${esc(t.quote)}${icon('arrow', 'ic ar')}</a>${pdfBtn}</div></div></div></section>
+<section class="pdm"><div class="w pdg">${gal}<div class="pi"><p class="kick"><i aria-hidden="true"></i><span>${esc(t.filters[familyOf(p)] ?? t.products)}</span></p><h1><span class="pcode">${esc(p.code)}</span><span class="ptitle">${esc(displayTitle(p.title))}</span></h1><p class="intro">${esc(intro(p.short))}</p>${ben}<div class="act"><a class="btn b1" href="${esc(contact)}">${esc(t.quote)}${icon('arrow', 'ic ar')}</a>${pdfBtn}</div></div></div></section>
 <section class="pdt"><div class="w">${tabs}</div></section>
 <section class="sc"><div class="w"><div class="hd"><h2>${esc(t.otherFurnaces)}</h2><a class="btn b2" href="${pageUrl('products', lang)}">${esc(t.allProducts)}</a></div><div class="gr3">${related(p, content.products).map((x) => card(x, lang)).join('')}</div></div></section>`;
 }
@@ -210,7 +201,9 @@ const FORM_LABELS = {
 };
 
 // Map link: a plain OpenStreetMap search (no embed, nothing is loaded from a third party until the visitor follows it).
-const mapUrl = (site) => `https://www.openstreetmap.org/search?query=${encodeURIComponent(site.address.replace(/\s*Italy$/i, ''))}`;
+const mapQuery = (site) => site.address.replace(/\s*Italy$/i, '');
+const mapLink = (site) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery(site))}`;
+const mapEmbed = (site, lang) => `https://www.google.com/maps?q=${encodeURIComponent(mapQuery(site))}&hl=${lang}&z=16&output=embed`;
 const waUrl = (site) => `https://wa.me/${site.phones[1].replace(/\D/g, '')}`;
 
 /** Contact page (approved mockup): banner, company card with map link, form card. The form keeps the /contact.php contract. */
@@ -233,10 +226,8 @@ function contactBody(content, lang) {
   const products = Object.fromEntries(content.products.map((p) => [p.slug, p.code]));
   const req = `<i>${esc(required)}</i>`;
   const fld = (id, name, label, { type = 'text', ac, mark = true, ph, max } = {}) => `<div class="fld"><label for="${id}">${esc(label)}${mark ? req : ''}</label><input class="inp" id="${id}" name="${name}" type="${type}"${ac ? ` autocomplete="${ac}"` : ''}${ph ? ` placeholder="${esc(ph)}"` : ''}${mark ? ' required' : ''}${max ? ` maxlength="${max}"` : ''}></div>`;
-  // Company: required on the Italian form (as on the original), optional on the English one (the handler accepts it on both).
-  const company = L.company && form.includes(L.company)
-    ? fld('f-company', 'company', L.company, { ac: 'organization', max: 120 })
-    : fld('f-company', 'company', c.company, { ac: 'organization', mark: false, max: 120 });
+  // Company: optional on both forms (the approved mockup has no required marker; the handler accepts it on both).
+  const company = fld('f-company', 'company', L.company && form.includes(L.company) ? L.company : c.company, { ac: 'organization', mark: false, max: 120 });
   const productSel = `<div class="fld"><label for="f-product">${esc(c.product)}</label><select class="inp" id="f-product" name="product"><option value="">${esc(c.productPh)}</option>${orderedProducts(content.products).map((p) => `<option value="${esc(p.slug)}">${esc(p.code)} – ${esc(displayTitle(p.title))}</option>`).join('')}</select></div>`;
   const formHtml = `<form class="fl" action="/contact.php" method="post" data-ok="${esc(t.sentOk)}" data-err="${esc(t.sentErr)}" data-sending="${esc(t.sending)}" data-about="${esc(t.about)}" data-products='${esc(JSON.stringify(products)).replace(/&quot;/g, '"')}'>`
     + `<fieldset class="nm"><legend>${esc(form[at(L.group)])}${req}</legend><div class="row2">${fld('f-first', 'first_name', form[at(L.first)], { ac: 'given-name', max: 80 })}${fld('f-last', 'last_name', form[at(L.last)], { ac: 'family-name', max: 80 })}</div></fieldset>`
@@ -267,7 +258,7 @@ function contactBody(content, lang) {
     const extra = i === 0 ? `<p><a href="${tel(site.phones[1])}">${esc(site.phones[1])}</a></p><div class="row"><a class="btn b1" href="${tel(site.phones[0])}">${icon('phone')}${esc(c.call)}</a><a class="btn b2" href="${waUrl(site)}" rel="noopener">${esc(c.whatsapp)}</a></div>` : '';
     return `<div class="card"><div class="cl">${icon(icons[i % icons.length])}<h2>${esc(cd.h)}</h2></div>${cd.ps.map((x) => `<p>${linkify(x)}</p>`).join('')}${extra}</div>`;
   }).join('');
-  const map = `<div class="map">${icon('pin')}<address>${esc(site.name)}<br>${esc(site.address)}</address><a class="btn b2" href="${mapUrl(site)}" target="_blank" rel="noopener">${esc(c.map)}</a></div>`;
+  const map = `<div class="map" data-embed="${esc(mapEmbed(site, lang))}" data-title="${esc(`${c.mapTitle}: ${site.address}`)}"><div class="mp">${icon('pin')}<address>${esc(site.name)}<br>${esc(site.address)}</address><div class="row"><button class="btn b1 mlb" type="button" hidden>${esc(c.mapLoad)}</button><a class="btn b2" href="${esc(mapLink(site))}" target="_blank" rel="noopener">${esc(c.map)}</a></div><p class="mn">${esc(c.mapNote)}</p></div></div>`;
   return `<section class="ct-h"><div class="w"><p class="kick"><i aria-hidden="true"></i><span>${esc(page.title)}</span></p><h1>${esc(c.title)}</h1><p class="sub">${esc(c.sub)}</p></div></section>
 <section class="ct-b"><div class="w"><div class="cw"><div class="side">${side}${map}</div><div class="fcard"><h2>${esc(c.formTitle)}</h2>${page.lead ? `<p class="fl-lead">${esc(page.lead).replace(/\n/g, '<br>')}</p>` : ''}${formHtml}</div></div><p class="ct-t">${c.tags.map((x) => esc(x)).join('<i aria-hidden="true"></i>')}</p></div></section>`;
 }

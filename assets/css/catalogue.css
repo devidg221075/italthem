@@ -22,7 +22,6 @@ html:not(.js) .cf{display:none}
 .ck input:focus-visible+i{outline:3px solid var(--blue);outline-offset:2px}
 .ck:hover i{border-color:var(--blue)}
 .ck em{font-style:normal;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums}
-.cn{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--mute)}
 .cf .ap{width:100%}
 .cf .rs{display:block;margin:14px auto 0;font:600 14px var(--sans);color:var(--blue);text-decoration:underline;text-underline-offset:3px;text-align:center}
 .cbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}

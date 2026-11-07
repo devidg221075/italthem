@@ -12,11 +12,15 @@ export const HERO_SLIDES = [
 // `cat` keys the label in strings.mjs (T[lang].cats). Left list of the mega menu follows MENU_LIST order.
 export const MENU_PRODUCTS = ['IT.CC', 'IT.GT', 'IT.AF', 'IT.GMS'];
 export const MENU_LIST = [
-  { cat: 'melt', code: 'IT.GT' },
-  { cat: 'cc', code: 'IT.CC' },
-  { cat: 'heat', code: 'IT.AF' },
-  { cat: 'grains', code: 'IT.GMS' },
+  { cat: 'melt', code: 'IT.GT', g: 'melt' },
+  { cat: 'cc', code: 'IT.CC', g: 'cc' },
+  { cat: 'heat', code: 'IT.AF', g: 'heat' },
+  { cat: 'grains', code: 'IT.GMS', g: 'prod' },
 ];
+
+/** Catalogue family: the three real product groups, with continuous casting (IT.CC) shown as its own family as in the approved mockups. */
+export const familyOf = (p) => (p.code === 'IT.CC' ? 'cc' : p.group);
+export const FAMILIES = ['cc', 'melt', 'heat', 'prod'];
 
 // Service tile -> product whose photo illustrates it.
 export const SERVICE_PHOTOS = {

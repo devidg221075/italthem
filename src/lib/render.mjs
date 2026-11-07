@@ -52,10 +52,7 @@ function catIcon(cat) {
 /** Mega menu (approved mockup): list of families on the left, one card per featured product on the right. */
 function megaMenu(lang, products, t) {
   const rep = (code) => byCode(products, code);
-  const list = MENU_LIST.map(({ cat, code }) => {
-    const p = rep(code);
-    return `<a href="${productUrl(p, lang)}">${esc(t.menuCats[cat])}${icon('chevron', 'ic ch')}</a>`;
-  }).join('');
+  const list = MENU_LIST.map(({ cat, g }) => `<a href="${pageUrl('products', lang)}?g=${g}">${esc(t.menuCats[cat])}${icon('chevron', 'ic ch')}</a>`).join('');
   const cards = MENU_PRODUCTS.map((code) => {
     const p = rep(code);
     return `<a class="mc" href="${productUrl(p, lang)}"><div class="ph">${imgTag(p.images[0], { alt: '', sizes: SIZES.menu })}</div><b>${esc(p.code)}</b><span>${esc(shortTitle(p))}</span>${icon('arrow', 'ic ar')}</a>`;
@@ -75,7 +72,7 @@ function header(lang, slug, site, switchUrls, navKey, products) {
   const t = T[lang];
   const key = navKey ?? slug;
   const phones = site.phones.map((p) => `<a href="${tel(p)}">${esc(p)}</a>`).join(' · ');
-  const subList = (products.length ? MENU_LIST : []).map(({ cat, code }) => `<a class="l" href="${productUrl(byCode(products, code), lang)}">${catIcon(cat)}<span>${esc(t.menuCats[cat])}</span>${icon('chevron', 'ic ch')}</a>`).join('');
+  const subList = (products.length ? MENU_LIST : []).map(({ cat, g }) => `<a class="l" href="${pageUrl('products', lang)}?g=${g}">${catIcon(cat)}<span>${esc(t.menuCats[cat])}</span>${icon('chevron', 'ic ch')}</a>`).join('');
   return `<header class="hdr"><div class="w"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo()}</a><nav aria-label="${esc(ui.main)}">${nav(lang, key, { products, mega: true })}</nav><div class="rt"><button class="sb" type="button" aria-label="${esc(t.search)}" aria-haspopup="dialog" data-js="${assetUrl('/assets/js/search.js')}" data-css="${assetUrl('/assets/css/search.css')}" data-index="/assets/search-${lang}.json" data-ph="${esc(t.searchPlaceholder)}" data-none="${esc(t.searchNone)}" data-close="${esc(t.searchClose)}" data-types="${esc(JSON.stringify(t.searchTypes))}">${icon('search')}</button>${langSwitch(lang, slug, switchUrls)}<button class="bur" type="button" aria-label="${esc(ui.menu)}" aria-expanded="false" aria-controls="drawer">${icon('menu')}</button></div></div></header>
 <div class="drw" id="drawer"><div class="dp pm"><div class="top"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo()}</a><button class="x" type="button" aria-label="${esc(ui.close)}">${icon('close')}</button></div>${nav(lang, key, { cls: 'l', drawer: true })}<div class="info"><div class="lg">${icon('globe')}${langSwitch(lang, slug, switchUrls)}</div><b>${esc(site.name)}</b><br>${esc(site.address)}<br>${phones}<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></div></div><div class="dp ps" aria-hidden="true"><div class="top"><button class="bk" type="button">${icon('back')}<span>${esc(t.productsMenu)}</span></button><button class="x" type="button" aria-label="${esc(ui.close)}">${icon('close')}</button></div>${subList}<a class="l all" href="${pageUrl('products', lang)}"><span>${esc(t.allProductsMenu)}</span>${icon('arrow', 'ic ar')}</a></div></div>`;
 }

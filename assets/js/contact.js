@@ -41,6 +41,26 @@
         });
       }
     }
+
+    /* map: nothing is requested from Google until the visitor presses the button; without JS only the plain link is shown */
+    var map = $('.map');
+    var load = map && $('.mlb', map);
+    if (map && load) {
+      load.hidden = false;
+      load.addEventListener('click', function () {
+        var frame = document.createElement('iframe');
+        frame.src = map.getAttribute('data-embed');
+        frame.title = map.getAttribute('data-title') || '';
+        frame.loading = 'lazy';
+        frame.referrerPolicy = 'no-referrer';
+        frame.setAttribute('allowfullscreen', '');
+        var holder = $('.mp', map);
+        map.classList.add('on');
+        map.appendChild(frame);
+        if (holder) holder.hidden = true;
+        frame.addEventListener('load', function () { frame.focus(); });
+      });
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

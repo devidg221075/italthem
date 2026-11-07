@@ -20,6 +20,11 @@
 .pcode{font:700 clamp(52px,5vw,72px)/1.1 var(--head);color:var(--blue)}
 .ptitle{font:700 clamp(22px,2.4vw,34px)/1.2 var(--head);color:var(--ink);text-wrap:balance}
 .intro{margin-top:20px;padding-bottom:22px;border-bottom:1px solid var(--rule);font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:var(--ink);max-width:36em}
+.ben{list-style:none;margin:20px 0 0;padding:0 0 22px;border-bottom:1px solid var(--rule);display:grid;gap:12px}
+.ben li{display:flex;align-items:center;gap:14px;font-size:17px;line-height:1.5;color:var(--ink)}
+.ben .ic{width:22px;height:22px;color:var(--blue);stroke-width:2}
+.intro+.ben{margin-top:-2px}
+.ben+.act{margin-top:24px}
 .act{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap}
 .act .btn .ic,.dc .btn .ic{width:22px;height:22px}
 .act .btn.b2{color:var(--ink);border-color:var(--ink)}.act .btn.b2:hover{background:var(--ink);color:#fff}

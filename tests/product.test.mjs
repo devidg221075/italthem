@@ -143,7 +143,8 @@ test('PDF link points to a local file that exists and opens safely in a new tab'
         assert.match(m[2], /target="_blank"/);
         assert.match(m[2], /rel="noopener"/);
       }
-      assert.ok(html.includes(lang === 'en' ? 'Download PDF datasheet' : 'Scarica scheda PDF'));
+      const label = prod.download_label.charAt(0) + prod.download_label.slice(1).toLowerCase();
+      assert.equal(count(html, new RegExp(`</svg>${label}</a>`, 'g')), 2, `${prod.slug}: the original label in sentence case on both buttons`);
     }
   }
 });

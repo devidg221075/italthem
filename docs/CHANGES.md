@@ -276,3 +276,18 @@ Pagine mobile controllate a occhio a 390 px: home, catalogo, scheda prodotto, Az
 - `server/contact-lib.php`: campo `phone` facoltativo, una sola riga, 6–15 cifre, messaggio di errore in italiano e inglese; un numero non valido non consuma il limite di invii.
 - L'informativa privacy elenca ora il numero di telefono tra i dati raccolti ("se scegli di inserirlo"): il testo resta una bozza da validare.
 - `tests/contact-phone.test.mjs`: assente o vuoto ammesso, numeri validi ammessi e scritti nell'email, lettere / troppo corto / troppo lungo / doppio "+" / a capo rifiutati con il campo `phone`, campo presente e facoltativo nella pagina.
+
+## Revisione delle deviazioni (decisioni dell'utente)
+
+Queste voci sostituiscono quelle corrispondenti nelle tabelle sopra.
+
+| Dove | Decisione | Cosa ho fatto |
+|---|---|---|
+| Kicker del hero | In italiano | Pagina italiana: "Tecnologia italiana"; inglese: "Italian technology" |
+| Mega menu e menu mobile | Verso il catalogo filtrato | Ogni voce porta a `…/prodotti/?g=<famiglia>` (fusione, colata continua, trattamenti termici, produzione); il catalogo preseleziona la famiglia |
+| Filtro "Lavorazione" del catalogo | Allineato alle 4 voci del menu | Quattro famiglie: Colata continua (IT.CC, 1), Forni di fusione (3), Trattamento termico (3), Sistemi di produzione (4). La colata continua è una famiglia a sé come nel mockup; le altre seguono i gruppi reali dei prodotti. Il kicker della scheda usa la stessa famiglia |
+| Filtro "Capacità" | Tolto | Rimosso filtro, dati e stringhe; restano ordinamento e conteggio |
+| Lista dei vantaggi nella scheda | Aggiunta | Componente con icone a spunta, pilotato da `content/benefits.json` (scritto a mano, non rigenerato dallo script di estrazione). Per **IT.CC** ci sono i 4 punti del mockup (in inglese: traduzione mia); **per gli altri 10 prodotti non c'è nessuna lista finché non mi dai i testi** |
+| Pulsante PDF | Testo originale | "Scarica specifiche tecniche" / "Download technical specifications" (dall'originale, scritto con la sola iniziale maiuscola invece del maiuscolo), su entrambi i pulsanti |
+| Campo "Azienda" | Facoltativo anche in italiano | Il gestore la accetta vuota in entrambe le lingue; se compilata: una riga, al massimo 120 caratteri |
+| Mappa | Incorporata | Pulsante "Carica la mappa": solo dopo il clic si carica l'incorporamento di Google Maps (indirizzo come ricerca, senza referrer); senza JavaScript resta il link "Apri in Google Maps". Informativa privacy e cookie policy nominano Google Maps. **Verifica che il segnaposto cada sul tuo capannone**: non ho coordinate affidabili (OpenStreetMap restituisce per la via due punti a più di 1 km di distanza e non trova il civico 50/B), quindi la posizione dipende da Google |

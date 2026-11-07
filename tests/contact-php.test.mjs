@@ -150,12 +150,13 @@ test('control characters are stripped from the message body', () => {
   assert.match(mails[0].body, /Second line/);
 });
 
-test('company: required on the Italian form only, appears in the body', () => {
+test('company: optional on both forms (one line, at most 120 characters when given), appears in the body', () => {
   let { r, mails } = one({ ...valid(), lang: 'it', company: '  ' });
-  assert.deepEqual([r.status, r.ok, r.field, mails.length], [422, false, 'company', 0]);
-  assert.match(r.error, /azienda/i);
+  assert.deepEqual([r.status, r.ok, mails.length], [200, true, 1]);
+  assert.match(mails[0].body, /Company: -/);
   ({ r, mails } = one({ ...valid(), lang: 'it', company: 'x'.repeat(121) }));
-  assert.equal(r.field, 'company');
+  assert.deepEqual([r.ok, r.field, mails.length], [false, 'company', 0]);
+  assert.match(r.error, /azienda/i);
   ({ r, mails } = one({ ...valid(), company: '' }));
   assert.equal(r.ok, true);
   assert.match(mails[0].body, /Company: -/);
