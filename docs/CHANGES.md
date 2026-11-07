@@ -253,7 +253,7 @@ CSS in `assets/css/contact.css` e JS in `assets/js/contact.js` (solo questa pagi
 | Titolo e sottotitolo | "Parliamo del tuo progetto" | Testi del mockup (nuovi); il titolo reale "Contatti" è il kicker; il testo reale "Compila questo modulo…" è sotto il titolo del modulo | Confermato dall'utente |
 | Campo "Prodotto di interesse" | Menu a tendina | Menu con gli 11 prodotti (prima era un campo nascosto); si precompila dal link "Richiedi un preventivo" | Fatto |
 | Campo "Azienda" | Presente, facoltativo | Presente anche in inglese, facoltativo; in italiano resta **obbligatorio**, come sul modulo originale | Da confermare |
-| Campo "Telefono" | Presente | **Non inserito**: il gestore non lo raccoglie e servirebbero una modifica a `contact.php` e all'informativa privacy | Da decidere |
+| Campo "Telefono" | Presente | Aggiunto, **facoltativo**: se compilato deve essere un numero (anche con + davanti, spazi, trattini, punti, parentesi e barre; da 6 a 15 cifre), altrimenti il modulo risponde con un errore sul campo; va nell'email di notifica come "Phone". Aggiornati `contact.php`, l'informativa privacy (italiano e inglese) e i test | Fatto (richiesto) |
 | Campo "Nome e cognome" | Un solo campo | Due campi (Nome, Cognome) e conferma e-mail, come prima (il gestore li richiede) | Deciso |
 | Mappa | Mappa illustrata con segnaposto | Riquadro con il segnaposto e il pulsante "Apri la mappa" verso una ricerca su OpenStreetMap con l'indirizzo: non carica nulla da terzi (nessun iframe) e non servono coordinate | Da confermare |
 | Chiama / WhatsApp | — (dal piano) | "Chiamaci" (numero fisso) e "Scrivici su WhatsApp" (numero mobile +39 366 871 9427); il secondo numero è collegato | **Verifica che il mobile usi WhatsApp** |
@@ -271,3 +271,8 @@ Nella scheda prodotto non compare più la riga "Category: Ital-therm" (veniva da
 `node scripts/perf-report.mjs` (mobile 390 px, senza limitazioni di rete, server locale): LCP tra 60 e 92 ms, CLS 0 su tutte le pagine provate, nessun blocco da JavaScript, nessuna richiesta fallita. Peso della prima visita: home 566 KB, catalogo 715 KB, scheda IT.CC 578 KB, contatti 147 KB (di cui font 71 KB). Lighthouse non è disponibile in questo ambiente, quindi i punteggi Lighthouse vanno ancora misurati.
 
 Pagine mobile controllate a occhio a 390 px: home, catalogo, scheda prodotto, Azienda, Contatti, menu a scorrimento. Sul telefono il modulo di Contatti compare prima delle schede dei recapiti (nelle bozze mobile non c'era un modulo); se preferisci i recapiti per primi, basta togliere una riga di CSS.
+
+### Campo Telefono (aggiunto al modulo)
+- `server/contact-lib.php`: campo `phone` facoltativo, una sola riga, 6–15 cifre, messaggio di errore in italiano e inglese; un numero non valido non consuma il limite di invii.
+- L'informativa privacy elenca ora il numero di telefono tra i dati raccolti ("se scegli di inserirlo"): il testo resta una bozza da validare.
+- `tests/contact-phone.test.mjs`: assente o vuoto ammesso, numeri validi ammessi e scritti nell'email, lettere / troppo corto / troppo lungo / doppio "+" / a capo rifiutati con il campo `phone`, campo presente e facoltativo nella pagina.

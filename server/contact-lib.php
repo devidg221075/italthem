@@ -23,6 +23,7 @@ const CONTACT_MESSAGES = [
         'last_name' => 'Please enter your last name.',
         'email' => 'Please enter a valid email address.',
         'email_confirm' => 'The two email addresses do not match.',
+        'phone' => 'Please enter a valid phone number, or leave the field empty.',
         'message' => 'Please describe your request (at least 10 characters).',
         'consent' => 'Please accept the privacy notice to continue.',
         'invalid' => 'Some of the data you entered is not valid. Please check the form.',
@@ -36,6 +37,7 @@ const CONTACT_MESSAGES = [
         'last_name' => 'Inserisci il tuo cognome.',
         'email' => 'Inserisci un indirizzo email valido.',
         'email_confirm' => 'Gli indirizzi email non coincidono.',
+        'phone' => 'Inserisci un numero di telefono valido, oppure lascia il campo vuoto.',
         'message' => 'Descrivi la tua richiesta (almeno 10 caratteri).',
         'consent' => 'Per continuare accetta l’informativa sulla privacy.',
         'invalid' => 'Alcuni dati inseriti non sono validi. Controlla il modulo.',
@@ -146,6 +148,17 @@ function handle_contact(array $post, array $server, callable $mailer, string $ra
         return contact_result(422, $lang, 'email_confirm', 'email_confirm');
     }
 
+    // Phone: optional. When given it must look like a phone number: optional leading + (and opening bracket), digits and the usual separators,
+    // 6 to 15 digits, one line. Anything else (letters, line breaks, too long) is rejected, never silently cleaned.
+    $phone = $clean('phone', 30, true);
+    $phoneRaw = trim((string) contact_str($post, 'phone'));
+    if ($phoneRaw !== '') {
+        $digits = $phone === null ? 0 : preg_match_all('/[0-9]/', $phone);
+        if ($phone === null || !preg_match('/^\+?\(?[0-9][0-9 ().\/-]*$/', $phone) || $digits < 6 || $digits > 15) {
+            return contact_result(422, $lang, 'phone', 'phone');
+        }
+    }
+
     $rawMsg = contact_str($post, 'message');
     $message = null;
     if ($rawMsg !== null && mb_check_encoding($rawMsg, 'UTF-8')) {
@@ -171,6 +184,7 @@ function handle_contact(array $post, array $server, callable $mailer, string $ra
         . "Name: $first $last\n"
         . 'Company: ' . ($company ?? '-') . "\n"
         . "Email: $email\n"
+        . 'Phone: ' . ($phone ?? '-') . "\n"
         . 'Product: ' . ($product ?? '-') . "\n"
         . "Language: $lang\n"
         . 'Date: ' . gmdate('Y-m-d H:i:s', $now) . " UTC\n"

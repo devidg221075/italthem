@@ -241,7 +241,8 @@ function contactBody(content, lang) {
   const formHtml = `<form class="fl" action="/contact.php" method="post" data-ok="${esc(t.sentOk)}" data-err="${esc(t.sentErr)}" data-sending="${esc(t.sending)}" data-about="${esc(t.about)}" data-products='${esc(JSON.stringify(products)).replace(/&quot;/g, '"')}'>`
     + `<fieldset class="nm"><legend>${esc(form[at(L.group)])}${req}</legend><div class="row2">${fld('f-first', 'first_name', form[at(L.first)], { ac: 'given-name', max: 80 })}${fld('f-last', 'last_name', form[at(L.last)], { ac: 'family-name', max: 80 })}</div></fieldset>`
     + `<div class="row2">${fld('f-email', 'email', form[at(L.email)], { type: 'email', ac: 'email', ph: form[at(L.enter)], max: 254 })}${fld('f-confirm', 'email_confirm', form[at(L.confirm)], { type: 'email', ac: 'email', ph: form[at(L.confirm)], max: 254 })}</div>`
-    + `<div class="row2">${company}${productSel}</div>`
+    + `<div class="row2">${company}${fld('f-phone', 'phone', c.phone, { type: 'tel', ac: 'tel', mark: false, max: 30 })}</div>`
+    + productSel
     + `<div class="fld"><label for="f-msg">${esc(form[at(L.req)])}${req}</label><textarea class="inp" id="f-msg" name="message" rows="6" minlength="10" maxlength="5000" required></textarea></div>`
     + `<div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>`
     + `<input type="hidden" name="lang" value="${esc(lang)}">`
