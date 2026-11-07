@@ -348,3 +348,7 @@ Differenze residue, tutte note e non risolvibili senza materiali nuovi:
 ## Revisione automatica (Codex) sulla PR
 
 - **Ricerca, tastiera:** Invio veniva gestito a livello dell'intero pannello, quindi su un link dei risultati o sul pulsante di chiusura apriva il primo risultato invece di attivare il controllo. Ora il collegamento Invio → risultato attivo vale solo con il focus nel campo di ricerca; link e pulsanti mantengono il comportamento nativo.
+
+## Anteprima con segnaposto (opzionale, spenta di default)
+
+Per vedere il layout con le foto definitive ancora mancanti: `PLACEHOLDERS=1 node build.mjs` sostituisce le foto di hero (4 slide) e dei banner di catalogo/Contatti con blocchi grafici neutri "Foto in arrivo". Il sito normale e i test non cambiano (nessun effetto senza la variabile). Da rimuovere/ignorare quando arrivano le foto vere (da riprendere lunedì/martedì).

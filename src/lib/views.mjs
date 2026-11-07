@@ -31,10 +31,13 @@ const photo = (product, i) => {
   return u;
 };
 const img = (url, alt, opts) => imgTag(url, { alt, ...opts });
+/** Preview mode (`PLACEHOLDERS=1 node build.mjs`): neutral "photo coming" blocks instead of the temporary photos in the hero and the section banners. Never on by default. */
+const PH = process.env.PLACEHOLDERS === '1';
+const phBlock = (label, w, h) => `<svg class="ph" style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="phg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EEF2F8"/><stop offset="1" stop-color="#D9DEE7"/></linearGradient></defs><rect width="${w}" height="${h}" rx="24" fill="url(#phg)"/><g fill="none" stroke="#9AA9C2" stroke-width="3" stroke-linejoin="round"><rect x="${w * 0.3}" y="${h * 0.22}" width="${w * 0.4}" height="${h * 0.5}" rx="10"/><path d="M${w * 0.3} ${h * 0.4}h${w * 0.4}M${w * 0.4} ${h * 0.22}v${-h * 0.07}h${w * 0.2}v${h * 0.07}"/><circle cx="${w * 0.5}" cy="${h * 0.56}" r="${Math.min(w, h) * 0.07}"/></g><text x="${w / 2}" y="${h * 0.86}" text-anchor="middle" font-family="Inter,sans-serif" font-size="${Math.max(16, Math.round(h * 0.045))}" font-weight="600" fill="#6B7A96">${esc(label)}</text></svg>`;
 const BANNER_CAT = { code: 'IT.CC', image: 1 };
 const BANNER_CONTACT = { code: 'IT.MT', image: 2 };
 /** Decorative photo on the right of a section banner (desktop only, hidden on narrower screens). */
-const bannerPhoto = (products, b) => { const p = byCode(products, b.code); return `<div class="bv" aria-hidden="true">${imgTag(photo(p, b.image), { alt: '', sizes: SIZES.banner })}</div>`; };
+const bannerPhoto = (products, b) => { const p = byCode(products, b.code); if (PH) return `<div class="bv" aria-hidden="true">${phBlock('Foto banner in arrivo', 1000, 500)}</div>`; return `<div class="bv" aria-hidden="true">${imgTag(photo(p, b.image), { alt: '', sizes: SIZES.banner })}</div>`; };
 const altOf = (p) => `${p.code} ${displayTitle(p.title)}`;
 const clip = (s, n = 160) => (s.length <= n ? s : `${s.slice(0, n - 1).replace(/\s+\S*$/, '')}…`);
 
@@ -59,7 +62,7 @@ function homeBody(content, lang) {
   // The category row follows the mockup order (IT.CC, IT.GT, IT.AF, IT.GMS), which is not the slide order.
   const cats = MENU_PRODUCTS.map((code) => slides.find((s) => s.p.code === code)).map((s) => `<li><a href="${productUrl(s.p, lang)}">${catIcon(s.cat)}<span>${esc(t.cats[s.cat])}</span><b>${esc(s.p.code)}</b></a></li>`).join('');
   const hero = `<section class="hero" aria-roledescription="carousel" aria-label="${esc(t.machines)}"><div class="hbg" aria-hidden="true"></div><div class="w hbody"><div class="htx"><p class="kick"><i aria-hidden="true"></i><span lang="${t.heroKickerLang}">${esc(t.heroKicker)}</span></p><h1>${esc(t.heroTitle)}</h1><p class="sub">${esc(t.heroSub)}</p><div class="hb"><a class="btn b1" href="${pageUrl('products', lang)}">${esc(t.discoverProducts)}${icon('arrow', 'ic ar')}</a></div></div>`
-    + `<div class="stage">${slides.map((s, i) => `<div class="m${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${img(photo(s.p, s.image), altOf(s.p), { sizes: SIZES.hero, priority: i === 0 })}</div>`).join('')}</div></div>`
+    + `<div class="stage">${slides.map((s, i) => `<div class="m${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${PH ? phBlock(`Foto in arrivo · ${s.p.code}`, 600, 500) : img(photo(s.p, s.image), altOf(s.p), { sizes: SIZES.hero, priority: i === 0 })}</div>`).join('')}</div></div>`
     + `<ul class="w cats">${cats}</ul><div class="dots" role="group" aria-label="${esc(t.dots)}">${slides.map((s, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'} aria-label="${esc(`${t.cats[s.cat]} ${s.p.code}`)}"></button>`).join('')}</div></section>`;
 
   const tg = `<section class="tg"><div class="w" style="--n:${taglines.length}">${taglines.map((x) => `<div>${esc(x)}</div>`).join('')}</div></section>`;
@@ -354,7 +357,7 @@ export function renderSitePage(page, contents) {
   const { title, description, seo } = seoFor(page, content);
   // The LCP image (first hero slide / first gallery image) is preloaded with the same srcset/sizes as its <img>.
   let preload;
-  if (page.type === 'home') preload = preloadLink(photo(byCode(content.products, HERO_SLIDES[0].code), HERO_SLIDES[0].image), { sizes: SIZES.hero });
+  if (page.type === 'home' && !PH) preload = preloadLink(photo(byCode(content.products, HERO_SLIDES[0].code), HERO_SLIDES[0].image), { sizes: SIZES.hero });
   if (page.type === 'product') {
     const first = (content.products.find((x) => x.slug === page.key).images ?? []).find(localImage);
     if (first) preload = preloadLink(first, { sizes: SIZES.gallery });
