@@ -344,3 +344,7 @@ Differenze residue, tutte note e non risolvibili senza materiali nuovi:
 
 - **Banner di catalogo e Contatti:** foto decorativa a destra con sfumatura (solo desktop ≥1001 px, `aria-hidden`, lazy, mai LCP), come nei mockup. Foto reali dei prodotti: IT.CC (dettaglio) per il catalogo, IT.MT (operatore al forno) per Contatti. Da sostituire con foto ad alta risoluzione quando arrivano. Il banner Azienda aveva già la sua foto.
 - **Vantaggi nella scheda prodotto:** `content/benefits.json` ora ha le liste (4 punti, IT/EN) per tutti gli 11 prodotti. Solo IT.CC viene dal mockup; **le altre 10 sono BOZZE mie**, ciascun punto riformula qualcosa che la descrizione del prodotto già dice (nessun numero nuovo). **Da validare**: per nasconderne una basta togliere la voce dal file.
+
+## Revisione automatica (Codex) sulla PR
+
+- **Ricerca, tastiera:** Invio veniva gestito a livello dell'intero pannello, quindi su un link dei risultati o sul pulsante di chiusura apriva il primo risultato invece di attivare il controllo. Ora il collegamento Invio → risultato attivo vale solo con il focus nel campo di ricerca; link e pulsanti mantengono il comportamento nativo.

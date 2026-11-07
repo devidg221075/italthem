@@ -122,7 +122,7 @@
       if (e.key === 'Escape') { e.preventDefault(); close(); }
       else if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
-      else if (e.key === 'Enter' && items[active]) { e.preventDefault(); location.href = items[active].u; }
+      else if (e.key === 'Enter' && e.target === input && items[active]) { e.preventDefault(); location.href = items[active].u; }
     });
     list.addEventListener('click', function () { document.body.classList.remove('no-scroll'); });
   }
