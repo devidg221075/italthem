@@ -265,3 +265,9 @@ CSS in `assets/css/contact.css` e JS in `assets/js/contact.js` (solo questa pagi
 Banner come le altre pagine (briciole, kicker, titolo, testo) e testo in colonna leggibile (`.pgh` e `.prose` in `site.css`). Contenuti invariati. I kicker sono "Privacy", "Cookie policy", "Servizi" e "404" (testi di interfaccia). Le quattro pagine servizio in italiano sono ancora in inglese (anomalia già elencata sopra: serve il testo italiano).
 
 Nella scheda prodotto non compare più la riga "Category: Ital-therm" (veniva dal vecchio WordPress); restano SKU e Tag, come richiesto.
+
+## Controllo qualità (prestazioni, pagine mobile)
+
+`node scripts/perf-report.mjs` (mobile 390 px, senza limitazioni di rete, server locale): LCP tra 60 e 92 ms, CLS 0 su tutte le pagine provate, nessun blocco da JavaScript, nessuna richiesta fallita. Peso della prima visita: home 566 KB, catalogo 715 KB, scheda IT.CC 578 KB, contatti 147 KB (di cui font 71 KB). Lighthouse non è disponibile in questo ambiente, quindi i punteggi Lighthouse vanno ancora misurati.
+
+Pagine mobile controllate a occhio a 390 px: home, catalogo, scheda prodotto, Azienda, Contatti, menu a scorrimento. Sul telefono il modulo di Contatti compare prima delle schede dei recapiti (nelle bozze mobile non c'era un modulo); se preferisci i recapiti per primi, basta togliere una riga di CSS.
