@@ -9,7 +9,11 @@ import { buildPages } from '../src/lib/site-pages.mjs';
 import { layout } from '../src/lib/render.mjs';
 import { SITE_URL, makeTitle, makeDescription, jsonLd, buildSitemaps, robotsTxt } from '../src/lib/seo.mjs';
 import { buildRedirects, buildHtaccess, DEMO_GONE, DEMO_MOVED } from '../src/lib/redirects.mjs';
-import { parseRules, simulate } from './helpers/htaccess-sim.mjs';
+import { parseRules, simulate, follow } from './helpers/htaccess-sim.mjs';
+import { createHash } from 'node:crypto';
+import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
+import os from 'node:os';
+import { assetUrl } from '../src/lib/assets.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -133,20 +137,22 @@ test('home og:image is the first hero photo', () => {
   assert.match(attr(read('en/index.html'), /<meta property="og:image" content="([^"]*)"/), /\/assets\/img\/src\/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT\.jpg$/);
 });
 
-test('JSON-LD: Organization, LocalBusiness and WebSite on both homes', () => {
+test('JSON-LD: one Organization+LocalBusiness node and a WebSite on both homes, referenced by @id', () => {
   for (const f of ['en/index.html', 'it/index.html']) {
     const blocks = ldBlocks(read(f));
-    const types = blocks.map((b) => b['@type']);
-    for (const t of ['Organization', 'LocalBusiness', 'WebSite']) assert.ok(types.includes(t), `${f} ${t}`);
-    assert.ok(!types.includes('BreadcrumbList'), 'home has no breadcrumb');
-    for (const b of blocks.filter((x) => ['Organization', 'LocalBusiness'].includes(x['@type']))) {
-      assert.equal(b.name, 'ITALTHERM S.r.l.');
-      assert.equal(b.email, 'info@ital-therm.it');
-      assert.equal(b.telephone, '+39 0575 802485');
-      assert.equal(b.vatID, '02487940518');
-      assert.deepEqual(b.address, { '@type': 'PostalAddress', streetAddress: 'Viale S. Maria delle Vertighe 50/B', addressLocality: 'Monte San Savino', addressRegion: 'AR', postalCode: '52048', addressCountry: 'IT' });
-      assert.ok(!('geo' in b) && !('openingHours' in b) && !('aggregateRating' in b));
-    }
+    assert.equal(blocks.length, 2, f);
+    const org = blocks.find((b) => Array.isArray(b['@type']));
+    assert.deepEqual(org['@type'], ['Organization', 'LocalBusiness']);
+    assert.equal(org['@id'], 'https://ital-therm.it/#organization');
+    const site = blocks.find((b) => b['@type'] === 'WebSite');
+    assert.deepEqual(site.publisher, { '@id': org['@id'] });
+    assert.ok(!blocks.some((b) => b['@type'] === 'BreadcrumbList'), 'home has no breadcrumb');
+    assert.equal(org.name, 'ITALTHERM S.r.l.');
+    assert.equal(org.email, 'info@ital-therm.it');
+    assert.equal(org.telephone, '+39 0575 802485');
+    assert.equal(org.vatID, '02487940518');
+    assert.deepEqual(org.address, { '@type': 'PostalAddress', streetAddress: 'Viale S. Maria delle Vertighe 50/B', addressLocality: 'Monte San Savino', addressRegion: 'AR', postalCode: '52048', addressCountry: 'IT' });
+    assert.ok(!('geo' in org) && !('openingHours' in org) && !('aggregateRating' in org));
   }
 });
 
@@ -166,7 +172,7 @@ test('JSON-LD: BreadcrumbList on inner pages, Product with sku on all 22 product
     assert.equal(prod.sku, src.code);
     assert.equal(prod.description, src.short.replace(/\s+/g, ' ').trim());
     assert.equal(prod.url, SITE_URL + p.url);
-    assert.equal(prod.brand['@type'], 'Organization');
+    assert.deepEqual(prod.brand, { '@id': 'https://ital-therm.it/#organization' });
     assert.ok(prod.image.length >= 1 && prod.image.every((u) => u.startsWith(`${SITE_URL}/assets/img/`)));
     assert.ok(!('offers' in prod) && !('aggregateRating' in prod) && !('review' in prod));
   }
@@ -248,37 +254,75 @@ const old = () => {
   return out;
 };
 
-test('every content old_path is redirected (or already is its own new URL), with and without trailing slash', () => {
+const ORIGINS = [['http', 'ital-therm.it'], ['https', 'ital-therm.it'], ['http', 'www.ital-therm.it'], ['https', 'www.ital-therm.it']];
+
+test('every content old_path reaches its new page in exactly ONE hop over http, https and www, with and without trailing slash', () => {
   const rules = parseRules(htaccess);
   const newUrls = new Set(pages.map((p) => p.url));
   let checked = 0;
   for (const o of old()) {
-    if (newUrls.has(o.old)) { assert.equal(simulate(rules, o.old).status, 200, `${o.old} must stay`); continue; }
-    if (o.old === '/') continue; // language chooser
-    for (const v of [o.old, o.old.replace(/\/$/, '')]) {
-      const r = simulate(rules, v);
-      assert.equal(r.status, 301, `${v}`);
-      assert.ok(newUrls.has(r.to), `${v} -> ${r.to} is not a built page`);
-      assert.equal(simulate(rules, r.to).status, 200, `${r.to} must not redirect again`);
+    if (newUrls.has(o.old) || o.old === '/') continue; // `/it/chi-siamo/` keeps its URL; `/` is the chooser
+    const target = redirects.find((r) => r.from.replace(/\/$/, '') === o.old.replace(/\/$/, '')).to;
+    assert.ok(newUrls.has(target), `${o.old} -> ${target} is not a built page`);
+    for (const [scheme, host] of ORIGINS) {
+      for (const v of [o.old, o.old.replace(/\/$/, '')]) {
+        const r = follow(rules, scheme, host, v);
+        assert.equal(r.hops, 1, `${scheme}://${host}${v}: ${r.chain.join(' -> ')}`);
+        assert.deepEqual(r.final, { scheme: 'https', host: 'ital-therm.it', path: target }, `${scheme}://${host}${v}`);
+        assert.equal(r.status, 200);
+      }
     }
     checked++;
   }
   assert.ok(checked >= 30, `only ${checked} old paths checked`);
 });
 
+test('new URLs: https apex is 200 with no hop; http/www and missing trailing slash take exactly one hop, no loops', () => {
+  const rules = parseRules(htaccess);
+  for (const p of pages) {
+    assert.deepEqual(follow(rules, 'https', 'ital-therm.it', p.url), { status: 200, hops: 0, final: { scheme: 'https', host: 'ital-therm.it', path: p.url }, chain: [] }, p.url);
+    for (const [scheme, host] of ORIGINS.filter(([s, h]) => s === 'http' || h.startsWith('www'))) {
+      for (const v of [p.url, p.url.replace(/\/$/, '')]) {
+        const r = follow(rules, scheme, host, v);
+        assert.equal(r.hops, 1, `${scheme}://${host}${v}: ${r.chain.join(' -> ')}`);
+        assert.deepEqual(r.final, { scheme: 'https', host: 'ital-therm.it', path: p.url });
+      }
+    }
+    // behind a TLS-terminating proxy (HTTPS off, X-Forwarded-Proto https) there is no redirect at all
+    assert.equal(follow(rules, 'http', 'ital-therm.it', p.url, 'https').hops, 0, p.url);
+    assert.equal(follow(rules, 'http', 'ital-therm.it', p.url.replace(/\/$/, ''), 'https').hops, 1, 'slash rule only');
+  }
+  assert.equal(follow(rules, 'https', 'ital-therm.it', '/').hops, 0);
+  assert.equal(follow(rules, 'http', 'ital-therm.it', '/').hops, 1);
+  assert.equal(follow(rules, 'https', 'ital-therm.it', '/assets/css/site.css').status, 200);
+  assert.equal(follow(rules, 'https', 'ital-therm.it', '/en/no-such-dir').hops, 0, 'unknown paths are left to 404');
+});
+
+test('no emitted redirect target is relative; the redirect block precedes the host rules', () => {
+  for (const m of htaccess.matchAll(/^RewriteRule \S+ (\S+) \[[^\]]*R=30[12][^\]]*\]/gm)) assert.match(m[1], /^https:\/\/ital-therm\.it[/%]/, m[0]);
+  assert.ok(htaccess.indexOf('RewriteRule ^shop/?$') < htaccess.indexOf('RewriteCond %{HTTP_HOST}'));
+  assert.ok(htaccess.indexOf('index.html -f') < htaccess.indexOf('RewriteCond %{HTTP_HOST}'));
+});
+
+test('contact-lib.php is denied (403) while normal pages stay reachable', () => {
+  const deny = htaccess.match(/<FilesMatch "([^"]+)">\s*Require all denied/);
+  assert.ok(deny && new RegExp(deny[1]).test('contact-lib.php') && !new RegExp(deny[1]).test('contact.php'));
+  assert.equal(follow(parseRules(htaccess), 'https', 'ital-therm.it', '/en/products/').status, 200);
+});
+
 test('specific mappings: long About slug, shop, home, product category', () => {
   const rules = parseRules(htaccess);
   const longAbout = contents.en.pages.find((p) => p.slug === 'about').old_path;
   assert.ok(longAbout.length > 100);
-  assert.deepEqual(simulate(rules, longAbout), { status: 301, to: '/en/about-us/' });
-  assert.deepEqual(simulate(rules, '/shop/'), { status: 301, to: '/en/products/' });
-  assert.deepEqual(simulate(rules, '/shop'), { status: 301, to: '/en/products/' });
-  assert.deepEqual(simulate(rules, '/it/shop/'), { status: 301, to: '/it/prodotti/' });
-  assert.deepEqual(simulate(rules, '/home/'), { status: 301, to: '/en/' });
-  assert.deepEqual(simulate(rules, '/product-category/ital-therm/'), { status: 301, to: '/en/products/' });
+  assert.equal(simulate(rules, longAbout).to, '/en/about-us/');
+  assert.equal(simulate(rules, '/shop/').to, '/en/products/');
+  assert.equal(simulate(rules, '/shop').to, '/en/products/');
+  assert.equal(simulate(rules, '/it/shop/').to, '/it/prodotti/');
+  assert.equal(simulate(rules, '/home/').to, '/en/');
+  assert.equal(simulate(rules, '/product-category/ital-therm/').to, '/en/products/');
   assert.deepEqual(simulate(rules, '/it/chi-siamo/'), { status: 200 });
   assert.deepEqual(simulate(rules, '/it/'), { status: 200 });
-  assert.match(htaccess, /RewriteRule \^shop\/\?\$ \/en\/products\/\? \[R=301,L\]/);
+  assert.match(htaccess, /RewriteRule \^shop\/\?\$ https:\/\/ital-therm\.it\/en\/products\/\? \[R=301,L\]/);
 });
 
 test('410 Gone for every demo page of docs/CHANGES.md, with and without trailing slash, EN and IT paths', () => {
@@ -298,7 +342,7 @@ test('410 Gone for every demo page of docs/CHANGES.md, with and without trailing
     }
   }
   for (const s of ['blog-grid', 'faqs', 'projects-gird', 'pricing', 'cart', 'cart-2', 'checkout', 'checkout-2', 'my-account', 'testimonials', 'team-grid', 'services-gird', 'content-from-mizox']) assert.ok(DEMO_GONE.includes(s), s);
-  assert.deepEqual(simulate(rules, '/italtherm-continuous-casting-machine/'), { status: 301, to: '/en/about-us/' });
+  assert.equal(simulate(rules, '/italtherm-continuous-casting-machine/').to, '/en/about-us/');
 });
 
 test('redirect map: no loops, no duplicates, only 301 with a target or 410', () => {
@@ -313,7 +357,7 @@ test('redirect map: no loops, no duplicates, only 301 with a target or 410', () 
     assert.notEqual(r.from, r.to);
   }
   for (const t of tos) assert.ok(!froms.has(t.replace(/\/$/, '')), `target ${t} is itself redirected`);
-  assert.equal(buildHtaccess([{ from: '/a/', to: '/b/', status: 301 }, { from: '/c', status: 410 }]).match(/RewriteRule \^[ac]\/\?\$ .*/g).join('|'), 'RewriteRule ^a/?$ /b/? [R=301,L]|RewriteRule ^c/?$ - [G,L]');
+  assert.equal(buildHtaccess([{ from: '/a/', to: '/b/', status: 301 }, { from: '/c', status: 410 }]).match(/RewriteRule \^[ac]\/\?\$ .*/g).join('|'), 'RewriteRule ^a/?$ https://ital-therm.it/b/? [R=301,L]|RewriteRule ^c/?$ - [G,L]');
 });
 
 test('.htaccess hardening: contact-lib denied, canonical host, headers, caching, errors', () => {
@@ -323,8 +367,16 @@ test('.htaccess hardening: contact-lib denied, canonical host, headers, caching,
   assert.match(htaccess, /RewriteCond %\{HTTP_HOST\} \^www\\\. \[NC\]/);
   assert.match(htaccess, /RewriteRule \^ https:\/\/ital-therm\.it%\{REQUEST_URI\} \[R=301,L\]/);
   for (const h of ['X-Content-Type-Options "nosniff"', 'Referrer-Policy "strict-origin-when-cross-origin"', 'X-Frame-Options "SAMEORIGIN"', 'Permissions-Policy "camera=(), microphone=(), geolocation=()"']) assert.ok(htaccess.includes(h), h);
-  assert.match(htaccess, /public, max-age=31536000, immutable/);
-  assert.match(htaccess, /public, max-age=2592000/);
+  const blocks = [...htaccess.matchAll(/<FilesMatch "([^"]+)">\s*Header set Cache-Control "([^"]+)"/g)].map((m) => ({ re: new RegExp(m[1]), value: m[2] }));
+  const cache = (file) => blocks.find((x) => x.re.test(file))?.value;
+  assert.equal(cache('site.css'), 'public, max-age=31536000, immutable');
+  assert.equal(cache('site.js'), 'public, max-age=31536000, immutable');
+  assert.equal(cache('inter.woff2'), 'public, max-age=31536000');
+  for (const f of ['a.jpg', 'a.jpeg', 'a.png', 'a.webp', 'a.avif', 'favicon.svg']) assert.equal(cache(f), 'public, max-age=604800', f);
+  assert.equal(cache('index.html'), 'no-cache');
+  assert.ok(!/immutable/.test(`${cache('inter.woff2')}${cache('a.jpg')}${cache('favicon.svg')}`), 'fonts and images are not immutable');
+  assert.match(htaccess, /ExpiresByType image\/jpeg "access plus 1 week"/);
+  assert.match(htaccess, /ExpiresByType text\/css "access plus 1 year"/);
   assert.match(htaccess, /Cache-Control "no-cache"/);
   assert.match(htaccess, /AddDefaultCharset utf-8/);
   assert.match(htaccess, /ErrorDocument 404 \/404\.html/);
@@ -339,6 +391,30 @@ test('.htaccess hardening: contact-lib denied, canonical host, headers, caching,
   }
   assert.equal(depth, 0);
   assert.ok(!htaccess.includes('{{'), 'no unfilled placeholder');
+});
+
+test('built pages link CSS and JS with ?v=<first 8 hex of the file sha1>', () => {
+  const sha = (f) => createHash('sha1').update(readFileSync(path.join(ROOT, f))).digest('hex').slice(0, 8);
+  const css = sha('assets/css/site.css');
+  const js = sha('assets/js/site.js');
+  assert.match(css, /^[0-9a-f]{8}$/);
+  for (const f of [...pages.map((p) => p.file), '404.html']) {
+    const html = read(f);
+    assert.ok(html.includes(`<link rel="stylesheet" href="/assets/css/site.css?v=${css}">`), f);
+    assert.ok(html.includes(`<script src="/assets/js/site.js?v=${js}" defer>`), f);
+  }
+});
+
+test('assetUrl hash follows the file content', () => {
+  const root = mkdtempSync(path.join(os.tmpdir(), 'asset-'));
+  mkdirSync(path.join(root, 'assets/css'), { recursive: true });
+  const f = path.join(root, 'assets/css/a.css');
+  writeFileSync(f, 'a{}');
+  const one = assetUrl('/assets/css/a.css', root);
+  assert.match(one, /^\/assets\/css\/a\.css\?v=[0-9a-f]{8}$/);
+  assert.equal(assetUrl('/assets/css/a.css', root), one);
+  writeFileSync(f, 'a{color:red}');
+  assert.notEqual(assetUrl('/assets/css/a.css', root), one);
 });
 
 test('php -l is still clean', () => {

@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { esc, displayTitle } from './html.mjs';
 import { pageUrl, NAV_KEYS, NAV_LABELS, canonicalKey } from './routes.mjs';
 import { seoHead } from './seo.mjs';
+import { assetUrl } from './assets.mjs';
 
 export { esc, displayTitle, pageUrl, seoHead };
 
@@ -65,7 +66,7 @@ export function layout({ lang, slug, title, description, body, site, alternates 
   return `<!doctype html>
 <html lang="${esc(lang)}">
 <head>
-${HEAD.replace('{{seo}}', () => seo)}
+${HEAD.replace('{{seo}}', () => seo).replace('{{css}}', () => assetUrl('/assets/css/site.css'))}
 </head>
 <body>
 ${header(lang, slug, site, switchUrls, navKey)}
@@ -74,7 +75,7 @@ ${body}
 </main>
 ${footer(lang, slug, site)}
 ${notice(lang)}
-<script src="/assets/js/site.js" defer></script>
+<script src="${assetUrl('/assets/js/site.js')}" defer></script>
 </body>
 </html>
 `;

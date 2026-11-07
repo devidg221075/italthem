@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SITE_URL } from './seo.mjs';
 import { pageUrl, productUrl, serviceUrl } from './routes.mjs';
 
 const TPL = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../server/.htaccess.tpl');
@@ -42,7 +43,8 @@ const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 function rule(r) {
   const re = `^${escRe(r.from.replace(/^\/+/, '').replace(/\/+$/, ''))}/?$`;
-  return r.status === 410 ? `RewriteRule ${re} - [G,L]` : `RewriteRule ${re} ${r.to}? [R=301,L]`;
+  // Absolute https targets: any scheme or host reaches the final canonical URL in one hop, and a TLS-terminating proxy cannot downgrade it.
+  return r.status === 410 ? `RewriteRule ${re} - [G,L]` : `RewriteRule ${re} ${SITE_URL}${r.to}? [R=301,L]`;
 }
 
 /** buildHtaccess(map) -> the server/.htaccess.tpl template with the redirect section filled in. */

@@ -247,8 +247,10 @@ function seoFor(page, content) {
       return { title: NAV_LABELS[lang].about, description: makeDescription([...meta, src.lead]), seo: { ...base, image: imageUrl(photo(byCode(products, ph.code), ph.image)), crumbs: [home, { name: page.title, url: page.url }] } };
     }
     case 'products': {
-      const names = orderedProducts(products).map((p) => { const n = displayTitle(p.title); return n.includes(p.code) ? n : `${n} ${p.code}`; });
-      return { title: page.title, description: makeDescription([...meta, src.lead, `${page.title}: ${names.join(', ')}`]), seo: { ...base, image: mainPhoto(orderedProducts(products)[0]) ?? homePhoto, crumbs: [home, { name: page.title, url: page.url }] } };
+      // No text of its own: excerpt of the About page intro (real content), unique because About describes itself with its lead.
+      const about = pages.find((p) => p.slug === 'about');
+      const intro = (about?.sections?.[0]?.blocks ?? []).filter((b) => b.type === 'p').map((b) => b.text);
+      return { title: page.title, description: makeDescription([...meta, src.lead, ...intro]), seo: { ...base, image: mainPhoto(orderedProducts(products)[0]) ?? homePhoto, crumbs: [home, { name: page.title, url: page.url }] } };
     }
     case 'contact':
       return { title: page.title, description: makeDescription([...meta, ...paragraphs(src.lead)]), seo: { ...base, crumbs: [home, { name: page.title, url: page.url }] } };
@@ -266,7 +268,8 @@ function seoFor(page, content) {
       // Products that open with the same paragraph (the two grain systems) describe themselves from their next paragraph, so descriptions stay unique.
       const paras = paragraphs(p.short);
       const shared = products.some((o) => o !== p && paragraphs(o.short)[0] === paras[0]);
-      return { title: page.title, description: makeDescription(shared && paras.length > 1 ? [...paras.slice(1), paras[0]] : paras), seo: { ...base, image: images[0] ?? homePhoto, images, product: p, crumbs: [home, productsCrumb, { name: page.title, url: page.url }] } };
+      // The standalone word "Model"/"Mod" is dropped from the <title> to stay near 60 characters; the code stays.
+      return { title: page.title.replace(/\s+(Model|Mod)(?=\s)/, ''), description: makeDescription(shared && paras.length > 1 ? [...paras.slice(1), paras[0]] : paras), seo: { ...base, image: images[0] ?? homePhoto, images, product: p, crumbs: [home, productsCrumb, { name: page.title, url: page.url }] } };
     }
     default:
       throw new Error(`no SEO rules for page type "${page.type}"`);

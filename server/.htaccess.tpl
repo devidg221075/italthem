@@ -4,6 +4,7 @@
 AddDefaultCharset utf-8
 DirectoryIndex index.html
 Options -Indexes -MultiViews
+DirectorySlash Off
 
 ErrorDocument 404 /404.html
 ErrorDocument 410 /404.html
@@ -34,14 +35,23 @@ ErrorDocument 410 /404.html
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
+# Order matters: old URLs and the directory-slash rule come FIRST and redirect to absolute https://ital-therm.it targets,
+# so any scheme/host (http, www, behind a proxy) reaches the final URL in ONE hop. The canonical host rules below only
+# catch what is left (already-new URLs requested over http or www).
+# {{REDIRECTS}}
+
+# Built directories (/en/products, /it/prodotti/it-cc ...) get their trailing slash here, with an absolute https target
+# (instead of mod_dir's DirectorySlash, which builds the scheme from the proxy-facing request). Only fires when the
+# directory has an index.html, and its target ends in "/" so it cannot loop.
+RewriteCond %{DOCUMENT_ROOT}/$0/index.html -f
+RewriteRule ^(en|it)(/[a-z0-9-]+)*$ https://ital-therm.it/$0/? [R=301,L]
+
 # Canonical host: https://ital-therm.it (no www, always HTTPS). The query string is kept.
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://ital-therm.it%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://ital-therm.it%{REQUEST_URI} [R=301,L]
-
-# {{REDIRECTS}}
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -50,13 +60,16 @@ RewriteRule ^ https://ital-therm.it%{REQUEST_URI} [R=301,L]
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 
-  # Fonts and images: one year. NOTE: asset file names are not hashed yet, so if you replace a file keep a new name
-  # (or lower this); CSS/JS therefore only get 30 days until the build fingerprints them.
-  <FilesMatch "\.(woff2?|ttf|otf|jpe?g|png|webp|avif|gif|svg|ico)$">
+  # CSS/JS are linked with ?v=<content hash> by the build, so a year is safe. Fonts keep their name: one year, not immutable.
+  # Images and favicons keep their name too: one week.
+  <FilesMatch "\.(css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "\.(css|js)$">
-    Header set Cache-Control "public, max-age=2592000"
+  <FilesMatch "\.(woff2?|ttf|otf)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.(jpe?g|png|webp|avif|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
   <FilesMatch "\.pdf$">
     Header set Cache-Control "public, max-age=86400"
@@ -70,14 +83,15 @@ RewriteRule ^ https://ital-therm.it%{REQUEST_URI} [R=301,L]
   ExpiresActive On
   ExpiresDefault "access plus 0 seconds"
   ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/avif "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType text/css "access plus 30 days"
-  ExpiresByType text/javascript "access plus 30 days"
-  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 1 week"
+  ExpiresByType image/png "access plus 1 week"
+  ExpiresByType image/webp "access plus 1 week"
+  ExpiresByType image/avif "access plus 1 week"
+  ExpiresByType image/gif "access plus 1 week"
+  ExpiresByType image/svg+xml "access plus 1 week"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
 </IfModule>
 
 <IfModule mod_deflate.c>

@@ -7,6 +7,7 @@ export const BRAND = 'ITALTHERM';
 export const THEME_COLOR = '#112337';
 const LOCALES = { en: 'en_US', it: 'it_IT' };
 const LOGO_PATH = '/assets/img/icon-192.png';
+const ORG_ID = `${SITE_URL}/#organization`;
 
 export const absUrl = (p) => (/^https?:\/\//.test(p) ? p : `${SITE_URL}${p}`);
 
@@ -69,35 +70,21 @@ const prop = (name, content) => `<meta property="${name}" content="${esc(content
 
 const telOf = (p) => String(p).trim();
 
+/** One node typed Organization + LocalBusiness; WebSite and Product point to it by @id. */
 function organization(site) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': `${SITE_URL}/#organization`,
+    '@type': ['Organization', 'LocalBusiness'],
+    '@id': ORG_ID,
     name: site.name,
     url: `${SITE_URL}/`,
     logo: absUrl(LOGO_PATH),
+    image: absUrl(LOGO_PATH),
     email: site.email,
     telephone: telOf(site.phones[0]),
     address: ADDRESS,
     vatID: site.vat,
     contactPoint: site.phones.map((p) => ({ '@type': 'ContactPoint', telephone: telOf(p), email: site.email, contactType: 'customer service' })),
-  };
-}
-
-function localBusiness(site) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${SITE_URL}/#localbusiness`,
-    name: site.name,
-    url: `${SITE_URL}/`,
-    image: absUrl(LOGO_PATH),
-    logo: absUrl(LOGO_PATH),
-    email: site.email,
-    telephone: telOf(site.phones[0]),
-    address: ADDRESS,
-    vatID: site.vat,
   };
 }
 
@@ -109,7 +96,7 @@ function website(site, lang) {
     name: BRAND,
     url: `${SITE_URL}/`,
     inLanguage: lang,
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': ORG_ID },
   };
 }
 
@@ -130,7 +117,7 @@ function product(page, site) {
     sku: p.code,
     image: (page.images ?? []).map(absUrl),
     description: clean(p.short),
-    brand: { '@type': 'Organization', name: BRAND, url: `${SITE_URL}/` },
+    brand: { '@id': ORG_ID },
     url: absUrl(page.url),
   };
 }
@@ -175,7 +162,7 @@ export function seoHead(page, lang, ctx = {}) {
     if (desc) out.push(meta('twitter:description', desc));
     if (page.image) out.push(meta('twitter:image', absUrl(page.image)));
     if (site) {
-      if (page.type === 'home') out.push(jsonLd(organization(site)), jsonLd(localBusiness(site)), jsonLd(website(site, lang)));
+      if (page.type === 'home') out.push(jsonLd(organization(site)), jsonLd(website(site, lang)));
       if (page.crumbs?.length) out.push(jsonLd(breadcrumbs(page.crumbs)));
       if (page.type === 'product' && page.product) out.push(jsonLd(product(page, site)));
     }
