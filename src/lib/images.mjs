@@ -17,6 +17,7 @@ export const SIZES = {
   about: '(min-width:1001px) 600px, 100vw',
   gallery: '(min-width:1001px) 50vw, 100vw',
   thumb: '96px',
+  menu: '(min-width:1001px) 200px, 0px',
 };
 
 let manifest;

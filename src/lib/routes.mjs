@@ -17,6 +17,12 @@ export const NAV_LABELS = {
   it: { home: 'Home', about: 'Chi siamo', products: 'Prodotti', contact: 'Contattaci' },
 };
 
+/** Header / footer / drawer labels (approved mockups: "Azienda"). NAV_LABELS above stays for page titles and SEO. */
+export const MENU_LABELS = {
+  en: { home: 'Home', about: 'Company', products: 'Products', contact: 'Contact' },
+  it: { home: 'Home', about: 'Azienda', products: 'Prodotti', contact: 'Contatti' },
+};
+
 export function canonicalKey(slug) {
   const k = ALIASES[slug] || slug;
   return k === '' ? 'home' : k;

@@ -35,7 +35,7 @@ test('language switcher links to the same page in the other language', async () 
   const it = await loadContent('it');
   const home = renderPage(it.pages.find((p) => p.slug === 'home'), 'it', it.site);
   assert.ok(home.includes('href="/en/"'));
-  assert.ok(home.includes('>Chi siamo<'));
+  assert.ok(home.includes('>Azienda<'), 'menu label follows the approved mockup');
 });
 
 test('all content values are HTML-escaped', async () => {

@@ -17,15 +17,19 @@ const contrast = (a, b) => {
 };
 
 test('WCAG contrast of brand colours', () => {
-  assert.ok(contrast('#112337', '#ffffff') >= 4.5, 'navy on white');
-  assert.ok(contrast('#ffffff', '#204ce5') >= 4.5, 'white on blue');
-  assert.ok(contrast('#204ce5', '#ffffff') >= 4.5, 'blue on white');
+  // Palette of the approved master board: primary blue #0754BC, navy #1E3A66, text #2E3445, pearl #F4F6FA.
+  assert.ok(contrast('#2e3445', '#ffffff') >= 4.5, 'text on white');
+  assert.ok(contrast('#2e3445', '#f4f6fa') >= 4.5, 'text on pearl');
+  assert.ok(contrast('#1e3a66', '#ffffff') >= 4.5, 'navy on white');
+  assert.ok(contrast('#ffffff', '#0754bc') >= 4.5, 'white on blue (primary button)');
+  assert.ok(contrast('#0754bc', '#ffffff') >= 4.5, 'blue on white (links, codes)');
+  assert.ok(contrast('#0754bc', '#f4f6fa') >= 4.5, 'blue on pearl');
 });
 
 test('CSS declares the brand tokens', () => {
   const css = read(CSS_PATH);
   for (const t of ['--bg', '--fg', '--accent', '--accent-2']) assert.ok(css.includes(`${t}:`), t);
-  assert.ok(css.includes('#112337') && css.includes('#204ce5'));
+  for (const c of ['#0754bc', '#1e3a66', '#d9dee7', '#f4f6fa', '#2e3445', '#c9d1de']) assert.ok(css.includes(c), c);
 });
 
 test('site.css + site.js < 40 KB', () => {
@@ -76,18 +80,18 @@ test('fonts are self-hosted WOFF2 with font-display swap', () => {
   const css = read(CSS_PATH);
   assert.ok(!/fonts\.googleapis|gstatic/.test(css));
   const urls = [...css.matchAll(/url\((\/assets\/fonts\/[^)]+)\)/g)].map((m) => m[1]);
-  assert.equal(urls.length, 2, "Inter latin + latin-ext only");
-  assert.ok(urls.every((u) => /inter-/.test(u)), "only Inter files");
+  assert.equal(urls.length, 4, 'Inter and Manrope, latin + latin-ext each');
+  assert.ok(urls.every((u) => /(inter|manrope)-(latin|latin-ext)-var\.woff2$/.test(u)), 'only Inter and Manrope files');
   for (const u of urls) assert.ok(existsSync(new URL(`..${u}`, import.meta.url)), u);
   assert.ok(css.includes('font-display:swap'));
 });
 
-test('Inter is the only typeface: no monospace or JetBrains in the CSS, templates or fonts', () => {
+test('Manrope (headings) and Inter (text) are the only typefaces: no monospace or JetBrains in the CSS, templates or fonts', () => {
   const css = read(CSS_PATH);
   assert.ok(!/monospace/i.test(css), 'monospace in site.css');
   assert.ok(!/jetbrains/i.test(css), 'JetBrains in site.css');
   assert.ok(!/--mono\b/.test(css), '--mono token');
   assert.ok(!existsSync(new URL('../assets/fonts/jetbrains-mono-latin-var.woff2', import.meta.url)));
   assert.ok(!existsSync(new URL('../assets/fonts/jetbrains-mono-latin-ext-var.woff2', import.meta.url)));
-  for (const f of ['../templates/head.html', '../templates/logo.html']) assert.ok(!/monospace|jetbrains/i.test(read(new URL(f, import.meta.url))), f);
+  for (const f of ['../templates/head.html']) assert.ok(!/monospace|jetbrains/i.test(read(new URL(f, import.meta.url))), f);
 });

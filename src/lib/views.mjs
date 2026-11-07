@@ -1,5 +1,6 @@
 // Page bodies for home, about, catalogue and service pages. Text comes from content/<lang>; only chrome strings are in strings.mjs.
 import { esc, displayTitle, layout, renderBlock } from './render.mjs';
+import { icon } from './icons.mjs';
 import { pageUrl, productUrl, serviceUrl, NAV_LABELS } from './routes.mjs';
 import { imageUrl, imgTag, hasImage, preloadLink, SIZES } from './images.mjs';
 import { T } from './strings.mjs';
@@ -9,8 +10,9 @@ import { fileURLToPath } from 'node:url';
 import { docUrl } from './docs.mjs';
 import { PRIVACY } from './privacy.mjs';
 import { makeDescription, usableMeta } from './seo.mjs';
-import { HERO_SLIDES, SERVICE_PHOTOS, ABOUT_PHOTOS, CATALOGUE_ORDER } from './featured.mjs';
+import { HERO_SLIDES, MENU_PRODUCTS, SERVICE_PHOTOS, ABOUT_PHOTOS, CATALOGUE_ORDER } from './featured.mjs';
 
+const catIcon = (cat) => icon({ cc: 'conveyor', melt: 'crucible', heat: 'heat', grains: 'grains' }[cat]);
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
 const section = (page, i) => page.sections?.[i] ?? {};
 const byCode = (products, code) => {
@@ -36,28 +38,20 @@ function card(p, lang, sizes = SIZES.card, priority = false) {
   return `<a class="pc" href="${productUrl(p, lang)}"><div class="ph">${img(photo(p, 0), altOf(p), { sizes, priority })}</div><small>${esc(p.code)}</small><h3>${esc(displayTitle(p.title))}</h3></a>`;
 }
 
-/** First sentence of the home lead without the "Italtherm:" prefix, with the closing "precious metals" emphasised. */
-function heroHeading(lead) {
-  let s = lead.split(/(?<=\.)\s/)[0].replace(/^Italtherm:\s*/i, '');
-  s = s.charAt(0).toUpperCase() + s.slice(1);
-  const m = s.match(/^(.*?)(precious metals|metalli preziosi)(\.?)$/i);
-  return m ? `${esc(m[1])}<em>${esc(m[2])}${esc(m[3])}</em>` : esc(s);
-}
-
 function homeBody(content, lang) {
   const { pages, products, services, site } = content;
   const t = T[lang];
   const home = pages.find((p) => p.slug === 'home');
   const about = pages.find((p) => p.slug === 'about');
   const taglines = section(home, 0).blocks.filter((b) => b.type === 'p').map((b) => b.text);
-  const slides = HERO_SLIDES.map((s) => ({ p: byCode(products, s.code), image: s.image }));
+  const slides = HERO_SLIDES.map((s) => ({ p: byCode(products, s.code), image: s.image, cat: s.cat }));
   const aboutIntro = section(about, 0);
 
-  const hero = `<section class="hero" aria-roledescription="carousel" aria-label="${esc(t.machines)}"><div class="bg"></div><div class="ghost" aria-hidden="true">${esc(slides[0].p.code)}</div><div class="w body"><div><h1>${heroHeading(home.lead)}</h1><p class="sub">${esc(about.lead)}</p><div class="hb"><a class="btn b1" href="${pageUrl('products', lang)}">${esc(t.discover)}</a><a class="btn b2" href="${pageUrl('contact', lang)}">${esc(t.contactUs)}</a></div>`
-    + `<div class="cap">${slides.map((s, i) => `<div class="c${i ? '' : ' on'}"><b>${esc(s.p.code)}</b><span>${esc(displayTitle(s.p.title))}</span></div>`).join('')}</div>`
-    + `<div class="ctrl"><button class="pv" type="button" aria-label="${esc(t.prev)}">←</button><button class="nx" type="button" aria-label="${esc(t.next)}">→</button><span class="count"><i class="cur">01</i> / ${String(slides.length).padStart(2, '0')}</span></div></div>`
+  // The category row follows the mockup order (IT.CC, IT.GT, IT.AF, IT.GMS), which is not the slide order.
+  const cats = MENU_PRODUCTS.map((code) => slides.find((s) => s.p.code === code)).map((s) => `<li><a href="${productUrl(s.p, lang)}">${catIcon(s.cat)}<span>${esc(t.cats[s.cat])}</span><b>${esc(s.p.code)}</b></a></li>`).join('');
+  const hero = `<section class="hero" aria-roledescription="carousel" aria-label="${esc(t.machines)}"><div class="hbg" aria-hidden="true"></div><div class="w hbody"><div class="htx"><p class="kick"><i aria-hidden="true"></i><span lang="${t.heroKickerLang}">${esc(t.heroKicker)}</span></p><h1>${esc(t.heroTitle)}</h1><p class="sub">${esc(t.heroSub)}</p><div class="hb"><a class="btn b1" href="${pageUrl('products', lang)}">${esc(t.discoverProducts)}${icon('arrow', 'ic ar')}</a></div></div>`
     + `<div class="stage">${slides.map((s, i) => `<div class="m${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${img(photo(s.p, s.image), altOf(s.p), { sizes: SIZES.hero, priority: i === 0 })}</div>`).join('')}</div></div>`
-    + `<div class="sel"><div class="w">${slides.map((s, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'}>${img(photo(s.p, s.image), '', { sizes: SIZES.thumb })}<span><b>${esc(s.p.code)}</b><span>${esc(displayTitle(s.p.title))}</span></span></button>`).join('')}</div></div></section>`;
+    + `<ul class="w cats">${cats}</ul><div class="dots" role="group" aria-label="${esc(t.dots)}">${slides.map((s, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'} aria-label="${esc(`${t.cats[s.cat]} ${s.p.code}`)}"></button>`).join('')}</div></section>`;
 
   const tg = `<section class="tg"><div class="w" style="--n:${taglines.length}">${taglines.map((x) => `<div>${esc(x)}</div>`).join('')}</div></section>`;
 
@@ -281,7 +275,7 @@ export function renderSitePage(page, contents) {
   const content = contents[page.lang];
   const { lang } = page;
   const switchUrls = Object.fromEntries(page.alternates.map((a) => [a.lang, a.url]));
-  const common = { lang, site: content.site, switchUrls, alternates: page.alternates };
+  const common = { lang, site: content.site, products: content.products, switchUrls, alternates: page.alternates };
   const src = content.pages.find((p) => p.slug === page.key);
   const { title, description, seo } = seoFor(page, content);
   // The LCP image (first hero slide / first gallery image) is preloaded with the same srcset/sizes as its <img>.
@@ -294,13 +288,13 @@ export function renderSitePage(page, contents) {
   const withSeo = { ...common, title, description, seo, preload, head: src?.seo?.head };
   switch (page.type) {
     case 'home':
-      return layout({ ...withSeo, slug: 'home', body: homeBody(content, lang) });
+      return layout({ ...withSeo, slug: 'home', cta: false, body: homeBody(content, lang) });
     case 'about':
       return layout({ ...withSeo, slug: 'about', body: aboutBody(content, lang) });
     case 'products':
       return layout({ ...withSeo, slug: 'products', body: catalogueBody(content, lang) });
     case 'contact':
-      return layout({ ...withSeo, slug: 'contact', body: contactBody(content, lang) });
+      return layout({ ...withSeo, slug: 'contact', cta: false, body: contactBody(content, lang) });
     case 'privacy':
       return layout({ ...withSeo, slug: 'privacy', head: undefined, body: privacyBody(lang, content.site) });
     case 'service': {
@@ -328,5 +322,5 @@ export function renderNotFound(contents) {
   const links = (l, n) => `<p><a class="btn b1" style="color:#fff;text-decoration:none" href="${pageUrl('home', l)}">${esc(n.home)}</a> <a class="btn b2" href="${pageUrl('products', l)}">${esc(n.products)}</a> <a class="btn b2" href="${pageUrl('contact', l)}">${esc(n.contact)}</a></p>`;
   const body = `<section class="phd"><div class="w"><h1>${esc(en.h)}</h1><p class="lead">${esc(en.p)}</p>${links('en', en)}</div></section>
 <section class="sec" lang="it"><div class="w"><h2>${esc(it.h)}</h2><p>${esc(it.p)}</p>${links('it', it)}</div></section>`;
-  return layout({ lang: 'en', slug: '404', title: `${en.h} / ${it.h}`, description: `${en.p} ${it.p}`, body, site: contents.en.site, switchUrls: { en: '/en/', it: '/it/' }, seo: { type: 'notfound' } });
+  return layout({ lang: 'en', slug: '404', title: `${en.h} / ${it.h}`, description: `${en.p} ${it.p}`, body, site: contents.en.site, products: contents.en.products, switchUrls: { en: '/en/', it: '/it/' }, seo: { type: 'notfound' } });
 }

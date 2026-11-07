@@ -139,3 +139,44 @@ Il testo resta com'è sul sito; propongo la correzione tra parentesi.
 - Tipografia: solo Inter (vedi sopra); `tests/css.test.mjs` fallisce se compaiono `monospace`/JetBrains.
 - Misure: `node scripts/perf-report.mjs [--desktop] [--lighthouse]` (non fa parte di `npm test`).
 - Nota: `dist/assets/docs` contiene due PDF da 21 e 33 MB (it-af, it-sm), invariati; non sono immagini ma pesano quasi tutto `dist/`.
+
+## Nuovo design dai mockup approvati (restyle, fase 1: fondamenta e homepage)
+
+Riferimento: tavola master e mockup approvati (Light Premium / Minimal Titanium). Si riparte da zero sulla parte visiva (template, CSS, layout) e si riusano contenuti, build, SEO, redirect, form PHP e pipeline immagini. Una pagina per volta.
+
+### Fatto in questa fase
+- **Design system:** palette della master (`#0754BC`, `#1E3A66`, `#D9DEE7`, `#F4F6FA`, `#2E3445`, `#C9D1DE`), Manrope (titoli) + Inter (testi) in locale (WOFF2 latin e latin-ext), griglia 1280 px, pulsanti primario/secondario.
+- **Header** fisso (80 px desktop, 68 px mobile, costante allo scroll) con mega menu Prodotti (4 famiglie e 4 macchine), **drawer mobile** con pannello Prodotti a scorrimento, **footer** a 4 colonne (accordion su telefono) e **striscia CTA** "Hai un progetto da realizzare?" (non su home e contatti, che hanno già una sezione contatto).
+- **Homepage:** hero con titolo, sottotitolo, pulsante e carosello delle macchine; riga IT.CC / IT.GT / IT.AF / IT.GMS con icone; sotto, le sezioni esistenti con i contenuti reali nel nuovo stile.
+- **Logo:** `assets/img/italtherm.svg` è il file ufficiale fornito; modificato solo il `viewBox` (ritaglio sul disegno, 724×183), nessun tracciato toccato.
+
+### Deviazioni dai mockup, decise o da confermare
+| Dove | Mockup | Cosa ho fatto | Stato |
+|---|---|---|---|
+| Mega menu | 3 famiglie (fusione, colata continua, trattamenti termici) | Aggiunta "Produzione grani" (IT.GMS), coerente con home, catalogo e footer | Deciso |
+| Foto del hero | Rendering illustrativo con colata | Foto reali dei macchinari (IT.GT, IT.CC, IT.AF, IT.GMS); IT.GT per prima perché è la più leggera (36 KB contro 129 KB di IT.CC) | Da confermare |
+| Puntini del carosello | 3 | 4, uno per macchina | Da confermare |
+| Ricerca nell'header | Icona lente | Non inserita: il sito non ha una funzione di ricerca | Da decidere |
+| Pulsante "Guarda il video" | Presente | Non inserito: la pagina Video non esiste ancora | In attesa dei materiali |
+| Voci di menu Video e Assistenza | Presenti | Non inserite: pagine senza contenuti originali | In attesa dei materiali |
+| Cookie Policy nel footer | Link presente | Solo "Privacy": esiste una sola pagina informativa | Da decidere |
+| Etichetta "Azienda" | Menu "Azienda" | Menu "Azienda" (IT) e "Company" (EN); il titolo SEO della pagina resta "Chi siamo" / "About us" | Deciso |
+| Kicker del hero | "INDUSTRIAL FURNACES FOR PRECIOUS METALS" anche in italiano | Mantenuto in italiano con `lang="en"`; in inglese "Italian technology" | Da confermare |
+| Testi del hero | Testi del mockup | Titolo e sottotitolo come nel mockup (sintesi del testo originale); EN tradotti dal testo inglese originale | Da confermare |
+| Mega menu, voci a sinistra | Famiglie | Ogni voce porta alla scheda della macchina rappresentativa (IT.GT, IT.CC, IT.AF, IT.GMS) | Da confermare |
+
+### Dati dei mockup scartati (non usati)
+| Dove | Nel mockup | Uso |
+|---|---|---|
+| Indirizzo | "Loc. Le Vertighe, 50" (e "Sonico (BS)" nel footer della master) | "Viale S. Maria delle Vertighe, 50/B, 52048 Monte San Savino (AR)" |
+| Telefono | 0575 810487 | +39 0575 802485 e +39 366 871 9427 |
+| Conteggi dei filtri del catalogo | Somma 10, scritti "11 prodotti" | Calcolati dai prodotti reali (11) |
+| Statistiche mobile "40+ anni, 500+ impianti, 30+ paesi", durata video "3:24" | Bozze | Non usate (nessun numero inventato) |
+| Nome di IT.AF | "Forni di affinazione" (master), "Sistemi di trattamento termico" (menu) | "Ricottura" / titolo reale "Forno di ricottura in atmosfera controllata" |
+
+### Tecnico
+- Test aggiornati al nuovo design (token, font, struttura home); nuovo `tests/layout.test.mjs` per header, mega menu, drawer, footer e striscia CTA.
+- Il logo SVG è escluso dal controllo "un solo `<img>` non lazy" e dal controllo WebP delle foto, ma ha i suoi controlli (alt, dimensioni, `decoding`, file presente).
+- Le foto del mega menu sono `loading="lazy"` e nascoste: non pesano sul primo caricamento.
+- `site.css` + `site.js` restano sotto 40 KB (limite del test).
+- Le pagine non ancora rifatte (catalogo, scheda prodotto, Chi siamo, Contatti, privacy) usano il nuovo header e footer e i nuovi colori; il layout interno sarà rifatto una pagina per volta.

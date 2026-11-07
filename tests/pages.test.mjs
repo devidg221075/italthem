@@ -69,8 +69,10 @@ for (const lang of ['en', 'it']) {
     const html = read(`${lang}/index.html`);
     const hero = html.match(/<section class="hero"[\s\S]*?<\/section>/)[0];
     assert.equal(count(hero, /<div class="m[ "]/g), 4);
-    assert.equal(count(hero, /<div class="c[ "]/g), 4);
-    assert.equal(count(hero.split('<div class="sel">')[1], /<button type="button"/g), 4);
+    assert.equal(count(hero, /<li><a href="\/[^"]+\/(products|prodotti)\/it-(cc|gt|af|gms)\/">/g), 4, 'category row: IT.CC, IT.GT, IT.AF, IT.GMS');
+    assert.deepEqual([...hero.matchAll(/<b>(IT\.[A-Z]+)<\/b>/g)].map((m) => m[1]), ['IT.CC', 'IT.GT', 'IT.AF', 'IT.GMS']);
+    assert.equal(count(hero.split('<div class="dots"')[1], /<button type="button"/g), 4);
+    assert.equal(count(hero, /<h1>/g), 1);
     const rail = html.match(/<div class="rail">[\s\S]*?<\/div><\/div><\/section>/)[0];
     assert.equal(count(rail, /class="pc"/g), 11);
     const svt = html.match(/<div class="svt">[\s\S]*?<\/div><\/div><\/section>/)[0];
@@ -86,7 +88,7 @@ test('en home: taglines, about excerpt and contact band come from content', () =
   for (const t of ['High-technology systems', 'Exceptional value', 'Precision Meets Affordability']) assert.ok(html.includes(`<div>${t}</div>`), t);
   assert.ok(html.includes('Founded by a team of experienced engineers'));
   assert.ok(html.includes('href="tel:+390575802485"') && html.includes('href="mailto:info@ital-therm.it"'));
-  assert.ok(html.includes('<em>precious metals.</em>'));
+  assert.ok(html.includes('<h1>Industrial furnaces for precious metals</h1>'), 'hero title from the approved mockup');
 });
 
 test('hero uses the machine overview photos', () => {
@@ -94,6 +96,7 @@ test('hero uses the machine overview photos', () => {
   const stage = html.match(/<div class="stage">[\s\S]*?<\/div><\/div>/)[0];
   assert.match(stage, /furnace_AF400-(480|960)\.[0-9a-f]{8}\.webp/);
   assert.ok(!stage.includes('AF400-3-1'));
+  assert.match(stage, /GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-(480|960)/, 'IT.GT is the first slide (lightest photo = LCP)');
 });
 
 for (const lang of ['en', 'it']) {
@@ -114,7 +117,7 @@ test('about page has 3 solution blocks and the why-choose grid', () => {
     assert.equal(count(html, /<div class="gridw">/g), 1);
     const grid = html.match(/<div class="gridw">([\s\S]*?)<\/div><\/div><\/section>/)[1];
     assert.equal(count(grid, /<div>/g), 4);
-    assert.equal(count(html, /<img /g), 3, lang);
+    assert.equal(count(html.match(/<main[\s\S]*?<\/main>/)[0], /<img /g), 3, lang);
   }
 });
 

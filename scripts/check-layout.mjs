@@ -32,7 +32,7 @@ const base = `http://127.0.0.1:${srv.address().port}/`;
 
 const browser = await chromium.launch();
 let bad = 0;
-for (const [w, h, expected] of [[1360, 900, 76], [390, 844, 68]]) {
+for (const [w, h, expected] of [[1360, 900, 80], [390, 844, 68]]) {
   const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
   const p = await ctx.newPage();
   await p.goto(base, { waitUntil: 'load' });

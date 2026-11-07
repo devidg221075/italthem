@@ -26,7 +26,10 @@ before(() => {
   pages = walk(DIST).filter((f) => f.endsWith('.html')).map((f) => ({ rel: path.relative(DIST, f), html: readFileSync(f, 'utf8') }));
 });
 
-const imgs = (html) => [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
+const allImgs = (html) => [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
+// The logo is the supplied SVG (not an optimized photo): it is checked separately, photos go through the WebP pipeline.
+const isLogo = (t) => /\ssrc="\/assets\/img\/italtherm\.svg"/.test(t);
+const imgs = (html) => allImgs(html).filter((t) => !isLogo(t));
 const attr = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1];
 const has = (tag, name) => new RegExp(`\\s${name}(=|\\s|>)`).test(tag);
 const distFile = (url) => path.join(DIST, decodeURIComponent(url.replace(/^\//, '')));
@@ -92,6 +95,12 @@ test('imgTag escapes the alt text and keeps an empty alt attribute', () => {
 test('every <img> in every built page has alt, width, height and decoding', () => {
   let n = 0;
   for (const { rel, html } of pages) {
+    for (const tag of allImgs(html).filter(isLogo)) {
+      assert.ok(has(tag, 'alt') && attr(tag, 'alt') === 'ItalTherm', `${rel}: logo alt`);
+      assert.match(attr(tag, 'width') ?? '', /^\d+$/); assert.match(attr(tag, 'height') ?? '', /^\d+$/);
+      assert.equal(attr(tag, 'decoding'), 'async', `${rel}: logo decoding`);
+      assert.ok(existsSync(distFile(attr(tag, 'src'))), `${rel}: logo file ships`);
+    }
     for (const tag of imgs(html)) {
       n++;
       assert.ok(has(tag, 'alt'), `${rel}: alt in ${tag}`);
@@ -108,11 +117,13 @@ test('exactly one image per page is not lazy, and it is the fetchpriority=high L
   for (const { rel, html } of pages) {
     const all = imgs(html);
     if (!all.length) continue;
+    // The mega menu photos in the header are always lazy; a page whose <main> has photos has exactly one LCP image.
+    const inMain = imgs(html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? '');
     const eager = all.filter((t) => attr(t, 'loading') !== 'lazy');
-    assert.equal(eager.length, 1, `${rel}: ${eager.length} non-lazy images`);
-    assert.equal(attr(eager[0], 'fetchpriority'), 'high', rel);
-    assert.equal(all.filter((t) => has(t, 'fetchpriority')).length, 1, `${rel}: one fetchpriority`);
-    for (const t of all.filter((x) => x !== eager[0])) assert.equal(attr(t, 'loading'), 'lazy', `${rel}: ${t}`);
+    assert.equal(eager.length, inMain.length ? 1 : 0, `${rel}: ${eager.length} non-lazy images`);
+    assert.equal(all.filter((t) => has(t, 'fetchpriority')).length, eager.length, `${rel}: one fetchpriority per LCP image`);
+    for (const t of eager) assert.equal(attr(t, 'fetchpriority'), 'high', rel);
+    for (const t of all.filter((x) => !eager.includes(x))) assert.equal(attr(t, 'loading'), 'lazy', `${rel}: ${t}`);
   }
 });
 

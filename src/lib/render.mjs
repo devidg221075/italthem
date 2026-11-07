@@ -2,52 +2,98 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, displayTitle } from './html.mjs';
-import { pageUrl, NAV_KEYS, NAV_LABELS, canonicalKey } from './routes.mjs';
+import { pageUrl, productUrl, NAV_KEYS, MENU_LABELS, canonicalKey } from './routes.mjs';
 import { seoHead } from './seo.mjs';
 import { assetUrl } from './assets.mjs';
+import { icon } from './icons.mjs';
+import { imgTag, SIZES } from './images.mjs';
+import { T } from './strings.mjs';
+import { MENU_PRODUCTS, MENU_LIST, HERO_SLIDES } from './featured.mjs';
 
 export { esc, displayTitle, pageUrl, seoHead };
 
 const TPL = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../templates');
 const partial = (name) => readFileSync(path.join(TPL, name), 'utf8').trim();
-const LOGO = partial('logo.html');
 const HEAD = partial('head.html');
 
+// Official logo: assets/img/italtherm.svg (the supplied ItalTherm.svg, only the viewBox cropped to the artwork). 724x183 -> 3.96:1.
+const LOGO_H = 44;
+const logo = (cls = 'lgo', lazy = false) => `<img class="${cls}" src="/assets/img/italtherm.svg" width="${Math.round(LOGO_H * 724 / 183)}" height="${LOGO_H}" alt="ItalTherm" decoding="async"${lazy ? ' loading="lazy"' : ''}>`;
+
 const UI = {
-  en: { main: 'Main', cta: 'Request a contact', menu: 'Open menu', close: 'Close menu', pages: 'Pages', contact: 'Contact', privacy: 'Privacy', tagline: 'ITALTHERM is an Italian company specializing in high-technology systems.', home: 'Italtherm home', lang: 'Language', notice: 'Notice', noticeText: 'This site does not use tracking or advertising cookies.', noticeLink: 'Read the privacy notice.' },
-  it: { main: 'Principale', cta: 'Richiedi un contatto', menu: 'Apri menu', close: 'Chiudi menu', pages: 'Pagine', contact: 'Contatti', privacy: 'Privacy', tagline: 'ITALTHERM è un’azienda italiana specializzata in sistemi ad alta tecnologia.', home: 'Italtherm home', lang: 'Lingua', notice: 'Avviso', noticeText: 'Questo sito non usa cookie di tracciamento o pubblicitari.', noticeLink: 'Leggi l’informativa sulla privacy.' },
+  en: { main: 'Main', menu: 'Open menu', close: 'Close menu', contact: 'Contact', privacy: 'Privacy', home: 'Italtherm home', lang: 'Language', notice: 'Notice', noticeText: 'This site does not use tracking or advertising cookies.', noticeLink: 'Read the privacy notice.', sub: 'Open the products menu' },
+  it: { main: 'Principale', menu: 'Apri menu', close: 'Chiudi menu', contact: 'Contatti', privacy: 'Privacy', home: 'Italtherm home', lang: 'Lingua', notice: 'Avviso', noticeText: 'Questo sito non usa cookie di tracciamento o pubblicitari.', noticeLink: 'Leggi l’informativa sulla privacy.', sub: 'Apri il menu prodotti' },
 };
 
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
+const byCode = (products, code) => products.find((x) => x.code === code);
+const shortTitle = (p) => displayTitle(p.title);
 
-function nav(lang, slug, cls) {
+/** Main navigation links. Products becomes a mega-menu trigger (`mega`) in the header and a drill-down button in the drawer. */
+function nav(lang, slug, { cls = '', products = [], mega = false, drawer = false } = {}) {
   const cur = canonicalKey(slug);
+  const t = T[lang];
   return NAV_KEYS.map((k) => {
     const c = cls ? ` class="${cls}"` : '';
-    return `<a${c} href="${pageUrl(k, lang)}" data-n="${k}"${k === cur ? ' aria-current="page"' : ''}>${esc(NAV_LABELS[lang][k])}</a>`;
+    const label = esc(MENU_LABELS[lang][k]);
+    const attrs = `href="${pageUrl(k, lang)}" data-n="${k}"${k === cur ? ' aria-current="page"' : ''}`;
+    if (k === 'products' && mega && products.length) {
+      return `<div class="hm"><a${c} ${attrs} aria-haspopup="true" aria-expanded="false" aria-controls="mega">${label}${icon('down', 'ic dn')}</a>${megaMenu(lang, products, t)}</div>`;
+    }
+    if (k === 'products' && drawer) return `<a${c} ${attrs} data-sub>${label}${icon('chevron', 'ic ch')}</a>`;
+    return `<a${c} ${attrs}>${label}</a>`;
   }).join('');
+}
+
+function catIcon(cat) {
+  return icon({ cc: 'conveyor', melt: 'crucible', heat: 'heat', grains: 'grains' }[cat]);
+}
+
+/** Mega menu (approved mockup): list of families on the left, one card per featured product on the right. */
+function megaMenu(lang, products, t) {
+  const rep = (code) => byCode(products, code);
+  const list = MENU_LIST.map(({ cat, code }) => {
+    const p = rep(code);
+    return `<a href="${productUrl(p, lang)}">${esc(t.menuCats[cat])}${icon('chevron', 'ic ch')}</a>`;
+  }).join('');
+  const cards = MENU_PRODUCTS.map((code) => {
+    const p = rep(code);
+    return `<a class="mc" href="${productUrl(p, lang)}"><div class="ph">${imgTag(p.images[0], { alt: '', sizes: SIZES.menu })}</div><b>${esc(p.code)}</b><span>${esc(shortTitle(p))}</span>${icon('arrow', 'ic ar')}</a>`;
+  }).join('');
+  return `<div class="mega" id="mega"><div class="mi"><div class="ml"><a class="all" href="${pageUrl('products', lang)}">${esc(t.allProductsMenu)}${icon('arrow', 'ic ar')}</a>${list}</div><div class="mr">${cards}</div></div></div>`;
 }
 
 function langSwitch(lang, slug, switchUrls) {
   const item = (l) => (l === lang
     ? `<span aria-current="true">${l.toUpperCase()}</span>`
     : `<a href="${switchUrls?.[l] ?? pageUrl(slug, l)}" hreflang="${l}" lang="${l}">${l.toUpperCase()}</a>`);
-  return `<span class="lang" aria-label="${esc(UI[lang].lang)}">${item('en')} · ${item('it')}</span>`;
+  return `<span class="lang" aria-label="${esc(UI[lang].lang)}">${item('it')}<i aria-hidden="true"></i>${item('en')}</span>`;
 }
 
-function header(lang, slug, site, switchUrls, navKey) {
+function header(lang, slug, site, switchUrls, navKey, products) {
   const ui = UI[lang];
+  const t = T[lang];
+  const key = navKey ?? slug;
   const phones = site.phones.map((p) => `<a href="${tel(p)}">${esc(p)}</a>`).join(' · ');
-  return `<header class="hdr"><div class="w"><a href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${LOGO}</a><nav aria-label="${esc(ui.main)}">${nav(lang, navKey ?? slug)}</nav><div class="rt">${langSwitch(lang, slug, switchUrls)}<a class="cta" href="${pageUrl('contact', lang)}">${esc(ui.cta)}</a><button class="bur" type="button" aria-label="${esc(ui.menu)}" aria-expanded="false" aria-controls="drawer"><i></i></button></div></div></header>
-<div class="drw" id="drawer"><div class="top"><span class="brand">ItalTherm</span><button class="x" type="button" aria-label="${esc(ui.close)}">×</button></div>${nav(lang, navKey ?? slug, 'l')}<div class="info"><b>${esc(site.name)}</b><br>${esc(site.address)}<br>${phones}<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a><br>${langSwitch(lang, slug, switchUrls)}</div></div>`;
+  const subList = (products.length ? MENU_LIST : []).map(({ cat, code }) => `<a class="l" href="${productUrl(byCode(products, code), lang)}">${catIcon(cat)}<span>${esc(t.menuCats[cat])}</span>${icon('chevron', 'ic ch')}</a>`).join('');
+  return `<header class="hdr"><div class="w"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo()}</a><nav aria-label="${esc(ui.main)}">${nav(lang, key, { products, mega: true })}</nav><div class="rt">${langSwitch(lang, slug, switchUrls)}<button class="bur" type="button" aria-label="${esc(ui.menu)}" aria-expanded="false" aria-controls="drawer">${icon('menu')}</button></div></div></header>
+<div class="drw" id="drawer"><div class="dp pm"><div class="top"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo()}</a><button class="x" type="button" aria-label="${esc(ui.close)}">${icon('close')}</button></div>${nav(lang, key, { cls: 'l', drawer: true })}<div class="info"><div class="lg">${icon('globe')}${langSwitch(lang, slug, switchUrls)}</div><b>${esc(site.name)}</b><br>${esc(site.address)}<br>${phones}<br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></div></div><div class="dp ps" aria-hidden="true"><div class="top"><button class="bk" type="button">${icon('back')}<span>${esc(t.productsMenu)}</span></button><button class="x" type="button" aria-label="${esc(ui.close)}">${icon('close')}</button></div>${subList}<a class="l all" href="${pageUrl('products', lang)}"><span>${esc(t.allProductsMenu)}</span>${icon('arrow', 'ic ar')}</a></div></div>`;
 }
 
-function footer(lang, slug, site) {
+/** Call-to-action strip above the footer (approved component "Hai un progetto da realizzare?"). */
+export function ctaStrip(lang) {
+  const t = T[lang];
+  return `<section class="cta-s"><div class="w"><div class="cs"><h2>${esc(t.ctaTitle)}</h2><p>${esc(t.ctaText)}</p><a class="btn b1" href="${pageUrl('contact', lang)}">${esc(t.ctaButton)}${icon('arrow', 'ic ar')}</a></div></div></section>`;
+}
+
+function footer(lang, slug, site, products, cta) {
   const ui = UI[lang];
+  const t = T[lang];
   const year = new Date().getFullYear();
-  const pages = NAV_KEYS.map((k) => `<a href="${pageUrl(k, lang)}">${esc(NAV_LABELS[lang][k])}</a>`).join('');
-  const phones = site.phones.map((p) => `<a href="${tel(p)}">${esc(p)}</a>`).join('');
-  return `<footer class="ft"><div class="w"><div class="top"><div><div class="brand">ItalTherm</div><p>${esc(ui.tagline)}</p></div><div><h4>${esc(ui.pages)}</h4>${pages}</div><div><h4>${esc(ui.contact)}</h4>${phones}<a href="mailto:${esc(site.email)}">${esc(site.email)}</a><address>${esc(site.address)}</address></div></div><div class="bt"><span>© <span data-year>${year}</span> ${esc(site.name)} · P.IVA ${esc(site.vat)} · REA ${esc(site.rea)}</span><a href="${pageUrl('privacy', lang)}">${esc(ui.privacy)}</a></div></div></footer>`;
+  const pages = NAV_KEYS.map((k) => `<a href="${pageUrl(k, lang)}">${icon('chevron', 'ic ch')}${esc(MENU_LABELS[lang][k])}</a>`).join('');
+  const prods = (products.length ? MENU_PRODUCTS : []).map((code) => { const p = byCode(products, code); const cat = HERO_SLIDES.find((s) => s.code === code).cat; return `<a href="${productUrl(p, lang)}">${icon('chevron', 'ic ch')}${esc(t.cats[cat])} ${esc(code)}</a>`; }).join('');
+  const phones = site.phones.map((p) => `<a class="ci" href="${tel(p)}">${icon('phone')}<span>${esc(p)}</span></a>`).join('');
+  return `${cta ? ctaStrip(lang) : ''}<footer class="ft"><div class="w"><div class="fc"><div class="fb"><a class="brand" href="${pageUrl('home', lang)}" aria-label="${esc(ui.home)}">${logo('lgo', true)}</a><p>${esc(t.footTagline)}</p><i class="bar" aria-hidden="true"></i></div><details class="fd" open><summary>${esc(t.footNav)}${icon('down', 'ic dn')}</summary><div class="fl">${pages}</div></details><details class="fd" open><summary>${esc(t.footProducts)}${icon('down', 'ic dn')}</summary><div class="fl">${prods}</div></details><details class="fd" open><summary>${esc(t.footContacts)}${icon('down', 'ic dn')}</summary><div class="fl"><b>${esc(site.name)}</b><address class="ci">${icon('pin')}<span>${esc(site.address)}</span></address><a class="ci" href="mailto:${esc(site.email)}">${icon('mail')}<span>${esc(site.email)}</span></a>${phones}</div></details></div><div class="bt"><span>© <span data-year>${year}</span> ${esc(site.name)} · P.IVA ${esc(site.vat)} · REA ${esc(site.rea)}</span><a href="${pageUrl('privacy', lang)}">${esc(ui.privacy)}</a><a class="up" href="#main" aria-label="${esc(t.toTop)}">${icon('up')}</a></div></div></footer>`;
 }
 
 /** Cookie notice: markup is `hidden`; site.js reveals it until the visitor presses OK (cookie it_notice). */
@@ -59,9 +105,10 @@ function notice(lang) {
 /**
  * Reusable shell. `body` is trusted, pre-rendered HTML (must contain the page's single <h1>).
  * `alternates` ([{lang, url}]) and `seo` ({url, type, image, images, crumbs, product}) feed the SEO head; `head` overrides it entirely.
+ * `products` feeds the mega menu and footer; `cta: false` omits the CTA strip above the footer (home and contact have their own).
  */
 /** `switchUrls` ({en, it}) overrides the language-switch targets and `navKey` the highlighted nav item, for pages whose url is not derived from `slug` (services, products). */
-export function layout({ lang, slug, title, description, body, site, alternates = [], head, preload = '', switchUrls, navKey, seo: seoExtra = {} }) {
+export function layout({ lang, slug, title, description, body, site, products = [], cta = true, alternates = [], head, preload = '', switchUrls, navKey, seo: seoExtra = {} }) {
   const seo = head ?? seoHead({ title, description, alternates, ...seoExtra }, lang, { site });
   return `<!doctype html>
 <html lang="${esc(lang)}">
@@ -69,11 +116,11 @@ export function layout({ lang, slug, title, description, body, site, alternates 
 ${HEAD.replace('{{seo}}', () => seo).replace('{{preload}}', () => preload).replace('{{css}}', () => assetUrl('/assets/css/site.css'))}
 </head>
 <body>
-${header(lang, slug, site, switchUrls, navKey)}
+${header(lang, slug, site, switchUrls, navKey, products)}
 <main id="main">
 ${body}
 </main>
-${footer(lang, slug, site)}
+${footer(lang, slug, site, products, cta)}
 ${notice(lang)}
 <script src="${assetUrl('/assets/js/site.js')}" defer></script>
 </body>
