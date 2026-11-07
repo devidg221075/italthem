@@ -1,5 +1,5 @@
 // Static build: renders every page for both languages into dist/ and copies assets/.
-import { rm, mkdir, writeFile, cp } from 'node:fs/promises';
+import { rm, mkdir, writeFile, cp, copyFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadContent } from './src/lib/content.mjs';
@@ -41,6 +41,7 @@ export async function build() {
   }
   await writeFile(path.join(DIST, 'index.html'), rootPage());
   await cp(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true });
+  for (const f of ['contact.php', 'contact-lib.php']) await copyFile(path.join(ROOT, 'server', f), path.join(DIST, f));
   return pages;
 }
 

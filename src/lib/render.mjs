@@ -12,8 +12,8 @@ const LOGO = partial('logo.html');
 const HEAD = partial('head.html');
 
 const UI = {
-  en: { cta: 'Request a contact', menu: 'Open menu', close: 'Close menu', pages: 'Pages', contact: 'Contact', privacy: 'Privacy', tagline: 'ITALTHERM is an Italian company specializing in high-technology systems.', home: 'Italtherm home', lang: 'Language' },
-  it: { cta: 'Richiedi un contatto', menu: 'Apri menu', close: 'Chiudi menu', pages: 'Pagine', contact: 'Contatti', privacy: 'Privacy', tagline: 'ITALTHERM è un’azienda italiana specializzata in sistemi ad alta tecnologia.', home: 'Italtherm home', lang: 'Lingua' },
+  en: { cta: 'Request a contact', menu: 'Open menu', close: 'Close menu', pages: 'Pages', contact: 'Contact', privacy: 'Privacy', tagline: 'ITALTHERM is an Italian company specializing in high-technology systems.', home: 'Italtherm home', lang: 'Language', notice: 'Notice', noticeText: 'This site does not use tracking or advertising cookies.', noticeLink: 'Read the privacy notice.' },
+  it: { cta: 'Richiedi un contatto', menu: 'Apri menu', close: 'Chiudi menu', pages: 'Pagine', contact: 'Contatti', privacy: 'Privacy', tagline: 'ITALTHERM è un’azienda italiana specializzata in sistemi ad alta tecnologia.', home: 'Italtherm home', lang: 'Lingua', notice: 'Avviso', noticeText: 'Questo sito non usa cookie di tracciamento o pubblicitari.', noticeLink: 'Leggi l’informativa sulla privacy.' },
 };
 
 /** Extension point for Task 8 (full SEO). Default: minimal title + description. */
@@ -54,6 +54,12 @@ function footer(lang, slug, site) {
   return `<footer class="ft"><div class="w"><div class="top"><div><div class="brand">ItalTherm</div><p>${esc(ui.tagline)}</p></div><div><h4>${esc(ui.pages)}</h4>${pages}</div><div><h4>${esc(ui.contact)}</h4>${phones}<a href="mailto:${esc(site.email)}">${esc(site.email)}</a><address>${esc(site.address)}</address></div></div><div class="bt"><span>© <span data-year>${year}</span> ${esc(site.name)} · P.IVA ${esc(site.vat)} · REA ${esc(site.rea)}</span><a href="${pageUrl('privacy', lang)}">${esc(ui.privacy)}</a></div></div></footer>`;
 }
 
+/** Cookie notice: markup is `hidden`; site.js reveals it until the visitor presses OK (cookie it_notice). */
+function notice(lang) {
+  const ui = UI[lang];
+  return `<div class="nb" role="region" aria-label="${esc(ui.notice)}" hidden><p>${esc(ui.noticeText)} <a href="${pageUrl('privacy', lang)}">${esc(ui.noticeLink)}</a></p><button type="button">OK</button></div>`;
+}
+
 /**
  * Reusable shell. `body` is trusted, pre-rendered HTML (must contain the page's single <h1>).
  * `alternates` is reserved for hreflang (Task 8): [{lang, href}].
@@ -72,6 +78,7 @@ ${header(lang, slug, site, switchUrls, navKey)}
 ${body}
 </main>
 ${footer(lang, slug, site)}
+${notice(lang)}
 <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 // Page bodies for home, about, catalogue and service pages. Text comes from content/<lang>; only chrome strings are in strings.mjs.
-import { esc, displayTitle, layout, renderPage, renderBlock } from './render.mjs';
+import { esc, displayTitle, layout, renderBlock } from './render.mjs';
 import { pageUrl, productUrl, serviceUrl } from './routes.mjs';
 import { imageUrl } from './images.mjs';
 import { T } from './strings.mjs';
@@ -7,6 +7,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { docUrl } from './docs.mjs';
+import { PRIVACY } from './privacy.mjs';
 import { HERO_SLIDES, SERVICE_PHOTOS, ABOUT_PHOTOS, CATALOGUE_ORDER } from './featured.mjs';
 
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
@@ -158,6 +159,62 @@ ${specTable(p, t)}</div></section>
 <section class="sc"><div class="w"><div class="hd"><h2>${esc(t.otherFurnaces)}</h2><a class="btn b2" href="${pageUrl('products', lang)}">${esc(t.allProducts)}</a></div><div class="gr3">${related(p, content.products).map((x) => card(x, lang)).join('')}</div></div></section>`;
 }
 
+// Anchors into the original `form` label array of the contact page (per language); the build fails if one is missing.
+const FORM_LABELS = {
+  en: { first: 'First name', last: 'Last name', email: 'Your email', confirm: 'Confirm Email', req: 'Your request', gdpr: 'PRIVACY (GDPR)', link: 'privacy', enter: 'Enter Email' },
+  it: { first: 'Nome', last: 'Cognome', email: 'La tua Email', confirm: 'Conferma email', req: 'Descrivi la tua richiesta', gdpr: 'PRIVACY (GDPR)', link: 'privacy', enter: 'Inserisci email' },
+};
+
+function contactBody(content, lang) {
+  const t = T[lang];
+  const page = content.pages.find((p) => p.slug === 'contact');
+  const form = page.form ?? [];
+  const L = FORM_LABELS[lang];
+  const at = (label) => {
+    const i = form.indexOf(label);
+    if (i < 0) throw new Error(`contact form label "${label}" not found in ${lang} content`);
+    return i;
+  };
+  const required = form[at(L.first) - 1] ?? form[1]; // "(Required)" / "(Obbligatorio)" marker that precedes the name fields
+  const gi = at(L.gdpr);
+  const sentence = form[gi + 2];
+  const lead = form[at(L.link) - 1];
+  const products = Object.fromEntries(content.products.map((p) => [p.slug, p.code]));
+  const req = `<i>${esc(required)}</i>`;
+  const fld = (id, name, label, { type = 'text', ac, mark = true, ph } = {}) => `<div class="fld"><label for="${id}">${esc(label)}${mark ? req : ''}</label><input class="inp" id="${id}" name="${name}" type="${type}"${ac ? ` autocomplete="${ac}"` : ''}${ph ? ` placeholder="${esc(ph)}"` : ''}${mark ? ' required' : ''}${name === 'first_name' || name === 'last_name' || name === 'email' ? ' maxlength="' + (name === 'email' ? 254 : 80) + '"' : ''}></div>`;
+  const formHtml = `<form class="fl" action="/contact.php" method="post" data-ok="${esc(t.sentOk)}" data-err="${esc(t.sentErr)}" data-sending="${esc(t.sending)}" data-about="${esc(t.about)}" data-products='${esc(JSON.stringify(products)).replace(/&quot;/g, '"')}'>`
+    + `<div class="row2">${fld('f-first', 'first_name', form[at(L.first)], { ac: 'given-name' })}${fld('f-last', 'last_name', form[at(L.last)], { ac: 'family-name' })}</div>`
+    + `<div class="row2">${fld('f-email', 'email', form[at(L.email)], { type: 'email', ac: 'email', ph: form[at(L.enter)] })}${fld('f-confirm', 'email_confirm', form[at(L.confirm)], { type: 'email', ac: 'email', ph: form[at(L.confirm)] })}</div>`
+    + `<div class="fld"><label for="f-msg">${esc(form[at(L.req)])}${req}</label><textarea class="inp" id="f-msg" name="message" rows="6" minlength="10" maxlength="5000" required></textarea></div>`
+    + `<div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>`
+    + `<input type="hidden" name="lang" value="${esc(lang)}"><input type="hidden" name="product" value="">`
+    + `<p class="about" hidden></p>`
+    + `<label class="gdpr"><input type="checkbox" name="consent" value="1" required><span><b>${esc(form[gi])}</b> ${esc(form[gi + 1])} · ${esc(sentence.replace(/\.?$/, '.'))} ${esc(lead)} <a href="${pageUrl('privacy', lang)}">${esc(form[at(L.link)])}</a>.</span></label>`
+    + `<button class="btn b1" type="submit">${esc(t.send)}</button>`
+    + `<div class="fmsg" role="status" aria-live="polite" aria-label="${esc(t.status)}"></div>`
+    + `<p class="st ok" id="st-ok">${esc(t.sentOk)}</p><p class="st bad" id="st-err">${esc(t.sentErr)}</p></form>`;
+  // Right column: the original blocks, verbatim; each heading starts a card.
+  const cards = [];
+  for (const b of page.sections.flatMap((s) => s.blocks ?? [])) {
+    if (b.type === 'h') cards.push({ h: b.text, ps: [] });
+    else if (b.type === 'p' && cards.length) cards.at(-1).ps.push(b.text);
+  }
+  const side = cards.map((c) => `<div class="card"><div class="ey">${esc(c.h)}</div>${c.ps.map((x) => `<p>${br(x)}</p>`).join('')}</div>`).join('');
+  return `<section class="ph0 pg"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / ${esc(page.title)}</div><h1>${esc(page.title)}</h1>${page.lead ? `<p class="lead">${esc(page.lead).replace(/\n/g, '<br>')}</p>` : ''}</div></section>
+<section><div class="w ctw">${formHtml}<div class="side">${side}</div></div></section>`;
+}
+
+function privacyBody(lang, site) {
+  const t = T[lang];
+  const P = PRIVACY[lang];
+  const sub = (s) => esc(s)
+    .replace('[[mail]]', `<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>`)
+    .replace('[[garante]]', '<a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>');
+  const sections = P.sections.map((s) => `<h2>${esc(s.h)}</h2>${s.p.map((x) => `<p>${sub(x)}</p>`).join('')}${s.ul ? `<ul>${s.ul.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${(s.after ?? []).map((x) => `<p>${sub(x)}</p>`).join('')}`).join('');
+  return `<section class="ph0 pg"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> / ${esc(P.title)}</div><h1>${esc(P.title)}</h1><p class="lead">${esc(P.lead)}</p></div></section>
+<section class="sec prv"><div class="w">${sections}<p class="upd">${esc(P.updated(new Date().getFullYear()))}</p></div></section>`;
+}
+
 /** Renders a built page. `page` comes from buildPages(); `contents` is {en, it}. Task 6 adds the 'product' type. */
 export function renderSitePage(page, contents) {
   const content = contents[page.lang];
@@ -174,7 +231,9 @@ export function renderSitePage(page, contents) {
     case 'products':
       return layout({ ...common, slug: 'products', title: page.title, description: desc, body: catalogueBody(content, lang), head: src.seo?.head });
     case 'contact':
-      return renderPage(src, lang, content.site);
+      return layout({ ...common, slug: 'contact', title: page.title, description: desc, body: contactBody(content, lang), head: src.seo?.head });
+    case 'privacy':
+      return layout({ ...common, slug: 'privacy', title: page.title, description: PRIVACY[lang].lead, body: privacyBody(lang, content.site) });
     case 'service': {
       const s = content.services.find((x) => x.slug === page.key);
       const firstP = s.blocks.find((b) => b.type === 'p');

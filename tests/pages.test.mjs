@@ -45,7 +45,7 @@ test('expected files exist for both languages', () => {
 });
 
 test('buildPages lists every page with url, file and alternates', () => {
-  assert.equal(pages.length, 38);
+  assert.equal(pages.length, 40);
   for (const p of pages) {
     for (const k of ['lang', 'slug', 'url', 'type', 'title', 'file', 'alternates']) assert.ok(p[k] !== undefined, `${p.url} ${k}`);
     assert.ok(existsSync(path.join(DIST, p.file)), p.file);
@@ -142,15 +142,12 @@ test('root page links to both languages', () => {
   assert.ok(html.includes('http-equiv="refresh"') && html.includes('href="/en/"') && html.includes('href="/it/"'));
 });
 
-// Internal links must resolve. Allow-list (remove when the owning task lands):
-//  - /<lang>/privacy/                   -> privacy page, Task 7
-const ALLOWED = [/^\/(en|it)\/privacy\/$/];
+// Internal links must resolve.
 test('every internal href and src resolves to a built file', () => {
   const bad = [];
   for (const f of htmlFiles()) {
     for (const m of read(f).matchAll(/\b(?:href|src)="(\/[^"#?]*)[^"]*"/g)) {
       const url = decodeURI(m[1]);
-      if (ALLOWED.some((re) => re.test(url))) continue;
       const target = url.endsWith('/') ? `${url}index.html` : url;
       if (!existsSync(path.join(DIST, target))) bad.push(`${f} -> ${url}`);
     }

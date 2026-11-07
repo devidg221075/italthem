@@ -6,6 +6,7 @@ const SLUGS = {
   about: { en: 'about-us', it: 'chi-siamo' },
   products: { en: 'products', it: 'prodotti' },
   contact: { en: 'contact', it: 'contatti' },
+  privacy: { en: 'privacy', it: 'privacy' },
 };
 const ALIASES = { 'about-us': 'about', 'chi-siamo': 'about', prodotti: 'products', contatti: 'contact', contattaci: 'contact' };
 

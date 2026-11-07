@@ -35,7 +35,9 @@ Stato: **bozza**. Elenco aggiornato durante l'estrazione dei contenuti; la scans
 | Home | Testo segnaposto "Lorem ipsum" e "The wise man therefore…" | Sostituito con un estratto di "Chi siamo" (deciso) |
 | Telefoni | Fisso 0575 810487 nella sezione contatti | Scartato (deciso) |
 | Indirizzo | "Loc. Le Vertighe, 50" | Scartato, uso "Viale S. Maria delle Vertighe, 50/B" (deciso) |
-| Privacy | Il link è "#" | Pagina privacy: bozza da validare da te o dal tuo consulente |
+| Privacy | Il link è "#" | `/en/privacy/` e `/it/privacy/` sono una BOZZA scritta da me (testo in `src/lib/privacy.mjs`): va validata da te o dal tuo consulente prima della pubblicazione. Da verificare in particolare: basi giuridiche, conservazione delle email, fornitori di hosting/posta indicati come responsabili del trattamento |
+| Barra avviso in basso | Testo scritto da me ("Questo sito non usa cookie di tracciamento o pubblicitari…"), cookie tecnico `it_notice` per 6 mesi | Conferma il testo; in `src/lib/render.mjs` |
+| Modulo contatti | Non invio i campi "Azienda" e "CAPTCHA" (antispam: campo trappola nascosto, limite di 3 richieste/ora per IP) | Va bene? |
 | Social | Icona X/Twitter con link "#" | Rimossa, a meno che tu abbia un profilo |
 | Footer | "© Copyright 2026 by Keyidea.it" | Sostituito da copyright Italtherm con anno automatico; credito Keyidea da tenere? |
 | Tema | Link "Explore now" al demo del tema | Rimosso |
