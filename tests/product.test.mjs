@@ -135,7 +135,7 @@ test('PDF link points to a local file that exists and opens safely in a new tab'
   for (const lang of ['en', 'it']) {
     for (const prod of contents[lang].products) {
       const html = read(productUrl(prod, lang));
-      const links = [...html.matchAll(/<a class="btn b[12]" href="([^"]+\.pdf)"([^>]*)>/g)];
+      const links = [...html.matchAll(/<a class="btn b[123]" href="([^"]+\.pdf)"([^>]*)>/g)];
       assert.equal(links.length, 2, `${prod.slug}: datasheet button beside the gallery and in the Documentation tab`);
       for (const m of links) {
         assert.equal(m[1], `/assets/docs/${prod.slug}.pdf`);

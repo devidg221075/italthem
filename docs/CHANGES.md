@@ -291,3 +291,28 @@ Queste voci sostituiscono quelle corrispondenti nelle tabelle sopra.
 | Pulsante PDF | Testo originale | "Scarica specifiche tecniche" / "Download technical specifications" (dall'originale, scritto con la sola iniziale maiuscola invece del maiuscolo), su entrambi i pulsanti |
 | Campo "Azienda" | Facoltativo anche in italiano | Il gestore la accetta vuota in entrambe le lingue; se compilata: una riga, al massimo 120 caratteri |
 | Mappa | Incorporata | Pulsante "Carica la mappa": solo dopo il clic si carica l'incorporamento di Google Maps (indirizzo come ricerca, senza referrer); senza JavaScript resta il link "Apri in Google Maps". Informativa privacy e cookie policy nominano Google Maps. **Verifica che il segnaposto cada sul tuo capannone**: non ho coordinate affidabili (OpenStreetMap restituisce per la via due punti a più di 1 km di distanza e non trova il civico 50/B), quindi la posizione dipende da Google |
+
+## Audit sulla tavola master e kit vettoriale
+
+Confronto punto per punto con la master (sezioni Tipografia, Griglie, Pulsanti e stati, Componenti, Regole visive, Iconografia) e con il kit `ITALTHERM_Kit_Vettoriale` ricevuto.
+
+### Allineato
+| Area | Master / kit | Cosa ho fatto |
+|---|---|---|
+| Griglia | Desktop 1440, contenitore 1280, margini 80, gutter 24; tablet gutter 20; telefono gutter 16 | Token `--mx` (80 px a 1440, 32 su tablet, 16 su telefono) e `--gut` (24 / 20 / 16) usati da tutte le griglie di card. `scripts/check-grid.mjs` misura nel browser a 1440, 768 e 390: contenitore 1280 / 704 / 358, margini 80 / 32 / 16, gutter 24 / 20 / 16, nessuno scorrimento orizzontale |
+| Scala di spaziatura | 8, 16, 24, 32, 48, 64 | Token `--sp1`…`--sp6` |
+| Tipografia | H1 56/1,1 Bold; H2 40/1,2 Bold; H3 28/1,3 SemiBold; corpo 16/1,6; didascalia 14/1,5; pulsante 16 SemiBold; navigazione 16 Medium | H3 portato a 28/1,3 SemiBold; corpo dei testi a 16/1,6; didascalie e note a 14/1,5. Test dedicato |
+| Pulsanti | Primario, secondario, outline, testuale; stati normale, hover, focus | Quattro varianti con gli stati del kit: primario con gradiente `#0760DF`→`#0754BC` e hover navy `#254873`→`#1E3A66`; secondario bianco con bordo `#A8C4ED`, hover `#D6E6FF`; outline bianco con bordo `#C9D1DE`, hover `#F4F6FA`; testuale blu sottolineato. "Scarica specifiche tecniche" è ora l'outline neutro |
+| Briciole | Icona casa, chevron, pagina corrente in blu | Componente unico per scheda, servizi, privacy e cookie policy |
+| Moduli | Asterisco rosso per i campi obbligatori, checkbox blu quadrata con spunta | Asterisco rosso (il testo "(Obbligatorio)" resta per i lettori di schermo); checkbox personalizzata anche nel consenso privacy |
+| Spunte | Quadrato azzurro arrotondato con spunta blu | Elenchi di Azienda e vantaggi della scheda con riquadro `#E8EEF9` |
+| Iconografia | Set di icone lineari, tratto pulito | Icone del kit in un unico file `assets/img/icons.svg` (ricerca, download, documento, lingua, contatti, tecnologia, supporto tecnico, soluzioni su misura, home, spunta, più assistenza, video, carica file, prodotto e forno per le pagine future), con il colore preso dal testo. Rigenerabile con `npm run icons` da `scripts/icons-src/` |
+
+### Differenze consapevoli
+- **Anello di focus**: il kit usa un azzurro chiaro (`#8CB6F4`), che su bianco ha un contrasto di circa 2:1, sotto la soglia di accessibilità (3:1). Uso un doppio anello bianco + blu pieno `#0754BC`.
+- **Icone non presenti nel kit** (restano le mie, dello stesso stile): nastro, crogiolo, onde di calore e grani (famiglie), fabbrica, segnaposto, telefono, menu, chiudi, frecce e chevron.
+- **Icone del kit ricalcate dal raster**: il LEGGIMI del kit avverte che possono avere piccole irregolarità; la stretta di mano e la spunta sono le più "a mano libera".
+- **Header della master**: la master mostra l'header come scheda con ombra; i mockup delle pagine lo mostrano a tutta larghezza. Seguo i mockup.
+- **Card prodotto**: la master mostra una variante orizzontale (immagine a sinistra); i mockup del catalogo usano la card verticale. Seguo i mockup.
+- **Footer del kit**: riporta l'indirizzo "Loc. Le Vignole, 59 – Sonico (BS)" letto dalla master; non è un dato verificato e non è usato.
+- **Componenti del kit non usati perché non ci sono le pagine**: upload (Assistenza), paginazione (11 prodotti stanno in una pagina), badge "Novità" (nessun prodotto nuovo), indicatori desktop/tablet/mobile (solo documentazione).

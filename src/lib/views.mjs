@@ -16,6 +16,8 @@ const catIcon = (cat) => icon({ cc: 'conveyor', melt: 'crucible', heat: 'heat', 
 // Hand-written benefit points per product (content/benefits.json); products without an entry show no list.
 const BENEFITS = JSON.parse(readFileSync(path.join(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..'), 'content/benefits.json'), 'utf8'));
 const sentence = (s) => { const t = String(s ?? '').trim().toLowerCase(); return t.charAt(0).toUpperCase() + t.slice(1); };
+/** Breadcrumb as in the master board: house icon, chevrons, current page in blue. `trail` = [{name, url?}], the last one is the current page. */
+const crumbs = (lang, trail) => `<div class="crumb"><a href="${pageUrl('home', lang)}">${icon('home')}<span>${esc(T[lang].home)}</span></a>${trail.map((x, i) => ` <span aria-hidden="true">›</span> ${i === trail.length - 1 ? `<b>${esc(x.name)}</b>` : `<a href="${x.url}">${esc(x.name)}</a>`}`).join('')}</div>`;
 const tel = (p) => `tel:${p.replace(/[^+\d]/g, '')}`;
 const section = (page, i) => page.sections?.[i] ?? {};
 const byCode = (products, code) => {
@@ -120,7 +122,7 @@ function aboutBody(content, lang) {
 function serviceBody(service, content, lang) {
   const t = T[lang];
   const products = pageUrl('products', lang);
-  return `<section class="pgh"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> <span aria-hidden="true">›</span> <a href="${products}">${esc(content.pages.find((p) => p.slug === 'products').title)}</a> <span aria-hidden="true">›</span> <b>${esc(service.title)}</b></div><p class="kick"><i aria-hidden="true"></i><span>${esc(t.services)}</span></p><h1>${esc(service.title)}</h1></div></section>
+  return `<section class="pgh"><div class="w">${crumbs(lang, [{ name: content.pages.find((p) => p.slug === 'products').title, url: products }, { name: service.title }])}<p class="kick"><i aria-hidden="true"></i><span>${esc(t.services)}</span></p><h1>${esc(service.title)}</h1></div></section>
 <section class="prose"><div class="w">${service.blocks.map(renderBlock).join('')}<p><a class="btn b1" href="${pageUrl('contact', lang)}">${esc(t.contactUs)}${icon('arrow', 'ic ar')}</a></p></div></section>`;
 }
 
@@ -175,7 +177,7 @@ export function productBody(p, content, lang) {
   const contact = `${pageUrl('contact', lang)}?product=${encodeURIComponent(p.slug)}`;
   const hasPdf = Boolean(p.pdf && hasFile(docUrl(p.slug).slice(1)));
   const pdfLabel = sentence(p.download_label || pd.docTitle); // original label ("SCARICA SPECIFICHE TECNICHE"), shown in sentence case
-  const pdfBtn = hasPdf ? `<a class="btn b2" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pdfLabel)}</a>` : '';
+  const pdfBtn = hasPdf ? `<a class="btn b3" href="${docUrl(p.slug)}" target="_blank" rel="noopener">${icon('download')}${esc(pdfLabel)}</a>` : '';
   const benefits = BENEFITS[p.slug]?.[lang];
   const ben = benefits?.length ? `<ul class="ben">${benefits.map((b) => `<li>${icon('check')}<span>${esc(b)}</span></li>`).join('')}</ul>` : '';
   const spec = specTable(p, t);
@@ -188,7 +190,7 @@ export function productBody(p, content, lang) {
   ].filter((x) => x && x.html);
   const first = panels.find((x) => x.id === 'spec') ?? panels[0];
   const tabs = `<div class="ptab" data-first="${first.id}"><div class="tl" role="tablist" aria-label="${esc(pd.tabList)}">${panels.map((x) => `<button type="button" role="tab" id="t-${x.id}" aria-controls="p-${x.id}" aria-selected="${x === first}" tabindex="${x === first ? 0 : -1}">${esc(x.label)}</button>`).join('')}</div>${panels.map((x) => `<div class="tp" role="tabpanel" id="p-${x.id}" aria-labelledby="t-${x.id}"${x === first ? '' : ' data-off'}><h2 class="tph">${esc(x.label)}</h2>${x.html}</div>`).join('')}</div>`;
-  return `<section class="pdh"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> <span aria-hidden="true">›</span> <a href="${pageUrl('products', lang)}">${esc(productsPage?.title ?? t.products)}</a> <span aria-hidden="true">›</span> <b>${esc(p.code)}</b></div></div></section>
+  return `<section class="pdh"><div class="w">${crumbs(lang, [{ name: productsPage?.title ?? t.products, url: pageUrl('products', lang) }, { name: p.code }])}</div></section>
 <section class="pdm"><div class="w pdg">${gal}<div class="pi"><p class="kick"><i aria-hidden="true"></i><span>${esc(t.filters[familyOf(p)] ?? t.products)}</span></p><h1><span class="pcode">${esc(p.code)}</span><span class="ptitle">${esc(displayTitle(p.title))}</span></h1><p class="intro">${esc(intro(p.short))}</p>${ben}<div class="act"><a class="btn b1" href="${esc(contact)}">${esc(t.quote)}${icon('arrow', 'ic ar')}</a>${pdfBtn}</div></div></div></section>
 <section class="pdt"><div class="w">${tabs}</div></section>
 <section class="sc"><div class="w"><div class="hd"><h2>${esc(t.otherFurnaces)}</h2><a class="btn b2" href="${pageUrl('products', lang)}">${esc(t.allProducts)}</a></div><div class="gr3">${related(p, content.products).map((x) => card(x, lang)).join('')}</div></div></section>`;
@@ -224,7 +226,7 @@ function contactBody(content, lang) {
   const sentence = form[gi + 2];
   const lead = form[at(L.link) - 1];
   const products = Object.fromEntries(content.products.map((p) => [p.slug, p.code]));
-  const req = `<i>${esc(required)}</i>`;
+  const req = `<span class="rq" aria-hidden="true">*</span><span class="vh"> ${esc(required)}</span>`;
   const fld = (id, name, label, { type = 'text', ac, mark = true, ph, max } = {}) => `<div class="fld"><label for="${id}">${esc(label)}${mark ? req : ''}</label><input class="inp" id="${id}" name="${name}" type="${type}"${ac ? ` autocomplete="${ac}"` : ''}${ph ? ` placeholder="${esc(ph)}"` : ''}${mark ? ' required' : ''}${max ? ` maxlength="${max}"` : ''}></div>`;
   // Company: optional on both forms (the approved mockup has no required marker; the handler accepts it on both).
   const company = fld('f-company', 'company', L.company && form.includes(L.company) ? L.company : c.company, { ac: 'organization', mark: false, max: 120 });
@@ -238,7 +240,7 @@ function contactBody(content, lang) {
     + `<div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>`
     + `<input type="hidden" name="lang" value="${esc(lang)}">`
     + `<p class="about" hidden></p>`
-    + `<label class="gdpr"><input type="checkbox" name="consent" value="1" required><span><b>${esc(form[gi])}</b> ${esc(form[gi + 1])} · ${esc(sentence.replace(/\.?$/, '.'))} ${esc(lead)} <a href="${pageUrl('privacy', lang)}">${esc(form[at(L.link)])}</a>.</span></label>`
+    + `<label class="ck gdpr"><input type="checkbox" name="consent" value="1" required><i aria-hidden="true"></i><span><b>${esc(form[gi])}</b> ${esc(form[gi + 1])} · ${esc(sentence.replace(/\.?$/, '.'))} ${esc(lead)} <a href="${pageUrl('privacy', lang)}">${esc(form[at(L.link)])}</a>.</span></label>`
     + `<button class="btn b1" type="submit">${esc(t.send)}${icon('arrow', 'ic ar')}</button>`
     + `<div class="fmsg" role="status" aria-live="polite" aria-label="${esc(t.status)}"></div>`
     + `<p class="st ok" id="st-ok">${esc(t.sentOk)}</p><p class="st bad" id="st-err">${esc(t.sentErr)}</p></form>`;
@@ -273,7 +275,7 @@ function privacyBody(lang, site, doc = PRIVACY) {
     .replace('[[garante]]', '<a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>');
   const sections = P.sections.map((s) => `<h2>${esc(s.h)}</h2>${s.p.map((x) => `<p>${sub(x)}</p>`).join('')}${s.ul ? `<ul>${s.ul.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${(s.after ?? []).map((x) => `<p>${sub(x)}</p>`).join('')}`).join('');
   const kicker = doc === COOKIES ? t.cookies : 'Privacy';
-  return `<section class="pgh"><div class="w"><div class="crumb"><a href="${pageUrl('home', lang)}">${esc(t.home)}</a> <span aria-hidden="true">›</span> <b>${esc(P.title)}</b></div><p class="kick"><i aria-hidden="true"></i><span>${esc(kicker)}</span></p><h1>${esc(P.title)}</h1><p class="sub">${esc(P.lead)}</p></div></section>
+  return `<section class="pgh"><div class="w">${crumbs(lang, [{ name: P.title }])}<p class="kick"><i aria-hidden="true"></i><span>${esc(kicker)}</span></p><h1>${esc(P.title)}</h1><p class="sub">${esc(P.lead)}</p></div></section>
 <section class="prose prv"><div class="w">${sections}<p class="upd">${esc(P.updated(new Date().getFullYear()))}</p></div></section>`;
 }
 

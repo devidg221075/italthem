@@ -63,6 +63,6 @@ test('type scale of the master: body Inter 16/1.6, nav Inter Medium 16, buttons 
   assert.match(site, /\.hero h1\{font-size:clamp\(34px,4\.1vw,56px\);line-height:1\.1/);
   assert.match(site, /\.sc h2\{font-size:clamp\(28px,3\.4vw,40px\);line-height:1\.2/);
   assert.match(site, /\.pgh h1\{font-size:clamp\(30px,4\.2vw,56px\);line-height:1\.1/);
-  assert.match(site, /h3\{font-weight:600\}/);
+  assert.match(site, /h3\{font-weight:600;font-size:clamp\(22px,2\.2vw,28px\);line-height:1\.3\}/, 'H3 Manrope SemiBold 28/1.3');
   for (const [file, src] of Object.entries(css)) assert.ok(!/letter-spacing:-/.test(src), `${file}: negative letter-spacing`);
 });

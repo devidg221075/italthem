@@ -13,6 +13,15 @@
     if (text) n.textContent = text;
     return n;
   };
+  /* official kit icon from the cached sprite (colour from the text) */
+  var sprite = function (id) {
+    var s = document.createElementNS(NS, 'svg');
+    ['viewBox:0 0 32 32', 'width:24', 'height:24', 'aria-hidden:true', 'focusable:false'].forEach(function (a) { var kv = a.split(':'); s.setAttribute(kv[0], kv[1]); });
+    var u = document.createElementNS(NS, 'use');
+    u.setAttribute('href', '/assets/img/icons.svg#' + id);
+    s.appendChild(u);
+    return s;
+  };
   var icon = function (paths) {
     var s = document.createElementNS(NS, 'svg');
     ['viewBox:0 0 24 24', 'width:24', 'height:24', 'fill:none', 'stroke:currentColor', 'stroke-width:1.6', 'stroke-linecap:round', 'aria-hidden:true'].forEach(function (a) { var kv = a.split(':'); s.setAttribute(kv[0], kv[1]); });
@@ -94,7 +103,7 @@
     panel.hidden = true;
     var wrap = el('div', { class: 'sr-w' });
     var form = el('div', { class: 'sr-f' });
-    form.appendChild(icon([{ c: '11', cy: '11', r: '6.5' }, { d: 'M16 16l5 5' }]));
+    form.appendChild(sprite('ricerca'));
     input = el('input', { type: 'search', autocomplete: 'off', spellcheck: 'false', role: 'combobox', 'aria-expanded': 'true', 'aria-controls': 'sr-l', placeholder: btn.getAttribute('data-ph') || '', 'aria-label': label });
     form.appendChild(input);
     var x = el('button', { type: 'button', class: 'sr-x', 'aria-label': btn.getAttribute('data-close') || '' });
