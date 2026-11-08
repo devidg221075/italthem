@@ -76,9 +76,9 @@ test('imageAttrs: src is the largest variant up to 960px, srcset lists the varia
   const p = imageAttrs(name, { sizes: '50vw', priority: true });
   assert.equal(p.fetchpriority, 'high');
   assert.equal(p.loading, undefined);
-  // never upscaled: a 285px source only has its own width
+  // never upscaled: a small source (285px, 250px after the white margin is trimmed) only has its own width
   const small = imageAttrs('AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_1.jpg', { sizes: '96px' });
-  assert.equal(small.width, 285);
+  assert.equal(small.width, 250);
   assert.equal(small.srcset.split(',').length, 1);
   assert.ok(hasImage('AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_1.jpg') && !hasImage('nope.jpg'));
   assert.equal(sourceName('https://x.test/a/B%20C.jpg?x=1'), 'B C.jpg');

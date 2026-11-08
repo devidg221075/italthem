@@ -17,17 +17,40 @@ export const WIDTHS = [480, 960, 1600];
 // WebP is always 4:2:0; smartSubsample keeps the edges sharp and quality 80 leaves no visible noise on the white.
 const WEBP = { quality: 80, effort: 6, smartSubsample: true };
 
+/**
+ * Product photos shot on a white studio background are cropped to the machine (plus a 3% white margin) so the machine fills its box on
+ * the site. Only images whose four corners are white are touched (detail shots, photos with a coloured background stay as they are).
+ */
+export async function trimStudioWhite(sharp, input) {
+  const { data, info } = await sharp(input).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const patch = 8;
+  const corners = [[0, 0], [info.width - patch, 0], [0, info.height - patch], [info.width - patch, info.height - patch]];
+  for (const [cx, cy] of corners) {
+    let sum = 0;
+    for (let y = cy; y < cy + patch; y++) for (let x = cx; x < cx + patch; x++) {
+      const i = (y * info.width + x) * 3;
+      sum += Math.min(data[i], data[i + 1], data[i + 2]);
+    }
+    if (sum / (patch * patch) < 245) return input;
+  }
+  const trimmed = await sharp(input).trim({ background: '#ffffff', threshold: 18 }).toBuffer({ resolveWithObject: true });
+  const pad = Math.round(Math.max(trimmed.info.width, trimmed.info.height) * 0.03);
+  return sharp(trimmed.data).extend({ top: pad, bottom: pad, left: pad, right: pad, background: '#ffffff' }).jpeg({ quality: 95 }).toBuffer();
+}
+
 export async function optimize(srcDir = path.join(ROOT, 'assets/img/src'), outDir = path.join(ROOT, 'assets/img/opt')) {
   const { default: sharp } = await import('sharp');
   rmSync(outDir, { recursive: true, force: true });
   mkdirSync(outDir, { recursive: true });
   const manifest = {};
   for (const file of readdirSync(srcDir).filter((f) => /\.(jpe?g|png)$/i.test(f)).sort()) {
-    const input = readFileSync(path.join(srcDir, file));
+    let input = readFileSync(path.join(srcDir, file));
+    input = await trimStudioWhite(sharp, input);
     const { width, height } = await sharp(input).metadata();
     const base = file.replace(/\.[^.]+$/, '').replace(/[^A-Za-z0-9._-]+/g, '-');
     const widths = WIDTHS.filter((w) => w <= width);
-    if (!widths.length) widths.push(width);
+    // keep the native width when it is well above the last standard step (e.g. a 765 px crop), so big boxes never fall back to the 480 px file
+    if (!widths.length || (width <= WIDTHS.at(-1) && width - widths.at(-1) > 120)) widths.push(width);
     const variants = [];
     for (const w of widths) {
       const buf = await sharp(input).resize({ width: w, withoutEnlargement: true }).webp(WEBP).toBuffer();

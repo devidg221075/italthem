@@ -404,3 +404,13 @@ Il titolare ha inviato due foto di dettaglio di IT.AF (vaschetta di rame nel for
 
 Cinque foto ricevute dal titolare, tutte versioni ad alta risoluzione di immagini già presenti: IT.MT (due foto, con e senza operatore), IT.AF (foto principale: era 1000×1600 con molto bianco, ora 2000×1552) e IT.CWA (foto principale, inviata in due versioni quasi identiche: ho usato `10.jpg`, la seconda è un duplicato leggermente più largo). Le ho sostituite mantenendo i nomi dei file; cambia la risoluzione (le versioni da 1600 px pesano 66–93 KB), non il contenuto. Sono foto di prodotto su fondo bianco: vanno bene per schede, catalogo e menu, non per la hero a tutto schermo (nessuna zona libera per il titolo).
 - **Difetto trovato e corretto:** con la spaziatura stretta ereditata dall'H1, il sottotitolo della scheda prodotto ("Forno di Ricottura in Atmosfera Controllata") aveva le parole troppo vicine. Ora la spaziatura di H2/H3 è −0,01 em (l'H1 resta −0,03 em, misurato sul mockup) e il sottotitolo ha −0,01 em. Test aggiornati.
+
+## Foto più grandi nei riquadri (card, catalogo, menu, schede)
+
+Richiesta: le foto nei box sembravano troppo piccole. Cause: i vecchi file avevano molto bianco attorno alla macchina e i riquadri erano larghi.
+- **Ritaglio automatico del bianco in eccesso** (`scripts/optimize-images.mjs`, funzione `trimStudioWhite`): le foto di prodotto su fondo bianco (i quattro angoli bianchi) vengono ritagliate sulla macchina con un margine del 3 %; i dettagli e le foto con sfondo colorato non vengono toccati. Le sorgenti originali restano intatte in `assets/img/src`; il ritaglio avviene solo nella generazione dei WebP.
+- **Versione alla larghezza nativa** (fino a 1600 px) quando la foto ritagliata resta sotto i 960 px, così nei riquadri grandi non si ricade sul file da 480 px.
+- **Riquadri più alti:** immagine delle card da 1,25:1 a 1,1:1 (margine interno delle card da 16 a 12 px), immagine principale della scheda da 1,18:1 a 1,05:1.
+- **Foto ricevute (tutte versioni ad alta risoluzione di immagini già presenti):** IT.MT (foto principale, ritagliata più stretta della precedente, sostituisce quella inviata prima), IT.GMS (foto principale) e i tre dettagli di IT.KB (sportello, piano superiore, pannello comandi). Nessuna è per la hero.
+- Ancora a bassa risoluzione e quindi piccole nei riquadri: IT.CC, IT.GT (foto con il carrello e i lingotti), IT.SM, IT.BF, IT.GMB, IT.FM. Servono foto più grandi (almeno 1600 px sul lato lungo).
+- Test aggiornati (la miniatura IT.KB da 285 px diventa 250 px dopo il ritaglio).
