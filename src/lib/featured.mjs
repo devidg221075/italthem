@@ -1,9 +1,9 @@
 // Editorial selections for the home page. `image` is the index into product.images of the machine overview photo
 // (checked visually: index 0 is the full machine for these four; IT.AF[0] is Contr.-atmosphere-annealing-furnace_AF400.jpg).
-// IT.KB goes first with the high-resolution studio photo supplied by the owner (`file`, in assets/img/src); the first slide is the page LCP image.
-// The other slides use the product's own photo: `image` is the index in product.images.
+// IT.KB goes first (high-resolution studio photo supplied by the owner); the first slide is the page LCP image.
+// `image` is the index in product.images; a slide can also name a source file directly with `file` (assets/img/src).
 export const HERO_SLIDES = [
-  { code: 'IT.KB', file: 'AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero.jpg', cat: 'prod' },
+  { code: 'IT.KB', image: 0, cat: 'prod' },
   { code: 'IT.GT', image: 0, cat: 'melt' },
   { code: 'IT.CC', image: 0, cat: 'cc' },
   { code: 'IT.AF', image: 0, cat: 'heat' },

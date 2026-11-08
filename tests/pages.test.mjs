@@ -97,7 +97,7 @@ test('hero uses the machine overview photos', () => {
   assert.match(stage, /furnace_AF400-(480|960)\.[0-9a-f]{8}\.webp/);
   assert.ok(!stage.includes('AF400-3-1'));
   assert.match(stage, /GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-(480|960)/, 'IT.GT is the second slide');
-  assert.match(stage.split('<div class="m"')[0], /Mod-IT-hero-(480|960|1600)\.[0-9a-f]{8}\.webp/, 'IT.KB (high-resolution photo supplied by the owner) is the first slide = LCP');
+  assert.match(stage.split('<div class="m"')[0], /Mod-IT-(480|960|1600)\.[0-9a-f]{8}\.webp/, 'IT.KB (high-resolution photo supplied by the owner) is the first slide = LCP');
 });
 
 test('service pages render the body blocks verbatim', () => {

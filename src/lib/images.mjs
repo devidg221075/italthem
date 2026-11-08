@@ -18,7 +18,7 @@ export const SIZES = {
   banner: '(min-width:1001px) 46vw, 1px',
   gallery: '(min-width:1001px) 50vw, 100vw',
   thumb: '96px',
-  menu: '(min-width:1001px) 200px, 0px',
+  menu: '64px',
 };
 
 let manifest;

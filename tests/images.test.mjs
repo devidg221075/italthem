@@ -65,7 +65,7 @@ test('imageAttrs: src is the largest variant up to 960px, srcset lists the varia
   const name = 'Contr.-atmosphere-annealing-furnace_AF400-3-1.jpg'; // 1600x1067 source
   const a = imageAttrs(`https://ital-therm.it/wp-content/uploads/${name}`, { sizes: '50vw', alt: 'x' });
   assert.match(a.src, /-960\.[0-9a-f]{8}\.webp$/);
-  assert.equal(srcsetUrls(a.srcset).length, 3);
+  assert.equal(srcsetUrls(a.srcset).length, 4, '480, 720, 960, 1600');
   assert.match(a.srcset, / 1600w$/);
   assert.equal(a.width, 960);
   assert.equal(a.height, Math.round((960 * 1067) / 1600));
@@ -190,11 +190,11 @@ test('Inter latin is preloaded (and declared with font-display swap), CSS in hea
   }
 });
 
-test('LCP images stay small (home <= 120 KB, product pages <= 150 KB, 1600 px variants excluded)', () => {
+test('LCP images stay small (home <= 120 KB, product pages <= 150 KB, variants wider than 960 px excluded: only picked by big boxes on dense screens)', () => {
   for (const { rel, html } of pages) {
     const lcp = imgs(html).find((t) => attr(t, 'fetchpriority') === 'high');
     if (!lcp) continue;
-    for (const u of srcsetUrls(attr(lcp, 'srcset')).filter((x) => !/-1600\./.test(x))) {
+    for (const u of srcsetUrls(attr(lcp, 'srcset')).filter((x) => Number(/-(\d+)\.[0-9a-f]{8}\.webp$/.exec(x)[1]) <= 960)) {
       const max = /^(en|it)\/index\.html$/.test(rel) ? 120 : 150;
       assert.ok(statSync(distFile(u)).size <= max * 1024, `${rel}: ${u} ${statSync(distFile(u)).size}`);
     }

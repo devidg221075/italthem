@@ -1,37 +1,26 @@
 {
- "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero.jpg": {
+ "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT.jpg": {
   "width": 1735,
   "height": 1174,
   "variants": [
    {
     "w": 480,
-    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero-480.cd14753b.webp",
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-480.cd14753b.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-720.8edc3913.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero-960.224e1580.webp",
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-960.224e1580.webp",
     "format": "webp"
    },
    {
     "w": 1600,
-    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero-1600.93e2bfd4.webp",
-    "format": "webp"
-   }
-  ]
- },
- "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT.jpg": {
-  "width": 915,
-  "height": 620,
-  "variants": [
-   {
-    "w": 480,
-    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-480.5b93a492.webp",
-    "format": "webp"
-   },
-   {
-    "w": 915,
-    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-915.917003c3.webp",
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-1600.93e2bfd4.webp",
     "format": "webp"
    }
   ]
@@ -57,6 +46,11 @@
     "format": "webp"
    },
    {
+    "w": 720,
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_3-720.d236b18b.webp",
+    "format": "webp"
+   },
+   {
     "w": 960,
     "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_3-960.bc9786f8.webp",
     "format": "webp"
@@ -75,6 +69,11 @@
    {
     "w": 480,
     "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_4-480.7638831e.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_4-720.57840812.webp",
     "format": "webp"
    },
    {
@@ -99,6 +98,11 @@
     "format": "webp"
    },
    {
+    "w": 720,
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_5-720.2a292bfb.webp",
+    "format": "webp"
+   },
+   {
     "w": 960,
     "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_5-960.80905f22.webp",
     "format": "webp"
@@ -111,33 +115,53 @@
   ]
  },
  "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-1.jpg": {
-  "width": 974,
-  "height": 442,
+  "width": 1944,
+  "height": 884,
   "variants": [
    {
     "w": 480,
-    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-1-480.6ac6984f.webp",
+    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-1-480.21cb0686.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-1-720.10d1b071.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-1-960.c98f3931.webp",
+    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-1-960.a6dea2d5.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1600,
+    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-1-1600.31420ed1.webp",
     "format": "webp"
    }
   ]
  },
  "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-2.jpg": {
-  "width": 1000,
-  "height": 1600,
+  "width": 1333,
+  "height": 2000,
   "variants": [
    {
     "w": 480,
-    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-2-480.eece2009.webp",
+    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-2-480.561bba4e.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-2-720.22d4ab24.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-2-960.47233a82.webp",
+    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-2-960.95626804.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1333,
+    "file": "BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-2-1333.203e5e8d.webp",
     "format": "webp"
    }
   ]
@@ -149,6 +173,11 @@
    {
     "w": 480,
     "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-480.eac02aee.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-720.9fa7f593.webp",
     "format": "webp"
    },
    {
@@ -175,38 +204,53 @@
   ]
  },
  "Cont.-casting-metal-melting-furnace-2.jpg": {
-  "width": 765,
-  "height": 1228,
+  "width": 1142,
+  "height": 1832,
   "variants": [
    {
     "w": 480,
-    "file": "Cont.-casting-metal-melting-furnace-2-480.3ade0938.webp",
+    "file": "Cont.-casting-metal-melting-furnace-2-480.f3cc7b78.webp",
     "format": "webp"
    },
    {
-    "w": 765,
-    "file": "Cont.-casting-metal-melting-furnace-2-765.a41e4895.webp",
+    "w": 720,
+    "file": "Cont.-casting-metal-melting-furnace-2-720.8f7b2c7f.webp",
+    "format": "webp"
+   },
+   {
+    "w": 960,
+    "file": "Cont.-casting-metal-melting-furnace-2-960.9430fd78.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1142,
+    "file": "Cont.-casting-metal-melting-furnace-2-1142.7aea8dc7.webp",
     "format": "webp"
    }
   ]
  },
  "Cont.-casting-metal-melting-furnace-3.jpg": {
-  "width": 1600,
-  "height": 1067,
+  "width": 2000,
+  "height": 1333,
   "variants": [
    {
     "w": 480,
-    "file": "Cont.-casting-metal-melting-furnace-3-480.d043702a.webp",
+    "file": "Cont.-casting-metal-melting-furnace-3-480.7bfb473e.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "Cont.-casting-metal-melting-furnace-3-720.ab1a15dd.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "Cont.-casting-metal-melting-furnace-3-960.58482af3.webp",
+    "file": "Cont.-casting-metal-melting-furnace-3-960.938c804b.webp",
     "format": "webp"
    },
    {
     "w": 1600,
-    "file": "Cont.-casting-metal-melting-furnace-3-1600.967b9f25.webp",
+    "file": "Cont.-casting-metal-melting-furnace-3-1600.b836905d.webp",
     "format": "webp"
    }
   ]
@@ -218,6 +262,11 @@
    {
     "w": 480,
     "file": "Contr.-atmosphere-annealing-furnace_AF400-2-1-480.6e00f4e2.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "Contr.-atmosphere-annealing-furnace_AF400-2-1-720.c27052ff.webp",
     "format": "webp"
    },
    {
@@ -242,6 +291,11 @@
     "format": "webp"
    },
    {
+    "w": 720,
+    "file": "Contr.-atmosphere-annealing-furnace_AF400-3-1-720.2aa77166.webp",
+    "format": "webp"
+   },
+   {
     "w": 960,
     "file": "Contr.-atmosphere-annealing-furnace_AF400-3-1-960.e8da3fc7.webp",
     "format": "webp"
@@ -260,6 +314,11 @@
    {
     "w": 480,
     "file": "Contr.-atmosphere-annealing-furnace_AF400-480.9364b996.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "Contr.-atmosphere-annealing-furnace_AF400-720.acf3003c.webp",
     "format": "webp"
    },
    {
@@ -284,6 +343,11 @@
     "format": "webp"
    },
    {
+    "w": 720,
+    "file": "GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-720.7a29a9a9.webp",
+    "format": "webp"
+   },
+   {
     "w": 960,
     "file": "GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-960.2f747b1b.webp",
     "format": "webp"
@@ -297,6 +361,11 @@
    {
     "w": 480,
     "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT-2-480.52f519f0.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT-2-720.305bdf36.webp",
     "format": "webp"
    },
    {
@@ -354,6 +423,11 @@
     "format": "webp"
    },
    {
+    "w": 720,
+    "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT_0-720.85773b2e.webp",
+    "format": "webp"
+   },
+   {
     "w": 906,
     "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT_0-906.eadefc45.webp",
     "format": "webp"
@@ -367,6 +441,11 @@
    {
     "w": 480,
     "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT_1-480.506559df.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT_1-720.ba8ca0fa.webp",
     "format": "webp"
    },
    {
@@ -407,6 +486,11 @@
     "format": "webp"
    },
    {
+    "w": 720,
+    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-720.2e25922d.webp",
+    "format": "webp"
+   },
+   {
     "w": 960,
     "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-960.e9fb373d.webp",
     "format": "webp"
@@ -420,6 +504,11 @@
    {
     "w": 480,
     "file": "TILTING-IT-MT-6-copia-1-480.14b61116.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "TILTING-IT-MT-6-copia-1-720.e926335f.webp",
     "format": "webp"
    },
    {
@@ -444,6 +533,11 @@
     "format": "webp"
    },
    {
+    "w": 720,
+    "file": "TILTING-IT-MT-6-copia-2-720.118a9d84.webp",
+    "format": "webp"
+   },
+   {
     "w": 960,
     "file": "TILTING-IT-MT-6-copia-2-960.8184eac4.webp",
     "format": "webp"
@@ -465,6 +559,11 @@
     "format": "webp"
    },
    {
+    "w": 720,
+    "file": "TILTING-IT-MT-6-copia-4-720.896817f7.webp",
+    "format": "webp"
+   },
+   {
     "w": 960,
     "file": "TILTING-IT-MT-6-copia-4-960.f48ec273.webp",
     "format": "webp"
@@ -483,6 +582,11 @@
    {
     "w": 480,
     "file": "VACUUM-FLAKE-PRODUCTION-SYSTEM-2-2-480.1f96fef3.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "VACUUM-FLAKE-PRODUCTION-SYSTEM-2-2-720.b87c8975.webp",
     "format": "webp"
    },
    {

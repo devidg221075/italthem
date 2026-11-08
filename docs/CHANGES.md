@@ -414,3 +414,11 @@ Richiesta: le foto nei box sembravano troppo piccole. Cause: i vecchi file aveva
 - **Foto ricevute (tutte versioni ad alta risoluzione di immagini già presenti):** IT.MT (foto principale, ritagliata più stretta della precedente, sostituisce quella inviata prima), IT.GMS (foto principale) e i tre dettagli di IT.KB (sportello, piano superiore, pannello comandi). Nessuna è per la hero.
 - Ancora a bassa risoluzione e quindi piccole nei riquadri: IT.CC, IT.GT (foto con il carrello e i lingotti), IT.SM, IT.BF, IT.GMB, IT.FM. Servono foto più grandi (almeno 1600 px sul lato lungo).
 - Test aggiornati (la miniatura IT.KB da 285 px diventa 250 px dopo il ritaglio).
+
+## Foto IT.KB, IT.BF e IT.CC in alta risoluzione; ottimizzazione immagini
+
+Altre cinque foto del titolare, tutte versioni ad alta risoluzione di immagini già presenti: IT.KB (foto principale, identica a quella messa come prima slide della hero), IT.BF (macchina e pannello comandi) e IT.CC (macchina e dettaglio dei rulli con il filo d'argento). Sostituite mantenendo i nomi dei file. Poiché la foto di IT.KB è la stessa, la prima slide della hero ora usa direttamente la foto del prodotto e ho tolto il file duplicato (`…-hero.jpg`).
+- **Peso delle immagini:** la foto di IT.CC è molto dettagliata e a 960 px pesava 157 KB (tetto: 150 KB per la prima card). Lo script abbassa ora la qualità a gradini (mai sotto 62) solo per le versioni fino a 960 px che superano 140 KB. Il test del peso considera le versioni fino a 960 px (le più larghe le scelgono solo i riquadri grandi su schermi molto densi).
+- **Nuova versione intermedia da 720 px** (480/720/960/1600): sulle card della home su telefono il browser sceglieva la versione da 960 px (circa 500 KB scaricati subito, in concorrenza con la foto principale); con 720 px la home mobile torna a 98–99 su Lighthouse.
+- **Miniature del menu:** `sizes` corretto a 64 px (prima "0px" su telefono, valore non valido, che il browser trattava come larghezza piena).
+- Ancora a bassa risoluzione: IT.GT (foto con carrello e lingotti), IT.SM, IT.GMB, IT.FM.
