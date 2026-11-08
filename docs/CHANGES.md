@@ -387,3 +387,11 @@ Misure sul mockup della home (1671×941) e sulla tavola, confrontate con il sito
 Decisione: ingrandire il hero come il mockup, titolo ExtraBold, hero a tutto schermo con foto dietro; le altre pagine restano sulla scala della tavola (56/40/28).
 - **Fatto (sempre attivo):** H1 del hero 70 px da 1001 px (50 tablet, 34 telefono), Manrope ExtraBold 800, interlinea 1,0, spaziatura −0,03 em; colonna del testo più larga per tenere "per metalli preziosi" su una riga; pulsanti del hero alti 58 px con etichetta 20 px (da 1001 px); icone delle categorie a 52 px. Il peso 800 vale solo per questo titolo (test aggiornati: Manrope 600/700 ovunque, 800 solo per `.hero h1`).
 - **Predisposto (attivo solo con `PLACEHOLDERS=1`, poi con le foto vere):** hero a tutto schermo con foto dietro il testo e header trasparente sul hero (diventa bianco allo scorrimento). Senza le foto in alta risoluzione resta il layout con il prodotto a destra.
+
+## Prima foto hero in alta risoluzione: IT.KB
+
+Fornita dal titolare: foto di studio di IT.KB (Sistema automatico per la produzione di lingotti), 2000×1382 su fondo bianco. È la stessa fotografia che il sito già usava per IT.KB, ma quella aveva 1000×1600 con molto bianco attorno.
+- **Prima slide della hero** (scelta dell'utente): le slide sono ora IT.KB, IT.GT, IT.CC, IT.AF, IT.GMS (5 slide e 5 puntini). IT.KB non entra nella riga delle quattro categorie sotto la hero (resta IT.CC, IT.GT, IT.AF, IT.GMS come nel mockup).
+- File: `assets/img/src/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero.jpg`, ottimizzato in tre WebP (480/960/1600 px; 12, 30 e 66 KB). È anche l'`og:image` della home. La foto non sostituisce ancora quella nella scheda IT.KB (non richiesto).
+- Lighthouse home dopo la modifica: mobile 99, desktop 99–100, CLS 0.
+- Test aggiornati (5 slide, IT.KB prima e immagine principale, og:image).

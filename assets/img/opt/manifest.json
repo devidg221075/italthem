@@ -1,4 +1,25 @@
 {
+ "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero.jpg": {
+  "width": 2000,
+  "height": 1382,
+  "variants": [
+   {
+    "w": 480,
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero-480.f71004ed.webp",
+    "format": "webp"
+   },
+   {
+    "w": 960,
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero-960.e12d7bbc.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1600,
+    "file": "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero-1600.903fb6df.webp",
+    "format": "webp"
+   }
+  ]
+ },
  "AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT.jpg": {
   "width": 1000,
   "height": 1600,

@@ -134,7 +134,7 @@ test('Open Graph and Twitter tags with an absolute image that exists', () => {
 });
 
 test('home og:image is the first hero photo', () => {
-  assert.match(attr(read('en/index.html'), /<meta property="og:image" content="([^"]*)"/), /\/assets\/img\/opt\/GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-960\.[0-9a-f]{8}\.webp$/);
+  assert.match(attr(read('en/index.html'), /<meta property="og:image" content="([^"]*)"/), /\/assets\/img\/opt\/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero-1600\.[0-9a-f]{8}\.webp$/);
 });
 
 test('JSON-LD: one Organization+LocalBusiness node and a WebSite on both homes, referenced by @id', () => {

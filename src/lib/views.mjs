@@ -57,13 +57,13 @@ function homeBody(content, lang) {
   const home = pages.find((p) => p.slug === 'home');
   const about = pages.find((p) => p.slug === 'about');
   const taglines = section(home, 0).blocks.filter((b) => b.type === 'p').map((b) => b.text);
-  const slides = HERO_SLIDES.map((s) => ({ p: byCode(products, s.code), image: s.image, cat: s.cat }));
+  const slides = HERO_SLIDES.map((s) => { const p = byCode(products, s.code); return { p, src: s.file ?? photo(p, s.image), cat: s.cat }; });
   const aboutIntro = section(about, 0);
 
   // The category row follows the mockup order (IT.CC, IT.GT, IT.AF, IT.GMS), which is not the slide order.
   const cats = MENU_PRODUCTS.map((code) => slides.find((s) => s.p.code === code)).map((s) => `<li><a href="${productUrl(s.p, lang)}">${catIcon(s.cat)}<span>${esc(t.cats[s.cat])}</span><b>${esc(s.p.code)}</b></a></li>`).join('');
   const hero = `<section class="hero${PH ? ' bleed' : ''}" aria-roledescription="carousel" aria-label="${esc(t.machines)}"><div class="hbg" aria-hidden="true">${PH ? phBleed('Foto hero a tutto schermo in arrivo') : ''}</div><div class="w hbody"><div class="htx"><p class="kick"><i aria-hidden="true"></i><span lang="${t.heroKickerLang}">${esc(t.heroKicker)}</span></p><h1>${esc(t.heroTitle)}</h1><p class="sub">${esc(t.heroSub)}</p><div class="hb"><a class="btn b1" href="${pageUrl('products', lang)}">${esc(t.discoverProducts)}${icon('arrow', 'ic ar')}</a></div></div>`
-    + `<div class="stage">${slides.map((s, i) => `<div class="m${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${PH ? phBlock(`Foto in arrivo · ${s.p.code}`, 600, 500) : img(photo(s.p, s.image), altOf(s.p), { sizes: SIZES.hero, priority: i === 0 })}</div>`).join('')}</div></div>`
+    + `<div class="stage">${slides.map((s, i) => `<div class="m${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${PH ? phBlock(`Foto in arrivo · ${s.p.code}`, 600, 500) : img(s.src, altOf(s.p), { sizes: SIZES.hero, priority: i === 0 })}</div>`).join('')}</div></div>`
     + `<ul class="w cats">${cats}</ul><div class="dots" role="group" aria-label="${esc(t.dots)}">${slides.map((s, i) => `<button type="button"${i ? '' : ' class="on" aria-current="true"'} aria-label="${esc(`${t.cats[s.cat]} ${s.p.code}`)}"></button>`).join('')}</div></section>`;
 
   const tg = `<section class="tg"><div class="w" style="--n:${taglines.length}">${taglines.map((x) => `<div>${esc(x)}</div>`).join('')}</div></section>`;
@@ -304,7 +304,7 @@ function seoFor(page, content) {
   const { products, pages } = content;
   const src = pages.find((p) => p.slug === page.key);
   const meta = usableMeta(src?.meta_description) ? [src.meta_description] : [];
-  const homePhoto = imageUrl(photo(byCode(products, HERO_SLIDES[0].code), HERO_SLIDES[0].image));
+  const homePhoto = imageUrl(HERO_SLIDES[0].file ?? photo(byCode(products, HERO_SLIDES[0].code), HERO_SLIDES[0].image));
   const home = { name: t.home, url: pageUrl('home', lang) };
   const productsPage = pages.find((p) => p.slug === 'products');
   const productsCrumb = { name: productsPage?.title ?? t.products, url: pageUrl('products', lang) };
@@ -358,7 +358,7 @@ export function renderSitePage(page, contents) {
   const { title, description, seo } = seoFor(page, content);
   // The LCP image (first hero slide / first gallery image) is preloaded with the same srcset/sizes as its <img>.
   let preload;
-  if (page.type === 'home' && !PH) preload = preloadLink(photo(byCode(content.products, HERO_SLIDES[0].code), HERO_SLIDES[0].image), { sizes: SIZES.hero });
+  if (page.type === 'home' && !PH) preload = preloadLink(HERO_SLIDES[0].file ?? photo(byCode(content.products, HERO_SLIDES[0].code), HERO_SLIDES[0].image), { sizes: SIZES.hero });
   if (page.type === 'product') {
     const first = (content.products.find((x) => x.slug === page.key).images ?? []).find(localImage);
     if (first) preload = preloadLink(first, { sizes: SIZES.gallery });

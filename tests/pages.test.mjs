@@ -68,10 +68,10 @@ for (const lang of ['en', 'it']) {
   test(`${lang} home: hero, rail, service tiles`, () => {
     const html = read(`${lang}/index.html`);
     const hero = html.match(/<section class="hero"[\s\S]*?<\/section>/)[0];
-    assert.equal(count(hero, /<div class="m[ "]/g), 4);
+    assert.equal(count(hero, /<div class="m[ "]/g), 5, 'IT.KB, IT.GT, IT.CC, IT.AF, IT.GMS');
     assert.equal(count(hero, /<li><a href="\/[^"]+\/(products|prodotti)\/it-(cc|gt|af|gms)\/">/g), 4, 'category row: IT.CC, IT.GT, IT.AF, IT.GMS');
     assert.deepEqual([...hero.matchAll(/<b>(IT\.[A-Z]+)<\/b>/g)].map((m) => m[1]), ['IT.CC', 'IT.GT', 'IT.AF', 'IT.GMS']);
-    assert.equal(count(hero.split('<div class="dots"')[1], /<button type="button"/g), 4);
+    assert.equal(count(hero.split('<div class="dots"')[1], /<button type="button"/g), 5);
     assert.equal(count(hero, /<h1>/g), 1);
     const rail = html.match(/<div class="rail">[\s\S]*?<\/div><\/div><\/section>/)[0];
     assert.equal(count(rail, /class="pc"/g), 11);
@@ -96,7 +96,8 @@ test('hero uses the machine overview photos', () => {
   const stage = html.match(/<div class="stage">[\s\S]*?<\/div><\/div>/)[0];
   assert.match(stage, /furnace_AF400-(480|960)\.[0-9a-f]{8}\.webp/);
   assert.ok(!stage.includes('AF400-3-1'));
-  assert.match(stage, /GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-(480|960)/, 'IT.GT is the first slide (lightest photo = LCP)');
+  assert.match(stage, /GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT-(480|960)/, 'IT.GT is the second slide');
+  assert.match(stage.split('<div class="m"')[0], /Mod-IT-hero-(480|960|1600)\.[0-9a-f]{8}\.webp/, 'IT.KB (high-resolution photo supplied by the owner) is the first slide = LCP');
 });
 
 test('service pages render the body blocks verbatim', () => {
