@@ -422,3 +422,12 @@ Altre cinque foto del titolare, tutte versioni ad alta risoluzione di immagini g
 - **Nuova versione intermedia da 720 px** (480/720/960/1600): sulle card della home su telefono il browser sceglieva la versione da 960 px (circa 500 KB scaricati subito, in concorrenza con la foto principale); con 720 px la home mobile torna a 98–99 su Lighthouse.
 - **Miniature del menu:** `sizes` corretto a 64 px (prima "0px" su telefono, valore non valido, che il browser trattava come larghezza piena).
 - Ancora a bassa risoluzione: IT.GT (foto con carrello e lingotti), IT.SM, IT.GMB, IT.FM.
+
+## Foto IT.SM, IT.GMS e IT.MT in alta risoluzione
+
+Cinque foto ricevute, tutte versioni ad alta risoluzione di immagini già presenti:
+- **IT.SM:** foto principale (1333×2000) e dettaglio con crogiolo e pinze (2000×1388), sostituite.
+- **IT.GMS:** il gruppo con refrigeratore (2000×1440) sostituisce la foto piccola (551×362) nella galleria.
+- **IT.MT:** la foto principale (2000×2000) è marginalmente più grande di quella inserita prima (macchina 1037×1801 px contro 1010×1755): sostituita. La foto con l'operatore (2000×1333) è più piccola di quella già in uso (macchina 1630×1333 contro 1926×1575): **non sostituita**.
+- Lighthouse: home mobile 99 (tre misure), scheda IT.SM mobile 97, catalogo mobile 95.
+- Ancora a bassa risoluzione: IT.GT (foto con carrello e lingotti), IT.GMB, IT.FM, e due miniature di IT.GMS (131×361 e 370×556 px).

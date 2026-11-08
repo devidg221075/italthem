@@ -403,12 +403,27 @@
   ]
  },
  "GRAINS-PRODUCTION-SYSTEM-MODEL-IT-5.jpg": {
-  "width": 551,
-  "height": 362,
+  "width": 1677,
+  "height": 1071,
   "variants": [
    {
     "w": 480,
-    "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT-5-480.cd531cf6.webp",
+    "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT-5-480.cb8cd9b5.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT-5-720.dda6dced.webp",
+    "format": "webp"
+   },
+   {
+    "w": 960,
+    "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT-5-960.483c7a2f.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1600,
+    "file": "GRAINS-PRODUCTION-SYSTEM-MODEL-IT-5-1600.83100261.webp",
     "format": "webp"
    }
   ]
@@ -461,64 +476,69 @@
   ]
  },
  "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-1-1.jpg": {
-  "width": 719,
-  "height": 1353,
+  "width": 838,
+  "height": 1575,
   "variants": [
    {
     "w": 480,
-    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-1-1-480.5def0770.webp",
+    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-1-1-480.b011b7b2.webp",
     "format": "webp"
    },
    {
-    "w": 719,
-    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-1-1-719.22aaa0e1.webp",
+    "w": 720,
+    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-1-1-720.97afa533.webp",
     "format": "webp"
    }
   ]
  },
  "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2.jpg": {
-  "width": 1059,
-  "height": 735,
+  "width": 2000,
+  "height": 1388,
   "variants": [
    {
     "w": 480,
-    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-480.9880336b.webp",
+    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-480.59865030.webp",
     "format": "webp"
    },
    {
     "w": 720,
-    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-720.2e25922d.webp",
+    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-720.36ccc4fb.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-960.e9fb373d.webp",
+    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-960.e6af0337.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1600,
+    "file": "STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2-1600.3a2f8ddc.webp",
     "format": "webp"
    }
   ]
  },
  "TILTING-IT-MT-6-copia-1.jpg": {
-  "width": 1119,
-  "height": 1861,
+  "width": 1144,
+  "height": 1909,
   "variants": [
    {
     "w": 480,
-    "file": "TILTING-IT-MT-6-copia-1-480.14b61116.webp",
+    "file": "TILTING-IT-MT-6-copia-1-480.1dc4c2bd.webp",
     "format": "webp"
    },
    {
     "w": 720,
-    "file": "TILTING-IT-MT-6-copia-1-720.e926335f.webp",
+    "file": "TILTING-IT-MT-6-copia-1-720.2645c3e8.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "TILTING-IT-MT-6-copia-1-960.0c34bd08.webp",
+    "file": "TILTING-IT-MT-6-copia-1-960.d72d2992.webp",
     "format": "webp"
    },
    {
-    "w": 1119,
-    "file": "TILTING-IT-MT-6-copia-1-1119.82f9bb37.webp",
+    "w": 1144,
+    "file": "TILTING-IT-MT-6-copia-1-1144.58b31d68.webp",
     "format": "webp"
    }
   ]
