@@ -203,6 +203,32 @@
    }
   ]
  },
+ "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT_2.jpg": {
+  "width": 1600,
+  "height": 2000,
+  "variants": [
+   {
+    "w": 480,
+    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT_2-480.4fee8d20.webp",
+    "format": "webp"
+   },
+   {
+    "w": 720,
+    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT_2-720.abc2dbac.webp",
+    "format": "webp"
+   },
+   {
+    "w": 960,
+    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT_2-960.26e57f40.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1600,
+    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT_2-1600.821796b2.webp",
+    "format": "webp"
+   }
+  ]
+ },
  "Cont.-casting-metal-melting-furnace-2.jpg": {
   "width": 1142,
   "height": 1832,
@@ -570,27 +596,27 @@
   ]
  },
  "TILTING-IT-MT-6-copia-4.jpg": {
-  "width": 1280,
-  "height": 1600,
+  "width": 1600,
+  "height": 2000,
   "variants": [
    {
     "w": 480,
-    "file": "TILTING-IT-MT-6-copia-4-480.67e8b876.webp",
+    "file": "TILTING-IT-MT-6-copia-4-480.be0d9eae.webp",
     "format": "webp"
    },
    {
     "w": 720,
-    "file": "TILTING-IT-MT-6-copia-4-720.896817f7.webp",
+    "file": "TILTING-IT-MT-6-copia-4-720.9b0c7137.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "TILTING-IT-MT-6-copia-4-960.f48ec273.webp",
+    "file": "TILTING-IT-MT-6-copia-4-960.169afc5a.webp",
     "format": "webp"
    },
    {
-    "w": 1280,
-    "file": "TILTING-IT-MT-6-copia-4-1280.bd932c11.webp",
+    "w": 1600,
+    "file": "TILTING-IT-MT-6-copia-4-1600.c986546f.webp",
     "format": "webp"
    }
   ]

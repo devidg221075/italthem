@@ -431,3 +431,12 @@ Cinque foto ricevute, tutte versioni ad alta risoluzione di immagini già presen
 - **IT.MT:** la foto principale (2000×2000) è marginalmente più grande di quella inserita prima (macchina 1037×1801 px contro 1010×1755): sostituita. La foto con l'operatore (2000×1333) è più piccola di quella già in uso (macchina 1630×1333 contro 1926×1575): **non sostituita**.
 - Lighthouse: home mobile 99 (tre misure), scheda IT.SM mobile 97, catalogo mobile 95.
 - Ancora a bassa risoluzione: IT.GT (foto con carrello e lingotti), IT.GMB, IT.FM, e due miniature di IT.GMS (131×361 e 370×556 px).
+
+## Dettagli IT.MT e IT.CWA
+
+Cinque foto ricevute:
+- **IT.MT:** dettaglio della parte superiore con il crogiolo (1600×2000) sostituisce quello a 1280×1600.
+- **IT.CWA:** dettaglio della testa di trascinamento con pulegge, due motori, etichette "Line A / Line B" e la bobina di filo di rame (1600×2000): **foto nuova**, aggiunta come terza immagine della galleria. Per aggiungerla ho esteso l'elenco `images` di `content/it/products/it-cwa.json` e `content/en/products/it-cwa.json` (file di contenuto). Attenzione: rieseguendo `scripts/extract-content.py` dal sito originale questa riga va rimessa.
+- **Non usate perché già presenti a risoluzione uguale o maggiore:** IT.CWA intera (macchina 1111×1159 px contro 1773×1849 della foto in uso) e due duplicati ridimensionati a 1920 px (dettaglio dei rulli di IT.CC, vaschetta di rame di IT.AF).
+
+Anomalie nei testi originali (non modificati, come da regola di non riscrivere i contenuti estratti): la descrizione di IT.CWA inizia con "ItalTherm, il Forno continuo per ricottura filo ItalTherm Un sistema…" (manca un punto e il nome è ripetuto); la descrizione di IT.GMS inizia in maiuscolo ("SISTEMA AUTOMATICO DI FUSIONE DEI GRANI ItalTherm…") e il suo testo è quasi uguale a quello di IT.GMB.
