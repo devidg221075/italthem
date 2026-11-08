@@ -1,0 +1,112 @@
+{
+  "slug": "italtherm-mesh-belt-heat-treatment-furnace",
+  "title": "Forno per trattamento termico a nastro a rete ItalTherm",
+  "body": "Il forno per trattamento termico a nastro a rete ItalTherm è progettato per la saldatura, la brasatura, la sinterizzazione e la ricottura in continuo di componenti metallici, compresi gioielli e parti di precisione. Il sistema di trasporto a nastro a rete consente una lavorazione ininterrotta, mentre l'intero ciclo si svolge sotto protezione di gas inerte per prevenire l'ossidazione.\nUna barriera di combustione dell'ossigeno all'ingresso del forno elimina l'ossigeno residuo e assicura un'atmosfera pulita e controllata. Dopo il riscaldamento i pezzi passano direttamente nella zona di raffreddamento, per risultati stabili e ripetibili.\nIl sistema può essere dotato di controllo della temperatura PID, che consente curve di riscaldamento, tempi di mantenimento e profili di raffreddamento programmabili per la piena automazione.\nCaratteristiche principali\nSistema di trasporto a nastro a rete\nNastro metallico resistente alle alte temperature (acciaio inox o leghe di nichel)\nVelocità regolabile da 0,1 a 5 m/min per diversi processi\nZone del forno\nZona di preriscaldamento per evitare shock termici\nZona di riscaldamento con temperature da 300°C a 1200°C\nZona di raffreddamento con raffreddamento controllato ad aria o ad acqua\nTecnologia di riscaldamento\nRiscaldamento a resistenza elettrica, barre al carburo di silicio (SiC), gas o infrarossi\nZone di temperatura controllate in modo indipendente con uniformità di ±3°C\nAtmosfera protettiva\nAzoto, idrogeno o miscele di gas per prevenire l'ossidazione e garantire giunzioni pulite\nAutomazione e controllo\nPLC o computer industriale per la gestione di temperatura, velocità del nastro e flusso di gas\nApplicazioni tipiche\nElettronica: saldatura SMT, packaging di LED\nLavorazioni metalliche: brasatura di acciaio inox/alluminio, sinterizzazione di metallurgia delle polveri\nAutomotive: sensori, componenti di motori, linguette per batterie\nFotovoltaico: saldatura delle stringhe di celle solari\nVantaggi principali\nProduzione continua 24/7 per grandi volumi\nControllo preciso di curve di riscaldamento e profili di raffreddamento\nStruttura chiusa a basso consumo energetico con trattamento conforme dei fumi di scarico\nAdattabile a diverse leghe e tipi di saldatura",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "Il forno per trattamento termico a nastro a rete ItalTherm è progettato per la saldatura, la brasatura, la sinterizzazione e la ricottura in continuo di componenti metallici, compresi gioielli e parti di precisione. Il sistema di trasporto a nastro a rete consente una lavorazione ininterrotta, mentre l'intero ciclo si svolge sotto protezione di gas inerte per prevenire l'ossidazione."
+    },
+    {
+      "type": "p",
+      "text": "Una barriera di combustione dell'ossigeno all'ingresso del forno elimina l'ossigeno residuo e assicura un'atmosfera pulita e controllata. Dopo il riscaldamento i pezzi passano direttamente nella zona di raffreddamento, per risultati stabili e ripetibili."
+    },
+    {
+      "type": "p",
+      "text": "Il sistema può essere dotato di controllo della temperatura PID, che consente curve di riscaldamento, tempi di mantenimento e profili di raffreddamento programmabili per la piena automazione."
+    },
+    {
+      "type": "h",
+      "level": 3,
+      "text": "Caratteristiche principali"
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Sistema di trasporto a nastro a rete"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Nastro metallico resistente alle alte temperature (acciaio inox o leghe di nichel)",
+        "Velocità regolabile da 0,1 a 5 m/min per diversi processi"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Zone del forno"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Zona di preriscaldamento per evitare shock termici",
+        "Zona di riscaldamento con temperature da 300°C a 1200°C",
+        "Zona di raffreddamento con raffreddamento controllato ad aria o ad acqua"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Tecnologia di riscaldamento"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Riscaldamento a resistenza elettrica, barre al carburo di silicio (SiC), gas o infrarossi",
+        "Zone di temperatura controllate in modo indipendente con uniformità di ±3°C"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Atmosfera protettiva"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Azoto, idrogeno o miscele di gas per prevenire l'ossidazione e garantire giunzioni pulite"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Automazione e controllo"
+    },
+    {
+      "type": "list",
+      "items": [
+        "PLC o computer industriale per la gestione di temperatura, velocità del nastro e flusso di gas"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Applicazioni tipiche"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Elettronica: saldatura SMT, packaging di LED",
+        "Lavorazioni metalliche: brasatura di acciaio inox/alluminio, sinterizzazione di metallurgia delle polveri",
+        "Automotive: sensori, componenti di motori, linguette per batterie",
+        "Fotovoltaico: saldatura delle stringhe di celle solari"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Vantaggi principali"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Produzione continua 24/7 per grandi volumi",
+        "Controllo preciso di curve di riscaldamento e profili di raffreddamento",
+        "Struttura chiusa a basso consumo energetico con trattamento conforme dei fumi di scarico",
+        "Adattabile a diverse leghe e tipi di saldatura"
+      ]
+    }
+  ],
+  "old_path": "/it/services/italtherm-mesh-belt-heat-treatment-furnace/"
+}

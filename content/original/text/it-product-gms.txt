@@ -1,0 +1,28 @@
+## TITLE
+SISTEMA DI PRODUZIONE DI GRANULI
+## SHORT DESCRIPTION
+SISTEMA AUTOMATICO DI FUSIONE DEI GRANI ItalTherm dotato di avanzata tecnologia di fusione ad induzione a media frequenza. Progettato per leghe e metalli sensibili all’ossidazione. Garantisce un riscaldamento rapido e uniforme con un controllo preciso della temperatura necessario per mantenere l’integrità e la fluidità del metallo.
+Il processo di granulazione è protetto da gas inerte per ridurre al minimo l’ossidazione dei metalli.
+## DESCRIPTION TAB
+SISTEMA AUTOMATICO DI FUSIONE DEI GRANI ItalTherm dotato di avanzata tecnologia di fusione ad induzione a media frequenza. Progettato per leghe e metalli sensibili all’ossidazione. Garantisce un riscaldamento rapido e uniforme con un controllo preciso della temperatura necessario per mantenere l’integrità e la fluidità del metallo.
+Il processo di granulazione è protetto da gas inerte per ridurre al minimo l’ossidazione dei metalli.
+## TABLE CAPTION
+SISTEMA DI PRODUZIONE DI GRANULI
+## TABLE
+ | IT.GMS05 | IT.GMS10 | IT.GMS15
+VOLTAGGIO/ VOLTAGE | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ
+POTENZA / POWER | 10KW / (VARIABILE /ADJUSTABLE) | 20KW / (VARIABILE /ADJUSTABLE) | 25KW / (VARIABILE /ADJUSTABLE)
+CAPACITÀ MASSIMA/ MAX CAPACITY | ORO / GOLD : 5KG | ORO / GOLD : 10KG | ORO / GOLD : 15KG
+TEMPO DI FUSIONE / MELTING TIME | 10-20 MIN | 10-20 MIN | 10-20 MIN
+DIMENSIONI / DIMENSION (LWH) | 1100*1000'1100MM | 1100*1000'1100MM | 1100*1000'1100MM
+TEMPERATURA MASSIMA/ MAX TEMPERATURE | 1500°C | 1500°C | 1500°C
+CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE | FORNITO / EQUIPPED | FORNITO / EQUIPPED | FORNITO / EQUIPPED
+PESO/ WEIGHT | 230 KG | 250KG | 380 KG
+## META
+SKU: GRAINS PRODUCTION SYSTEM IT.GMS
+Category: Ital-therm
+Tag: GRAINS PRODUCTION SYSTEM IT.GMS
+## PDF
+/wp-content/uploads/2026/05/GRAINS PRODUCTION SYSTEM IT.GMS.pdf
+## DOWNLOAD LABEL
+SCARICA SPECIFICHE TECNICHE

@@ -1,0 +1,30 @@
+## TITLE
+GRAINS PRODUCTION SYSTEM MODEL IT.GMB
+## SHORT DESCRIPTION
+ItalTherm AUTOMATIC GRAINS MELTING SYSTEM equipped with advanced medium-frequency induction melting technology. Designed for Alloys and Oxidation-Sensitive Metals. It ensures rapid and uniform heating with precise temperature control necessary for maintaining metal integrity and fluidity.
+The whole granulation process and the grains cooling, offloading and draining are fully Automatic to grant operation efficiency and safety.
+The granulation process is protected by inert gas to minimize the oxidation of metals.
+## DESCRIPTION TAB
+ItalTherm AUTOMATIC GRAINS MELTING SYSTEM equipped with advanced medium-frequency induction melting technology. Designed for Alloys and Oxidation-Sensitive Metals. It ensures rapid and uniform heating with precise temperature control necessary for maintaining metal integrity and fluidity.
+The whole granulation process and the grains cooling, offloading and draining are fully Automatic to grant operation efficiency and safety.
+The granulation process is protected by inert gas to minimize the oxidation of metals.
+## TABLE CAPTION
+GRAINS PRODUCTION SYSTEM
+## TABLE
+ | IT.GMB30 | IT.GMB50 | IT.GMB100
+VOLTAGGIO/ VOLTAGE | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ
+POTENZA / POWER | 30KW / (VARIABILE /ADJUSTABLE | 45KW / (VARIABILE /ADJUSTABLE | 75KW / (VARIABILE /ADJUSTABLE
+CAPACITÀ MASSIMA/ MAX CAPACITY | ORO / GOLD : 30 KG / ARGENTO/ SILVER:15 K | ORO / GOLD: 50 KG / ARGENTO/ SILVER: 25 KG | ORO/ GOLD: 100 KG/ ARGENTO/ SILVER: 50 KG
+TEMPO DI FUSIONE / MELTING TIME | 10-30 MIN | 20-40 MIN | 20-40 MIN
+DIMENSIONI / DIMENSION (LWH) | 2100*2360'2600MM | 2100*2360'2600MM | 2100*2360'2600MM
+TEMPERATURA MASSIMA/ MAX TEMPERATURE | 1500°C | 1500°C | 1500°C
+CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE | FORNITO | FORNITO | FORNITO
+PESO/ WEIGHT | 330KG | 350KG | 380KG
+## META
+SKU: GRAINS PRODUCTION SYSTEM MODEL IT.GMB
+Category: Ital-therm
+Tag: GRAINS PRODUCTION SYSTEM MODEL IT.GMB
+## PDF
+/wp-content/uploads/2026/05/GRAINS PRODUCTION SYSTEM MODEL IT.GMB.pdf
+## DOWNLOAD LABEL
+DOWNLOAD TECHNICAL SPECIFICATIONS

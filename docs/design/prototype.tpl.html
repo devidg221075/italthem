@@ -1,0 +1,313 @@
+<meta charset="utf-8">
+<title>Italtherm Sito Prototipo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky site header with mobile drawer; hash-routed views (home, products, product-cc, about, contact) in hero style J: white page, Inter, brand navy/blue. */
+:root{--navy:#112337;--blue:#204ce5;--blue2:#527eff;--mute:#5b6b7f;--line:#e4e9f0;--soft:#f3f5f9;--cb:#0b1520;--cl:#1f3147;--hh:76px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cb);color:var(--navy);font:15px/1.6 "Inter",system-ui,sans-serif;margin:0;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--cb)}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+img{max-width:100%}
+.tb{position:sticky;top:env(safe-area-inset-top,0px);z-index:80;background:var(--cb);border-bottom:1px solid var(--cl);padding:9px max(16px,env(safe-area-inset-right,0px)) 9px max(16px,env(safe-area-inset-left,0px));display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:#eef2f8}
+.tb .l{font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8b9bb0;margin-right:6px}
+.tb a{border:1px solid var(--cl);padding:6px 13px;border-radius:99px;font-weight:600;font-size:12.5px}
+.tb a.on{background:var(--blue2);border-color:var(--blue2);color:#fff}
+#app{background:#fff;overflow-x:clip;position:relative}
+#app h1,#app h2,#app h3,#app h4,#app p,#app ul{margin:0}
+.w{max-width:1240px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;font-weight:600;font-size:14.5px;transition:transform .25s,box-shadow .25s,background .25s,color .25s;border-radius:12px;letter-spacing:-.005em}
+.btn:hover{transform:translateY(-2px)}
+.b1{background:var(--blue);color:#fff;box-shadow:0 14px 30px -14px var(--blue)}
+.b2{border:1.5px solid var(--navy);color:var(--navy)}.b2:hover{background:var(--navy);color:#fff}
+.b3{background:#fff;color:var(--navy)}
+.ey{font:500 12px "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.lgo{display:block;height:34px;width:auto;--l0:#2f4f9e;--l1:#fff;--l2:#6c6d71}
+.lgo .lg0{fill:var(--l0)}.lgo .lg1{fill:var(--l1)}.lgo .lg2{fill:var(--l2)}
+.view{display:none}.view.on{display:block}
+
+/* header */
+.hdr{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--tbh,46px));z-index:70;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.hdr.is-scrolled{border-color:var(--line);box-shadow:0 10px 30px -22px rgba(17,35,55,.45)}
+.hdr .w{display:flex;align-items:center;justify-content:space-between;gap:20px;height:var(--hh)}
+.hdr nav{display:flex;gap:30px;font-size:14px;font-weight:500}
+.hdr nav a{color:#2b3f57;position:relative;padding:6px 0}
+.hdr nav a.on::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--blue);border-radius:2px}
+.hdr .rt{display:flex;align-items:center;gap:18px}
+.lang{font-size:12px;font-weight:600;letter-spacing:.1em}
+.cta{background:var(--navy);color:#fff;padding:12px 20px;border-radius:10px;font-weight:600;font-size:13px;white-space:nowrap}
+.bur{display:none;width:46px;height:46px;border-radius:12px;border:1.5px solid var(--navy);place-items:center}
+.bur i{display:block;width:18px;height:2px;background:var(--navy);position:relative;transition:background .2s}
+.bur i::before,.bur i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--navy);transition:transform .3s}
+.bur i::before{top:-6px}.bur i::after{top:6px}
+.drw{position:fixed;inset:0;z-index:100;background:var(--navy);color:#fff;transform:translateY(-100%);transition:transform .45s cubic-bezier(.2,.7,.2,1);padding:calc(env(safe-area-inset-top,0px) + 20px) max(24px,env(safe-area-inset-left,0px)) 40px;display:flex;flex-direction:column;overflow:auto}
+.drw.open{transform:none}
+.drw .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.drw .x{width:46px;height:46px;border-radius:12px;border:1px solid #38527a;display:grid;place-items:center;font-size:22px}
+.drw a.l{font-size:34px;font-weight:700;letter-spacing:-.04em;padding:12px 0;border-bottom:1px solid #1f3147}
+.drw .info{margin-top:auto;padding-top:34px;font-size:15px;color:#b4c3d8;line-height:1.8}
+.drw .info b{color:#fff}
+
+/* hero J */
+.hero{position:relative;isolation:isolate;overflow:hidden;background:#fff}
+.hero .bg{position:absolute;inset:0;z-index:-1;background:radial-gradient(520px 520px at 74% 46%,#dfe8ff 0,rgba(223,232,255,0) 70%),linear-gradient(180deg,#fff 0,#f4f6fb 100%)}
+.hero .bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#112337 1px,transparent 1px),linear-gradient(90deg,#112337 1px,transparent 1px);background-size:64px 64px;opacity:.045;mask-image:radial-gradient(70% 70% at 70% 45%,#000,transparent);-webkit-mask-image:radial-gradient(70% 70% at 70% 45%,#000,transparent)}
+.ghost{position:absolute;right:-1%;top:4%;z-index:-1;font:800 clamp(110px,19vw,300px)/1 "Inter";letter-spacing:-.07em;color:transparent;-webkit-text-stroke:1.5px rgba(32,76,229,.14);white-space:nowrap;pointer-events:none;user-select:none}
+.hero .body{display:grid;grid-template-columns:.9fr 1.1fr;gap:10px;align-items:center;padding-block:clamp(20px,3vw,40px) 28px;min-height:min(66vh,600px)}
+.hero h1{font-weight:800;font-size:clamp(36px,4.6vw,66px);line-height:1;letter-spacing:-.045em;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--blue)}
+#app .hero .sub{margin-top:22px;max-width:46ch;font-size:17px;line-height:1.6;color:#46586e}
+.hero .hb{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative;aspect-ratio:1.04/1;min-height:340px}
+.stage .m{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:translateX(60px) scale(.96);filter:blur(10px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1),filter .8s ease;pointer-events:none;mix-blend-mode:multiply}
+.stage .m.on{opacity:1;transform:translate(var(--px,0),var(--py,0));filter:none;pointer-events:auto}
+.stage img{width:100%;height:100%;object-fit:contain;display:block}
+.stage::after{content:"";position:absolute;left:14%;right:14%;bottom:9%;height:6%;background:radial-gradient(closest-side,rgba(17,35,55,.2),transparent);filter:blur(8px);z-index:-1}
+.cap{margin-top:26px;display:grid}
+.cap .c{grid-area:1/1;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s;pointer-events:none}
+.cap .c.on{opacity:1;transform:none;pointer-events:auto}
+.cap .c b{display:block;font:500 12px "JetBrains Mono",monospace;letter-spacing:.14em}
+.cap .c span{display:block;font-size:20px;font-weight:600;line-height:1.25;margin-top:6px;max-width:30ch;letter-spacing:-.02em}
+.ctrl{display:flex;align-items:center;gap:14px;margin-top:16px}
+.ctrl button{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:18px;border:1.5px solid var(--navy);transition:background .25s,color .25s}
+.ctrl button:hover{background:var(--navy);color:#fff}
+.count{font:500 13px "JetBrains Mono",monospace;letter-spacing:.1em;margin-left:6px}.count i{font-style:normal;font-size:22px}
+.sel .w{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-block:0 28px}
+.sel button{display:grid;grid-template-columns:78px 1fr;gap:14px;align-items:center;padding:16px 0 4px;position:relative;min-width:0;border-top:2px solid #d9e0ec}
+.sel button::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:0;background:var(--blue)}
+.sel button.on::before{width:100%;transition:width 6s linear}
+.sel img{width:78px;height:64px;object-fit:contain;display:block;mix-blend-mode:multiply}
+.sel b{display:block;font:500 11.5px "JetBrains Mono",monospace;letter-spacing:.1em;opacity:.7}
+.sel button.on b{opacity:1;color:var(--blue)}
+.sel span{display:block;font-size:13.5px;line-height:1.3;opacity:.7;font-weight:500}.sel button.on span{opacity:1}
+
+/* sections */
+.tg{border-bottom:1px solid var(--line)}
+.tg .w{display:grid;grid-template-columns:repeat(3,1fr)}
+.tg .w>div{padding:34px 28px 34px 0;font-weight:700;font-size:clamp(19px,2.1vw,26px);line-height:1.2;letter-spacing:-.03em}
+.tg .w>div+div{padding-left:28px;border-left:1px solid var(--line)}
+.tg .w>div::before{content:"";display:block;width:28px;height:3px;background:var(--blue);margin-bottom:16px;border-radius:2px}
+.sc{padding-block:clamp(56px,8vw,110px)}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.sc h2,#app .pg h1{font-weight:800;font-size:clamp(30px,4vw,54px);letter-spacing:-.045em;line-height:1.02;margin-top:6px}
+.pc{display:flex;flex-direction:column;gap:16px;min-width:0}
+.pc .ph{aspect-ratio:1/.95;background:var(--soft);border-radius:22px;overflow:hidden;transition:box-shadow .35s,transform .35s}
+.pc .ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s}
+.pc:hover .ph{box-shadow:0 30px 50px -28px rgba(17,35,55,.5);transform:translateY(-4px)}.pc:hover .ph img{transform:scale(1.05)}
+.pc small{font:500 12px "JetBrains Mono",monospace;letter-spacing:.12em;color:var(--blue)}
+.pc h3{font-size:17px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.gr4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.gr3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px}
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;margin-inline:calc(-1*max(24px,env(safe-area-inset-left,0px)));padding-inline:max(24px,env(safe-area-inset-left,0px));scrollbar-width:thin}
+.rail .pc{flex:0 0 min(300px,74vw);scroll-snap-align:start}
+.rail::-webkit-scrollbar{height:6px}.rail::-webkit-scrollbar-thumb{background:#c9d3e2;border-radius:6px}
+.svt{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svt a{background:var(--soft);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,background .3s}
+.svt a:hover{transform:translateY(-5px);background:var(--navy);color:#fff}
+.svt a .im{aspect-ratio:1.25;overflow:hidden;background:#e9eef6}.svt img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.svt a:hover .im{background:#fff}
+.svt h3{padding:20px 22px 26px;font-size:18px;font-weight:700;letter-spacing:-.025em;line-height:1.25}
+.band{background:var(--navy);color:#fff;border-radius:30px;padding:clamp(34px,5vw,64px);display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;right:-80px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(82,126,255,.45),transparent 65%)}
+.band h2{color:#fff;position:relative}.band .ey{color:#8fabff;position:relative}
+.band .k{position:relative;display:grid;gap:14px;font-size:18px;font-weight:600}
+.band .k a{display:flex;justify-content:space-between;gap:14px;padding:16px 20px;border:1px solid #2c4666;border-radius:14px}
+.band .k a:hover{background:#18304a}
+.band .k span{font:500 12px "JetBrains Mono",monospace;letter-spacing:.12em;color:#8fabff;display:block;margin-bottom:2px}
+
+/* page heads */
+.ph0{padding-block:clamp(36px,5vw,64px) clamp(26px,4vw,44px);background:linear-gradient(180deg,#f4f6fb,#fff)}
+.crumb{font-size:13px;color:var(--mute);margin-bottom:18px}.crumb a:hover{color:var(--blue)}
+#app .pg .lead{margin-top:18px;max-width:60ch;font-size:18px;color:#46586e}
+.chips{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:10px 18px;border-radius:99px;border:1.5px solid #d3dbe7;font-weight:600;font-size:13.5px;transition:background .2s,color .2s,border-color .2s}
+.chips button.on,.chips button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* product */
+.pd{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,64px);align-items:start;padding-block:10px 40px}
+.gal .big{aspect-ratio:1/.92;background:var(--soft);border-radius:26px;overflow:hidden;display:grid;place-items:center;position:relative}
+.gal .big img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;position:absolute;inset:0;opacity:0;transition:opacity .45s}
+.gal .big img.on{opacity:1}
+.gal .th{display:flex;gap:12px;margin-top:14px}
+.gal .th button{width:92px;aspect-ratio:1/.92;background:var(--soft);border-radius:14px;border:2px solid transparent;overflow:hidden;padding:0}
+.gal .th button.on{border-color:var(--blue)}.gal .th img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;display:block}
+.badge{display:inline-block;font:500 12px "JetBrains Mono",monospace;letter-spacing:.14em;background:#e8eeff;color:var(--blue);padding:7px 12px;border-radius:8px;margin-bottom:18px}
+.pd h1{font-weight:800;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.04em;line-height:1.05}
+.pd .desc{margin-top:22px;font-size:17px;color:#34475c;line-height:1.65}
+.pd .desc b{display:block;color:var(--navy);font-weight:700;margin-bottom:6px}
+.pd .act{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+.pd .pdf{margin-top:22px;display:inline-flex;gap:10px;align-items:center;font-weight:700;font-size:13px;letter-spacing:.08em;color:var(--blue);border-bottom:2px solid currentColor;padding-bottom:4px}
+.meta{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--mute);line-height:1.8}
+.spec{margin-top:10px;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.spec table{width:100%;border-collapse:collapse;font-size:14px}
+.spec th,.spec td{padding:16px 20px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+.spec thead th{background:var(--navy);color:#fff;font:500 13px "JetBrains Mono",monospace;letter-spacing:.1em;border-top:0}
+.spec tbody th{font-weight:600;color:var(--navy);width:30%;background:#fafbfd}
+.spec tbody tr:hover td,.spec tbody tr:hover th{background:#f1f5ff}
+.spec td{color:#34475c}
+.spec-w{overflow-x:auto}.spec-w table{min-width:640px}
+
+/* about */
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;padding-block:clamp(40px,6vw,80px)}
+.ab:nth-child(even) .tx{order:2}
+#app .ab h2{font-weight:800;font-size:clamp(26px,3.2vw,42px);letter-spacing:-.04em;line-height:1.05;margin-bottom:14px}
+.ab p{font-size:17px;color:#34475c}
+#app .ab ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+.ab li{display:flex;gap:14px;align-items:flex-start;font-weight:500}
+.ab li::before{content:"";flex:0 0 22px;height:22px;border-radius:50%;background:#e8eeff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' fill='none' stroke='%23204ce5' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;margin-top:2px}
+.ab .im{background:var(--soft);border-radius:28px;overflow:hidden;aspect-ratio:1.1}.ab .im img{width:100%;height:100%;object-fit:cover;display:block}
+.ab .im.c img{object-fit:contain;mix-blend-mode:multiply}
+.why{background:var(--soft)}
+.why .gridw{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.why .gridw div{background:#fff;border-radius:20px;padding:26px 24px 30px;font-weight:700;font-size:18px;letter-spacing:-.02em;line-height:1.3}
+.why .gridw div::before{content:"";display:block;width:28px;height:3px;background:var(--blue);margin-bottom:18px;border-radius:2px}
+
+/* contact */
+.ctw{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);padding-block:20px clamp(56px,8vw,100px)}
+.fl{display:grid;gap:14px;align-content:start}
+.fld label{display:block;font-weight:600;font-size:13.5px;margin-bottom:6px}.fld label i{font-style:normal;color:var(--mute);font-weight:500;margin-left:6px}
+.inp{width:100%;padding:15px 16px;font:inherit;font-size:15px;border:1.5px solid #d3dbe7;border-radius:12px;background:#fff;color:var(--navy);transition:border-color .2s,box-shadow .2s}
+.inp:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(32,76,229,.12)}
+textarea.inp{min-height:150px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gdpr{font-size:12.5px;color:var(--mute);line-height:1.6;display:flex;gap:12px;align-items:flex-start}
+.gdpr input{margin-top:3px;width:18px;height:18px;accent-color:var(--blue);flex:none}
+.side{display:grid;gap:16px;align-content:start}
+.card{background:var(--soft);border-radius:22px;padding:26px 26px 28px}
+.card .ey{margin-bottom:10px}.card p,.card address{font-style:normal;font-size:16px;line-height:1.7;font-weight:500}
+.card .big{font-size:26px;font-weight:800;letter-spacing:-.03em;display:block}
+.card .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.card .row a{padding:11px 16px;border-radius:10px;font-weight:600;font-size:13.5px}
+.map{aspect-ratio:1.5;border-radius:22px;background:repeating-linear-gradient(135deg,#e3e9f2 0 16px,#ebf0f7 16px 32px);display:grid;place-items:center;text-align:center;padding:20px;color:#34475c;font-weight:600}
+.map small{display:block;font-weight:500;color:var(--mute);margin-top:4px}
+.ft{background:var(--navy);color:#9db0c8;margin-top:0}
+.ft .top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-block:56px 30px}
+.ft h4{color:#fff;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+.ft a{display:block;padding:4px 0}.ft a:hover{color:#fff}
+.ft .bt{border-top:1px solid #1f3147;padding-block:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px}
+.ft p{max-width:36ch;line-height:1.7}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media (max-width:1000px){
+ .hdr nav,.hdr .lang,.hdr .cta{display:none}.bur{display:grid}
+ .hero .body{grid-template-columns:1fr;min-height:0}.stage{min-height:300px}
+ .sel .w{grid-template-columns:1fr 1fr}
+ .tg .w{grid-template-columns:1fr}.tg .w>div,.tg .w>div+div{padding:22px 0;border-left:0}
+ .gr4,.svt,.why .gridw{grid-template-columns:1fr 1fr}.gr3{grid-template-columns:1fr 1fr}
+ .band,.pd,.ab,.ctw{grid-template-columns:1fr}.ab:nth-child(even) .tx{order:0}
+ .ft .top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+ :root{--hh:68px}
+ .gr4,.gr3,.svt,.why .gridw,.sel .w,.row2,.ft .top{grid-template-columns:1fr}
+ .sel .w{grid-template-columns:1fr 1fr}
+ .btn{padding:15px 22px}
+}
+</style>
+
+<div class="tb"><span class="l">Pagina</span>
+ <a href="#home" data-t="home">Home</a><a href="#products" data-t="products">Catalogo</a><a href="#product-cc" data-t="product-cc">Scheda prodotto</a><a href="#about" data-t="about">Chi siamo</a><a href="#contact" data-t="contact">Contatti</a></div>
+<div id="app"></div>
+
+<script>
+var IM=__IMG__;
+var LOGO='__LOGO__';
+function src(k){return 'data:image/webp;base64,'+IM[k].b64}
+var P=[
+ {k:'kb',c:'IT.KB',n:'Automatic Bullion Bars Production System',g:'prod'},
+ {k:'cc',c:'IT.CC',n:'Continuous Casting Metal Melting Furnace',g:'melt',link:'product-cc'},
+ {k:'af',c:'IT.AF',n:'Controlled Atmosphere Annealing Furnace',g:'heat'},
+ {k:'bf',c:'IT.BF',n:'Controlled Atmosphere Belt Furnace',g:'heat'},
+ {k:'cwa',c:'IT.CWA',n:'Controlled Atmosphere Wire Annealing Furnace',g:'heat'},
+ {k:'gt',c:'IT.GT',n:'Gear-Driven Tilting Metal Melting Furnace',g:'melt'},
+ {k:'gms',c:'IT.GMS',n:'Grains Production System',g:'prod'},
+ {k:'gmb',c:'IT.GMB',n:'Grains Production System',g:'prod'},
+ {k:'mt',c:'IT.MT',n:'Manual Tilting Metal Melting Furnace',g:'melt'},
+ {k:'sm',c:'IT.SM',n:'Static Metal Melting Furnace',g:'melt'},
+ {k:'fm',c:'IT.FM',n:'Vacuum Flake Production System',g:'prod'}];
+var SL=[["cwa","IT.CWA","Controlled Atmosphere Wire Annealing Furnace"],["mt","IT.MT","Manual Tilting Metal Melting Furnace"],["af","IT.AF","Controlled Atmosphere Annealing Furnace"],["cc","IT.CC","Continuous Casting Metal Melting Furnace"]];
+var SV=[["bf","Mesh Belt Heat Treatment Furnace"],["cwa","Continuous Wire Annealing Furnace"],["af","Annealing Furnaces"],["gt","Gear-Driven Tilting Metal Melting Furnace"]];
+var TG=["High-technology systems","Exceptional value","Precision Meets Affordability"];
+var HEAD='Industrial furnaces for melting, casting, and heat treating <em>precious metals.</em>';
+var SUB='ITALTHERM is an Italian company specializing in high-technology systems for melting, casting, and heat treatment of precious metals.';
+var PH='+39 0575 802485',MOB='+39 366 871 9427',MAIL='info@ital-therm.it';
+var ADDR='Viale S. Maria delle Vertighe, 50/B<br>52048 Monte San Savino (AR) · Italy';
+function pc(p,cls){return '<a class="pc" href="#'+(p.link||'products')+'"><div class="ph"><img src="'+src(p.k)+'" alt="'+p.c+' '+p.n+'" loading="lazy"></div><small>'+p.c+'</small><h3>'+p.n+'</h3></a>'}
+function byk(k){return P.filter(function(p){return p.k===k})[0]}
+
+/* header + drawer */
+var NAVL=[['home','Home'],['about','About us'],['products','Products'],['contact','Contact us']];
+function header(){return '<header class="hdr"><div class="w"><a href="#home" aria-label="Italtherm home">'+LOGO+'</a><nav>'+NAVL.map(function(n){return '<a href="#'+n[0]+'" data-n="'+n[0]+'">'+n[1]+'</a>'}).join('')+'</nav><div class="rt"><span class="lang">EN · IT</span><a class="cta" href="#contact">Request a contact</a><button class="bur" aria-label="Open menu" aria-expanded="false"><i></i></button></div></div></header>'+
+'<div class="drw" aria-hidden="true"><div class="top"><span style="font-weight:800;letter-spacing:-.03em;font-size:20px">ItalTherm</span><button class="x" aria-label="Close menu">×</button></div>'+NAVL.map(function(n){return '<a class="l" href="#'+n[0]+'">'+n[1]+'</a>'}).join('')+'<div class="info"><b>ITALTHERM S.r.l.</b><br>'+ADDR+'<br>'+PH+' · '+MOB+'<br>'+MAIL+'<br><span style="display:inline-block;margin-top:14px;font-weight:600;letter-spacing:.1em;color:#fff">EN · IT</span></div></div>'}
+function footer(){return '<footer class="ft"><div class="w"><div class="top"><div><div style="color:#fff;font-weight:800;font-size:22px;letter-spacing:-.03em;margin-bottom:12px">ItalTherm</div><p>ITALTHERM is an Italian company specializing in high-technology systems.</p></div><div><h4>Pages</h4>'+NAVL.map(function(n){return '<a href="#'+n[0]+'">'+n[1]+'</a>'}).join('')+'</div><div><h4>Contact</h4><a>'+PH+'</a><a>'+MOB+'</a><a>'+MAIL+'</a><a>'+ADDR.replace('<br>',', ')+'</a></div></div><div class="bt"><span>© <span data-year>2026</span> ITALTHERM S.r.l. · P.IVA 02487940518 · REA Arezzo 220552</span><span>Privacy</span></div></div></footer>'}
+
+/* views */
+function heroHTML(){
+ return '<section class="hero"><div class="bg"></div><div class="ghost" aria-hidden="true">IT.CWA</div><div class="w body"><div><h1>'+HEAD+'</h1><p class="sub">'+SUB+'</p><div class="hb"><a class="btn b1" href="#products">Discover the furnaces →</a><a class="btn b2" href="#contact">Contact us</a></div>'+
+ '<div class="cap">'+SL.map(function(s,i){return '<div class="c'+(i?'':' on')+'"><b>'+s[1]+'</b><span>'+s[2]+'</span></div>'}).join('')+'</div><div class="ctrl"><button class="pv" aria-label="Previous machine">←</button><button class="nx" aria-label="Next machine">→</button><span class="count"><i class="cur">01</i> / 04</span></div></div>'+
+ '<div class="stage">'+SL.map(function(s,i){return '<div class="m'+(i?'':' on')+'"><img src="'+src(s[0]+'_o')+'" alt="'+s[1]+'"></div>'}).join('')+'</div></div>'+
+ '<div class="sel"><div class="w">'+SL.map(function(s,i){return '<button'+(i?'':' class="on"')+'><img src="'+src(s[0]+'_t')+'" alt=""><span><b>'+s[1]+'</b><span>'+s[2]+'</span></span></button>'}).join('')+'</div></div></section>'}
+function home(){return heroHTML()+
+ '<section class="tg"><div class="w">'+TG.map(function(t){return '<div>'+t+'</div>'}).join('')+'</div></section>'+
+ '<section class="sc"><div class="w"><div class="hd"><div><div class="ey">Catalogue</div><h2>Our furnaces</h2></div><a class="btn b2" href="#products">All 11 systems</a></div><div class="rail">'+P.map(function(p){return pc(p)}).join('')+'</div></div></section>'+
+ '<section class="sc" style="padding-top:0"><div class="w"><div class="hd"><div><div class="ey">What we do</div><h2>Services</h2></div></div><div class="svt">'+SV.map(function(s){return '<a href="#products"><div class="im"><img src="'+src(s[0])+'" alt="" loading="lazy"></div><h3>'+s[1]+'</h3></a>'}).join('')+'</div></div></section>'+
+ '<section class="sc" style="padding-top:0"><div class="w"><div class="band"><div><div class="ey">Contact us</div><h2>Request a contact</h2></div><div class="k"><a href="#contact"><div><span>Phone</span>'+PH+'</div>→</a><a href="#contact"><div><span>Email</span>'+MAIL+'</div>→</a></div></div></div></section>'}
+function products(){var chips=[['all','All'],['melt','Melting furnaces'],['heat','Heat treatment'],['prod','Production systems']];
+ return '<section class="ph0 pg"><div class="w"><div class="crumb"><a href="#home">Home</a> / Products</div><h1>Products</h1><p class="lead">'+SUB.split(',')[0]+' systems.</p><div class="chips">'+chips.map(function(c,i){return '<button data-f="'+c[0]+'"'+(i?'':' class="on"')+'>'+c[1]+'</button>'}).join('')+'</div></div></section><section class="sc" style="padding-top:30px"><div class="w"><div class="gr3" id="pgrid">'+P.map(function(p){return '<div data-g="'+p.g+'">'+pc(p)+'</div>'}).join('')+'</div></div></section>'}
+var SPEC=[['VOLTAGGIO / VOLTAGE',['380V, 50/60 HZ<br>TRIFASE / THREE PHASE','380V, 50/60 HZ<br>TRIFASE / THREE PHASE','380V, 50/60 HZ<br>TRIFASE / THREE PHASE']],['POTENZA / POWER',['25KW','30KW','35KW']],['TEMPO DI FUSIONE / MELTING TIME',['ABOUT 5-6 MINS','ABOUT 15-30 MINS','ABOUT 15-30 MINS']],['VELOCITÀ DI COLATA / CASTING SPEED',['0-20 CM/M','10-20 CM/M','10-20 CM/M']],['CAPACITÀ / CAPACITY',['5.0 KG AU','10.0 KG AU','20.0 KG AU']],['GAS',['ARGON GAS O NITROGENO / ARGON GAS OR NITROGEN','ARGON GAS O NITROGENO / ARGON GAS OR NITROGEN','ARGON GAS O NITROGENO / ARGON GAS OR NITROGEN']],['TEMPERATURA / TEMPERATURE',['1600 °C','1600 °C','1600 °C']],['DIMENSIONI / OVERALL SIZE',['900×700×1750 MM','1000×800×1850 MM','1000×800×1850 MM']],['PESO DELLA MACCHINA / MACHINE WEIGHT',['220 KG','240 KG','250 KG']]];
+function product(){var rel=['af','mt','gt'].map(byk);
+ return '<section class="ph0 pg" style="padding-bottom:10px"><div class="w"><div class="crumb"><a href="#home">Home</a> / <a href="#products">Products</a> / IT.CC</div></div></section>'+
+ '<section><div class="w"><div class="pd"><div class="gal"><div class="big"><img class="on" src="'+src('cc')+'" alt="IT.CC"><img src="'+src('cc3')+'" alt="IT.CC vista 2" style="object-fit:cover"></div><div class="th"><button class="on"><img src="'+src('cc')+'" alt=""></button><button><img src="'+src('cc3')+'" alt="" style="object-fit:cover"></button></div></div>'+
+ '<div><span class="badge">IT.CC</span><h1>CONTINUOUS CASTING METAL MELTING FURNACE</h1><div class="desc"><b>ItalTherm Continuous Casting Machine:</b>A compact, versatile system for continuous casting of wires, strips, and tubes in precious metal alloys, featuring inert‑gas closed‑chamber melting, rapid shape change, and full metal discharge every batch.</div>'+
+ '<div class="act"><a class="btn b1" href="#contact">Request a quote →</a><a class="btn b2" href="#contact">Contact us</a></div><a class="pdf">DOWNLOAD TECHNICAL SPECIFICATIONS ↓</a>'+
+ '<div class="meta">SKU: CONTINUOUS CASTING MACHINES (IT.CC)<br>Category: Ital-therm<br>Tag: CONTINUOUS CASTING MACHINES (IT.CC)</div></div></div>'+
+ '<div class="ey" style="margin-top:20px">Description</div><div class="spec"><div class="spec-w"><table><thead><tr><th></th><th>IT.CC05</th><th>IT.CC10</th><th>IT.CC20</th></tr></thead><tbody>'+SPEC.map(function(r){return '<tr><th>'+r[0]+'</th>'+r[1].map(function(v){return '<td>'+v+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div></div></div></section>'+
+ '<section class="sc"><div class="w"><div class="hd"><h2>Other furnaces</h2><a class="btn b2" href="#products">All products</a></div><div class="gr3">'+rel.map(function(p){return pc(p)}).join('')+'</div></div></section>'}
+function about(){return '<section class="ph0 pg"><div class="w"><div class="crumb"><a href="#home">Home</a> / About us</div><div class="ey">ITALTHERM</div><h1>Advanced Solutions for Precious Metal Processing</h1><p class="lead">ITALTHERM is an Italian company specializing in high‑technology systems for melting, casting, and heat treatment of precious metals.</p><p class="lead" style="margin-top:12px">Founded by a team of experienced engineers and high skilled technicians, we provide reliable, precise, and customizable equipment for refineries, jewelry manufacturers, and bullion producers.</p></div></section>'+
+ '<div class="w"><div class="ab"><div class="tx"><div class="ey">Our solutions</div><h2>Melting Furnaces</h2><p>Medium‑frequency induction furnaces engineered for gold, silver, platinum, and palladium.</p><ul><li>Contact‑free, contamination‑free melting</li><li>Temperature precision ±1°C</li><li>Tilt‑pour and vacuum options</li><li>30% faster heating, continuous 24/7 operation</li></ul></div><div class="im c"><img src="'+src('mt')+'" alt="IT.MT"></div></div>'+
+ '<div class="ab"><div class="tx"><div class="ey">Our solutions</div><h2>Continuous Casting Machines</h2><p>Flexible systems for oxidation‑free production of strips, tubes, and wires.</p><ul><li>Section change in under 10 minutes</li><li>Protective gas atmosphere</li><li>Full graphite mold protection</li></ul></div><div class="im"><img src="'+src('cc3')+'" alt="IT.CC"></div></div>'+
+ '<div class="ab"><div class="tx"><div class="ey">Our solutions</div><h2>Heat Treatment Ovens</h2><p>Controlled‑atmosphere thermal systems for:</p><ul><li>Annealing</li><li>Deoxidation</li><li>Chain soldering (belt furnaces)</li></ul></div><div class="im c"><img src="'+src('af')+'" alt="IT.AF"></div></div></div>'+
+ '<section class="why sc"><div class="w"><div class="ey">ITALTHERM</div><h2>Why Choose ITALTHERM</h2><p style="margin-top:14px;font-size:17px;color:#34475c;max-width:60ch">These technologies ensure thermal uniformity, repeatability and consistent results in processing.</p><div class="gridw"><div>Italian engineering and industry expertise</div><div>High‑purity, high‑efficiency performance</div><div>Modular and customizable systems</div><div>Built for continuous industrial use</div></div></div></section>'}
+function contact(){return '<section class="ph0 pg"><div class="w"><div class="crumb"><a href="#home">Home</a> / Contact us</div><h1>Contact Us</h1><p class="lead">Please fill out the form below to request information or an estimate of costs. We will answer back as soon as possible.</p></div></section>'+
+ '<section><div class="w ctw"><form class="fl" onsubmit="return false"><div class="row2"><div class="fld"><label for="f1">First name<i>(Required)</i></label><input class="inp" id="f1" autocomplete="given-name"></div><div class="fld"><label for="f2">Last name<i>(Required)</i></label><input class="inp" id="f2" autocomplete="family-name"></div></div>'+
+ '<div class="row2"><div class="fld"><label for="f3">Your email<i>(Required)</i></label><input class="inp" id="f3" type="email" placeholder="Enter Email" autocomplete="email"></div><div class="fld"><label for="f4">Confirm email</label><input class="inp" id="f4" type="email" placeholder="Confirm Email"></div></div>'+
+ '<div class="fld"><label for="f5">Your request<i>(Required)</i></label><textarea class="inp" id="f5"></textarea></div><label class="gdpr"><input type="checkbox"><span><b>PRIVACY (GDPR)</b> (Required) · Information pursuant to Art. 13 of the general regulation on data protection - GDPR EC Regulation, European Parliament 27/04/2016 No. 679. Read our privacy policy.</span></label><button class="btn b1" style="justify-content:center">Send request</button></form>'+
+ '<div class="side"><div class="card"><div class="ey">Call for help</div><span class="big">'+PH+'</span><div class="row"><a class="b1" style="background:var(--blue);color:#fff">Call</a><a class="b2" style="border:1.5px solid var(--navy)">WhatsApp '+MOB+'</a></div></div>'+
+ '<div class="card"><div class="ey">Details</div><p><b>ITALTHERM S.r.l.</b><br>P.IVA 02487940518<br>REA Arezzo 220552</p><address style="margin-top:10px">'+ADDR+'</address></div>'+
+ '<div class="card"><div class="ey">Email address</div><span class="big" style="font-size:20px">'+MAIL+'</span></div>'+
+ '<div class="map"><div>Click to load the map<small>Viale S. Maria delle Vertighe, 50/B</small></div></div></div></div></section>'}
+var V={home:home,products:products,'product-cc':product,about:about,contact:contact};
+var app=document.getElementById('app');
+app.innerHTML=header()+Object.keys(V).map(function(k){return '<main class="view" data-v="'+k+'">'+V[k]()+'</main>'}).join('')+footer();
+document.querySelectorAll('[data-year]').forEach(function(n){n.textContent=String(new Date().getFullYear())});
+
+/* router */
+function route(){var h=(location.hash||'#home').slice(1);if(!V[h])h='home';
+ document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('on',v.dataset.v===h)});
+ document.querySelectorAll('.tb a').forEach(function(a){a.classList.toggle('on',a.dataset.t===h)});
+ var nk=h==='product-cc'?'products':h;document.querySelectorAll('.hdr nav a').forEach(function(a){a.classList.toggle('on',a.dataset.n===nk)});
+ closeD();window.scrollTo(0,0)}
+function closeD(){var d=document.querySelector('.drw'),b=document.querySelector('.bur');d.classList.remove('open');d.setAttribute('aria-hidden','true');b.setAttribute('aria-expanded','false')}
+document.querySelector('.bur').addEventListener('click',function(){var d=document.querySelector('.drw');d.classList.add('open');d.setAttribute('aria-hidden','false');this.setAttribute('aria-expanded','true')});
+document.querySelector('.drw .x').addEventListener('click',closeD);
+document.querySelectorAll('.drw a').forEach(function(a){a.addEventListener('click',closeD)});
+addEventListener('hashchange',route);route();
+var hdr=document.querySelector('.hdr');addEventListener('scroll',function(){hdr.classList.toggle('is-scrolled',scrollY>10)},{passive:true});
+var tb=document.querySelector('.tb');function sz(){document.documentElement.style.setProperty('--tbh',tb.offsetHeight+'px')}sz();addEventListener('resize',sz);
+
+/* catalogue filter */
+document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.chips button').forEach(function(x){x.classList.toggle('on',x===b)});
+ document.querySelectorAll('#pgrid>div').forEach(function(d){d.style.display=(b.dataset.f==='all'||d.dataset.g===b.dataset.f)?'':'none'})})});
+/* gallery */
+var gb=document.querySelectorAll('.gal .th button'),gi=document.querySelectorAll('.gal .big img');
+gb.forEach(function(b,i){b.addEventListener('click',function(){gb.forEach(function(x,k){x.classList.toggle('on',k===i)});gi.forEach(function(x,k){x.classList.toggle('on',k===i)})})});
+/* hero slider */
+(function(){var h=document.querySelector('.hero'),ms=h.querySelectorAll('.stage .m'),cs=h.querySelectorAll('.cap .c'),bs=h.querySelectorAll('.sel button'),gh=h.querySelector('.ghost'),cur=h.querySelector('.cur'),i=0,t,paused=false,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function go(n){i=(n+4)%4;ms.forEach(function(e,k){e.classList.toggle('on',k===i)});cs.forEach(function(e,k){e.classList.toggle('on',k===i)});bs.forEach(function(e,k){e.classList.remove('on');if(k===i){void e.offsetWidth;e.classList.add('on')}});gh.textContent=SL[i][1];cur.textContent='0'+(i+1);sched()}
+ function sched(){clearTimeout(t);if(rm||paused)return;t=setTimeout(function(){go(i+1)},6000)}
+ bs.forEach(function(b,k){b.addEventListener('click',function(){go(k)})});h.querySelector('.pv').addEventListener('click',function(){go(i-1)});h.querySelector('.nx').addEventListener('click',function(){go(i+1)});
+ h.addEventListener('mouseenter',function(){paused=true;clearTimeout(t)});h.addEventListener('mouseleave',function(){paused=false;sched();h.style.removeProperty('--px');h.style.removeProperty('--py')});
+ if(!rm&&matchMedia('(hover:hover)').matches)h.addEventListener('mousemove',function(e){var r=h.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;h.style.setProperty('--px',(x*-22)+'px');h.style.setProperty('--py',(y*-14)+'px')});
+ sched()})();
+</script>

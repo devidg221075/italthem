@@ -1,0 +1,88 @@
+{
+  "slug": "it-gt",
+  "code": "IT.GT",
+  "title": "GEAR-DRIVEN TILTING METAL MELTING FURNACE MODEL IT.GT",
+  "short": "ItalTherm Gear-Driven Tilting Metal Melting Furnace delivers robust capabilities for melting precious metals such as gold, silver, with capacities ranging from 20 kg to 50 kg.\nEquipped with energy-efficient medium frequency induction power generator and precise temperature control for rapid and uniform heating.\nThe tilting mechanism is driven by a cost-effective gear reduction drive system with smooth controlled tilting and precise Curved Pouring Trajectory.",
+  "specs": {
+    "columns": [
+      "IT.GT20",
+      "IT.GT30",
+      "IT.GT50"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "30KW (ADJUSTABLE)",
+          "30KW (ADJUSTABLE)",
+          "35KW (ADJUSTABLE)"
+        ]
+      },
+      {
+        "label": "CAPACITÀ MAX. / MAX CAPACITY",
+        "values": [
+          "ORO / GOLD: 20 KG ARGENTO / SILVER:10 KG",
+          "ORO / GOLD: 30 KG ARGENTO / SILVER:15 KG",
+          "ORO / GOLD: 50 KG ARGENTO / SILVER:25 KG"
+        ]
+      },
+      {
+        "label": "TEMPO DI FUSIONE / MELTING TIME",
+        "values": [
+          "10-20 MIN",
+          "10-30 MIN",
+          "10-30 MIN"
+        ]
+      },
+      {
+        "label": "DIMENSIONI / DIMENSIONS",
+        "values": [
+          "1210×750×1340 MM",
+          "1210×750×1340 MM",
+          "1210×750×1340 MM"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MASSIMA / MAX TEMPERATURE",
+        "values": [
+          "1500°C",
+          "1500°C",
+          "1500°C"
+        ]
+      },
+      {
+        "label": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K-TYPE",
+        "values": [
+          "FORNITO / EQUIPPED",
+          "FORNITO / EQUIPPED",
+          "FORNITO / EQUIPPED"
+        ]
+      },
+      {
+        "label": "PESO/ WEIGHT",
+        "values": [
+          "230 KG",
+          "230 KG",
+          "250 KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "GEAR-DRIVEN TILTING METAL MELTING FURNACE",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/GEAR-DRIVEN%20TILTING%20METAL%20MELTING%20FURNACE%20MODEL%20IT.GT.pdf",
+  "meta": "SKU: GEAR-DRIVEN TILTING METAL MELTING FURNACE MODEL IT.GT\nCategory: Ital-therm\nTag: GEAR-DRIVEN TILTING METAL MELTING FURNACE MODEL IT.GT",
+  "group": "melt",
+  "old_path": "/product/gear-driven-tilting-metal-melting-furnace-model-it-gt/",
+  "download_label": "DOWNLOAD TECHNICAL SPECIFICATIONS"
+}

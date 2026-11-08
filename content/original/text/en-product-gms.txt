@@ -1,0 +1,28 @@
+## TITLE
+GRAINS PRODUCTION SYSTEM IT.GMS
+## SHORT DESCRIPTION
+ItalTherm AUTOMATIC GRAINS MELTING SYSTEM equipped with advanced medium-frequency induction melting technology. Designed for Alloys and Oxidation-Sensitive Metals. It ensures rapid and uniform heating with precise temperature control necessary for maintaining metal integrity and fluidity.
+The granulation process is protected by inert gas to minimize the oxidation of metals.
+## DESCRIPTION TAB
+ItalTherm AUTOMATIC GRAINS MELTING SYSTEM equipped with advanced medium-frequency induction melting technology. Designed for Alloys and Oxidation-Sensitive Metals. It ensures rapid and uniform heating with precise temperature control necessary for maintaining metal integrity and fluidity.
+The granulation process is protected by inert gas to minimize the oxidation of metals.
+## TABLE CAPTION
+GRAINS PRODUCTION SYSTEM
+## TABLE
+ | IT.GMS05 | IT.GMS10 | IT.GMS15
+VOLTAGGIO/ VOLTAGE | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ
+POTENZA / POWER | 10KW / (VARIABILE /ADJUSTABLE) | 20KW / (VARIABILE /ADJUSTABLE) | 25KW / (VARIABILE /ADJUSTABLE)
+CAPACITÀ MASSIMA/ MAX CAPACITY | ORO / GOLD : 5KG | ORO / GOLD : 10KG | ORO / GOLD : 15KG
+TEMPO DI FUSIONE / MELTING TIME | 10-20 MIN | 10-20 MIN | 10-20 MIN
+DIMENSIONI / DIMENSION (LWH) | 1100*1000'1100MM | 1100*1000'1100MM | 1100*1000'1100MM
+TEMPERATURA MASSIMA/ MAX TEMPERATURE | 1500°C | 1500°C | 1500°C
+CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE | FORNITO / EQUIPPED | FORNITO / EQUIPPED | FORNITO / EQUIPPED
+PESO/ WEIGHT | 230 KG | 250KG | 380 KG
+## META
+SKU: GRAINS PRODUCTION SYSTEM IT.GMS
+Category: Ital-therm
+Tag: GRAINS PRODUCTION SYSTEM IT.GMS
+## PDF
+/wp-content/uploads/2026/05/GRAINS PRODUCTION SYSTEM IT.GMS.pdf
+## DOWNLOAD LABEL
+DOWNLOAD TECHNICAL SPECIFICATIONS

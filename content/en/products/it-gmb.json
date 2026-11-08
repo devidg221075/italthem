@@ -1,0 +1,89 @@
+{
+  "slug": "it-gmb",
+  "code": "IT.GMB",
+  "title": "GRAINS PRODUCTION SYSTEM MODEL IT.GMB",
+  "short": "ItalTherm AUTOMATIC GRAINS MELTING SYSTEM equipped with advanced medium-frequency induction melting technology. Designed for Alloys and Oxidation-Sensitive Metals. It ensures rapid and uniform heating with precise temperature control necessary for maintaining metal integrity and fluidity.\nThe whole granulation process and the grains cooling, offloading and draining are fully Automatic to grant operation efficiency and safety.\nThe granulation process is protected by inert gas to minimize the oxidation of metals.",
+  "specs": {
+    "columns": [
+      "IT.GMB30",
+      "IT.GMB50",
+      "IT.GMB100"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "30KW\n(VARIABILE /ADJUSTABLE",
+          "45KW\n(VARIABILE /ADJUSTABLE",
+          "75KW\n(VARIABILE /ADJUSTABLE"
+        ]
+      },
+      {
+        "label": "CAPACITÀ MASSIMA/ MAX CAPACITY",
+        "values": [
+          "ORO / GOLD : 30 KG / ARGENTO/ SILVER:15 K",
+          "ORO / GOLD: 50 KG / ARGENTO/ SILVER: 25 KG",
+          "ORO/ GOLD: 100 KG/ ARGENTO/ SILVER: 50 KG"
+        ]
+      },
+      {
+        "label": "TEMPO DI FUSIONE / MELTING TIME",
+        "values": [
+          "10-30 MIN",
+          "20-40 MIN",
+          "20-40 MIN"
+        ]
+      },
+      {
+        "label": "DIMENSIONI / DIMENSION (LWH)",
+        "values": [
+          "2100×2360×2600 MM",
+          "2100×2360×2600 MM",
+          "2100×2360×2600 MM"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MASSIMA/ MAX TEMPERATURE",
+        "values": [
+          "1500°C",
+          "1500°C",
+          "1500°C"
+        ]
+      },
+      {
+        "label": "CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE",
+        "values": [
+          "FORNITO",
+          "FORNITO",
+          "FORNITO"
+        ]
+      },
+      {
+        "label": "PESO/ WEIGHT",
+        "values": [
+          "330KG",
+          "350KG",
+          "380KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "GRAINS PRODUCTION SYSTEM",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/GRAINS-PRODUCTION-SYSTEM-MODEL-IT_0.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/GRAINS-PRODUCTION-SYSTEM-MODEL-IT_1.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/GRAINS%20PRODUCTION%20SYSTEM%20MODEL%20IT.GMB.pdf",
+  "meta": "SKU: GRAINS PRODUCTION SYSTEM MODEL IT.GMB\nCategory: Ital-therm\nTag: GRAINS PRODUCTION SYSTEM MODEL IT.GMB",
+  "group": "prod",
+  "old_path": "/product/grains-production-system-model-it-gmb/",
+  "download_label": "DOWNLOAD TECHNICAL SPECIFICATIONS"
+}

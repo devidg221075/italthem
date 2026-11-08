@@ -1,0 +1,305 @@
+[
+  {
+    "slug": "home",
+    "title": "Home Italtherm",
+    "lead": "Italtherm: industrial furnaces for melting, casting, and heat treating precious metals. Italian technology for jewelry and industry.",
+    "meta_description": "ITALTHERM is an Italian company specializing in high-technology systems for melting, casting, and heat treatment of precious metals.",
+    "old_path": "/",
+    "sections": [
+      {
+        "heading": "ITALTHERM",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "High-technology systems"
+          },
+          {
+            "type": "h",
+            "level": 4,
+            "text": "About Us"
+          },
+          {
+            "type": "p",
+            "text": "Exceptional value"
+          },
+          {
+            "type": "h",
+            "level": 4,
+            "text": "Products"
+          },
+          {
+            "type": "p",
+            "text": "Precision Meets Affordability"
+          },
+          {
+            "type": "h",
+            "level": 4,
+            "text": "Services"
+          }
+        ]
+      },
+      {
+        "heading": "Products featured",
+        "blocks": [
+          {
+            "type": "h",
+            "level": 5,
+            "text": "CONTINUOUS WIRE ANNEALING"
+          },
+          {
+            "type": "h",
+            "level": 5,
+            "text": "MANUAL TILTING METAL MELTING FURNACE MODEL IT.MT"
+          },
+          {
+            "type": "h",
+            "level": 5,
+            "text": "CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF"
+          },
+          {
+            "type": "h",
+            "level": 5,
+            "text": "CONTINUOUS CASTING METAL MELTING FURNACE"
+          }
+        ]
+      },
+      {
+        "heading": "Services",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Precision Meets Affordability: 10-50kg Gear-Driven Tilting Metal Melting Furnace."
+          },
+          {
+            "type": "p",
+            "text": "Unlock exceptional value without compromising performance with our 10-50kg Gear-Driven Tilting Metal Melting Furnace. Designed for savvy investors and practical operators, this furnace delivers robust melting capabilities through a cost-effective gear reduction drive system. Ideal for small to large-scale operations processing gold, silver, copper, and other non-ferrous metals, it combines efficiency, durability, and affordability in one powerful package."
+          },
+          {
+            "type": "h",
+            "level": 5,
+            "text": "ItalTherm Mesh Belt Heat Treatment Furnace"
+          },
+          {
+            "type": "p",
+            "text": "The ItalTherm mesh belt heat treatment furnace is designed for continuous"
+          },
+          {
+            "type": "h",
+            "level": 5,
+            "text": "ItalTherm Continuous Wire Annealing Furnace"
+          },
+          {
+            "type": "p",
+            "text": "A high-precision system engineered for the continuous annealing of precious-metal wires,"
+          },
+          {
+            "type": "h",
+            "level": 5,
+            "text": "ItalTherm Annealing Furnaces"
+          },
+          {
+            "type": "p",
+            "text": "Engineered for precision annealing of gold, silver, platinum, and other precious"
+          },
+          {
+            "type": "h",
+            "level": 5,
+            "text": "Gear-Driven Tilting Metal Melting Furnace"
+          },
+          {
+            "type": "p",
+            "text": "Precision Meets Affordability: 10-50kg Gear-Driven Tilting Metal Melting Furnace\nUnlock exceptional"
+          }
+        ]
+      },
+      {
+        "kicker": "Italtherm",
+        "heading": "Request a contact",
+        "blocks": []
+      }
+    ],
+    "form": [
+      "First name and last name",
+      "(Required)",
+      "First name",
+      "Last name",
+      "Your email",
+      "(Required)",
+      "Enter Email",
+      "Confirm Email",
+      "Your request",
+      "(Required)",
+      "PRIVACY (GDPR)",
+      "(Required)",
+      "Information pursuant to Art. 13 of the general regulation on data protection - GDPR EC Regulation, European Parliament 27/04/2016 No. 679, G.U",
+      "Go to the link to learn about our policy on",
+      "privacy",
+      "27/04/2016 No. 679, G.U."
+    ]
+  },
+  {
+    "slug": "about",
+    "title": "About",
+    "lead": "ITALTHERM is an Italian company specializing in high-technology systems for melting, casting, and heat treatment of precious metals.",
+    "meta_description": "ITALTHERM is an Italian company specializing in high-technology systems for melting, casting, and heat treatment of precious metals. Founded by a team of experienced engineers and high skilled technicians, we provide reliable, precise, and customizable equipment for refineries, jewelry manufacturers, and bullion producers.",
+    "old_path": "/italtherm-is-an-italian-company-specializing-in-high-technology-systems-for-melting-casting-and-heat-treatment-of-precious-metals/",
+    "sections": [
+      {
+        "kicker": "ITALTHERM",
+        "heading": "Advanced Solutions for Precious Metal Processing",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Founded by a team of experienced engineers and high skilled technicians, we provide reliable, precise, and customizable equipment for refineries, jewelry manufacturers, and bullion producers."
+          }
+        ]
+      },
+      {
+        "kicker": "Our solutions",
+        "heading": "Melting Furnaces",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Medium-frequency induction furnaces engineered for gold, silver, platinum, and palladium."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Contact-free, contamination-free melting",
+              "Temperature precision ±1°C",
+              "Tilt-pour and vacuum options",
+              "30% faster heating, continuous 24/7 operation"
+            ]
+          }
+        ]
+      },
+      {
+        "kicker": "Our solutions",
+        "heading": "Continuous Casting Machines",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Flexible systems for oxidation-free production of strips, tubes, and wires."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Section change in under 10 minutes",
+              "Protective gas atmosphere",
+              "Full graphite mold protection"
+            ]
+          }
+        ]
+      },
+      {
+        "kicker": "Our solutions",
+        "heading": "Heat Treatment Ovens",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Controlled-atmosphere thermal systems for:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Annealing",
+              "Deoxidation",
+              "Chain soldering (belt furnaces)"
+            ]
+          }
+        ]
+      },
+      {
+        "kicker": "ITALTHERM",
+        "heading": "Why Choose ITALTHERM",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "These technologies ensure thermal uniformity, repeatability and consistent results in processing."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Italian engineering and industry expertise",
+              "High-purity, high-efficiency performance",
+              "Modular and customizable systems",
+              "Built for continuous industrial use"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "products",
+    "title": "Products",
+    "lead": "",
+    "meta_description": "high-technology systems for melting, casting, and heat treatment of precious metals.",
+    "old_path": "/shop/",
+    "sections": []
+  },
+  {
+    "slug": "contact",
+    "title": "Contact Us",
+    "lead": "Please fill out the form below to request information or an estimate of costs. We will answer back as soon as possible.\nPlease fill out all required fields.",
+    "meta_description": "Please complete the form (required) below to contact Us. Thank you",
+    "old_path": "/contact-us/",
+    "sections": [
+      {
+        "kicker": "Contact Us",
+        "heading": "Contact Us",
+        "blocks": [
+          {
+            "type": "h",
+            "level": 4,
+            "text": "Call for help"
+          },
+          {
+            "type": "p",
+            "text": "Phone: +39 0575 802485"
+          },
+          {
+            "type": "h",
+            "level": 4,
+            "text": "Details"
+          },
+          {
+            "type": "p",
+            "text": "ITALTHERM S.r.l.\nP.IVA 02487940518"
+          },
+          {
+            "type": "p",
+            "text": "Viale S. Maria delle Vertighe, 50/b\nMonte San Savino 52048\n(AR) ITALY"
+          },
+          {
+            "type": "h",
+            "level": 4,
+            "text": "Email address"
+          },
+          {
+            "type": "p",
+            "text": "info@ital-therm.it"
+          }
+        ]
+      }
+    ],
+    "form": [
+      "First name and last name",
+      "(Required)",
+      "First name",
+      "Last name",
+      "Your email",
+      "(Required)",
+      "Enter Email",
+      "Confirm Email",
+      "Your request",
+      "(Required)",
+      "PRIVACY (GDPR)",
+      "(Required)",
+      "Information pursuant to Art. 13 of the general regulation on data protection - GDPR EC Regulation, European Parliament 27/04/2016 No. 679, G.U",
+      "Go to the link to learn about our policy on",
+      "privacy",
+      "27/04/2016 No. 679, G.U."
+    ]
+  }
+]

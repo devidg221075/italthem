@@ -1,0 +1,15 @@
+{
+  "name": "italtherm-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test --test-concurrency=1 \"tests/**/*.test.mjs\"",
+    "images": "node scripts/optimize-images.mjs",
+    "icons": "node scripts/build-icons.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}

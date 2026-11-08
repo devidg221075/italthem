@@ -1,0 +1,88 @@
+{
+  "slug": "it-gt",
+  "code": "IT.GT",
+  "title": "FORNO RIBALTABILE PER FUSIONE METALLI CON TRASMISSIONE AD INGRANAGGI",
+  "short": "Il forno di fusione per metalli ribaltabile a ingranaggi ItalTherm offre solide capacità per la fusione di metalli preziosi come oro e argento, con capacità che vanno da 20 kg a 50 kg.\nDotato di generatore di corrente a induzione a media frequenza ad alta efficienza energetica e controllo preciso della temperatura per un riscaldamento rapido e uniforme.\nIl meccanismo di inclinazione è azionato da un sistema di trasmissione con riduzione a ingranaggi conveniente con inclinazione controllata e precisa e traiettoria di versamento curva precisa.",
+  "specs": {
+    "columns": [
+      "IT.GT20",
+      "IT.GT30",
+      "IT.GT50"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "30KW (ADJUSTABLE)",
+          "30KW (ADJUSTABLE)",
+          "35KW (ADJUSTABLE)"
+        ]
+      },
+      {
+        "label": "CAPACITÀ MAX. / MAX CAPACITY",
+        "values": [
+          "ORO / GOLD: 20 KG ARGENTO / SILVER:10 KG",
+          "ORO / GOLD: 30 KG ARGENTO / SILVER:15 KG",
+          "ORO / GOLD: 50 KG ARGENTO / SILVER:25 KG"
+        ]
+      },
+      {
+        "label": "TEMPO DI FUSIONE / MELTING TIME",
+        "values": [
+          "10-20 MIN",
+          "10-30 MIN",
+          "10-30 MIN"
+        ]
+      },
+      {
+        "label": "DIMENSIONI / DIMENSIONS",
+        "values": [
+          "1210×750×1340 MM",
+          "1210×750×1340 MM",
+          "1210×750×1340 MM"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MASSIMA / MAX TEMPERATURE",
+        "values": [
+          "1500°C",
+          "1500°C",
+          "1500°C"
+        ]
+      },
+      {
+        "label": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K-TYPE",
+        "values": [
+          "FORNITO / EQUIPPED",
+          "FORNITO / EQUIPPED",
+          "FORNITO / EQUIPPED"
+        ]
+      },
+      {
+        "label": "PESO/ WEIGHT",
+        "values": [
+          "230 KG",
+          "230 KG",
+          "250 KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "FORNO RIBALTABILE PER FUSIONE METALLI CON TRASMISSIONE AD INGRANAGGI",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/GEAR-DRIVEN-TILTING-METAL-MELTING-FURNACE-MODEL-IT.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/GEAR-DRIVEN%20TILTING%20METAL%20MELTING%20FURNACE%20MODEL%20IT.GT.pdf",
+  "meta": "SKU: GEAR-DRIVEN TILTING METAL MELTING FURNACE MODEL IT.GT\nCategory: Ital-therm\nTag: GEAR-DRIVEN TILTING METAL MELTING FURNACE MODEL IT.GT",
+  "group": "melt",
+  "old_path": "/it/product/forno-ribaltabile-per-fusione-metalli-con-trasmissione-ad-ingranaggi/",
+  "download_label": "SCARICA SPECIFICHE TECNICHE"
+}

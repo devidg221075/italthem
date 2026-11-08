@@ -1,0 +1,73 @@
+{
+  "slug": "it-bf",
+  "code": "IT.BF",
+  "title": "FORNO A NASTRO AD ATMOSFERA CONTROLLATA",
+  "short": "Forno per trattamento termico a nastro a rete ItalTherm.\nUn forno a processo continuo per la saldatura, la brasatura, la sinterizzazione e la ricottura di componenti metallici. Il sistema a nastri a rete garantisce una produzione ininterrotta, mentre un’atmosfera di gas inerte e una barriera contro la combustione dell’ossigeno prevengono l’ossidazione. Il forno è dotato di controllo della temperatura PID programmabile, zone di riscaldamento indipendenti e una sezione di raffreddamento controllata per risultati costanti e di alta qualità in un’ampia gamma di applicazioni.",
+  "specs": {
+    "columns": [
+      "IT.BF1",
+      "IT.BF2"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "380V, 50/60 HZ\nTRIFASE/ THREE PHASE",
+          "380V, 50/60 HZ\nTRIFASE/ THREE PHASE"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "16KW",
+          "25KW"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MAX./ MAXIMUM TEMPERATURE",
+        "values": [
+          "1000°c",
+          "1000°c"
+        ]
+      },
+      {
+        "label": "CAMERA DI RISCALDAMENTO/ HEATING CHAMBER",
+        "values": [
+          "1000(L)×60(W)×30(H) MM",
+          "2X 1000(L)×60(W)×30(H) MM"
+        ]
+      },
+      {
+        "label": "GAS PROTETTIVO / PROTECTIVE GAS",
+        "values": [
+          "880 ° C/80 MIN",
+          "880 ° C/80 MIN"
+        ]
+      },
+      {
+        "label": "DIMENSIONI / DIMENSION",
+        "values": [
+          "3970(L)×550(W)×1448(H) MM",
+          "3970(L)×550(W)×1448(H) MM"
+        ]
+      },
+      {
+        "label": "PESO/ WEIGHT",
+        "values": [
+          "480 KG",
+          "480 KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "FORNO A NASTRO AD ATMOSFERA CONTROLLATA",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-1.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/BELT-FURNACE-_FIORNO-NASTRO-IT-BF-copia-2.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/CONTROLLED-ATMOSPHERE-BELT-FURNACE-MODEL-IT.BF_.pdf",
+  "meta": "SKU: CONTROLLED ATMOSPHERE BELT FURNACE MODEL IT.BF\nCategory: Ital-therm\nTag: CONTROLLED ATMOSPHERE BELT FURNACE MODEL IT.BF",
+  "group": "heat",
+  "old_path": "/it/product/forno-a-nastro-ad-atmosfera-controllata/",
+  "download_label": "SCARICA SPECIFICHE TECNICHE"
+}

@@ -1,0 +1,53 @@
+/* Catalogue page only (loaded by the products page, not by the rest of the site). */
+/* catalogue (approved mockup): banner, filter sidebar, count + sort, card grid; on phones a list with thumbnails */
+.cat-h{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#fff 0,#eef2f8 60%,#e1e8f2 100%);border-bottom:1px solid var(--line);padding-block:clamp(36px,5vw,64px)}
+.cat-h::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 52%,rgba(255,255,255,.7) 52%,rgba(255,255,255,.7) 66%,transparent 66%)}
+.cat-h .kick{margin-bottom:18px}
+.cat-h h1{font-size:var(--h1);line-height:1.1;max-width:18em;text-wrap:balance}
+.cat-h .sub{margin-top:16px;font-size:clamp(17px,1.5vw,20px);color:var(--ink);max-width:40em}
+.cl{display:grid;grid-template-columns:288px minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:start;padding-block:clamp(28px,4vw,48px) clamp(56px,7vw,96px)}
+html:not(.js) .cl{grid-template-columns:minmax(0,1fr)}
+html:not(.js) .cf{display:none}
+.cf{background:linear-gradient(160deg,var(--pearl),#eaeff6);border:1px solid var(--line);border-radius:var(--r2);position:sticky;top:calc(var(--hh) + 16px)}
+.cf summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 22px;font:700 22px var(--head);color:var(--ink);cursor:default}
+.cf summary::-webkit-details-marker{display:none}
+.cf .dn{display:none;width:22px;height:22px;color:var(--blue)}
+.cb{padding:0 22px 22px}
+.cf fieldset{border:0;margin:0 0 22px;padding:0;min-width:0}
+.cf legend{display:block;width:100%;padding:0 0 8px;margin-bottom:6px;font:600 17px/1.3 var(--head);color:var(--ink);border-bottom:1px solid var(--rule)}
+.cf .ap{width:100%}
+.cf .rs{display:block;margin:14px auto 0;font:600 14px var(--sans);color:var(--blue);text-decoration:underline;text-underline-offset:3px;text-align:center}
+.cbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.cnt{font:700 18px var(--head);color:var(--ink)}
+.so{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink)}
+html:not(.js) .so{display:none}
+.so select{appearance:none;-webkit-appearance:none;font:500 15px var(--sans);color:var(--ink);padding:11px 40px 11px 16px;border:1px solid var(--rule);border-radius:var(--r);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e3445' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 12px center/16px no-repeat;cursor:pointer}
+.cg{grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:var(--gut)}
+.cc{display:flex;min-width:0}
+.cc>.pc{flex:1}
+.cno{padding:32px 0;font-size:17px;color:var(--body)}
+@media (max-width:1000px){
+ .cl{grid-template-columns:minmax(0,1fr)}
+ .cf{position:static;background:#fff}
+ .cf summary{border:1.5px solid var(--blue);border-radius:var(--r);color:var(--blue);font:600 17px var(--sans);cursor:pointer;padding:14px 18px}
+ .cf[open] summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
+ .cf .dn{display:block}.cf[open] .dn{transform:rotate(180deg)}
+ .cf[open]{border-color:var(--blue)}
+ .cf .cb{padding-top:18px}
+}
+@media (max-width:600px){
+ .cg{grid-template-columns:minmax(0,1fr);gap:12px}
+ .cg .pc{display:grid;grid-template-columns:112px minmax(0,1fr);grid-template-areas:"ph code" "ph title";align-content:center;gap:2px 14px;padding:12px 48px 12px 12px}
+ .cg .pc .ph{grid-area:ph;margin:0;aspect-ratio:1.1/1}
+ .cg .pc small{grid-area:code;align-self:end;font-size:22px}
+ .cg .pc h3{grid-area:title;align-self:start;font-size:14.5px;padding-right:0}
+ .cg .pc::after{bottom:50%;transform:translateY(50%)}
+ .cbar{margin-bottom:14px}
+}
+
+/* no layout shift on phones: the markup is open (no-JS, wide screens) but the body stays hidden until catalogue.js has closed the panel */
+@media(max-width:1000px){.cf:not([data-t])>:not(summary){display:none}}
+
+/* section-banner photo: right side, fades into the banner; desktop only */
+.bv{display:none}
+@media(min-width:1001px){.cat-h .bv,.ct-h .bv{display:block;position:absolute;z-index:-1;top:0;right:0;bottom:0;width:40%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 55%);mask-image:linear-gradient(90deg,transparent 0,#000 55%)}.bv img{width:100%;height:100%;object-fit:cover;display:block}}

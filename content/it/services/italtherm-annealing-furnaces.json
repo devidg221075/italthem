@@ -1,0 +1,66 @@
+{
+  "slug": "italtherm-annealing-furnaces",
+  "title": "Forni di ricottura ItalTherm",
+  "body": "Progettati per la ricottura di precisione di oro, argento, platino e altre leghe di metalli preziosi, i forni ItalTherm offrono la combinazione ideale di precisione della temperatura, purezza dell'atmosfera ed efficienza produttiva.\nCaratteristiche principali\nTecnologia di riscaldamento avanzata\nGarantisce una distribuzione della temperatura perfettamente uniforme per risultati metallurgici costanti.\nAtmosfera protettiva e raffreddamento rapido\nL'ambiente controllato con gas inerte riduce al minimo l'ossidazione e consente cicli di raffreddamento rapidi e puliti.\nCostruzione robusta e sistemi di sicurezza intelligenti\nQualità costruttiva di livello industriale unita a protezioni intelligenti per un funzionamento affidabile e continuo.\nFlusso di lavoro semplificato\nUn sistema di scarico pneumatico accelera la gestione dei lotti e massimizza la produttività complessiva.\nI forni di ricottura ItalTherm, progettati per la ricottura di oro, argento, platino e altri metalli preziosi, uniscono in perfetto equilibrio controllo della temperatura, purezza dell'atmosfera ed efficienza operativa.\nTecnologia di riscaldamento avanzata per risultati uniformi\nRaffreddamento rapido e atmosfera protettiva\nDesign robusto e funzioni di sicurezza intelligenti\nFlusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "Progettati per la ricottura di precisione di oro, argento, platino e altre leghe di metalli preziosi, i forni ItalTherm offrono la combinazione ideale di precisione della temperatura, purezza dell'atmosfera ed efficienza produttiva."
+    },
+    {
+      "type": "h",
+      "level": 3,
+      "text": "Caratteristiche principali"
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Tecnologia di riscaldamento avanzata"
+    },
+    {
+      "type": "p",
+      "text": "Garantisce una distribuzione della temperatura perfettamente uniforme per risultati metallurgici costanti."
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Atmosfera protettiva e raffreddamento rapido"
+    },
+    {
+      "type": "p",
+      "text": "L'ambiente controllato con gas inerte riduce al minimo l'ossidazione e consente cicli di raffreddamento rapidi e puliti."
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Costruzione robusta e sistemi di sicurezza intelligenti"
+    },
+    {
+      "type": "p",
+      "text": "Qualità costruttiva di livello industriale unita a protezioni intelligenti per un funzionamento affidabile e continuo."
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Flusso di lavoro semplificato"
+    },
+    {
+      "type": "p",
+      "text": "Un sistema di scarico pneumatico accelera la gestione dei lotti e massimizza la produttività complessiva."
+    },
+    {
+      "type": "p",
+      "text": "I forni di ricottura ItalTherm, progettati per la ricottura di oro, argento, platino e altri metalli preziosi, uniscono in perfetto equilibrio controllo della temperatura, purezza dell'atmosfera ed efficienza operativa."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Tecnologia di riscaldamento avanzata per risultati uniformi",
+        "Raffreddamento rapido e atmosfera protettiva",
+        "Design robusto e funzioni di sicurezza intelligenti",
+        "Flusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività"
+      ]
+    }
+  ],
+  "old_path": "/it/services/italtherm-annealing-furnaces/"
+}

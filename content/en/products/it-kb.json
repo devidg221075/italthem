@@ -1,0 +1,92 @@
+{
+  "slug": "it-kb",
+  "code": "IT.KB",
+  "title": "AUTOMATIC BULLION BARS PRODUCTION SYSTEM Mod IT.KB",
+  "short": "ITALTHERM Automatic Vacuum (Bullion Bars) Casting Systems, engineered for both exceptional results and remarkable ease of use.\nFeaturing custom-shaped induction coils with integrated cooling technology, our proprietary process ensures uniform temperature distribution. The intelligent cooling system actively regulates mold temperature throughout the cycle, producing consistently brilliant, flawlessly flat surfaces that meet the highest market standards.\nEngineered for Continuous Industrial Performance, our machines maintain consistent performance under demanding production schedules. The robust construction and refined thermal management ensure reliable output for high-volume manufacturing environments.",
+  "specs": {
+    "columns": [
+      "IT.KB02",
+      "IT.KB04",
+      "IT.KB08"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "380V±10%, 50/60HZ",
+          "380V±10%, 50/60HZ",
+          "380V±10%, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "35KW",
+          "45KW",
+          "—"
+        ]
+      },
+      {
+        "label": "SISTEMA DI CONTROLLO / CONTROL SYSTEM",
+        "values": [
+          "PLC",
+          "PLC",
+          "PLC"
+        ]
+      },
+      {
+        "label": "METALLI / APPLICABLE METAL",
+        "values": [
+          "ORO E ARGENTO / GOLD AND SILVER",
+          "ORO E ARGENTO / GOLD AND SILVER",
+          "ORO E ARGENTO / GOLD AND SILVER"
+        ]
+      },
+      {
+        "label": "DURATA DEL CICLO / CYCLE TIME",
+        "values": [
+          "12-20 MINS",
+          "ABOUT 7-10 MINS",
+          "ABOUT 7-10 MINS"
+        ]
+      },
+      {
+        "label": "CAPACITÀ DELLO STAMPO / MOLD CAPACITY",
+        "values": [
+          "2 PCS 1 KG BAR",
+          "—",
+          "—"
+        ]
+      },
+      {
+        "label": "DIMENSIONI / DIMENSIONS",
+        "values": [
+          "1100×880×1100 MM",
+          "1520×900×1080 MM",
+          "1720×900×1080 MM"
+        ]
+      },
+      {
+        "label": "PESO / WEIGHT",
+        "values": [
+          "ABOUT 300 KG",
+          "ABOUT 550 KG",
+          "ABOUT 580 KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "AUTOMATIC BULLION BARS PRODUCTION SYSTEM",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/05/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/05/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_1.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/05/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_5.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/05/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_4.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/05/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT_3.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT.BK_.pdf",
+  "meta": "SKU: AUTOMATIC BULLION BARS PRODUCTION SYSTEM Mod IT.KB\nCategory: Ital-therm\nTag: AUTOMATIC BULLION BARS PRODUCTION SYSTEM Mod IT.KB",
+  "group": "prod",
+  "old_path": "/product/automatic-bullion-bars-production-system-mod-it-kb/",
+  "download_label": "DOWNLOAD TECHNICAL SPECIFICATIONS"
+}

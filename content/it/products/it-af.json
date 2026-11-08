@@ -1,0 +1,74 @@
+{
+  "slug": "it-af",
+  "code": "IT.AF",
+  "title": "FORNO DI RICOTTURA IN ATMOSFERA CONTROLLATA",
+  "short": "I forni di ricottura ItalTherm sono progettati per la ricottura di oro, argento, platino e altri metalli preziosi con un perfetto equilibrio tra controllo della temperatura, purezza atmosferica ed efficienza operativa:\nTecnologia di riscaldamento avanzata per risultati uniformi\nRaffreddamento rapido e atmosfera protettiva\nRobusto design e funzionalità di sicurezza intelligenti\nFlusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività",
+  "specs": {
+    "columns": [
+      "IT.AF400",
+      "IT.AF600"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "THREE PHASE 380V, 50/60HZ",
+          "THREE PHASE 380V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "16KW",
+          "25KW"
+        ]
+      },
+      {
+        "label": "ZONA DI RISCALDAMENTO/ HEATING ZONE",
+        "values": [
+          "400×300×150 MM(L×W×H)",
+          "600×300×150 MM(L×W×H)"
+        ]
+      },
+      {
+        "label": "GAS PROTETTIVO/ PROTECTIVE GAS",
+        "values": [
+          "NH3 OR NITROGEN-HYDROGEN MIXTURE",
+          "NH3 OR NITROGEN-HYDROGEN MIXTURE"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MAX./ MAXIMUM TEMPERATURE",
+        "values": [
+          "1000°c",
+          "1000°c"
+        ]
+      },
+      {
+        "label": "DIMENSIONI/ OVERALL SIZE",
+        "values": [
+          "850×1800×1500 MM(L×W×H)",
+          "850×2100×1500 MM(L×W×H)"
+        ]
+      },
+      {
+        "label": "PESO / WEIGHT",
+        "values": [
+          "350KG",
+          "450KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "FORNO DI RICOTTURA IN ATMOSFERA CONTROLLATA",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/Contr.-atmosphere-annealing-furnace_AF400.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/Contr.-atmosphere-annealing-furnace_AF400-3-1.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/Contr.-atmosphere-annealing-furnace_AF400-2-1.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/06/CONTROLLED-ATMOSPHERE-ANEALING-FURNACE-MODEL-IT.AF_.pdf",
+  "meta": "SKU: CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF\nCategory: Ital-therm\nTag: ANNEALING FURNACES",
+  "group": "heat",
+  "old_path": "/it/product/forno-di-ricottura-in-atmosfera-controllata/",
+  "download_label": "SCARICA SPECIFICHE TECNICHE"
+}

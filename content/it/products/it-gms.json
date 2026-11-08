@@ -1,0 +1,91 @@
+{
+  "slug": "it-gms",
+  "code": "IT.GMS",
+  "title": "SISTEMA DI PRODUZIONE DI GRANULI",
+  "short": "SISTEMA AUTOMATICO DI FUSIONE DEI GRANI ItalTherm dotato di avanzata tecnologia di fusione ad induzione a media frequenza. Progettato per leghe e metalli sensibili all’ossidazione. Garantisce un riscaldamento rapido e uniforme con un controllo preciso della temperatura necessario per mantenere l’integrità e la fluidità del metallo.\nIl processo di granulazione è protetto da gas inerte per ridurre al minimo l’ossidazione dei metalli.",
+  "specs": {
+    "columns": [
+      "IT.GMS05",
+      "IT.GMS10",
+      "IT.GMS15"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "10KW\n(VARIABILE /ADJUSTABLE)",
+          "20KW\n(VARIABILE /ADJUSTABLE)",
+          "25KW\n(VARIABILE /ADJUSTABLE)"
+        ]
+      },
+      {
+        "label": "CAPACITÀ MASSIMA/ MAX CAPACITY",
+        "values": [
+          "ORO / GOLD : 5KG",
+          "ORO / GOLD : 10KG",
+          "ORO / GOLD : 15KG"
+        ]
+      },
+      {
+        "label": "TEMPO DI FUSIONE / MELTING TIME",
+        "values": [
+          "10-20 MIN",
+          "10-20 MIN",
+          "10-20 MIN"
+        ]
+      },
+      {
+        "label": "DIMENSIONI / DIMENSION (LWH)",
+        "values": [
+          "1100×1000×1100 MM",
+          "1100×1000×1100 MM",
+          "1100×1000×1100 MM"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MASSIMA/ MAX TEMPERATURE",
+        "values": [
+          "1500°C",
+          "1500°C",
+          "1500°C"
+        ]
+      },
+      {
+        "label": "CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE",
+        "values": [
+          "FORNITO / EQUIPPED",
+          "FORNITO / EQUIPPED",
+          "FORNITO / EQUIPPED"
+        ]
+      },
+      {
+        "label": "PESO/ WEIGHT",
+        "values": [
+          "230 KG",
+          "250KG",
+          "380 KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "SISTEMA DI PRODUZIONE DI GRANULI",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/GRAINS-PRODUCTION-SYSTEM-MODEL-IT-2.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/GRAINS-PRODUCTION-SYSTEM-MODEL-IT-5.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/GRAINS-PRODUCTION-SYSTEM-MODEL-IT-4.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/GRAINS-PRODUCTION-SYSTEM-MODEL-IT-3.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/GRAINS%20PRODUCTION%20SYSTEM%20IT.GMS.pdf",
+  "meta": "SKU: GRAINS PRODUCTION SYSTEM IT.GMS\nCategory: Ital-therm\nTag: GRAINS PRODUCTION SYSTEM IT.GMS",
+  "group": "prod",
+  "old_path": "/it/product/sistema-di-produzione-di-granuli/",
+  "download_label": "SCARICA SPECIFICHE TECNICHE"
+}

@@ -1,0 +1,74 @@
+{
+  "slug": "it-af",
+  "code": "IT.AF",
+  "title": "CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF",
+  "short": "ItalTherm annealing furnaces, are engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency:\nAdvanced Heating Technology for Uniform Results\nRapid Cooling and Protective Atmosphere\nRobust Design and Smart Safety Features\nStreamlined Workflow with pneumatic discharge system for Maximum Productivity",
+  "specs": {
+    "columns": [
+      "IT.AF400",
+      "IT.AF600"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "THREE PHASE 380V, 50/60HZ",
+          "THREE PHASE 380V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "16KW",
+          "25KW"
+        ]
+      },
+      {
+        "label": "ZONA DI RISCALDAMENTO/ HEATING ZONE",
+        "values": [
+          "400×300×150 MM(L×W×H)",
+          "600×300×150 MM(L×W×H)"
+        ]
+      },
+      {
+        "label": "GAS PROTETTIVO/ PROTECTIVE GAS",
+        "values": [
+          "NH3 OR NITROGEN-HYDROGEN MIXTURE",
+          "NH3 OR NITROGEN-HYDROGEN MIXTURE"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MAX./ MAXIMUM TEMPERATURE",
+        "values": [
+          "1000°c",
+          "1000°c"
+        ]
+      },
+      {
+        "label": "DIMENSIONI/ OVERALL SIZE",
+        "values": [
+          "850×1800×1500 MM(L×W×H)",
+          "850×2100×1500 MM(L×W×H)"
+        ]
+      },
+      {
+        "label": "PESO / WEIGHT",
+        "values": [
+          "350KG",
+          "450KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "CONTROLLED ATMOSPHERE ANNEALING FURNACE",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/Contr.-atmosphere-annealing-furnace_AF400.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/Contr.-atmosphere-annealing-furnace_AF400-3-1.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/Contr.-atmosphere-annealing-furnace_AF400-2-1.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/06/CONTROLLED-ATMOSPHERE-ANEALING-FURNACE-MODEL-IT.AF_.pdf",
+  "meta": "SKU: CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF\nCategory: Ital-therm\nTag: ANNEALING FURNACES",
+  "group": "heat",
+  "old_path": "/product/controlled-atmosphere-anealing-furnace-model-it-af/",
+  "download_label": "DOWNLOAD TECHNICAL SPECIFICATIONS"
+}

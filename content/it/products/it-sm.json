@@ -1,0 +1,89 @@
+{
+  "slug": "it-sm",
+  "code": "IT.SM",
+  "title": "FORNO STATICO FUSIONE METALLI",
+  "short": "Il forno fusorio statico per metalli ITALTHERM è una soluzione compatta ed efficiente per la fusione di metalli preziosi come oro, argento, con capacità che vanno da 1 kg a 15 kg.\nDotato di un’avanzata tecnologia di riscaldamento a induzione elettromagnetica, il forno può raggiungere la temperatura di fusione entro 3-5 minuti, consentendo una fusione efficiente e leghe omogenee\nDotato di termocoppia ad immersione tipo K, cannelli di protezione gas sopra il crogiolo e pinza di estrazione.",
+  "specs": {
+    "columns": [
+      "IT.SM05",
+      "IT.SM10",
+      "IT.SM15"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ",
+          "3P, 380 V, 50/60HZ"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "20KW\n(VARIABILE /ADJUSTABLE)",
+          "30KW\n(VARIABILE /ADJUSTABLE)",
+          "35KW\n(VARIABILE /ADJUSTABLE)"
+        ]
+      },
+      {
+        "label": "PESO/ WEIGHT",
+        "values": [
+          "75KG",
+          "130KG",
+          "150KG"
+        ]
+      },
+      {
+        "label": "CAPACITÀ MASSIMA/ MAX CAPACITY",
+        "values": [
+          "ORO / GOLD : 5KG ARGENTO/ SILVER: 3KG",
+          "ORO/ GOLD : 10KG ARGENTO/ SILVER: 5KG",
+          "ORO/ GOLD : 15KG ARGENTO/ SILVER: 8KG"
+        ]
+      },
+      {
+        "label": "TEMPO DI FUSIONE/ MELTING TIME",
+        "values": [
+          "3-6 MIN",
+          "6-12 MIN",
+          "6-12 MIN"
+        ]
+      },
+      {
+        "label": "DIMENSIONI / DIMENSIONS",
+        "values": [
+          "620×500×980 MM",
+          "730×630×980 MM",
+          "800×700×1050 MM"
+        ]
+      },
+      {
+        "label": "TEMPERATURA MASSIMA/ MAX TEMPERATUR",
+        "values": [
+          "1600 ° C",
+          "1600 ° C",
+          "1600 ° C"
+        ]
+      },
+      {
+        "label": "CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE",
+        "values": [
+          "FORNITO/ EQUIPPED",
+          "FORNITO/ EQUIPPED",
+          "FORNITO/ EQUIPPED"
+        ]
+      }
+    ]
+  },
+  "table_title": "FORNO STATICO FUSIONE METALLI",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/STATIC-METAL-MELT.-FURNACE-IT-SM-copia-1-1.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/STATIC-METAL-MELT.-FURNACE-IT-SM-copia-2.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/06/STATIC-METAL-MELTING-FURNACE-IT.SM_.pdf",
+  "meta": "SKU: STATIC METAL MELTING FURNACE IT.SM\nCategory: Ital-therm\nTag: STATIC METAL MELTING FURNACE IT.SM",
+  "group": "melt",
+  "old_path": "/it/product/forno-statico-fusione-metalli/",
+  "download_label": "SCARICA SPECIFICHE TECNICHE"
+}

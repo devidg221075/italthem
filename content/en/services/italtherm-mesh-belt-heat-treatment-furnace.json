@@ -1,0 +1,112 @@
+{
+  "slug": "italtherm-mesh-belt-heat-treatment-furnace",
+  "title": "ItalTherm Mesh Belt Heat Treatment Furnace",
+  "body": "The ItalTherm mesh belt heat treatment furnace is designed for continuous welding, brazing, sintering, and annealing of metal components, including jewelry and precision parts. The mesh-belt transport system enables uninterrupted processing, while the entire cycle takes place under inert-gas protection to prevent oxidation.\nAn oxygen-burning barrier at the furnace entrance eliminates residual oxygen, ensuring a clean, controlled atmosphere. After heating, workpieces move directly into the cooling zone for stable, repeatable results.\nThe system can be equipped with PID temperature control, allowing programmable heating curves, soaking times, and cooling profiles for full automation.\nKey Features\nMesh Belt Transport System\nHigh-temperature-resistant metal belt (stainless steel or nickel alloys)\nAdjustable speed from 0.1 to 5 m/min for different processes\nFurnace Zones\nPreheating zone to avoid thermal shock\nHeating zone with temperatures from 300°C to 1200°C\nCooling zone with controlled air or water cooling\nHeating Technology\nElectric resistance, SiC rods, gas, or infrared heating\nIndependently controlled temperature zones with ±3°C uniformity\nProtective Atmosphere\nNitrogen, hydrogen, or mixed gases to prevent oxidation and ensure clean joints\nAutomation & Control\nPLC or industrial computer for temperature, belt speed, and gas-flow management\nTypical Applications\nElectronics: SMT soldering, LED packaging\nMetalworking: brazing of stainless steel/aluminum, powder metallurgy sintering\nAutomotive: sensors, motor components, battery tabs\nPhotovoltaics: solar cell string soldering\nCore Advantages\nContinuous 24/7 production for high-volume output\nPrecise control of heating curves and cooling profiles\nEnergy-efficient closed design with compliant exhaust treatment\nAdaptable to various alloys and solder types",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "The ItalTherm mesh belt heat treatment furnace is designed for continuous welding, brazing, sintering, and annealing of metal components, including jewelry and precision parts. The mesh-belt transport system enables uninterrupted processing, while the entire cycle takes place under inert-gas protection to prevent oxidation."
+    },
+    {
+      "type": "p",
+      "text": "An oxygen-burning barrier at the furnace entrance eliminates residual oxygen, ensuring a clean, controlled atmosphere. After heating, workpieces move directly into the cooling zone for stable, repeatable results."
+    },
+    {
+      "type": "p",
+      "text": "The system can be equipped with PID temperature control, allowing programmable heating curves, soaking times, and cooling profiles for full automation."
+    },
+    {
+      "type": "h",
+      "level": 3,
+      "text": "Key Features"
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Mesh Belt Transport System"
+    },
+    {
+      "type": "list",
+      "items": [
+        "High-temperature-resistant metal belt (stainless steel or nickel alloys)",
+        "Adjustable speed from 0.1 to 5 m/min for different processes"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Furnace Zones"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Preheating zone to avoid thermal shock",
+        "Heating zone with temperatures from 300°C to 1200°C",
+        "Cooling zone with controlled air or water cooling"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Heating Technology"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Electric resistance, SiC rods, gas, or infrared heating",
+        "Independently controlled temperature zones with ±3°C uniformity"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Protective Atmosphere"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Nitrogen, hydrogen, or mixed gases to prevent oxidation and ensure clean joints"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Automation & Control"
+    },
+    {
+      "type": "list",
+      "items": [
+        "PLC or industrial computer for temperature, belt speed, and gas-flow management"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Typical Applications"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Electronics: SMT soldering, LED packaging",
+        "Metalworking: brazing of stainless steel/aluminum, powder metallurgy sintering",
+        "Automotive: sensors, motor components, battery tabs",
+        "Photovoltaics: solar cell string soldering"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Core Advantages"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Continuous 24/7 production for high-volume output",
+        "Precise control of heating curves and cooling profiles",
+        "Energy-efficient closed design with compliant exhaust treatment",
+        "Adaptable to various alloys and solder types"
+      ]
+    }
+  ],
+  "old_path": "/services/italtherm-mesh-belt-heat-treatment-furnace/"
+}

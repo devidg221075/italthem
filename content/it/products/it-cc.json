@@ -1,0 +1,97 @@
+{
+  "slug": "it-cc",
+  "code": "IT.CC",
+  "title": "FORNO DI FUSIONE METALLI PER COLATA CONTINUA",
+  "short": "ItalTherm Macchina per colata continua:\nUn sistema compatto e versatile per la colata continua di fili, nastri e tubi in leghe di metalli preziosi, caratterizzato da fusione a camera chiusa con gas inerte, cambio rapido di forma e scarico completo del metallo ad ogni lotto.",
+  "specs": {
+    "columns": [
+      "IT.CC05",
+      "IT.CC10",
+      "IT.CC20"
+    ],
+    "rows": [
+      {
+        "label": "VOLTAGGIO/ VOLTAGE",
+        "values": [
+          "380V, 50/60 HZ\nTRIFASE/ THREE PHASE",
+          "380V, 50/60 HZ\nTRIFASE/ THREE PHASE",
+          "380V, 50/60 HZ\nTRIFASE/ THREE PHASE"
+        ]
+      },
+      {
+        "label": "POTENZA / POWER",
+        "values": [
+          "25KW",
+          "30KW",
+          "35KW"
+        ]
+      },
+      {
+        "label": "TEMPO DI FUSIONE/ MELTING TIME",
+        "values": [
+          "ABOUT 5-6 MINS",
+          "ABOUT 15-30 MINS",
+          "ABOUT 15-30 MINS"
+        ]
+      },
+      {
+        "label": "VELOCITÀ DI COLATA/ CASTING SPEED",
+        "values": [
+          "10-20 CM/M",
+          "10-20 CM/M",
+          "10-20 CM/M"
+        ]
+      },
+      {
+        "label": "CAPACITÀ/ CAPACITY",
+        "values": [
+          "5.0 KG AU",
+          "10.0 KG AU",
+          "20.0 KG AU"
+        ]
+      },
+      {
+        "label": "GAS",
+        "values": [
+          "ARGON GAS O NITROGENO / ARGON GAS OR NITROGEN",
+          "ARGON GAS O NITROGENO / ARGON GAS OR NITROGEN",
+          "ARGON GAS O NITROGENO / ARGON GAS OR NITROGEN"
+        ]
+      },
+      {
+        "label": "TEMPERATURA/ TEMPERATURE",
+        "values": [
+          "1600 ° C",
+          "1600 ° C",
+          "1600 ° C"
+        ]
+      },
+      {
+        "label": "DIMENSIONI/ OVERALL SIZE",
+        "values": [
+          "900×700×1750 MM",
+          "1000×800×1850 MM",
+          "1000×800×1850 MM"
+        ]
+      },
+      {
+        "label": "PESO DELLA MACCHINA/ MACHINE WEIGHT",
+        "values": [
+          "220KG",
+          "240KG",
+          "250KG"
+        ]
+      }
+    ]
+  },
+  "table_title": "FORNO DI FUSIONE METALLI PER COLATA CONTINUA",
+  "images": [
+    "https://ital-therm.it/wp-content/uploads/2026/04/Cont.-casting-metal-melting-furnace-2.jpg",
+    "https://ital-therm.it/wp-content/uploads/2026/04/Cont.-casting-metal-melting-furnace-3.jpg"
+  ],
+  "pdf": "https://ital-therm.it/wp-content/uploads/2026/05/CONTINUOUS-CASTING-METAL-MELTING-FURNACE-MODEL-IT.CC.pdf",
+  "meta": "SKU: CONTINUOUS CASTING MACHINES (IT.CC)\nCategory: Ital-therm\nTag: CONTINUOUS CASTING MACHINES (IT.CC)",
+  "group": "melt",
+  "old_path": "/it/product/forno-di-fusione-metalli-per-colata-continua/",
+  "download_label": "SCARICA SPECIFICHE TECNICHE"
+}

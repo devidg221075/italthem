@@ -1,0 +1,66 @@
+{
+  "slug": "italtherm-annealing-furnaces",
+  "title": "ItalTherm Annealing Furnaces",
+  "body": "Engineered for precision annealing of gold, silver, platinum, and other precious metal alloys, ItalTherm furnaces deliver the ideal combination of temperature accuracy, atmospheric purity, and production efficiency.\nKey Features\nAdvanced Heating Technology\nEnsures perfectly uniform temperature distribution for consistent metallurgical results.\nProtective Atmosphere & Rapid Cooling\nControlled inert-gas environment minimizes oxidation while enabling fast, clean cooling cycles.\nRobust Construction & Smart Safety Systems\nIndustrial-grade build quality combined with intelligent protections for reliable, continuous operation.\nStreamlined Workflow\nA pneumatic discharge system accelerates batch handling and maximizes overall productivity.\nItalTherm annealing furnaces, engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency\nAdvanced Heating Technology for Uniform Results\nRapid Cooling and Protective Atmosphere\nRobust Design and Smart Safety Features\nStreamlined Workflow with pneumatic discharge system for Maximum Productivity",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "Engineered for precision annealing of gold, silver, platinum, and other precious metal alloys, ItalTherm furnaces deliver the ideal combination of temperature accuracy, atmospheric purity, and production efficiency."
+    },
+    {
+      "type": "h",
+      "level": 3,
+      "text": "Key Features"
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Advanced Heating Technology"
+    },
+    {
+      "type": "p",
+      "text": "Ensures perfectly uniform temperature distribution for consistent metallurgical results."
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Protective Atmosphere & Rapid Cooling"
+    },
+    {
+      "type": "p",
+      "text": "Controlled inert-gas environment minimizes oxidation while enabling fast, clean cooling cycles."
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Robust Construction & Smart Safety Systems"
+    },
+    {
+      "type": "p",
+      "text": "Industrial-grade build quality combined with intelligent protections for reliable, continuous operation."
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Streamlined Workflow"
+    },
+    {
+      "type": "p",
+      "text": "A pneumatic discharge system accelerates batch handling and maximizes overall productivity."
+    },
+    {
+      "type": "p",
+      "text": "ItalTherm annealing furnaces, engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Advanced Heating Technology for Uniform Results",
+        "Rapid Cooling and Protective Atmosphere",
+        "Robust Design and Smart Safety Features",
+        "Streamlined Workflow with pneumatic discharge system for Maximum Productivity"
+      ]
+    }
+  ],
+  "old_path": "/services/italtherm-annealing-furnaces/"
+}

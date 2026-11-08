@@ -1,0 +1,30 @@
+## TITLE
+FORNO RIBALTABILE PER FUSIONE METALLI CON TRASMISSIONE AD INGRANAGGI
+## SHORT DESCRIPTION
+Il forno di fusione per metalli ribaltabile a ingranaggi ItalTherm offre solide capacità per la fusione di metalli preziosi come oro e argento, con capacità che vanno da 20 kg a 50 kg.
+Dotato di generatore di corrente a induzione a media frequenza ad alta efficienza energetica e controllo preciso della temperatura per un riscaldamento rapido e uniforme.
+Il meccanismo di inclinazione è azionato da un sistema di trasmissione con riduzione a ingranaggi conveniente con inclinazione controllata e precisa e traiettoria di versamento curva precisa.
+## DESCRIPTION TAB
+Il forno di fusione per metalli ribaltabile a ingranaggi ItalTherm offre solide capacità per la fusione di metalli preziosi come oro e argento, con capacità che vanno da 20 kg a 50 kg.
+Dotato di generatore di corrente a induzione a media frequenza ad alta efficienza energetica e controllo preciso della temperatura per un riscaldamento rapido e uniforme.
+Il meccanismo di inclinazione è azionato da un sistema di trasmissione con riduzione a ingranaggi conveniente con inclinazione controllata e precisa e traiettoria di versamento curva precisa.
+## TABLE CAPTION
+FORNO RIBALTABILE PER FUSIONE METALLI CON TRASMISSIONE AD INGRANAGGI
+## TABLE
+ | IT.GT20 | IT.GT30 | IT.GT50
+VOLTAGGIO/ VOLTAGE | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ
+POTENZA / POWER | 30KW ˙ADJUSTABLEˆ | 30KW ˙ADJUSTABLEˆ | 30KW ˙ADJUSTABLEˆ
+CAPACITÀ MAX. / MAX CAPACITY | ORO / GOLD: 20 KG ARGENTO / SILVER:10 KG | ORO / GOLD: 30 KG ARGENTO / SILVER:15 KG | ORO / GOLD: 50 KG ARGENTO / SILVER:25 KG
+TEMPO DI FUSIONE / MELTING TIME | 10˝20 MIN | 10˝30 MIN | 10˝30 MIN
+DIMENSIONI / DIMENSIONS | 1210*750*1340MM | 1210*750*1340MM | 1210*750*1340MM
+TEMPERATURA MASSIMA / MAX TEMPERATURE | 1500°C | 1500°C | 1500°C
+CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K˝TYPE | FORNITO / EQUIPPED | FORNITO / EQUIPPED | FORNITO / EQUIPPED
+PESO/ WEIGHT | 230 KG | 230 KG | 230 KG
+## META
+SKU: GEAR-DRIVEN TILTING METAL MELTING FURNACE MODEL IT.GT
+Category: Ital-therm
+Tag: GEAR-DRIVEN TILTING METAL MELTING FURNACE MODEL IT.GT
+## PDF
+/wp-content/uploads/2026/05/GEAR-DRIVEN TILTING METAL MELTING FURNACE MODEL IT.GT.pdf
+## DOWNLOAD LABEL
+SCARICA SPECIFICHE TECNICHE

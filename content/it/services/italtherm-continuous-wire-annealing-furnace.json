@@ -1,0 +1,113 @@
+{
+  "slug": "italtherm-continuous-wire-annealing-furnace",
+  "title": "Forno continuo di ricottura filo ItalTherm",
+  "body": "Un sistema ad alta precisione progettato per la ricottura continua di fili di metalli preziosi, con eccezionale stabilità della temperatura, costanza metallurgica e superfici brillanti.\nCaratteristiche principali\nProcesso di riscaldamento di precisione\nIl forno utilizza un avanzato sistema di riscaldamento a resistenza per garantire una distribuzione della temperatura molto uniforme lungo tutta la camera di riscaldamento.\nIntervallo di ricottura regolabile: da 300°C a 800°C\nInterfaccia touchscreen (HMI) per programmare profili di temperatura personalizzati in base a lega, diametro del filo e velocità di produzione.\nFase di mantenimento controllata\nRaggiunta la temperatura prevista, il forno mantiene un periodo di mantenimento stabile per garantire la completa ricristallizzazione.\nElimina le tensioni interne dovute alla trafilatura\nMigliora duttilità, uniformità del grano e costanza complessiva del filo\nSistema di raffreddamento rapido ad acqua\nUna vasca di tempra integrata assicura il raffreddamento immediato in acqua dopo la ricottura.\nAffina la struttura del grano\nMigliora le proprietà meccaniche\nGarantisce risultati metallurgici stabili e ripetibili\nSistema di controllo della tensione del filo con servomotori\nServomotori ad alta precisione regolano automaticamente la tensione del filo durante tutto il processo.\nEvita grovigli e deformazioni\nGarantisce una gestione fluida durante la ricottura e l'avvolgimento\nEssenziale per i fili ultrasottili, dove la stabilità della tensione è fondamentale\nAtmosfera protettiva ricca di idrogeno\nIl forno lavora con gas protettivi controllati, comprese atmosfere ricche di idrogeno.\nRiduce al minimo l'ossidazione superficiale\nProduce filo brillante, pulito e privo di ossidi\nIdeale per oro, argento, platino e leghe speciali\nI forni di ricottura ItalTherm, progettati per la ricottura di oro, argento, platino e altri metalli preziosi, uniscono in perfetto equilibrio controllo della temperatura, purezza dell'atmosfera ed efficienza operativa.\nTecnologia di riscaldamento avanzata per risultati uniformi\nRaffreddamento rapido e atmosfera protettiva\nDesign robusto e funzioni di sicurezza intelligenti\nFlusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "Un sistema ad alta precisione progettato per la ricottura continua di fili di metalli preziosi, con eccezionale stabilità della temperatura, costanza metallurgica e superfici brillanti."
+    },
+    {
+      "type": "h",
+      "level": 3,
+      "text": "Caratteristiche principali"
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Processo di riscaldamento di precisione"
+    },
+    {
+      "type": "p",
+      "text": "Il forno utilizza un avanzato sistema di riscaldamento a resistenza per garantire una distribuzione della temperatura molto uniforme lungo tutta la camera di riscaldamento."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Intervallo di ricottura regolabile: da 300°C a 800°C",
+        "Interfaccia touchscreen (HMI) per programmare profili di temperatura personalizzati in base a lega, diametro del filo e velocità di produzione."
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Fase di mantenimento controllata"
+    },
+    {
+      "type": "p",
+      "text": "Raggiunta la temperatura prevista, il forno mantiene un periodo di mantenimento stabile per garantire la completa ricristallizzazione."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Elimina le tensioni interne dovute alla trafilatura",
+        "Migliora duttilità, uniformità del grano e costanza complessiva del filo"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Sistema di raffreddamento rapido ad acqua"
+    },
+    {
+      "type": "p",
+      "text": "Una vasca di tempra integrata assicura il raffreddamento immediato in acqua dopo la ricottura."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Affina la struttura del grano",
+        "Migliora le proprietà meccaniche",
+        "Garantisce risultati metallurgici stabili e ripetibili"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Sistema di controllo della tensione del filo con servomotori"
+    },
+    {
+      "type": "p",
+      "text": "Servomotori ad alta precisione regolano automaticamente la tensione del filo durante tutto il processo."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Evita grovigli e deformazioni",
+        "Garantisce una gestione fluida durante la ricottura e l'avvolgimento",
+        "Essenziale per i fili ultrasottili, dove la stabilità della tensione è fondamentale"
+      ]
+    },
+    {
+      "type": "h",
+      "level": 5,
+      "text": "Atmosfera protettiva ricca di idrogeno"
+    },
+    {
+      "type": "p",
+      "text": "Il forno lavora con gas protettivi controllati, comprese atmosfere ricche di idrogeno."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Riduce al minimo l'ossidazione superficiale",
+        "Produce filo brillante, pulito e privo di ossidi",
+        "Ideale per oro, argento, platino e leghe speciali"
+      ]
+    },
+    {
+      "type": "p",
+      "text": "I forni di ricottura ItalTherm, progettati per la ricottura di oro, argento, platino e altri metalli preziosi, uniscono in perfetto equilibrio controllo della temperatura, purezza dell'atmosfera ed efficienza operativa."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Tecnologia di riscaldamento avanzata per risultati uniformi",
+        "Raffreddamento rapido e atmosfera protettiva",
+        "Design robusto e funzioni di sicurezza intelligenti",
+        "Flusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività"
+      ]
+    }
+  ],
+  "old_path": "/it/services/italtherm-continuous-wire-annealing-furnace/"
+}

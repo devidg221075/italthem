@@ -1,0 +1,30 @@
+## TITLE
+STATIC METAL MELTING FURNACE IT.SM
+## SHORT DESCRIPTION
+ITALTHERM Static metal melting furnace is a compact and efficient solution for melting precious metals such as gold, silver, with capacities ranging from 1 kg to 15 kg.
+Equipped with advanced electromagnetic induction heating technology, the furnace can reach melting temperatures within 3–5 minutes, allowing efficient melting and homogeneous alloys
+Equipped with K type immersion thermocouple, gas protection torches over the crucible and the removal pincers.
+## DESCRIPTION TAB
+ITALTHERM Static metal melting furnace is a compact and efficient solution for melting precious metals such as gold, silver, with capacities ranging from 1 kg to 15 kg.
+Equipped with advanced electromagnetic induction heating technology, the furnace can reach melting temperatures within 3–5 minutes, allowing efficient melting and homogeneous alloys
+Equipped with K type immersion thermocouple, gas protection torches over the crucible and the removal pincers.
+## TABLE CAPTION
+STATIC METAL MELTING FURNACE
+## TABLE
+ | IT.SM05 | IT.SM10 | IT.SM15
+VOLTAGGIO/ VOLTAGE | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ | 3P, 380 V, 50/60HZ
+POTENZA / POWER | 20KW / (VARIABILE /ADJUSTABLE) | 30KW / (VARIABILE /ADJUSTABLE) | 35KW / (VARIABILE /ADJUSTABLE)
+PESO/ WEIGHT | 75KG | 130KG | 150KG
+CAPACITÀ MASSIMA/ MAX CAPACITY | ORO / GOLD : 5KG ARGENTO/ SILVER: 3KG | ORO/ GOLD : 10KG ARGENTO/ SILVER: 5KG | ORO/ GOLD : 15KG ARGENTO/ SILVER: 8KG
+TEMPO DI FUSIONE/ MELTING TIME | 3-6 MIN | 6-12 MIN | 6-12 MIN
+DIMENSIONI / DIMENSIONS | 620'500'980 MM | 730'630'980 MM | 800*700'1050 MM
+TEMPERATURA MASSIMA/ MAX TEMPERATUR | 1600 ° C | 1600 ° C | 1600 ° C
+CONTROLLO TEMPERATURA TIPO K / TEMPERATURE CONTROL K-TYPE | FORNITO/ EQUIPPED | FORNITO/ EQUIPPED | FORNITO/ EQUIPPED
+## META
+SKU: STATIC METAL MELTING FURNACE IT.SM
+Category: Ital-therm
+Tag: STATIC METAL MELTING FURNACE IT.SM
+## PDF
+/wp-content/uploads/2026/06/STATIC-METAL-MELTING-FURNACE-IT.SM_.pdf
+## DOWNLOAD LABEL
+DOWNLOAD TECHNICAL SPECIFICATIONS
