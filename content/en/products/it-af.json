@@ -2,11 +2,11 @@
   "slug": "it-af",
   "code": "IT.AF",
   "title": "CONTROLLED ATMOSPHERE ANNEALING FURNACE MODEL IT.AF",
-  "short": "ItalTherm annealing furnaces, are engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency:\nAdvanced Heating Technology for Uniform Results\nRapid Cooling and Protective AtmosphereRobust\nDesign and Smart Safety Features\nStreamlined Workflow with pneumatic discharge system for Maximum Productivity",
+  "short": "ItalTherm annealing furnaces, are engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency:\nAdvanced Heating Technology for Uniform Results\nRapid Cooling and Protective Atmosphere\nRobust Design and Smart Safety Features\nStreamlined Workflow with pneumatic discharge system for Maximum Productivity",
   "specs": {
     "columns": [
       "IT.AF400",
-      "ITAF600"
+      "IT.AF600"
     ],
     "rows": [
       {

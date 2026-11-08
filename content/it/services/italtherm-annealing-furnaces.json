@@ -1,64 +1,64 @@
 {
   "slug": "italtherm-annealing-furnaces",
-  "title": "ItalTherm Annealing Furnaces",
-  "body": "Engineered for precision annealing of gold, silver, platinum, and other precious metal alloys, ItalTherm furnaces deliver the ideal combination of temperature accuracy, atmospheric purity, and production efficiency.\nKey Features\nAdvanced Heating Technology\nEnsures perfectly uniform temperature distribution for consistent metallurgical results.\nProtective Atmosphere & Rapid Cooling\nControlled inert-gas environment minimizes oxidation while enabling fast, clean cooling cycles.\nRobust Construction & Smart Safety Systems\nIndustrial-grade build quality combined with intelligent protections for reliable, continuous operation.\nStreamlined Workflow\nA pneumatic discharge system accelerates batch handling and maximizes overall productivity.\nItalTherm annealing furnaces, engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency\nAdvanced Heating Technology for Uniform Results\nRapid Cooling and Protective Atmosphere\nRobust Design and Smart Safety Features\nStreamlined Workflow with pneumatic discharge system for Maximum Productivity",
+  "title": "Forni di ricottura ItalTherm",
+  "body": "Progettati per la ricottura di precisione di oro, argento, platino e altre leghe di metalli preziosi, i forni ItalTherm offrono la combinazione ideale di precisione della temperatura, purezza dell'atmosfera ed efficienza produttiva.\nCaratteristiche principali\nTecnologia di riscaldamento avanzata\nGarantisce una distribuzione della temperatura perfettamente uniforme per risultati metallurgici costanti.\nAtmosfera protettiva e raffreddamento rapido\nL'ambiente controllato con gas inerte riduce al minimo l'ossidazione e consente cicli di raffreddamento rapidi e puliti.\nCostruzione robusta e sistemi di sicurezza intelligenti\nQualità costruttiva di livello industriale unita a protezioni intelligenti per un funzionamento affidabile e continuo.\nFlusso di lavoro semplificato\nUn sistema di scarico pneumatico accelera la gestione dei lotti e massimizza la produttività complessiva.\nI forni di ricottura ItalTherm, progettati per la ricottura di oro, argento, platino e altri metalli preziosi, uniscono in perfetto equilibrio controllo della temperatura, purezza dell'atmosfera ed efficienza operativa.\nTecnologia di riscaldamento avanzata per risultati uniformi\nRaffreddamento rapido e atmosfera protettiva\nDesign robusto e funzioni di sicurezza intelligenti\nFlusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività",
   "blocks": [
     {
       "type": "p",
-      "text": "Engineered for precision annealing of gold, silver, platinum, and other precious metal alloys, ItalTherm furnaces deliver the ideal combination of temperature accuracy, atmospheric purity, and production efficiency."
+      "text": "Progettati per la ricottura di precisione di oro, argento, platino e altre leghe di metalli preziosi, i forni ItalTherm offrono la combinazione ideale di precisione della temperatura, purezza dell'atmosfera ed efficienza produttiva."
     },
     {
       "type": "h",
       "level": 3,
-      "text": "Key Features"
+      "text": "Caratteristiche principali"
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Advanced Heating Technology"
+      "text": "Tecnologia di riscaldamento avanzata"
     },
     {
       "type": "p",
-      "text": "Ensures perfectly uniform temperature distribution for consistent metallurgical results."
+      "text": "Garantisce una distribuzione della temperatura perfettamente uniforme per risultati metallurgici costanti."
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Protective Atmosphere & Rapid Cooling"
+      "text": "Atmosfera protettiva e raffreddamento rapido"
     },
     {
       "type": "p",
-      "text": "Controlled inert-gas environment minimizes oxidation while enabling fast, clean cooling cycles."
+      "text": "L'ambiente controllato con gas inerte riduce al minimo l'ossidazione e consente cicli di raffreddamento rapidi e puliti."
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Robust Construction & Smart Safety Systems"
+      "text": "Costruzione robusta e sistemi di sicurezza intelligenti"
     },
     {
       "type": "p",
-      "text": "Industrial-grade build quality combined with intelligent protections for reliable, continuous operation."
+      "text": "Qualità costruttiva di livello industriale unita a protezioni intelligenti per un funzionamento affidabile e continuo."
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Streamlined Workflow"
+      "text": "Flusso di lavoro semplificato"
     },
     {
       "type": "p",
-      "text": "A pneumatic discharge system accelerates batch handling and maximizes overall productivity."
+      "text": "Un sistema di scarico pneumatico accelera la gestione dei lotti e massimizza la produttività complessiva."
     },
     {
       "type": "p",
-      "text": "ItalTherm annealing furnaces, engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency"
+      "text": "I forni di ricottura ItalTherm, progettati per la ricottura di oro, argento, platino e altri metalli preziosi, uniscono in perfetto equilibrio controllo della temperatura, purezza dell'atmosfera ed efficienza operativa."
     },
     {
       "type": "list",
       "items": [
-        "Advanced Heating Technology for Uniform Results",
-        "Rapid Cooling and Protective Atmosphere",
-        "Robust Design and Smart Safety Features",
-        "Streamlined Workflow with pneumatic discharge system for Maximum Productivity"
+        "Tecnologia di riscaldamento avanzata per risultati uniformi",
+        "Raffreddamento rapido e atmosfera protettiva",
+        "Design robusto e funzioni di sicurezza intelligenti",
+        "Flusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività"
       ]
     }
   ],

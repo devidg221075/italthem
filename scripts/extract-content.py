@@ -82,6 +82,13 @@ RULES = [
     (r'(?<=\d)[˙˝](?=\d)', '-'),
     (r'˙ADJUSTABLEˆ', '(ADJUSTABLE)'),
     (r'K˝TYPE', 'K-TYPE'),
+    # typos fixed on request (see docs/CHANGES.md, "Anomalie nei testi")
+    (r'^ITAF600$', 'IT.AF600'),
+    (r'protettivaRobusto$', 'protettiva'), (r'^Design e funzionalità di sicurezza intelligenti$', 'Robusto design e funzionalità di sicurezza intelligenti'),
+    (r'Protective AtmosphereRobust$', 'Protective Atmosphere'), (r'^Design and Smart Safety Features$', 'Robust Design and Smart Safety Features'),
+    (r'ItalTherm ItalTherm Continuous Wire Annealing Furnace A ', 'ItalTherm Continuous Wire Annealing Furnace. A '),
+    (r'ricottura filo ItalTherm Un sistema', 'ricottura filo ItalTherm. Un sistema'),
+    (r'\b(Telefono|Phone) : ', r'\1: '),
 ]
 RULES = [(re.compile(a), b) for a, b in RULES]
 # (page file, section heading, raw text) -> corrected text, for corrections that need context
@@ -160,6 +167,7 @@ def spec_cell(v, label, col, code, file, field):
     v = fix(v, file, field)
     if DIM_LABEL.search(label):
         new = re.sub(r"[*'•]", '×', v)
+        new = re.sub(r'(?<=[\d)]) ?M M\b', 'MM', new)  # "1050 M M" / "(H)M M" -> "MM" (spaced below)
         new = re.sub(r'(?<=[\d)])MM\b', ' MM', new)
         if new != v:
             log(file, field, v, new)

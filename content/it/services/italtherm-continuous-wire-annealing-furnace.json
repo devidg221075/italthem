@@ -1,111 +1,111 @@
 {
   "slug": "italtherm-continuous-wire-annealing-furnace",
-  "title": "ItalTherm Continuous Wire Annealing Furnace",
-  "body": "A high-precision system engineered for the continuous annealing of precious-metal wires, delivering exceptional temperature stability, metallurgical consistency, and bright-surface results.\nKey Features\nPrecision Heating Process\nThe furnace uses an advanced resistance-heating system to ensure highly uniform temperature distribution along the entire heating chamber.\nAdjustable annealing range: 300°C to 800°C\nTouchscreen HMI for programming custom temperature profiles based on wire alloy, diameter, and production speed.\nControlled Soaking Stage\nOnce the target temperature is reached, the furnace maintains a stable soaking period to guarantee full recrystallization.\nEliminates drawing-induced internal stresses\nEnhances ductility, grain uniformity, and overall wire consistency\nRapid Water-Cooling System\nAn integrated quench tank provides immediate water cooling after annealing.\nRefines grain structure\nImproves mechanical properties\nEnsures stable, repeatable metallurgical results\nServo-Controlled Wire Tension System\nHigh-precision servo motors automatically regulate wire tension throughout the process.\nPrevents tangling and deformation\nEnsures smooth handling during annealing and coiling\nEssential for ultra-fine wires where tension stability is critical\nHydrogen-Rich Protective Atmosphere\nThe furnace operates with controlled protection gases, including hydrogen-rich atmospheres.\nMinimizes surface oxidation\nProduces bright, clean, oxide-free wire\nIdeal for gold, silver, platinum, and specialty alloys\nItalTherm annealing furnaces, engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency\nAdvanced Heating Technology for Uniform Results\nRapid Cooling and Protective Atmosphere\nRobust Design and Smart Safety Features\nStreamlined Workflow with pneumatic discharge system for Maximum Productivity",
+  "title": "Forno continuo di ricottura filo ItalTherm",
+  "body": "Un sistema ad alta precisione progettato per la ricottura continua di fili di metalli preziosi, con eccezionale stabilità della temperatura, costanza metallurgica e superfici brillanti.\nCaratteristiche principali\nProcesso di riscaldamento di precisione\nIl forno utilizza un avanzato sistema di riscaldamento a resistenza per garantire una distribuzione della temperatura molto uniforme lungo tutta la camera di riscaldamento.\nIntervallo di ricottura regolabile: da 300°C a 800°C\nInterfaccia touchscreen (HMI) per programmare profili di temperatura personalizzati in base a lega, diametro del filo e velocità di produzione.\nFase di mantenimento controllata\nRaggiunta la temperatura prevista, il forno mantiene un periodo di mantenimento stabile per garantire la completa ricristallizzazione.\nElimina le tensioni interne dovute alla trafilatura\nMigliora duttilità, uniformità del grano e costanza complessiva del filo\nSistema di raffreddamento rapido ad acqua\nUna vasca di tempra integrata assicura il raffreddamento immediato in acqua dopo la ricottura.\nAffina la struttura del grano\nMigliora le proprietà meccaniche\nGarantisce risultati metallurgici stabili e ripetibili\nSistema di controllo della tensione del filo con servomotori\nServomotori ad alta precisione regolano automaticamente la tensione del filo durante tutto il processo.\nEvita grovigli e deformazioni\nGarantisce una gestione fluida durante la ricottura e l'avvolgimento\nEssenziale per i fili ultrasottili, dove la stabilità della tensione è fondamentale\nAtmosfera protettiva ricca di idrogeno\nIl forno lavora con gas protettivi controllati, comprese atmosfere ricche di idrogeno.\nRiduce al minimo l'ossidazione superficiale\nProduce filo brillante, pulito e privo di ossidi\nIdeale per oro, argento, platino e leghe speciali\nI forni di ricottura ItalTherm, progettati per la ricottura di oro, argento, platino e altri metalli preziosi, uniscono in perfetto equilibrio controllo della temperatura, purezza dell'atmosfera ed efficienza operativa.\nTecnologia di riscaldamento avanzata per risultati uniformi\nRaffreddamento rapido e atmosfera protettiva\nDesign robusto e funzioni di sicurezza intelligenti\nFlusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività",
   "blocks": [
     {
       "type": "p",
-      "text": "A high-precision system engineered for the continuous annealing of precious-metal wires, delivering exceptional temperature stability, metallurgical consistency, and bright-surface results."
+      "text": "Un sistema ad alta precisione progettato per la ricottura continua di fili di metalli preziosi, con eccezionale stabilità della temperatura, costanza metallurgica e superfici brillanti."
     },
     {
       "type": "h",
       "level": 3,
-      "text": "Key Features"
+      "text": "Caratteristiche principali"
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Precision Heating Process"
+      "text": "Processo di riscaldamento di precisione"
     },
     {
       "type": "p",
-      "text": "The furnace uses an advanced resistance-heating system to ensure highly uniform temperature distribution along the entire heating chamber."
+      "text": "Il forno utilizza un avanzato sistema di riscaldamento a resistenza per garantire una distribuzione della temperatura molto uniforme lungo tutta la camera di riscaldamento."
     },
     {
       "type": "list",
       "items": [
-        "Adjustable annealing range: 300°C to 800°C",
-        "Touchscreen HMI for programming custom temperature profiles based on wire alloy, diameter, and production speed."
+        "Intervallo di ricottura regolabile: da 300°C a 800°C",
+        "Interfaccia touchscreen (HMI) per programmare profili di temperatura personalizzati in base a lega, diametro del filo e velocità di produzione."
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Controlled Soaking Stage"
+      "text": "Fase di mantenimento controllata"
     },
     {
       "type": "p",
-      "text": "Once the target temperature is reached, the furnace maintains a stable soaking period to guarantee full recrystallization."
+      "text": "Raggiunta la temperatura prevista, il forno mantiene un periodo di mantenimento stabile per garantire la completa ricristallizzazione."
     },
     {
       "type": "list",
       "items": [
-        "Eliminates drawing-induced internal stresses",
-        "Enhances ductility, grain uniformity, and overall wire consistency"
+        "Elimina le tensioni interne dovute alla trafilatura",
+        "Migliora duttilità, uniformità del grano e costanza complessiva del filo"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Rapid Water-Cooling System"
+      "text": "Sistema di raffreddamento rapido ad acqua"
     },
     {
       "type": "p",
-      "text": "An integrated quench tank provides immediate water cooling after annealing."
+      "text": "Una vasca di tempra integrata assicura il raffreddamento immediato in acqua dopo la ricottura."
     },
     {
       "type": "list",
       "items": [
-        "Refines grain structure",
-        "Improves mechanical properties",
-        "Ensures stable, repeatable metallurgical results"
+        "Affina la struttura del grano",
+        "Migliora le proprietà meccaniche",
+        "Garantisce risultati metallurgici stabili e ripetibili"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Servo-Controlled Wire Tension System"
+      "text": "Sistema di controllo della tensione del filo con servomotori"
     },
     {
       "type": "p",
-      "text": "High-precision servo motors automatically regulate wire tension throughout the process."
+      "text": "Servomotori ad alta precisione regolano automaticamente la tensione del filo durante tutto il processo."
     },
     {
       "type": "list",
       "items": [
-        "Prevents tangling and deformation",
-        "Ensures smooth handling during annealing and coiling",
-        "Essential for ultra-fine wires where tension stability is critical"
+        "Evita grovigli e deformazioni",
+        "Garantisce una gestione fluida durante la ricottura e l'avvolgimento",
+        "Essenziale per i fili ultrasottili, dove la stabilità della tensione è fondamentale"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Hydrogen-Rich Protective Atmosphere"
+      "text": "Atmosfera protettiva ricca di idrogeno"
     },
     {
       "type": "p",
-      "text": "The furnace operates with controlled protection gases, including hydrogen-rich atmospheres."
+      "text": "Il forno lavora con gas protettivi controllati, comprese atmosfere ricche di idrogeno."
     },
     {
       "type": "list",
       "items": [
-        "Minimizes surface oxidation",
-        "Produces bright, clean, oxide-free wire",
-        "Ideal for gold, silver, platinum, and specialty alloys"
+        "Riduce al minimo l'ossidazione superficiale",
+        "Produce filo brillante, pulito e privo di ossidi",
+        "Ideale per oro, argento, platino e leghe speciali"
       ]
     },
     {
       "type": "p",
-      "text": "ItalTherm annealing furnaces, engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency"
+      "text": "I forni di ricottura ItalTherm, progettati per la ricottura di oro, argento, platino e altri metalli preziosi, uniscono in perfetto equilibrio controllo della temperatura, purezza dell'atmosfera ed efficienza operativa."
     },
     {
       "type": "list",
       "items": [
-        "Advanced Heating Technology for Uniform Results",
-        "Rapid Cooling and Protective Atmosphere",
-        "Robust Design and Smart Safety Features",
-        "Streamlined Workflow with pneumatic discharge system for Maximum Productivity"
+        "Tecnologia di riscaldamento avanzata per risultati uniformi",
+        "Raffreddamento rapido e atmosfera protettiva",
+        "Design robusto e funzioni di sicurezza intelligenti",
+        "Flusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività"
       ]
     }
   ],

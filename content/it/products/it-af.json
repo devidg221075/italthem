@@ -2,11 +2,11 @@
   "slug": "it-af",
   "code": "IT.AF",
   "title": "FORNO DI RICOTTURA IN ATMOSFERA CONTROLLATA",
-  "short": "I forni di ricottura ItalTherm sono progettati per la ricottura di oro, argento, platino e altri metalli preziosi con un perfetto equilibrio tra controllo della temperatura, purezza atmosferica ed efficienza operativa:\nTecnologia di riscaldamento avanzata per risultati uniformi\nRaffreddamento rapido e atmosfera protettivaRobusto\nDesign e funzionalità di sicurezza intelligenti\nFlusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività",
+  "short": "I forni di ricottura ItalTherm sono progettati per la ricottura di oro, argento, platino e altri metalli preziosi con un perfetto equilibrio tra controllo della temperatura, purezza atmosferica ed efficienza operativa:\nTecnologia di riscaldamento avanzata per risultati uniformi\nRaffreddamento rapido e atmosfera protettiva\nRobusto design e funzionalità di sicurezza intelligenti\nFlusso di lavoro semplificato con sistema di scarico pneumatico per la massima produttività",
   "specs": {
     "columns": [
       "IT.AF400",
-      "ITAF600"
+      "IT.AF600"
     ],
     "rows": [
       {

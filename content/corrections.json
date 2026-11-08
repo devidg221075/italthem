@@ -110,8 +110,26 @@
   {
     "file": "content/en/products/it-af.json",
     "field": "short",
+    "from": "Rapid Cooling and Protective AtmosphereRobust",
+    "to": "Rapid Cooling and Protective Atmosphere"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "short",
+    "from": "Design and Smart Safety Features",
+    "to": "Robust Design and Smart Safety Features"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "short",
     "from": "ItalTherm anealing furnaces, are engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency:",
     "to": "ItalTherm annealing furnaces, are engineered for the annealing of gold, silver, platinum, and other precious metals with a perfect balance of temperature control, atmospheric purity, and operational efficiency:"
+  },
+  {
+    "file": "content/en/products/it-af.json",
+    "field": "specs.columns[1]",
+    "from": "ITAF600",
+    "to": "IT.AF600"
   },
   {
     "file": "content/en/products/it-af.json",
@@ -171,7 +189,7 @@
     "file": "content/en/products/it-bf.json",
     "field": "specs.rows[5].values[1]",
     "from": "3970(L)•sso(w)•1448(H)M M",
-    "to": "3970(L)×sso(w)×1448(H)M M"
+    "to": "3970(L)×sso(w)×1448(H) MM"
   },
   {
     "file": "content/en/products/it-cwa.json",
@@ -183,7 +201,7 @@
     "file": "content/en/products/it-cwa.json",
     "field": "short",
     "from": "ItalTherm ltalTherm Continuous Wire Annealing Furnace A high-precision system tor continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere tor bright,",
-    "to": "ItalTherm ItalTherm Continuous Wire Annealing Furnace A high-precision system for continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere for bright,"
+    "to": "ItalTherm Continuous Wire Annealing Furnace. A high-precision system for continuous annealing of precious-metal wires, offering uniform heating, controlled soaking, rapid water cooling, servo-regulated tension, and a hydrogen-rich protective atmosphere for bright,"
   },
   {
     "file": "content/en/products/it-cwa.json",
@@ -315,7 +333,7 @@
     "file": "content/en/products/it-mt.json",
     "field": "specs.rows[5].values[2]",
     "from": "800*700'1050 M M",
-    "to": "800×700×1050 M M"
+    "to": "800×700×1050 MM"
   },
   {
     "file": "content/en/products/it-sm.json",
@@ -571,6 +589,12 @@
   },
   {
     "file": "content/en/pages.json#contact",
+    "field": "sections[0].blocks[1].text",
+    "from": "Phone : +39 0575 802485",
+    "to": "Phone: +39 0575 802485"
+  },
+  {
+    "file": "content/en/pages.json#contact",
     "field": "lead",
     "from": "Please fill out the form below to require information or estimate of costs. We will answer back as soon as possible.\nPlease fill out all required fields.",
     "to": "Please fill out the form below to request information or an estimate of costs. We will answer back as soon as possible.\nPlease fill out all required fields."
@@ -673,6 +697,24 @@
   },
   {
     "file": "content/it/products/it-af.json",
+    "field": "short",
+    "from": "Raffreddamento rapido e atmosfera protettivaRobusto",
+    "to": "Raffreddamento rapido e atmosfera protettiva"
+  },
+  {
+    "file": "content/it/products/it-af.json",
+    "field": "short",
+    "from": "Design e funzionalità di sicurezza intelligenti",
+    "to": "Robusto design e funzionalità di sicurezza intelligenti"
+  },
+  {
+    "file": "content/it/products/it-af.json",
+    "field": "specs.columns[1]",
+    "from": "ITAF600",
+    "to": "IT.AF600"
+  },
+  {
+    "file": "content/it/products/it-af.json",
     "field": "specs.rows[2].values[0]",
     "from": "",
     "to": "—"
@@ -723,7 +765,13 @@
     "file": "content/it/products/it-bf.json",
     "field": "specs.rows[5].values[1]",
     "from": "3970(L)•sso(w)•1448(H)M M",
-    "to": "3970(L)×sso(w)×1448(H)M M"
+    "to": "3970(L)×sso(w)×1448(H) MM"
+  },
+  {
+    "file": "content/it/products/it-cwa.json",
+    "field": "short",
+    "from": "ItalTherm, il Forno continuo per ricottura filo ItalTherm Un sistema ad alta precisione per la ricottura continua di fili di metalli preziosi, che offre riscaldamento uniforme, immersione controllata, raffreddamento rapido dell’acqua, tensione servo-regolata e un’atmosfera protettiva ricca di idrogeno per colori brillanti, risultati senza ossidi.",
+    "to": "ItalTherm, il Forno continuo per ricottura filo ItalTherm. Un sistema ad alta precisione per la ricottura continua di fili di metalli preziosi, che offre riscaldamento uniforme, immersione controllata, raffreddamento rapido dell’acqua, tensione servo-regolata e un’atmosfera protettiva ricca di idrogeno per colori brillanti, risultati senza ossidi."
   },
   {
     "file": "content/it/products/it-cwa.json",
@@ -849,7 +897,7 @@
     "file": "content/it/products/it-mt.json",
     "field": "specs.rows[5].values[2]",
     "from": "800*700'1050 M M",
-    "to": "800×700×1050 M M"
+    "to": "800×700×1050 MM"
   },
   {
     "file": "content/it/products/it-sm.json",
@@ -1030,5 +1078,11 @@
     "field": "sections[1].blocks[1].items[3]",
     "from": "Opzioni tilt‑pour e vuoto per colate prive di ossidazione, ideali per leghe da gioielleria e lingotti da investimento.",
     "to": "Opzioni tilt-pour e vuoto per colate prive di ossidazione, ideali per leghe da gioielleria e lingotti da investimento."
+  },
+  {
+    "file": "content/it/pages.json#contact",
+    "field": "sections[0].blocks[1].text",
+    "from": "Telefono : +39 0575 802485",
+    "to": "Telefono: +39 0575 802485"
   }
 ]

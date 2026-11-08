@@ -1,110 +1,110 @@
 {
   "slug": "italtherm-mesh-belt-heat-treatment-furnace",
-  "title": "ItalTherm Mesh Belt Heat Treatment Furnace",
-  "body": "The ItalTherm mesh belt heat treatment furnace is designed for continuous welding, brazing, sintering, and annealing of metal components, including jewelry and precision parts. The mesh-belt transport system enables uninterrupted processing, while the entire cycle takes place under inert-gas protection to prevent oxidation.\nAn oxygen-burning barrier at the furnace entrance eliminates residual oxygen, ensuring a clean, controlled atmosphere. After heating, workpieces move directly into the cooling zone for stable, repeatable results.\nThe system can be equipped with PID temperature control, allowing programmable heating curves, soaking times, and cooling profiles for full automation.\nKey Features\nMesh Belt Transport System\nHigh-temperature-resistant metal belt (stainless steel or nickel alloys)\nAdjustable speed from 0.1 to 5 m/min for different processes\nFurnace Zones\nPreheating zone to avoid thermal shock\nHeating zone with temperatures from 300°C to 1200°C\nCooling zone with controlled air or water cooling\nHeating Technology\nElectric resistance, SiC rods, gas, or infrared heating\nIndependently controlled temperature zones with ±3°C uniformity\nProtective Atmosphere\nNitrogen, hydrogen, or mixed gases to prevent oxidation and ensure clean joints\nAutomation & Control\nPLC or industrial computer for temperature, belt speed, and gas-flow management\nTypical Applications\nElectronics: SMT soldering, LED packaging\nMetalworking: brazing of stainless steel/aluminum, powder metallurgy sintering\nAutomotive: sensors, motor components, battery tabs\nPhotovoltaics: solar cell string soldering\nCore Advantages\nContinuous 24/7 production for high-volume output\nPrecise control of heating curves and cooling profiles\nEnergy-efficient closed design with compliant exhaust treatment\nAdaptable to various alloys and solder types",
+  "title": "Forno per trattamento termico a nastro a rete ItalTherm",
+  "body": "Il forno per trattamento termico a nastro a rete ItalTherm è progettato per la saldatura, la brasatura, la sinterizzazione e la ricottura in continuo di componenti metallici, compresi gioielli e parti di precisione. Il sistema di trasporto a nastro a rete consente una lavorazione ininterrotta, mentre l'intero ciclo si svolge sotto protezione di gas inerte per prevenire l'ossidazione.\nUna barriera di combustione dell'ossigeno all'ingresso del forno elimina l'ossigeno residuo e assicura un'atmosfera pulita e controllata. Dopo il riscaldamento i pezzi passano direttamente nella zona di raffreddamento, per risultati stabili e ripetibili.\nIl sistema può essere dotato di controllo della temperatura PID, che consente curve di riscaldamento, tempi di mantenimento e profili di raffreddamento programmabili per la piena automazione.\nCaratteristiche principali\nSistema di trasporto a nastro a rete\nNastro metallico resistente alle alte temperature (acciaio inox o leghe di nichel)\nVelocità regolabile da 0,1 a 5 m/min per diversi processi\nZone del forno\nZona di preriscaldamento per evitare shock termici\nZona di riscaldamento con temperature da 300°C a 1200°C\nZona di raffreddamento con raffreddamento controllato ad aria o ad acqua\nTecnologia di riscaldamento\nRiscaldamento a resistenza elettrica, barre al carburo di silicio (SiC), gas o infrarossi\nZone di temperatura controllate in modo indipendente con uniformità di ±3°C\nAtmosfera protettiva\nAzoto, idrogeno o miscele di gas per prevenire l'ossidazione e garantire giunzioni pulite\nAutomazione e controllo\nPLC o computer industriale per la gestione di temperatura, velocità del nastro e flusso di gas\nApplicazioni tipiche\nElettronica: saldatura SMT, packaging di LED\nLavorazioni metalliche: brasatura di acciaio inox/alluminio, sinterizzazione di metallurgia delle polveri\nAutomotive: sensori, componenti di motori, linguette per batterie\nFotovoltaico: saldatura delle stringhe di celle solari\nVantaggi principali\nProduzione continua 24/7 per grandi volumi\nControllo preciso di curve di riscaldamento e profili di raffreddamento\nStruttura chiusa a basso consumo energetico con trattamento conforme dei fumi di scarico\nAdattabile a diverse leghe e tipi di saldatura",
   "blocks": [
     {
       "type": "p",
-      "text": "The ItalTherm mesh belt heat treatment furnace is designed for continuous welding, brazing, sintering, and annealing of metal components, including jewelry and precision parts. The mesh-belt transport system enables uninterrupted processing, while the entire cycle takes place under inert-gas protection to prevent oxidation."
+      "text": "Il forno per trattamento termico a nastro a rete ItalTherm è progettato per la saldatura, la brasatura, la sinterizzazione e la ricottura in continuo di componenti metallici, compresi gioielli e parti di precisione. Il sistema di trasporto a nastro a rete consente una lavorazione ininterrotta, mentre l'intero ciclo si svolge sotto protezione di gas inerte per prevenire l'ossidazione."
     },
     {
       "type": "p",
-      "text": "An oxygen-burning barrier at the furnace entrance eliminates residual oxygen, ensuring a clean, controlled atmosphere. After heating, workpieces move directly into the cooling zone for stable, repeatable results."
+      "text": "Una barriera di combustione dell'ossigeno all'ingresso del forno elimina l'ossigeno residuo e assicura un'atmosfera pulita e controllata. Dopo il riscaldamento i pezzi passano direttamente nella zona di raffreddamento, per risultati stabili e ripetibili."
     },
     {
       "type": "p",
-      "text": "The system can be equipped with PID temperature control, allowing programmable heating curves, soaking times, and cooling profiles for full automation."
+      "text": "Il sistema può essere dotato di controllo della temperatura PID, che consente curve di riscaldamento, tempi di mantenimento e profili di raffreddamento programmabili per la piena automazione."
     },
     {
       "type": "h",
       "level": 3,
-      "text": "Key Features"
+      "text": "Caratteristiche principali"
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Mesh Belt Transport System"
+      "text": "Sistema di trasporto a nastro a rete"
     },
     {
       "type": "list",
       "items": [
-        "High-temperature-resistant metal belt (stainless steel or nickel alloys)",
-        "Adjustable speed from 0.1 to 5 m/min for different processes"
+        "Nastro metallico resistente alle alte temperature (acciaio inox o leghe di nichel)",
+        "Velocità regolabile da 0,1 a 5 m/min per diversi processi"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Furnace Zones"
+      "text": "Zone del forno"
     },
     {
       "type": "list",
       "items": [
-        "Preheating zone to avoid thermal shock",
-        "Heating zone with temperatures from 300°C to 1200°C",
-        "Cooling zone with controlled air or water cooling"
+        "Zona di preriscaldamento per evitare shock termici",
+        "Zona di riscaldamento con temperature da 300°C a 1200°C",
+        "Zona di raffreddamento con raffreddamento controllato ad aria o ad acqua"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Heating Technology"
+      "text": "Tecnologia di riscaldamento"
     },
     {
       "type": "list",
       "items": [
-        "Electric resistance, SiC rods, gas, or infrared heating",
-        "Independently controlled temperature zones with ±3°C uniformity"
+        "Riscaldamento a resistenza elettrica, barre al carburo di silicio (SiC), gas o infrarossi",
+        "Zone di temperatura controllate in modo indipendente con uniformità di ±3°C"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Protective Atmosphere"
+      "text": "Atmosfera protettiva"
     },
     {
       "type": "list",
       "items": [
-        "Nitrogen, hydrogen, or mixed gases to prevent oxidation and ensure clean joints"
+        "Azoto, idrogeno o miscele di gas per prevenire l'ossidazione e garantire giunzioni pulite"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Automation & Control"
+      "text": "Automazione e controllo"
     },
     {
       "type": "list",
       "items": [
-        "PLC or industrial computer for temperature, belt speed, and gas-flow management"
+        "PLC o computer industriale per la gestione di temperatura, velocità del nastro e flusso di gas"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Typical Applications"
+      "text": "Applicazioni tipiche"
     },
     {
       "type": "list",
       "items": [
-        "Electronics: SMT soldering, LED packaging",
-        "Metalworking: brazing of stainless steel/aluminum, powder metallurgy sintering",
-        "Automotive: sensors, motor components, battery tabs",
-        "Photovoltaics: solar cell string soldering"
+        "Elettronica: saldatura SMT, packaging di LED",
+        "Lavorazioni metalliche: brasatura di acciaio inox/alluminio, sinterizzazione di metallurgia delle polveri",
+        "Automotive: sensori, componenti di motori, linguette per batterie",
+        "Fotovoltaico: saldatura delle stringhe di celle solari"
       ]
     },
     {
       "type": "h",
       "level": 5,
-      "text": "Core Advantages"
+      "text": "Vantaggi principali"
     },
     {
       "type": "list",
       "items": [
-        "Continuous 24/7 production for high-volume output",
-        "Precise control of heating curves and cooling profiles",
-        "Energy-efficient closed design with compliant exhaust treatment",
-        "Adaptable to various alloys and solder types"
+        "Produzione continua 24/7 per grandi volumi",
+        "Controllo preciso di curve di riscaldamento e profili di raffreddamento",
+        "Struttura chiusa a basso consumo energetico con trattamento conforme dei fumi di scarico",
+        "Adattabile a diverse leghe e tipi di saldatura"
       ]
     }
   ],
