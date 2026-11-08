@@ -55,7 +55,7 @@ test('@font-face ranges match the weights in use and only Manrope and Inter are 
   }
 });
 
-test('type scale of the master: body Inter 16/1.6, nav Inter Medium 16, buttons Inter SemiBold 16, H1 up to 56, H2 up to 40, no negative letter-spacing', () => {
+test('type scale of the master: body Inter 16/1.6, nav Inter Medium 16, buttons Inter SemiBold 16, H1 up to 56, H2 up to 40, negative letter-spacing only on the three heading levels', () => {
   const site = css['site.css'];
   assert.match(site, /body\{[^}]*font:16px\/1\.6 var\(--sans\)/);
   assert.match(site, /\.hdr nav\{[^}]*font:500 16px var\(--sans\)/);
@@ -63,14 +63,19 @@ test('type scale of the master: body Inter 16/1.6, nav Inter Medium 16, buttons 
   assert.match(site, /\.hero h1\{font-size:var\(--h1\);line-height:1\.1/);
   assert.match(site, /\.sc h2\{font-size:var\(--h2\);line-height:1\.2/);
   assert.match(site, /\.pgh h1\{font-size:var\(--h1\);line-height:1\.1/);
-  assert.match(site, /h3\{font-weight:600;font-size:var\(--h3\);line-height:1\.3\}/, 'H3 Manrope SemiBold 28/1.3');
-  for (const [file, src] of Object.entries(css)) assert.ok(!/letter-spacing:-/.test(src), `${file}: negative letter-spacing`);
+  assert.match(site, /h3\{font-weight:600;font-size:var\(--h3\);line-height:1\.3;letter-spacing:-\.02em\}/, 'H3 Manrope SemiBold 28/1.3');
+  // the master headings are set tight (measured on the master board and the approved home mockup): -0.03em H1, -0.02em H2/H3, nothing else
+  for (const [file, src] of Object.entries(css)) {
+    const rest = src.replace(/(?<=^|\}|\n)h[123]\{[^}]*\}/g, '');
+    assert.ok(!/letter-spacing:-/.test(rest), `${file}: negative letter-spacing outside the heading levels`);
+  }
+  assert.match(css['site.css'], /h1\{font-size:var\(--h1\);line-height:1\.1;letter-spacing:-\.03em\}/);
 });
 
 test('heading scale: tokens are 56/40/28 on desktop and every page-level heading takes its size from them', () => {
   const site = readFileSync(path.join(ROOT, 'assets/css/site.css'), 'utf8');
   assert.match(site, /@media\(min-width:1001px\)\{:root\{--h1:56px;--h2:40px;--h3:28px\}\}/);
-  assert.match(site, /h1\{font-size:var\(--h1\);line-height:1\.1\}h2\{font-size:var\(--h2\);line-height:1\.2\}/);
+  assert.match(site, /h1\{font-size:var\(--h1\);line-height:1\.1;letter-spacing:-\.03em\}h2\{font-size:var\(--h2\);line-height:1\.2;letter-spacing:-\.02em\}/);
   for (const f of ['site', 'about', 'catalogue', 'contact', 'product']) {
     const css = readFileSync(path.join(ROOT, `assets/css/${f}.css`), 'utf8');
     // no heading rule sets its own clamp()/px size any more; the only exceptions are card labels (.pc h3 product-card name, .card .cl h2 contact side-card label)

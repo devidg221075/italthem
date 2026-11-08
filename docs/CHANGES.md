@@ -372,3 +372,12 @@ Correzione: tre token (`--h1`, `--h2`, `--h3`) in `site.css`, 56/40/28 da 1001 p
 - **Eccezioni dichiarate (etichette, non titoli):** nome nelle card prodotto (Inter 16 Regular, con il codice in Manrope Bold 26 sopra, come nel mockup) e il titolo piccolo delle card laterali dei Contatti (Manrope 17 SemiBold).
 - **Da confermare:** nel mockup della scheda prodotto codice e titolo sono più grandi (circa 72/34); ho seguito la regola della tavola (56/28). H2 a 40 px nelle pagine legali è la regola, ma in testi lunghi risulta grande.
 - Test nuovo: i token sono 56/40/28 e nessuna regola di titolo imposta una misura propria (tranne le due etichette).
+
+## Confronto home vs mockup approvato e tavola master (tipografia e foto)
+
+Misure sul mockup della home (1671×941) e sulla tavola, confrontate con il sito:
+- **Forma dei titoli:** il titolo "per metalli preziosi" è nel mockup più stretto e più compatto del mio (rapporto larghezza/altezza 9,05 contro 9,54 con Manrope Bold senza spaziatura; densità d'inchiostro 0,316 contro 0,281). Corrisponde a Manrope tra Bold e ExtraBold con spaziatura di circa −0,03 em. Nella tavola il campione H1 è altrettanto serrato. **Corretto:** spaziatura −0,03 em sull'H1 e −0,02 em su H2/H3 (prima l'avevo tolta); il peso resta Bold come dice la tavola.
+- **Dimensione dell'H1 della home:** nel mockup misura circa 70 px (equivalenti a 1440) con interlinea circa 0,95; la tavola dice 56/1,1. Mockup e tavola non coincidono: **da decidere**.
+- **Categorie sotto il hero:** nel mockup icone circa 52 px, etichetta Inter circa 21 px, codice Manrope Bold circa 33 px; nel sito icone 28 px, etichetta 16 px, codice 26 px.
+- **Pulsanti e testo del hero:** nel mockup pulsante circa 59 px di altezza con etichetta circa 21 px e testo introduttivo circa 20 px; nel sito 52 px, etichetta 16 px, testo 18–20 px (la tavola dice 16 per i pulsanti).
+- **Foto:** il mockup ha un rendering a tutto schermo dietro titolo e menu (header trasparente); il sito ha il prodotto ritagliato su fondo chiaro e un header bianco. Il sito mostra 4 punti del carosello, il mockup 3. Mancano "Guarda il video" e le voci Video/Assistenza (pagine rimandate). Il kicker del mockup è in inglese; il sito lo ha in italiano (scelta approvata). Il marchio nel mockup non è quello ufficiale (regola: si usa solo `ItalTherm.svg`).
