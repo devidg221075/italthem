@@ -440,3 +440,28 @@ Cinque foto ricevute:
 - **Non usate perché già presenti a risoluzione uguale o maggiore:** IT.CWA intera (macchina 1111×1159 px contro 1773×1849 della foto in uso) e due duplicati ridimensionati a 1920 px (dettaglio dei rulli di IT.CC, vaschetta di rame di IT.AF).
 
 Anomalie nei testi originali (non modificati, come da regola di non riscrivere i contenuti estratti): la descrizione di IT.CWA inizia con "ItalTherm, il Forno continuo per ricottura filo ItalTherm Un sistema…" (manca un punto e il nome è ripetuto); la descrizione di IT.GMS inizia in maiuscolo ("SISTEMA AUTOMATICO DI FUSIONE DEI GRANI ItalTherm…") e il suo testo è quasi uguale a quello di IT.GMB.
+
+## Verifica anomalie e foto da migliorare (elenco completo)
+
+**Corretto subito:** la mia funzione dei titoli scriveva "Ad" con la maiuscola ("Forno a Nastro Ad Atmosfera Controllata", "…Trasmissione Ad Ingranaggi") mentre "per" e "con" restavano minuscoli. Ora "ad", "dei", "degli", "delle", "nel", "nella", "sul", "su" restano minuscoli.
+
+**Anomalie nei testi e nelle tabelle originali (NON modificate: servono i dati giusti dal titolare)**
+- IT.AF: colonna "ITAF600" senza punto (IT.AF600); "Zona di riscaldamento" vuota ("—"); elenco puntato "…atmosfera protettivaRobusto" (parole attaccate).
+- IT.BF: "6o(w)×3o(H)" con la lettera o al posto dello zero; larghezza "sso" (cifre illeggibili) nelle dimensioni; "1448(H)M M" con spazio nell'unità; la riga "Gas protettivo" contiene "880 ° C/80 MIN" (è una temperatura/tempo, non un gas).
+- IT.CC: "Tempo di fusione ABOUT 5-6 MINS / ABOUT 15-30 MINS" e altri valori in inglese nella pagina italiana; "ARGON GAS O NITROGENO / ARGON GAS…" in due lingue.
+- IT.CWA: descrizione "ItalTherm, il Forno continuo per ricottura filo ItalTherm Un sistema…" (manca un punto, nome ripetuto); "Consumo di gas NITROGENO / NITROGEN 2-3UM" (unità poco chiara); dimensioni e peso nella stessa cella.
+- IT.FM e IT.GMB: tabelle quasi identiche (stesse dimensioni 2100×2360×2600, pesi 330/350/380 kg e tempi), probabile copia; IT.GMB e IT.GMS: primo paragrafo identico, in maiuscolo ("SISTEMA AUTOMATICO DI FUSIONE DEI GRANI…").
+- IT.GMS: pesi 230 / 250 / 380 kg (salto anomalo per il modello da 15 kg).
+- IT.GT: stessa potenza (30 kW), peso (230 kg) e dimensioni per i tre modelli da 20, 30 e 50 kg (da verificare).
+- IT.KB: IT.KB08 senza potenza ("—"); "Capacità dello stampo" solo per IT.KB02.
+- IT.MT e IT.SM: stessi testi, potenze, pesi, dimensioni e tempi; il testo dice "da 1 kg a 15 kg" ma le tabelle partono da 6 kg (IT.MT) e 5 kg (IT.SM); "800×700×1050 M M" in IT.MT.
+- Tutte le tabelle mescolano italiano e inglese ("VOLTAGGIO/ VOLTAGE", "ABOUT…MINS"): è così nel sito originale.
+- Home italiana: i testi delle quattro tessere servizio ("ItalTherm Mesh Belt Heat Treatment…", "Gear-Driven Tilting Metal Melting Furnace") e le relative pagine servizio sono in inglese anche in italiano (non tradotti nell'originale).
+- Contatti: "Telefono : +39 0575 802485" con spazio prima dei due punti (anche in inglese: "Phone :").
+- Indirizzo e telefono: il sito (dati originali) riporta "Viale S. Maria delle Vertighe, 50/B, 52048 Monte San Savino (AR)" e +39 0575 802485; il mockup mostra un indirizzo e un numero diversi (+39 0575 810487) e la tavola un altro ancora. Non usati: i recapiti dei mockup non sono verificati.
+
+**Foto da migliorare (per sezione)** — dimensioni dopo il ritaglio automatico del bianco
+- Foto principale (appare nelle card del catalogo e della home, nel menu, nella prima immagine della scheda): IT.GT 1031×675 (la più piccola; foto larga con carrello e lingotti); IT.GMB 906×864; IT.FM 1133×1062; IT.SM 838×1575 (ritaglio stretto e alto: nel riquadro la macchina resta piccola); IT.BF 1944×884 (forma lunga 2,2:1, nel riquadro riempie metà altezza).
+- Tessere "servizi" della home: usano la foto principale di IT.BF, IT.CWA, IT.AF e IT.GT; la più debole è IT.GT.
+- Gallerie: IT.CWA [2ª] 588×392; IT.GMS [3ª] 370×556 e [4ª] 131×361; IT.KB [2ª] 250×192; IT.FM e IT.GT hanno una sola foto.
+- Hero e banner di sezione (Catalogo, Azienda, Contatti): ancora da fornire (foto emozionali larghe).

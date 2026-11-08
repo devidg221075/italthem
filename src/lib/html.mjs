@@ -5,7 +5,7 @@ export function esc(v) {
   return String(v ?? '').replace(/[&<>"']/g, (c) => MAP[c]);
 }
 
-const SMALL = new Set(['of', 'and', 'for', 'the', 'a', 'an', 'in', 'on', 'to', 'with', 'di', 'del', 'della', 'e', 'per', 'con', 'il', 'la', 'lo', 'le', 'i', 'un', 'una', 'da', 'a']);
+const SMALL = new Set(['of', 'and', 'for', 'the', 'a', 'an', 'in', 'on', 'to', 'with', 'di', 'del', 'della', 'e', 'per', 'con', 'il', 'la', 'lo', 'le', 'i', 'un', 'una', 'da', 'a', 'ad', 'dei', 'degli', 'delle', 'nel', 'nella', 'sul', 'su']);
 
 /** UPPERCASE content title -> display Title Case; keeps model codes (IT.CC) and small words lower-case. */
 export function displayTitle(title) {
