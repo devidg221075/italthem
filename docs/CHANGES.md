@@ -395,3 +395,7 @@ Fornita dal titolare: foto di studio di IT.KB (Sistema automatico per la produzi
 - File: `assets/img/src/AUTOMATIC-BULLION-BARS-PRODUCTION-SYSTEM-Mod-IT-hero.jpg`, ottimizzato in tre WebP (480/960/1600 px; 12, 30 e 66 KB). È anche l'`og:image` della home. La foto non sostituisce ancora quella nella scheda IT.KB (non richiesto).
 - Lighthouse home dopo la modifica: mobile 99, desktop 99–100, CLS 0.
 - Test aggiornati (5 slide, IT.KB prima e immagine principale, og:image).
+
+## Foto di dettaglio IT.AF a 2000 px
+
+Il titolare ha inviato due foto di dettaglio di IT.AF (vaschetta di rame nel forno; sportello e vassoio estraibile) a 2000×1333. Sono le stesse due immagini che il sito già usava a 1600×1067: le ho sostituite (stessi nomi file) e rigenerate le versioni WebP; cambia solo la risoluzione, non le immagini. Valgono per la galleria di IT.AF e per il banner Azienda (vaschetta di rame). Non adatte alla hero: primi piani senza la macchina intera e senza una zona libera per il titolo.
