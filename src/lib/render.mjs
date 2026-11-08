@@ -107,14 +107,14 @@ function notice(lang) {
  * `products` feeds the mega menu and footer; `cta: false` omits the CTA strip above the footer (home and contact have their own).
  */
 /** `switchUrls` ({en, it}) overrides the language-switch targets and `navKey` the highlighted nav item, for pages whose url is not derived from `slug` (services, products). */
-export function layout({ lang, slug, title, description, body, site, products = [], cta = true, styles = [], scripts = [], alternates = [], head, preload = '', switchUrls, navKey, seo: seoExtra = {} }) {
+export function layout({ lang, slug, title, description, body, site, products = [], cta = true, styles = [], scripts = [], alternates = [], head, preload = '', bodyClass = '', switchUrls, navKey, seo: seoExtra = {} }) {
   const seo = head ?? seoHead({ title, description, alternates, ...seoExtra }, lang, { site });
   return `<!doctype html>
 <html lang="${esc(lang)}">
 <head>
 ${HEAD.replace('{{seo}}', () => seo).replace('{{preload}}', () => preload).replace('{{css}}', () => assetUrl('/assets/css/site.css'))}
 ${styles.map((u) => `<link rel="stylesheet" href="${assetUrl(u)}">`).join('\n')}${styles.length ? '\n' : ''}</head>
-<body>
+<body${bodyClass ? ` class="${bodyClass}"` : ''}>
 ${header(lang, slug, site, switchUrls, navKey, products)}
 <main id="main">
 ${body}

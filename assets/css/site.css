@@ -2,8 +2,8 @@
 @font-face{font-family:"Inter";font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/inter-latin-ext-var.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
 @font-face{font-family:"Inter";font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/inter-latin-var.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:"Manrope Fallback";src:local("Arial"),local("Helvetica Neue"),local("Liberation Sans");size-adjust:105%;ascent-override:100%;descent-override:28%;line-gap-override:0%}
-@font-face{font-family:"Manrope";font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/manrope-latin-ext-var.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:"Manrope";font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/manrope-latin-var.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Manrope";font-style:normal;font-weight:600 800;font-display:swap;src:url(/assets/fonts/manrope-latin-ext-var.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Manrope";font-style:normal;font-weight:600 800;font-display:swap;src:url(/assets/fonts/manrope-latin-var.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
 /* ITALTHERM design system: Light Premium / Minimal Titanium. Source of truth: the approved master board (palette, type scale, grid, components). */
 :root{--blue:#0754bc;--navy:#1e3a66;--titanium:#d9dee7;--pearl:#f4f6fa;--ink:#2e3445;--rule:#c9d1de;--line:#dce2eb;--mute:#5c6678;--bg:#fff;--fg:#2e3445;--accent:#0754bc;--accent-2:#1e3a66;--body:#46506a;--hh:80px;--sp1:8px;--sp2:16px;--sp3:24px;--sp4:32px;--sp5:48px;--sp6:64px;--gut:24px;--mx:clamp(40px,5.5556vw,80px);--sans:"Inter","Inter Fallback",ui-sans-serif,system-ui,"Segoe UI",Roboto,Arial,sans-serif;--head:"Manrope","Manrope Fallback","Inter","Inter Fallback",ui-sans-serif,system-ui,"Segoe UI",Roboto,Arial,sans-serif;--r:8px;--r2:12px}
@@ -12,9 +12,9 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);margin:0;-webkit-font-smoothing:antialiased;overflow-x:clip}
 h1,h2,h3,h4,p,ul,address{margin:0}
 /* master board scale: H1 56/1.1 Bold, H2 40/1.2 Bold, H3 28/1.3 SemiBold (desktop); every heading takes its size from these tokens */
-:root{--h1:32px;--h2:28px;--h3:22px}
-@media(min-width:601px){:root{--h1:44px;--h2:32px;--h3:24px}}
-@media(min-width:1001px){:root{--h1:56px;--h2:40px;--h3:28px}}
+:root{--h1:32px;--h2:28px;--h3:22px;--hero-h1:34px}
+@media(min-width:601px){:root{--h1:44px;--h2:32px;--h3:24px;--hero-h1:50px}}
+@media(min-width:1001px){:root{--h1:56px;--h2:40px;--h3:28px;--hero-h1:70px}}
 h1,h2,h3{font-family:var(--head);font-weight:700;color:var(--ink)}
 h1{font-size:var(--h1);line-height:1.1;letter-spacing:-.03em}h2{font-size:var(--h2);line-height:1.2;letter-spacing:-.02em}
 h3{font-weight:600;font-size:var(--h3);line-height:1.3;letter-spacing:-.02em}
@@ -48,7 +48,8 @@ img{max-width:100%}
 
 /* header: constant height at every scroll position, state only changes the shadow */
 .hdr{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);box-shadow:0 1px 0 var(--line);transition:box-shadow .3s}
-.hdr.is-scrolled{box-shadow:0 1px 0 var(--rule),0 12px 28px -22px rgba(30,58,102,.5)}
+.hb .hdr{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+.hdr.is-scrolled{background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);box-shadow:0 1px 0 var(--rule),0 12px 28px -22px rgba(30,58,102,.5)}
 .hdr .w{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;height:var(--hh)}
 .hdr .brand{display:block}
 .hdr nav{display:flex;align-self:stretch;justify-self:center;gap:clamp(24px,3vw,44px);font:500 16px var(--sans)}
@@ -129,9 +130,15 @@ img{max-width:100%}
 .hbody{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:24px;align-items:center;padding-block:clamp(20px,3vw,40px) 4px;min-height:min(52vh,500px)}
 .kick{display:flex;align-items:center;gap:20px;font:600 14px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:28px}
 .kick i{flex:none;width:56px;height:4px;background:var(--blue)}
-.hero h1{font-size:var(--h1);line-height:1.1;text-wrap:balance;max-width:14em}
+/* home hero follows the approved mockup (measured ~70px ExtraBold, tight), the inner pages follow the board scale */
+.hero h1{font-size:var(--hero-h1);font-weight:800;line-height:1;text-wrap:balance;max-width:11em}
 .hero .sub{margin-top:24px;max-width:34em;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--ink)}
 .hero .hb{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap}
+@media(min-width:1001px){.hero .btn{min-height:58px;padding-inline:32px;font-size:20px}.hbody{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+/* full-bleed hero (mockup): photo behind title, transparent header; used when the hero photos exist (preview: PLACEHOLDERS=1) */
+.hero.bleed{margin-top:calc(var(--hh) * -1)}
+.hero.bleed .hbg::before,.hero.bleed .stage{display:none}
+.hero.bleed .hbody{grid-template-columns:minmax(0,1fr);padding-top:calc(var(--hh) + 32px);min-height:min(78vh,720px)}
 .stage{position:relative;aspect-ratio:1.2/1;min-height:420px}
 .stage .m{position:absolute;inset:0;display:grid;place-items:center;mix-blend-mode:multiply}
 .stage .m:not(:first-child){display:none}
@@ -143,7 +150,7 @@ img{max-width:100%}
 .cats li+li{border-left:2px solid var(--blue)}
 .cats a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 12px 4px;text-align:center;color:var(--ink);transition:color .2s}
 .cats a:hover{color:var(--blue)}
-.cats .ic{width:44px;height:44px;color:var(--ink);stroke-width:1.4;margin-bottom:6px}
+.cats .ic{width:52px;height:52px;color:var(--ink);stroke-width:1.4;margin-bottom:6px}
 .cats span{font:500 clamp(16px,1.6vw,22px)/1.2 var(--sans)}
 .cats b{font:700 clamp(22px,2.4vw,34px)/1.1 var(--head);color:var(--blue)}
 .dots{display:none;justify-content:center;gap:14px;padding:20px 0 24px}
