@@ -399,3 +399,8 @@ Fornita dal titolare: foto di studio di IT.KB (Sistema automatico per la produzi
 ## Foto di dettaglio IT.AF a 2000 px
 
 Il titolare ha inviato due foto di dettaglio di IT.AF (vaschetta di rame nel forno; sportello e vassoio estraibile) a 2000×1333. Sono le stesse due immagini che il sito già usava a 1600×1067: le ho sostituite (stessi nomi file) e rigenerate le versioni WebP; cambia solo la risoluzione, non le immagini. Valgono per la galleria di IT.AF e per il banner Azienda (vaschetta di rame). Non adatte alla hero: primi piani senza la macchina intera e senza una zona libera per il titolo.
+
+## Altre foto in alta risoluzione (IT.MT, IT.AF, IT.CWA)
+
+Cinque foto ricevute dal titolare, tutte versioni ad alta risoluzione di immagini già presenti: IT.MT (due foto, con e senza operatore), IT.AF (foto principale: era 1000×1600 con molto bianco, ora 2000×1552) e IT.CWA (foto principale, inviata in due versioni quasi identiche: ho usato `10.jpg`, la seconda è un duplicato leggermente più largo). Le ho sostituite mantenendo i nomi dei file; cambia la risoluzione (le versioni da 1600 px pesano 66–93 KB), non il contenuto. Sono foto di prodotto su fondo bianco: vanno bene per schede, catalogo e menu, non per la hero a tutto schermo (nessuna zona libera per il titolo).
+- **Difetto trovato e corretto:** con la spaziatura stretta ereditata dall'H1, il sottotitolo della scheda prodotto ("Forno di Ricottura in Atmosfera Controllata") aveva le parole troppo vicine. Ora la spaziatura di H2/H3 è −0,01 em (l'H1 resta −0,03 em, misurato sul mockup) e il sottotitolo ha −0,01 em. Test aggiornati.

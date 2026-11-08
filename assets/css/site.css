@@ -16,8 +16,8 @@ h1,h2,h3,h4,p,ul,address{margin:0}
 @media(min-width:601px){:root{--h1:44px;--h2:32px;--h3:24px;--hero-h1:50px}}
 @media(min-width:1001px){:root{--h1:56px;--h2:40px;--h3:28px;--hero-h1:70px}}
 h1,h2,h3{font-family:var(--head);font-weight:700;color:var(--ink)}
-h1{font-size:var(--h1);line-height:1.1;letter-spacing:-.03em}h2{font-size:var(--h2);line-height:1.2;letter-spacing:-.02em}
-h3{font-weight:600;font-size:var(--h3);line-height:1.3;letter-spacing:-.02em}
+h1{font-size:var(--h1);line-height:1.1;letter-spacing:-.03em}h2{font-size:var(--h2);line-height:1.2;letter-spacing:-.01em}
+h3{font-weight:600;font-size:var(--h3);line-height:1.3;letter-spacing:-.01em}
 address{font-style:normal}
 [hidden]{display:none!important}
 a{color:inherit;text-decoration:none}

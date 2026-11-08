@@ -18,7 +18,7 @@
 .pi .kick{margin-bottom:16px}
 .pi h1{display:flex;flex-direction:column;gap:6px}
 .pcode{font:700 var(--h1)/1.1 var(--head);color:var(--blue)}
-.ptitle{font:600 var(--h3)/1.3 var(--head);color:var(--ink);text-wrap:balance}
+.ptitle{letter-spacing:-.01em;font:600 var(--h3)/1.3 var(--head);color:var(--ink);text-wrap:balance}
 .intro{margin-top:20px;padding-bottom:20px;border-bottom:1px solid var(--rule);font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:var(--ink);max-width:36em}
 .ben{list-style:none;margin:20px 0 0;padding:0 0 20px;border-bottom:1px solid var(--rule);display:grid;gap:12px}
 .ben li{display:flex;align-items:center;gap:14px;font-size:16px;line-height:1.5;color:var(--ink)}

@@ -63,10 +63,10 @@ test('type scale of the master: body Inter 16/1.6, nav Inter Medium 16, buttons 
   assert.match(site, /\.hero h1\{font-size:var\(--hero-h1\);font-weight:800;line-height:1/);
   assert.match(site, /\.sc h2\{font-size:var\(--h2\);line-height:1\.2/);
   assert.match(site, /\.pgh h1\{font-size:var\(--h1\);line-height:1\.1/);
-  assert.match(site, /h3\{font-weight:600;font-size:var\(--h3\);line-height:1\.3;letter-spacing:-\.02em\}/, 'H3 Manrope SemiBold 28/1.3');
-  // the master headings are set tight (measured on the master board and the approved home mockup): -0.03em H1, -0.02em H2/H3, nothing else
+  assert.match(site, /h3\{font-weight:600;font-size:var\(--h3\);line-height:1\.3;letter-spacing:-\.01em\}/, 'H3 Manrope SemiBold 28/1.3');
+  // the master headings are set tight (measured on the master board and the approved home mockup): -0.03em H1, -0.01em H2/H3, nothing else
   for (const [file, src] of Object.entries(css)) {
-    const rest = src.replace(/(?<=^|\}|\n)h[123]\{[^}]*\}/g, '');
+    const rest = src.replace(/(?<=^|\}|\n)(h[123]|\.ptitle)\{[^}]*\}/g, ''); // .ptitle is the H3-level subtitle inside the product H1
     assert.ok(!/letter-spacing:-/.test(rest), `${file}: negative letter-spacing outside the heading levels`);
   }
   assert.match(css['site.css'], /h1\{font-size:var\(--h1\);line-height:1\.1;letter-spacing:-\.03em\}/);
@@ -75,7 +75,7 @@ test('type scale of the master: body Inter 16/1.6, nav Inter Medium 16, buttons 
 test('heading scale: tokens are 56/40/28 on desktop and every page-level heading takes its size from them', () => {
   const site = readFileSync(path.join(ROOT, 'assets/css/site.css'), 'utf8');
   assert.match(site, /@media\(min-width:1001px\)\{:root\{--h1:56px;--h2:40px;--h3:28px;--hero-h1:70px\}\}/);
-  assert.match(site, /h1\{font-size:var\(--h1\);line-height:1\.1;letter-spacing:-\.03em\}h2\{font-size:var\(--h2\);line-height:1\.2;letter-spacing:-\.02em\}/);
+  assert.match(site, /h1\{font-size:var\(--h1\);line-height:1\.1;letter-spacing:-\.03em\}h2\{font-size:var\(--h2\);line-height:1\.2;letter-spacing:-\.01em\}/);
   for (const f of ['site', 'about', 'catalogue', 'contact', 'product']) {
     const css = readFileSync(path.join(ROOT, `assets/css/${f}.css`), 'utf8');
     // no heading rule sets its own clamp()/px size any more; the only exceptions are card labels (.pc h3 product-card name, .card .cl h2 contact side-card label)

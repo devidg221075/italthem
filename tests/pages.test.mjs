@@ -59,7 +59,7 @@ test('route helpers', () => {
   assert.equal(productUrl({ slug: 'it-cc' }, 'en'), '/en/products/it-cc/');
   assert.equal(productUrl({ slug: 'it-cc' }, 'it'), '/it/prodotti/it-cc/');
   assert.equal(serviceUrl({ slug: 'x' }, 'it'), '/it/servizi/x/');
-  const opt = /^\/assets\/img\/opt\/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-960\.[0-9a-f]{8}\.webp$/;
+  const opt = /^\/assets\/img\/opt\/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-(960|1600)\.[0-9a-f]{8}\.webp$/;
   assert.match(imageUrl('https://ital-therm.it/wp-content/uploads/2026/04/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.jpg'), opt);
   assert.equal(imageUrl('CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.jpg'), imageUrl('https://x.test/a/CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.jpg'));
 });

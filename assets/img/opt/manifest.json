@@ -113,17 +113,22 @@
   ]
  },
  "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT.jpg": {
-  "width": 1000,
-  "height": 1600,
+  "width": 1977,
+  "height": 2000,
   "variants": [
    {
     "w": 480,
-    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-480.993a647c.webp",
+    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-480.ab23b355.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-960.492dc81f.webp",
+    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-960.86190c93.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1600,
+    "file": "CONTROLLED-ATMOSPHERE-WIRE-ANNEALING-FURNACE-MODEL-IT-1600.58c762cd.webp",
     "format": "webp"
    }
   ]
@@ -219,17 +224,22 @@
   ]
  },
  "Contr.-atmosphere-annealing-furnace_AF400.jpg": {
-  "width": 1000,
-  "height": 1600,
+  "width": 2000,
+  "height": 1552,
   "variants": [
    {
     "w": 480,
-    "file": "Contr.-atmosphere-annealing-furnace_AF400-480.4a0f8d50.webp",
+    "file": "Contr.-atmosphere-annealing-furnace_AF400-480.cf240b47.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "Contr.-atmosphere-annealing-furnace_AF400-960.3d1eea1e.webp",
+    "file": "Contr.-atmosphere-annealing-furnace_AF400-960.e0a02cc0.webp",
+    "format": "webp"
+   },
+   {
+    "w": 1600,
+    "file": "Contr.-atmosphere-annealing-furnace_AF400-1600.45a0debd.webp",
     "format": "webp"
    }
   ]
@@ -364,38 +374,38 @@
   ]
  },
  "TILTING-IT-MT-6-copia-1.jpg": {
-  "width": 1000,
-  "height": 1600,
+  "width": 1493,
+  "height": 2000,
   "variants": [
    {
     "w": 480,
-    "file": "TILTING-IT-MT-6-copia-1-480.3df38fea.webp",
+    "file": "TILTING-IT-MT-6-copia-1-480.19daa286.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "TILTING-IT-MT-6-copia-1-960.75510e92.webp",
+    "file": "TILTING-IT-MT-6-copia-1-960.e39113c8.webp",
     "format": "webp"
    }
   ]
  },
  "TILTING-IT-MT-6-copia-2.jpg": {
-  "width": 1600,
-  "height": 1067,
+  "width": 2000,
+  "height": 1594,
   "variants": [
    {
     "w": 480,
-    "file": "TILTING-IT-MT-6-copia-2-480.b29fe35e.webp",
+    "file": "TILTING-IT-MT-6-copia-2-480.b844652e.webp",
     "format": "webp"
    },
    {
     "w": 960,
-    "file": "TILTING-IT-MT-6-copia-2-960.8976d31c.webp",
+    "file": "TILTING-IT-MT-6-copia-2-960.8184eac4.webp",
     "format": "webp"
    },
    {
     "w": 1600,
-    "file": "TILTING-IT-MT-6-copia-2-1600.a8667576.webp",
+    "file": "TILTING-IT-MT-6-copia-2-1600.815be725.webp",
     "format": "webp"
    }
   ]
