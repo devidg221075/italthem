@@ -399,12 +399,44 @@ def page(slug, lang, en_hero=None):
     return pg
 
 
+# Values taken from the manufacturer's PDF datasheets supplied by the owner (they differ from the old website).
+# (product, row index in specs.rows, column index) -> value. Labels: GT row 1 power, row 7 weight; FM row 1 power; KB row 1 power;
+# CC row 3 casting speed; CWA row 3 gas consumption; BF rows 3 (chamber) and 5 (size); AF row 2 heating zone.
+DATASHEET = {
+    ('gt', 1, 2): '35KW (ADJUSTABLE)', ('gt', 7, 2): '250 KG',
+    ('fm', 1, 0): '30KW (VARIABILE /ADJUSTABLE)', ('fm', 1, 1): '45KW (VARIABILE /ADJUSTABLE)', ('fm', 1, 2): '75KW (VARIABILE /ADJUSTABLE)',
+    ('kb', 1, 1): '45KW',
+    ('cc', 3, 0): '10-20 CM/M',
+    ('cwa', 3, 0): 'NITROGENO / NITROGEN 2-3L/M',
+    ('bf', 3, 0): '1000(L)×60(W)×30(H) MM', ('bf', 3, 1): '2X 1000(L)×60(W)×30(H) MM',
+    ('bf', 5, 0): '3970(L)×550(W)×1448(H) MM', ('bf', 5, 1): '3970(L)×550(W)×1448(H) MM',
+    ('af', 2, 0): '400×300×150 MM(L×W×H)', ('af', 2, 1): '600×300×150 MM(L×W×H)',
+}
+
+
+def apply_datasheet(pr, n, lang):
+    file = 'content/%s/products/it-%s.json' % (lang, n)
+    for (k, row, col), new in DATASHEET.items():
+        if k != n:
+            continue
+        cells = pr['specs']['rows'][row]['values']
+        if cells[col] != new:
+            field = 'specs.rows[%d].values[%d]' % (row, col)
+            prev = next((e for e in LOG if e['file'] == file and e['field'] == field), None)
+            if prev:  # a text correction was already logged for this cell: chain it to the datasheet value
+                prev['to'] = new
+            else:
+                log(file, field, cells[col], new)
+            cells[col] = new
+    return pr
+
+
 def main():
     en_hero = None
     for lang in ('en', 'it'):
         write_json('content/%s/site.json' % lang, SITE)
         for n in PRODUCTS:
-            write_json('content/%s/products/it-%s.json' % (lang, n), product(n, lang))
+            write_json('content/%s/products/it-%s.json' % (lang, n), apply_datasheet(product(n, lang), n, lang))
         for html, slug in SERVICES:
             write_json('content/%s/services/%s.json' % (lang, slug), service(html, slug, lang))
         pages = []

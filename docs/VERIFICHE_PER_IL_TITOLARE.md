@@ -2,28 +2,25 @@
 
 Durante la ricostruzione del sito ho riletto tutti i testi e le tabelle prese dal sito attuale. Qui sotto ci sono i punti in cui servono i dati giusti: errori di battitura, valori mancanti, numeri che non tornano tra una pagina e l'altra. Non ho cambiato nessun numero e nessun dato tecnico senza conferma. Serve la risposta di chi conosce le macchine.
 
-## 1. Dati tecnici nelle schede prodotto
+## 1. Dati tecnici: ancora da chiarire dopo le schede PDF
 
-| Prodotto | Dove | Cosa c'è ora | Cosa serve |
+| Prodotto | Dove | Cosa c'è nella scheda PDF | Cosa serve |
 |---|---|---|---|
-| IT.AF | Tabella, riga «Zona di riscaldamento» | Vuota (—) per IT.AF400 e IT.AF600 | Numero di zone di riscaldamento, oppure togliere la riga |
-| IT.BF | Tabella, «Camera di riscaldamento» | «1000(L)×6o(w)×3o(H) MM»: c'è la lettera o al posto di uno zero? | Misure corrette (60? 30?) |
-| IT.BF | Tabella, «Dimensioni» | «3970(L)×sso(w)×1448(H) MM»: la larghezza «sso» non è leggibile | Larghezza corretta |
-| IT.BF | Tabella, riga «Gas protettivo» | Contiene «880 ° C/80 MIN», che è una temperatura e un tempo, non un gas | Gas protettivo corretto, e se 880 °C / 80 min è un altro dato (quale) |
-| IT.CC | Tabella | Valori in inglese nella pagina italiana («ABOUT 5-6 MINS», «ARGON GAS O NITROGENO / ARGON GAS…») | Conferma che posso tradurli in italiano |
-| IT.CWA | Tabella, «Consumo di gas» | «NITROGENO / NITROGEN 2-3UM» | Unità corretta (m³/h? l/min?) |
-| IT.CWA | Tabella, ultima riga | Dimensioni e peso nella stessa cella («2100×850×1830 MM 350 KG») | Conferma: 350 kg è il peso |
-| IT.FM e IT.GMB | Tabelle | Quasi identiche: dimensioni 2100×2360×2600 mm, pesi 330 / 350 / 380 kg, tempi di fusione | Dati propri di ciascuna macchina (sono due prodotti diversi) |
-| IT.GMS | Tabella, «Peso» | 230 / 250 / 380 kg: il modello da 15 kg salta a 380 | Pesi corretti |
-| IT.GT | Tabella | Per i modelli da 20, 30 e 50 kg: stessa potenza (30 kW), stesso peso (230 kg), stesse dimensioni | Conferma, oppure i dati distinti dei tre modelli |
-| IT.KB | Tabella | IT.KB08 senza potenza (—); «Capacità dello stampo» indicata solo per IT.KB02 | Potenza di IT.KB08 e capacità stampo di IT.KB04 e IT.KB08 |
-| IT.MT e IT.SM | Tabelle | Potenze, pesi, dimensioni e tempi identici nei due prodotti | Conferma, oppure i dati distinti |
+| IT.AF | Riga «Zona di riscaldamento» | Nella scheda PDF il testo «400×300×150 MM / 600×300×150 MM» è scritto in bianco quasi invisibile: l'ho pubblicato nel sito | Conferma che sono le misure della zona di riscaldamento |
+| IT.BF | Riga «Gas protettivo» | La scheda PDF dice «880°C/80MIN», cioè una temperatura e un tempo, non un gas | Gas protettivo corretto, e cosa indica 880 °C / 80 min |
+| IT.CC | Valori in inglese | Anche la scheda PDF usa «ABOUT 5-6 MINS» e «ARGON GAS O NITROGENO / ARGON GAS OR NITROGEN» | Conferma che posso tradurli in italiano nella pagina italiana |
+| IT.CWA | Ultima riga | Dimensioni e peso nella stessa riga anche nella scheda PDF («2100×850×1830 MM 350 KG») | Conferma: 350 kg è il peso |
+| IT.FM e IT.GMB | Tabelle | Anche le schede PDF hanno dimensioni 2100×2360×2600 mm e pesi 330 / 350 / 380 kg uguali per le due macchine | Conferma che sono dati veri e non copiati |
+| IT.GMS | Riga «Peso» | La scheda PDF dice 230 / 250 / 380 kg (anche qui il modello da 15 kg salta a 380) | Conferma i pesi |
+| IT.GT | Dimensioni | Le schede PDF riportano 1210×750×1340 mm per tutti e tre i modelli, e 230 kg per GT20 e GT30 | Conferma, oppure le misure distinte dei modelli |
+| IT.KB | Scheda PDF | IT.KB08 senza potenza e capacità stampo di IT.KB04 e IT.KB08 mancanti (il PDF mostra solo i segnaposto «POWER» e «MOLD CAPACITY»). Il titolo della scheda PDF dice «Mod IT.BK» invece di IT.KB | Potenza di IT.KB08, capacità stampo di IT.KB04 e IT.KB08; conferma del nome IT.KB |
+| IT.MT e IT.SM | Tabelle | La scheda PDF di IT.MT coincide con il sito; non ho la scheda PDF di IT.SM | Scheda PDF di IT.SM, per verificare se coincide con quella di IT.MT |
 
 ## 2. Testi che non tornano con le tabelle
 
 | Prodotto | Cosa c'è ora | Cosa serve |
 |---|---|---|
-| IT.MT e IT.SM | Il testo dice «capacità da 1 kg a 15 kg» per entrambi; le tabelle partono da 6 kg (IT.MT) e 5 kg (IT.SM) | Capacità corretta nel testo |
+| IT.MT e IT.SM | Il testo dice «capacità da 1 kg a 15 kg» per entrambi; le tabelle partono da 6 kg (IT.MT, confermato dalla scheda PDF) e 5 kg (IT.SM) | Capacità corretta nel testo |
 | IT.GMB e IT.GMS | Primo paragrafo identico, scritto tutto in maiuscolo («SISTEMA AUTOMATICO DI FUSIONE DEI GRANI…») | Testo proprio di ciascun prodotto |
 
 ## 3. Pagine «servizio» in contrasto con le schede

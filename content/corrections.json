@@ -54,6 +54,12 @@
     "to": "1720×900×1080 MM"
   },
   {
+    "file": "content/en/products/it-kb.json",
+    "field": "specs.rows[1].values[1]",
+    "from": "35KW",
+    "to": "45KW"
+  },
+  {
     "file": "content/en/products/it-cc.json",
     "field": "short",
     "from": "A compact, versatile system for continuous casting of wires, strips, and tubes in precious metal alloys, featuring inert‑gas closed‑chamber melting, rapid shape change, and full metal discharge every batch.",
@@ -102,6 +108,12 @@
     "to": "240KG"
   },
   {
+    "file": "content/en/products/it-cc.json",
+    "field": "specs.rows[3].values[0]",
+    "from": "0-20 CM/M",
+    "to": "10-20 CM/M"
+  },
+  {
     "file": "content/en/products/it-af.json",
     "field": "title",
     "from": "CONTROLLED ATMOSPHERE ANEALING FURNACE MODEL IT.AF",
@@ -135,13 +147,13 @@
     "file": "content/en/products/it-af.json",
     "field": "specs.rows[2].values[0]",
     "from": "",
-    "to": "—"
+    "to": "400×300×150 MM(L×W×H)"
   },
   {
     "file": "content/en/products/it-af.json",
     "field": "specs.rows[2].values[1]",
     "from": "",
-    "to": "—"
+    "to": "600×300×150 MM(L×W×H)"
   },
   {
     "file": "content/en/products/it-af.json",
@@ -171,25 +183,25 @@
     "file": "content/en/products/it-bf.json",
     "field": "specs.rows[3].values[0]",
     "from": "1000(L)•6o(w)•3o(H)MM",
-    "to": "1000(L)×6o(w)×3o(H) MM"
+    "to": "1000(L)×60(W)×30(H) MM"
   },
   {
     "file": "content/en/products/it-bf.json",
     "field": "specs.rows[3].values[1]",
     "from": "2X 1000(L)•6o(w)•3o(H)MM",
-    "to": "2X 1000(L)×6o(w)×3o(H) MM"
+    "to": "2X 1000(L)×60(W)×30(H) MM"
   },
   {
     "file": "content/en/products/it-bf.json",
     "field": "specs.rows[5].values[0]",
     "from": "3970(L)•sso(w)•1448(H)MM",
-    "to": "3970(L)×sso(w)×1448(H) MM"
+    "to": "3970(L)×550(W)×1448(H) MM"
   },
   {
     "file": "content/en/products/it-bf.json",
     "field": "specs.rows[5].values[1]",
     "from": "3970(L)•sso(w)•1448(H)M M",
-    "to": "3970(L)×sso(w)×1448(H) MM"
+    "to": "3970(L)×550(W)×1448(H) MM"
   },
   {
     "file": "content/en/products/it-cwa.json",
@@ -222,6 +234,12 @@
     "to": "SKU: CONTINUOUS WIRE ANNEALING\nCategory: Ital-therm\nTag: CONTINUOUS WIRE ANNEALING"
   },
   {
+    "file": "content/en/products/it-cwa.json",
+    "field": "specs.rows[3].values[0]",
+    "from": "NITROGENO / NITROGEN 2-3UM",
+    "to": "NITROGENO / NITROGEN 2-3L/M"
+  },
+  {
     "file": "content/en/products/it-gt.json",
     "field": "specs.rows[1].values[0]",
     "from": "30KW ˙ADJUSTABLEˆ",
@@ -237,7 +255,7 @@
     "file": "content/en/products/it-gt.json",
     "field": "specs.rows[1].values[2]",
     "from": "30KW ˙ADJUSTABLEˆ",
-    "to": "30KW (ADJUSTABLE)"
+    "to": "35KW (ADJUSTABLE)"
   },
   {
     "file": "content/en/products/it-gt.json",
@@ -280,6 +298,12 @@
     "field": "specs.rows[6].label",
     "from": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K˝TYPE",
     "to": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K-TYPE"
+  },
+  {
+    "file": "content/en/products/it-gt.json",
+    "field": "specs.rows[7].values[2]",
+    "from": "230 KG",
+    "to": "250 KG"
   },
   {
     "file": "content/en/products/it-gms.json",
@@ -370,6 +394,24 @@
     "field": "specs.rows[5].values[2]",
     "from": "2100*2360'2600MM",
     "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/en/products/it-fm.json",
+    "field": "specs.rows[1].values[0]",
+    "from": "20KW\n(VARIABILE /ADJUSTABLE)",
+    "to": "30KW (VARIABILE /ADJUSTABLE)"
+  },
+  {
+    "file": "content/en/products/it-fm.json",
+    "field": "specs.rows[1].values[1]",
+    "from": "30KW\n(VARIABILE /ADJUSTABLE)",
+    "to": "45KW (VARIABILE /ADJUSTABLE)"
+  },
+  {
+    "file": "content/en/products/it-fm.json",
+    "field": "specs.rows[1].values[2]",
+    "from": "35KW\n(VARIABILE /ADJUSTABLE)",
+    "to": "75KW (VARIABILE /ADJUSTABLE)"
   },
   {
     "file": "content/en/services/italtherm-mesh-belt-heat-treatment-furnace.json",
@@ -654,6 +696,12 @@
     "to": "1720×900×1080 MM"
   },
   {
+    "file": "content/it/products/it-kb.json",
+    "field": "specs.rows[1].values[1]",
+    "from": "35KW",
+    "to": "45KW"
+  },
+  {
     "file": "content/it/products/it-cc.json",
     "field": "specs.rows[1].values[2]",
     "from": "305KW",
@@ -696,6 +744,12 @@
     "to": "240KG"
   },
   {
+    "file": "content/it/products/it-cc.json",
+    "field": "specs.rows[3].values[0]",
+    "from": "0-20 CM/M",
+    "to": "10-20 CM/M"
+  },
+  {
     "file": "content/it/products/it-af.json",
     "field": "short",
     "from": "Raffreddamento rapido e atmosfera protettivaRobusto",
@@ -717,13 +771,13 @@
     "file": "content/it/products/it-af.json",
     "field": "specs.rows[2].values[0]",
     "from": "",
-    "to": "—"
+    "to": "400×300×150 MM(L×W×H)"
   },
   {
     "file": "content/it/products/it-af.json",
     "field": "specs.rows[2].values[1]",
     "from": "",
-    "to": "—"
+    "to": "600×300×150 MM(L×W×H)"
   },
   {
     "file": "content/it/products/it-af.json",
@@ -747,25 +801,25 @@
     "file": "content/it/products/it-bf.json",
     "field": "specs.rows[3].values[0]",
     "from": "1000(L)•6o(w)•3o(H)MM",
-    "to": "1000(L)×6o(w)×3o(H) MM"
+    "to": "1000(L)×60(W)×30(H) MM"
   },
   {
     "file": "content/it/products/it-bf.json",
     "field": "specs.rows[3].values[1]",
     "from": "2X 1000(L)•6o(w)•3o(H)MM",
-    "to": "2X 1000(L)×6o(w)×3o(H) MM"
+    "to": "2X 1000(L)×60(W)×30(H) MM"
   },
   {
     "file": "content/it/products/it-bf.json",
     "field": "specs.rows[5].values[0]",
     "from": "3970(L)•sso(w)•1448(H)MM",
-    "to": "3970(L)×sso(w)×1448(H) MM"
+    "to": "3970(L)×550(W)×1448(H) MM"
   },
   {
     "file": "content/it/products/it-bf.json",
     "field": "specs.rows[5].values[1]",
     "from": "3970(L)•sso(w)•1448(H)M M",
-    "to": "3970(L)×sso(w)×1448(H) MM"
+    "to": "3970(L)×550(W)×1448(H) MM"
   },
   {
     "file": "content/it/products/it-cwa.json",
@@ -786,6 +840,12 @@
     "to": "SKU: CONTINUOUS WIRE ANNEALING\nCategory: Ital-therm"
   },
   {
+    "file": "content/it/products/it-cwa.json",
+    "field": "specs.rows[3].values[0]",
+    "from": "NITROGENO / NITROGEN 2-3UM",
+    "to": "NITROGENO / NITROGEN 2-3L/M"
+  },
+  {
     "file": "content/it/products/it-gt.json",
     "field": "specs.rows[1].values[0]",
     "from": "30KW ˙ADJUSTABLEˆ",
@@ -801,7 +861,7 @@
     "file": "content/it/products/it-gt.json",
     "field": "specs.rows[1].values[2]",
     "from": "30KW ˙ADJUSTABLEˆ",
-    "to": "30KW (ADJUSTABLE)"
+    "to": "35KW (ADJUSTABLE)"
   },
   {
     "file": "content/it/products/it-gt.json",
@@ -844,6 +904,12 @@
     "field": "specs.rows[6].label",
     "from": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K˝TYPE",
     "to": "CONTROLLO TEMPERATURA TIPO K/ TEMPERATURE CONTROL K-TYPE"
+  },
+  {
+    "file": "content/it/products/it-gt.json",
+    "field": "specs.rows[7].values[2]",
+    "from": "230 KG",
+    "to": "250 KG"
   },
   {
     "file": "content/it/products/it-gms.json",
@@ -934,6 +1000,24 @@
     "field": "specs.rows[5].values[2]",
     "from": "2100*2360'2600MM",
     "to": "2100×2360×2600 MM"
+  },
+  {
+    "file": "content/it/products/it-fm.json",
+    "field": "specs.rows[1].values[0]",
+    "from": "20KW\n(VARIABILE /ADJUSTABLE)",
+    "to": "30KW (VARIABILE /ADJUSTABLE)"
+  },
+  {
+    "file": "content/it/products/it-fm.json",
+    "field": "specs.rows[1].values[1]",
+    "from": "30KW\n(VARIABILE /ADJUSTABLE)",
+    "to": "45KW (VARIABILE /ADJUSTABLE)"
+  },
+  {
+    "file": "content/it/products/it-fm.json",
+    "field": "specs.rows[1].values[2]",
+    "from": "35KW\n(VARIABILE /ADJUSTABLE)",
+    "to": "75KW (VARIABILE /ADJUSTABLE)"
   },
   {
     "file": "content/it/services/italtherm-mesh-belt-heat-treatment-furnace.json",
